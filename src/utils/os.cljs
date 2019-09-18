@@ -1,4 +1,4 @@
-(ns util.os
+(ns utils.os
   (:require [cljs.nodejs :as nodejs]))
 
 ;; (defn env!
