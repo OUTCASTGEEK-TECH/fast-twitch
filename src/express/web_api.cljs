@@ -130,11 +130,6 @@
                          ;;(log/debug "Route Definitions: " (-> rts pprint with-out-str))
                          (route-dispatcher rts handler-fn req res))]))
 
-(defn path-for [key-handler]
-  (let [rts @cached-routes
-        path (or (bidi/path-for rts key-handler) "#link_to_nowhere")]
-    path))
-
 (defn send
   [& data]
   (apply build-response data))
