@@ -1,4 +1,4 @@
-(ns utils.os
+(ns fast-twitch.os
   (:require [cljs.nodejs :as nodejs]))
 
 ;; (defn env!

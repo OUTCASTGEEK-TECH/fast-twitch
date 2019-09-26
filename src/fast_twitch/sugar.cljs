@@ -1,4 +1,4 @@
-(ns express.sugar
+(ns fast-twitch.sugar
   "Lightweight interface to requirejs."
   ;;(:refer-clojure :exclude [set get])
   (:require [cljs.nodejs :as nodejs]
