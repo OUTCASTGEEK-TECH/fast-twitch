@@ -3,6 +3,7 @@
   (:require [cljs.core.async :as async :refer [<!]]
             [cljs.core.match :refer-macros [match]]
             [clojure.pprint :refer [pprint]]
+            [cognitect.transit :as transit]
             [taoensso.timbre :as log]
             [reagent.dom.server :as rs]
             [bidi.bidi :as bidi]
@@ -17,19 +18,16 @@
 (defn- render-to-str [widget]
   (rs/render-to-string widget))
 
-(defn- clj->json [data]
-  (.. js/JSON stringify (clj->js data)))
-
 (defn- render
   ([body] (pr-str body))
   ([format body]
    (log/debug "Response Format: " format)
-  ;  (log/debug "Body: " body)
    (condp = format
      :html (str
             "<!DOCTYPE html>"
             (render-to-str body))
-     :json (clj->json body)
+     :json (let [w (transit/writer :json)]
+             (transit/write w body))
      (pr-str body))))
 
 (defn- build-response
@@ -47,7 +45,7 @@
    (log/debug "Options: " options)
    (let [{:keys [headers status] :or {headers {}, status 200}} options]
      {:status status
-      :headers headers
+      :headers (clj->js headers)
       :body (render fmt body)})))
 
 
