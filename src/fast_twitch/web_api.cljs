@@ -136,5 +136,5 @@
 
 (defn redirect [route-key]
   (send :proceed (name route-key)
-        {:headers {:location (path-for @cached-routes route-key)}
+        {:headers {:location (bidi/path-for @cached-routes route-key)}
          :status  301}))
