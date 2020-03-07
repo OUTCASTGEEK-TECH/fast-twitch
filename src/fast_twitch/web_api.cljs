@@ -91,6 +91,7 @@
         full-url (ft/full-url req)
         method (ft/method req)
         body (ft/body req)
+        cookies (ft/cookies req)
         csrf-token (ft/csrf-token req)
         match-data (match-route rts path method)
         {route-params :route-params
@@ -102,6 +103,7 @@
                     :query-params query-params
                     :body body
                     :csrf-token csrf-token
+                    :cookies cookies
                     :path path
                     :full-url full-url
                     :request-method request-method}]

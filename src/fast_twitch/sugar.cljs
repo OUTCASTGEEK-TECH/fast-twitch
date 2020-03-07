@@ -83,13 +83,19 @@
 
 (defn body
   [req]
-  (let [js-data (.-body req)]
-    (-> js-data
-        (js->clj :keywordize-keys true))))
+  (-> req
+      .-body
+      (js->clj :keywordize-keys true)))
 
 (defn csrf-token
   [req]
   (.csrfToken req))
+
+(defn cookies [req]
+  (-> req
+      .-cookies
+      (js->clj :keywordize-keys true)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helpers
