@@ -88,9 +88,9 @@
           .-body
           (js->clj :keywordize-keys true)))
 
-(defn csrf-token
-      [req]
-      (.csrfToken req))
+(defn csrf-token [req]
+  (when (.hasOwnProperty req "csrfToken")
+    (.csrfToken req)))
 
 (defn set-cookies
       [res cookies]
