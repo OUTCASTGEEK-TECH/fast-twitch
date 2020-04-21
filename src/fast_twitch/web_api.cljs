@@ -26,7 +26,8 @@
                :html (str
                        "<!DOCTYPE html>"
                        (render-to-str body))
-               :json (let [w (transit/writer :json)]
+               :json (.stringify js/JSON (clj->js body))
+               :transit (let [w (transit/writer :json)]
                           (transit/write w body))
                (pr-str body))))
 
