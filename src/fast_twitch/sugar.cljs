@@ -124,12 +124,20 @@
       ([app path handler]
        (.use app path handler)))
 
+(defn with-middlewares [app handlers]
+  (doseq [m handlers]
+    (with-middleware app m))
+  app)
+
 (defn listen
       "Shortcut for start http server."
       ([app port]
        (.listen app port "0.0.0.0"))
       ([app port callback]
        (.listen app port "0.0.0.0" callback)))
+
+(defn close [app]
+  (.close app))
 
 ;; (defn set
 ;;   [app key value]
