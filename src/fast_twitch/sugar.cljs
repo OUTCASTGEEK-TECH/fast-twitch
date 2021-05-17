@@ -25,16 +25,16 @@
       "Create a router instance and attach
       handlers to it."
       [& args]
-      (let [app (router)]
-           (reduce (fn [app [verb path handler]]
+      (let [rtr (router)]
+           (reduce (fn [rtr [verb path handler]]
                        (condp = verb
-                              :all (. app (all path handler))
-                              :get (. app (get path handler))
-                              :post (. app (post path handler))
-                              :put (. app (put path handler))
-                              :delete (. app (delete path handler))
-                              app))
-                   app
+                              :all (. rtr (all path handler))
+                              :get (. rtr (get path handler))
+                              :post (. rtr (post path handler))
+                              :put (. rtr (put path handler))
+                              :delete (. rtr (delete path handler))
+                              rtr))
+                   rtr
                    args)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

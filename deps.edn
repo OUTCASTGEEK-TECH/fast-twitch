@@ -1,13 +1,13 @@
 {:paths
  ["src"]
  :deps
- {cljs-http {:mvn/version "0.1.46"}
-  com.taoensso/timbre        {:mvn/version "4.11.0-alpha1"}
-  bidi {:mvn/version "2.1.6"}
-  lambdaisland/uri {:mvn/version "1.1.0"}
-  mount {:mvn/version "0.1.16"}
-  org.clojure/core.match {:mvn/version "0.3.0"}
-  com.cognitect/transit-cljs {:mvn/version "0.8.256"}
-  reagent {:mvn/version "0.8.1"
+ {cljs-http/cljs-http {:mvn/version "0.1.46"}
+  com.taoensso/timbre        {:mvn/version "5.1.2"}
+  bidi/bidi {:mvn/version "2.1.6"}
+  lambdaisland/uri {:mvn/version "1.4.54"}
+  mount/mount {:mvn/version "0.1.16"}
+  org.clojure/core.match {:mvn/version "1.0.0"}
+  com.cognitect/transit-cljs {:mvn/version "0.8.269"}
+  reagent/reagent {:mvn/version "1.0.0"
            :exclusions [cljsjs/react cljsjs/react-dom]}}
  }

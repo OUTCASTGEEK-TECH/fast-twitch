@@ -26,4 +26,3 @@
     {:app app
      :server (ex/listen app port)
      :opts opts}))
-
