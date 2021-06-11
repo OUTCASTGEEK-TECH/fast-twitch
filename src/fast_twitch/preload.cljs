@@ -56,5 +56,7 @@
            ^{:key script-data}
            (match script-data
                   [:src src] [:script {:type "text/javascript" :src src}]
+                  [:src src :type type] [:script {:type type :src src}]
                   [:src-txt src-txt] [:script {:type "text/javascript"} src-txt]
+                  [:src-txt src-txt :type type] [:script {:type type} src-txt]
                   :else identity)))
