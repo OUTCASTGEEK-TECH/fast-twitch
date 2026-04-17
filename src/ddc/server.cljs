@@ -68,3 +68,12 @@
   (serve :app app))
 
 (set! *main-cli-fn* main)
+
+(defn ^:export fetch [request]
+  (handler request))
+
+;; (def ^:export default
+;;   (proxy
+;;    {:fetch fetch
+;;     :onListen (aget app "onListen")}))
+

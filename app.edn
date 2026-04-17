@@ -3,11 +3,12 @@
  :foreign-libs [{:file "node_modules/@std/http/unstable_route.js"
                  :provides ["@std/http/unstable-route"]
                  :module-type :es6}]
- :output-to "server.js"
+ :output-to "server.cjs"
  :output-dir "build"
  :optimizations :simple
+ :output-wrapper "%s\nexports.fetch = ddc.server.fetch;\n"
  :pretty-print true
- :source-map "server.js.map"
+ :source-map "server.cjs.map"
  :infer-externs :all
  :language-in :es-next
  :language-out :es-next
