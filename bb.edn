@@ -1,0 +1,19 @@
+{:tasks
+ {build
+  {:doc "Compile app.edn to server.js"
+   :task (shell "clj -M -m cljs.main -co app.edn -c")}
+
+  run-node
+  {:doc "Build and run server.js with Node"
+   :depends [build]
+   :task (shell "node server.js")}
+
+  run-deno
+  {:doc "Build and run server.js with Deno"
+   :depends [build]
+   :task (shell "deno run --unstable-detect-cjs -A server.js")}
+
+  run-bun
+  {:doc "Build and run server.js with Bun"
+   :depends [build]
+   :task (shell "bun server.js")}}}
