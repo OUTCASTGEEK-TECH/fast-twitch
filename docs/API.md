@@ -11,10 +11,30 @@
     -  [`redirect-statuses`](#fast-twitch.middlewares.absolute-redirects/redirect-statuses)
     -  [`wrap-absolute-redirects`](#fast-twitch.middlewares.absolute-redirects/wrap-absolute-redirects) - Wraps a handler so redirect responses carry absolute Location headers.
 -  [`fast-twitch.middlewares.anti-forgery`](#fast-twitch.middlewares.anti-forgery)  - Adds request token validation and token persistence for unsafe form submissions.
-    -  [`*anti-forgery-token*`](#fast-twitch.middlewares.anti-forgery/*anti-forgery-token*)
-    -  [`default-error-response`](#fast-twitch.middlewares.anti-forgery/default-error-response)
-    -  [`unsafe-methods`](#fast-twitch.middlewares.anti-forgery/unsafe-methods)
+    -  [`*anti-forgery-param-name*`](#fast-twitch.middlewares.anti-forgery/*anti-forgery-param-name*) - The anti-forgery form parameter name bound while rendering a protected request.
+    -  [`*anti-forgery-token*`](#fast-twitch.middlewares.anti-forgery/*anti-forgery-token*) - The anti-forgery token bound while rendering a protected request.
+    -  [`default-error-response`](#fast-twitch.middlewares.anti-forgery/default-error-response) - The default response returned when anti-forgery validation fails.
+    -  [`default-exempt-prefixes`](#fast-twitch.middlewares.anti-forgery/default-exempt-prefixes) - The default URI prefixes exempted from anti-forgery checks.
+    -  [`default-header-names`](#fast-twitch.middlewares.anti-forgery/default-header-names) - The default request headers checked for submitted anti-forgery tokens.
+    -  [`default-token-param-name`](#fast-twitch.middlewares.anti-forgery/default-token-param-name) - The default form parameter name for submitted anti-forgery tokens.
+    -  [`request-token`](#fast-twitch.middlewares.anti-forgery/request-token) - Reads a submitted anti-forgery token from params or request headers.
+    -  [`token-param-name`](#fast-twitch.middlewares.anti-forgery/token-param-name) - Returns the configured token parameter name, falling back to the default.
+    -  [`unsafe-methods`](#fast-twitch.middlewares.anti-forgery/unsafe-methods) - HTTP methods that require anti-forgery validation by default.
     -  [`wrap-anti-forgery`](#fast-twitch.middlewares.anti-forgery/wrap-anti-forgery) - Wraps a handler with anti-forgery token validation and session token storage.
+-  [`fast-twitch.middlewares.cache-policy`](#fast-twitch.middlewares.cache-policy)  - Applies configurable HTTP cache policy headers with @std/cache-backed memoization.
+    -  [`LruCache`](#fast-twitch.middlewares.cache-policy/lrucache) - The @std/cache LruCache constructor used by the default policy backend.
+    -  [`TtlCache`](#fast-twitch.middlewares.cache-policy/ttlcache) - The @std/cache TtlCache constructor available for custom policy backends.
+    -  [`cache-policy`](#fast-twitch.middlewares.cache-policy/cache-policy) - Returns cache policy headers for the request, using the configured backend.
+    -  [`cache-policy-key`](#fast-twitch.middlewares.cache-policy/cache-policy-key) - Builds the backend key used for memoizing cache policy headers.
+    -  [`cache-policy-response`](#fast-twitch.middlewares.cache-policy/cache-policy-response) - Adds cache policy headers to a response without replacing existing headers.
+    -  [`cacheable-request?`](#fast-twitch.middlewares.cache-policy/cacheable-request?) - Returns true when the request should receive a static cache policy.
+    -  [`default-dynamic-policy`](#fast-twitch.middlewares.cache-policy/default-dynamic-policy) - The default cache policy for non-static responses.
+    -  [`default-static-prefixes`](#fast-twitch.middlewares.cache-policy/default-static-prefixes) - The default URI prefixes treated as static cacheable assets.
+    -  [`dynamic-cache-policy`](#fast-twitch.middlewares.cache-policy/dynamic-cache-policy) - Builds the cache policy used for non-static responses.
+    -  [`lru-cache-backend`](#fast-twitch.middlewares.cache-policy/lru-cache-backend) - Creates an @std/cache LRU backend for memoized cache policy headers.
+    -  [`static-cache-policy`](#fast-twitch.middlewares.cache-policy/static-cache-policy) - Builds the cache policy used for static cacheable assets.
+    -  [`ttl-cache-backend`](#fast-twitch.middlewares.cache-policy/ttl-cache-backend) - Creates an @std/cache TTL backend for memoized cache policy headers.
+    -  [`wrap-cache-policy`](#fast-twitch.middlewares.cache-policy/wrap-cache-policy) - Wraps a handler so responses receive configurable cache policy headers.
 -  [`fast-twitch.middlewares.common`](#fast-twitch.middlewares.common)  - Shared helpers for header handling, request conversion, and middleware composition.
     -  [`append-header`](#fast-twitch.middlewares.common/append-header) - Appends a header value while preserving any existing header entries.
     -  [`assoc-header`](#fast-twitch.middlewares.common/assoc-header) - Associates a header on a response map.
@@ -35,6 +55,47 @@
 -  [`fast-twitch.middlewares.content-length`](#fast-twitch.middlewares.content-length)  - Adds a Content-Length header when the response body size can be determined eagerly.
     -  [`content-length-response`](#fast-twitch.middlewares.content-length/content-length-response) - Adds Content-Length to a response when it is missing and calculable.
     -  [`wrap-content-length`](#fast-twitch.middlewares.content-length/wrap-content-length) - Wraps a handler so its responses gain a Content-Length header when possible.
+-  [`fast-twitch.middlewares.content-security-policy`](#fast-twitch.middlewares.content-security-policy)  - Applies Content Security Policy headers from structured directive data.
+    -  [`append-unique-sources`](#fast-twitch.middlewares.content-security-policy/append-unique-sources) - Appends source expressions while preserving first occurrence order.
+    -  [`apply-allow-origin-sources`](#fast-twitch.middlewares.content-security-policy/apply-allow-origin-sources) - Applies a source input to the allowed-origin reflection list.
+    -  [`apply-asset-base-urls`](#fast-twitch.middlewares.content-security-policy/apply-asset-base-urls) - Adds asset base URLs to image/media sources and allowed-origin matching.
+    -  [`apply-directive-sources`](#fast-twitch.middlewares.content-security-policy/apply-directive-sources) - Applies a source input to one directive in a CSP config.
+    -  [`build-csp-config`](#fast-twitch.middlewares.content-security-policy/build-csp-config) - Applies structured CSP inputs to the default CSP configuration.
+    -  [`build-csp-policy`](#fast-twitch.middlewares.content-security-policy/build-csp-policy) - Renders a CSP config into a Content-Security-Policy header value.
+    -  [`content-security-policy-response`](#fast-twitch.middlewares.content-security-policy/content-security-policy-response) - Adds CSP and optional reflected Access-Control-Allow-Origin headers.
+    -  [`csp-directive`](#fast-twitch.middlewares.content-security-policy/csp-directive) - Renders one CSP directive to a policy fragment.
+    -  [`csp-directive-base-uri`](#fast-twitch.middlewares.content-security-policy/csp-directive-base-uri) - The base-uri CSP directive name.
+    -  [`csp-directive-connect-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-connect-src) - The connect-src CSP directive name.
+    -  [`csp-directive-default-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-default-src) - The default-src CSP directive name.
+    -  [`csp-directive-font-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-font-src) - The font-src CSP directive name.
+    -  [`csp-directive-frame-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-frame-src) - The frame-src CSP directive name.
+    -  [`csp-directive-img-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-img-src) - The img-src CSP directive name.
+    -  [`csp-directive-media-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-media-src) - The media-src CSP directive name.
+    -  [`csp-directive-object-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-object-src) - The object-src CSP directive name.
+    -  [`csp-directive-script-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-script-src) - The script-src CSP directive name.
+    -  [`csp-directive-style-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-style-src) - The style-src CSP directive name.
+    -  [`csp-directive-worker-src`](#fast-twitch.middlewares.content-security-policy/csp-directive-worker-src) - The worker-src CSP directive name.
+    -  [`csp-source-blob`](#fast-twitch.middlewares.content-security-policy/csp-source-blob) - The CSP source expression for blob: URLs.
+    -  [`csp-source-data`](#fast-twitch.middlewares.content-security-policy/csp-source-data) - The CSP source expression for data: URLs.
+    -  [`csp-source-fonts-googleapis`](#fast-twitch.middlewares.content-security-policy/csp-source-fonts-googleapis) - The Google Fonts stylesheet source expression.
+    -  [`csp-source-fonts-gstatic`](#fast-twitch.middlewares.content-security-policy/csp-source-fonts-gstatic) - The Google Fonts asset source expression.
+    -  [`csp-source-https`](#fast-twitch.middlewares.content-security-policy/csp-source-https) - The CSP source expression for all HTTPS origins.
+    -  [`csp-source-jsdelivr`](#fast-twitch.middlewares.content-security-policy/csp-source-jsdelivr) - The jsDelivr CDN source expression.
+    -  [`csp-source-none`](#fast-twitch.middlewares.content-security-policy/csp-source-none) - The CSP source expression that blocks every source.
+    -  [`csp-source-self`](#fast-twitch.middlewares.content-security-policy/csp-source-self) - The CSP source expression for the current origin.
+    -  [`csp-source-unsafe-eval`](#fast-twitch.middlewares.content-security-policy/csp-source-unsafe-eval) - The CSP source expression that allows eval-like script execution.
+    -  [`csp-source-unsafe-inline`](#fast-twitch.middlewares.content-security-policy/csp-source-unsafe-inline) - The CSP source expression that allows inline script or style content.
+    -  [`csp-sources`](#fast-twitch.middlewares.content-security-policy/csp-sources) - Builds an append-mode source input for a directive.
+    -  [`default-csp-config`](#fast-twitch.middlewares.content-security-policy/default-csp-config) - Returns the shared baseline CSP configuration.
+    -  [`default-directive-order`](#fast-twitch.middlewares.content-security-policy/default-directive-order) - The stable directive order used when rendering CSP policy strings.
+    -  [`merge-csp-sources`](#fast-twitch.middlewares.content-security-policy/merge-csp-sources) - Merges source expressions with normalization and duplicate removal.
+    -  [`normalize-csp-sources`](#fast-twitch.middlewares.content-security-policy/normalize-csp-sources) - Normalizes CSP source expressions while dropping blanks.
+    -  [`origin-allowed?`](#fast-twitch.middlewares.content-security-policy/origin-allowed?) - Returns true when an origin matches one of the configured allowed sources.
+    -  [`origin-from-source`](#fast-twitch.middlewares.content-security-policy/origin-from-source) - Returns the URL origin for a CSP source expression when it has one.
+    -  [`replace-csp-sources`](#fast-twitch.middlewares.content-security-policy/replace-csp-sources) - Builds a replace-mode source input for a directive.
+    -  [`sanitize-exclusive-none-source`](#fast-twitch.middlewares.content-security-policy/sanitize-exclusive-none-source) - Removes 'none' when a directive has other source expressions.
+    -  [`update-csp-config`](#fast-twitch.middlewares.content-security-policy/update-csp-config) - Applies structured CSP inputs to a base config without mutating it.
+    -  [`wrap-content-security-policy`](#fast-twitch.middlewares.content-security-policy/wrap-content-security-policy) - Wraps a handler so responses receive a structured Content Security Policy.
 -  [`fast-twitch.middlewares.content-type`](#fast-twitch.middlewares.content-type)  - Infers content types from filenames, bytes, and file metadata for responses and uploads.
     -  [`aifc-prefix`](#fast-twitch.middlewares.content-type/aifc-prefix)
     -  [`aiff-prefix`](#fast-twitch.middlewares.content-type/aiff-prefix)
@@ -78,8 +139,8 @@
     -  [`default-charset-response`](#fast-twitch.middlewares.default-charset/default-charset-response) - Adds a default charset to eligible responses.
     -  [`wrap-default-charset`](#fast-twitch.middlewares.default-charset/wrap-default-charset) - Wraps a handler so text responses receive a fallback charset.
 -  [`fast-twitch.middlewares.defaults`](#fast-twitch.middlewares.defaults)  - Preconfigured middleware bundles for common API and site-oriented applications.
-    -  [`api-defaults`](#fast-twitch.middlewares.defaults/api-defaults)
-    -  [`site-defaults`](#fast-twitch.middlewares.defaults/site-defaults)
+    -  [`api-defaults`](#fast-twitch.middlewares.defaults/api-defaults) - Default middleware options for API-oriented applications.
+    -  [`site-defaults`](#fast-twitch.middlewares.defaults/site-defaults) - Default middleware options for browser-facing site applications.
     -  [`wrap-defaults`](#fast-twitch.middlewares.defaults/wrap-defaults) - Applies the configured default middleware bundles to a handler.
 -  [`fast-twitch.middlewares.file`](#fast-twitch.middlewares.file)  - Serves files from a local path with runtime-specific filesystem access and path safety checks.
     -  [`file-request`](#fast-twitch.middlewares.file/file-request) - Attempts to serve a file for the request and returns nil when nothing matches.
@@ -98,6 +159,17 @@
 -  [`fast-twitch.middlewares.keyword-params`](#fast-twitch.middlewares.keyword-params)  - Converts string parameter keys into keywords throughout parsed parameter maps.
     -  [`keyword-params-request`](#fast-twitch.middlewares.keyword-params/keyword-params-request) - Keywordizes parameter maps already associated with the request.
     -  [`wrap-keyword-params`](#fast-twitch.middlewares.keyword-params/wrap-keyword-params) - Wraps a handler so parsed parameters use keyword keys.
+-  [`fast-twitch.middlewares.logging`](#fast-twitch.middlewares.logging)  - Emits request logs through a configurable logger hook.
+    -  [`default-logger`](#fast-twitch.middlewares.logging/default-logger) - Logs request events to console.log.
+    -  [`log-response`](#fast-twitch.middlewares.logging/log-response) - Invokes the configured logger for a request/response pair.
+    -  [`request-event`](#fast-twitch.middlewares.logging/request-event) - Builds the structured log event for a completed request.
+    -  [`wrap-logging`](#fast-twitch.middlewares.logging/wrap-logging) - Wraps a handler with structured completion logging.
+-  [`fast-twitch.middlewares.method-override`](#fast-twitch.middlewares.method-override)  - Overrides request methods for clients that can only submit POST requests.
+    -  [`default-allowed-methods`](#fast-twitch.middlewares.method-override/default-allowed-methods) - The default set of methods that may be applied by method override.
+    -  [`default-header-name`](#fast-twitch.middlewares.method-override/default-header-name) - The default header used to tunnel an HTTP method.
+    -  [`default-param-name`](#fast-twitch.middlewares.method-override/default-param-name) - The default parameter used to tunnel an HTTP method.
+    -  [`method-override-request`](#fast-twitch.middlewares.method-override/method-override-request) - Updates :request-method when a POST request submits an allowed override.
+    -  [`wrap-method-override`](#fast-twitch.middlewares.method-override/wrap-method-override) - Wraps a handler so POST requests can opt into PUT, PATCH, or DELETE handling.
 -  [`fast-twitch.middlewares.multipart-params`](#fast-twitch.middlewares.multipart-params)  - Parses multipart form bodies and exposes uploads in a request-friendly map shape.
     -  [`content-too-large-handler`](#fast-twitch.middlewares.multipart-params/content-too-large-handler) - Returns a standard 413 response in both sync and async handler forms.
     -  [`content-too-large-response`](#fast-twitch.middlewares.multipart-params/content-too-large-response)
@@ -116,9 +188,38 @@
     -  [`assoc-query-params`](#fast-twitch.middlewares.params/assoc-query-params) - Associates parsed query parameters onto the request.
     -  [`params-request`](#fast-twitch.middlewares.params/params-request) - Parses query and URL-encoded form parameters for a request.
     -  [`wrap-params`](#fast-twitch.middlewares.params/wrap-params) - Wraps a handler so query and form parameters are available on the request.
--  [`fast-twitch.middlewares.proxy-headers`](#fast-twitch.middlewares.proxy-headers)  - Adapts request connection details from common forwarding headers.
-    -  [`proxy-headers-request`](#fast-twitch.middlewares.proxy-headers/proxy-headers-request) - Associates forwarded connection details onto the request map.
+-  [`fast-twitch.middlewares.proxy-headers`](#fast-twitch.middlewares.proxy-headers)  - Adapts request connection details from forwarding and real-IP headers.
+    -  [`default-real-ip-headers`](#fast-twitch.middlewares.proxy-headers/default-real-ip-headers) - The default ordered headers used to derive the real client IP.
+    -  [`forwarded-for`](#fast-twitch.middlewares.proxy-headers/forwarded-for) - Reads the first forwarded client address from request headers.
+    -  [`forwarded-host`](#fast-twitch.middlewares.proxy-headers/forwarded-host) - Reads the first forwarded host value from request headers.
+    -  [`forwarded-proto`](#fast-twitch.middlewares.proxy-headers/forwarded-proto) - Reads the first forwarded protocol value from request headers.
+    -  [`proxy-headers-request`](#fast-twitch.middlewares.proxy-headers/proxy-headers-request) - Associates forwarded scheme, host, port, and real IP fields onto the request map.
+    -  [`real-ip`](#fast-twitch.middlewares.proxy-headers/real-ip) - Returns the best client IP candidate from configured forwarding headers.
+    -  [`real-ip-request`](#fast-twitch.middlewares.proxy-headers/real-ip-request) - Associates only the derived real client IP without changing scheme or host.
+    -  [`split-host-port`](#fast-twitch.middlewares.proxy-headers/split-host-port) - Splits a forwarded host value into :server-name and optional :server-port.
     -  [`wrap-forwarded-headers`](#fast-twitch.middlewares.proxy-headers/wrap-forwarded-headers) - Wraps a handler so forwarding headers update request connection fields.
+    -  [`wrap-real-ip`](#fast-twitch.middlewares.proxy-headers/wrap-real-ip) - Wraps a handler so real-IP headers update :real-ip and :remote-addr.
+-  [`fast-twitch.middlewares.rate-limit`](#fast-twitch.middlewares.rate-limit)  - Applies token-bucket rate limiting to requests.
+    -  [`client-key`](#fast-twitch.middlewares.rate-limit/client-key) - Returns the default rate limit key for a request.
+    -  [`default-error-response`](#fast-twitch.middlewares.rate-limit/default-error-response) - The default response returned when a client exceeds its rate limit.
+    -  [`memory-store`](#fast-twitch.middlewares.rate-limit/memory-store) - Creates an atom-backed in-memory rate limit store.
+    -  [`rate-limit-request`](#fast-twitch.middlewares.rate-limit/rate-limit-request) - Associates rate limit metadata with a request.
+    -  [`rate-limit-response`](#fast-twitch.middlewares.rate-limit/rate-limit-response) - Builds the response returned when a request exceeds its rate limit.
+    -  [`rate-limit-result`](#fast-twitch.middlewares.rate-limit/rate-limit-result) - Returns a map describing whether the request is allowed by the rate limit.
+    -  [`wrap-rate-limit`](#fast-twitch.middlewares.rate-limit/wrap-rate-limit) - Wraps a handler with per-key token-bucket rate limiting.
+-  [`fast-twitch.middlewares.request-id`](#fast-twitch.middlewares.request-id)  - Generates and propagates request IDs for request correlation.
+    -  [`default-header-name`](#fast-twitch.middlewares.request-id/default-header-name) - The default request header used to read and write request IDs.
+    -  [`generate-request-id`](#fast-twitch.middlewares.request-id/generate-request-id) - Generates a sortable request ID using @std/ulid.
+    -  [`monotonic-ulid`](#fast-twitch.middlewares.request-id/monotonic-ulid) - The @std/ulid monotonic ULID generator used for default request IDs.
+    -  [`request-id-request`](#fast-twitch.middlewares.request-id/request-id-request) - Associates a request ID with the request, preserving an incoming ID when present.
+    -  [`request-id-response`](#fast-twitch.middlewares.request-id/request-id-response) - Adds the request ID to the response headers when configured to do so.
+    -  [`wrap-request-id`](#fast-twitch.middlewares.request-id/wrap-request-id) - Wraps a handler with request ID generation and response header propagation.
+-  [`fast-twitch.middlewares.request-size-limit`](#fast-twitch.middlewares.request-size-limit)  - Rejects requests whose declared body size exceeds a configured limit.
+    -  [`content-length`](#fast-twitch.middlewares.request-size-limit/content-length) - Returns the request Content-Length header as a number when it can be parsed.
+    -  [`default-error-response`](#fast-twitch.middlewares.request-size-limit/default-error-response) - The default response returned when a request body is too large.
+    -  [`request-size-limit-response`](#fast-twitch.middlewares.request-size-limit/request-size-limit-response) - Builds the response returned for an oversized request.
+    -  [`request-too-large?`](#fast-twitch.middlewares.request-size-limit/request-too-large?) - Returns true when the request declares a body larger than max-bytes.
+    -  [`wrap-request-size-limit`](#fast-twitch.middlewares.request-size-limit/wrap-request-size-limit) - Wraps a handler with Content-Length based request size enforcement.
 -  [`fast-twitch.middlewares.resource`](#fast-twitch.middlewares.resource)  - Provides resource-style static asset serving through the file middleware.
     -  [`resource-request`](#fast-twitch.middlewares.resource/resource-request) - Attempts to build a static resource response for the current request.
     -  [`wrap-resource`](#fast-twitch.middlewares.resource/wrap-resource) - Wraps a handler with static resource serving for a given root path.
@@ -136,6 +237,12 @@
     -  [`wrap-hsts`](#fast-twitch.middlewares.ssl/wrap-hsts) - Wraps a handler so HTTPS responses include strict transport security metadata.
     -  [`wrap-ssl`](#fast-twitch.middlewares.ssl/wrap-ssl) - Composes HTTPS redirect and strict transport security behavior from options.
     -  [`wrap-ssl-redirect`](#fast-twitch.middlewares.ssl/wrap-ssl-redirect) - Wraps a handler so non-HTTPS requests receive a permanent redirect.
+-  [`fast-twitch.middlewares.timeout`](#fast-twitch.middlewares.timeout)  - Bounds asynchronous handler execution time with a timeout response.
+    -  [`default-timeout-ms`](#fast-twitch.middlewares.timeout/default-timeout-ms) - The default timeout in milliseconds.
+    -  [`default-timeout-response`](#fast-twitch.middlewares.timeout/default-timeout-response) - The default response returned when a handler exceeds the configured timeout.
+    -  [`timeout-promise`](#fast-twitch.middlewares.timeout/timeout-promise) - Returns a promise that resolves to a timeout response after timeout-ms.
+    -  [`timeout-response`](#fast-twitch.middlewares.timeout/timeout-response) - Builds the response returned when a request times out.
+    -  [`wrap-timeout`](#fast-twitch.middlewares.timeout/wrap-timeout) - Wraps a handler so promise or callback responses are bounded by a timeout.
 -  [`fast-twitch.middlewares.x-headers`](#fast-twitch.middlewares.x-headers)  - Adds common hardening headers to outgoing responses.
     -  [`wrap-x-headers`](#fast-twitch.middlewares.x-headers/wrap-x-headers) - Wraps a handler so configured X-* headers are applied to responses.
     -  [`x-headers-response`](#fast-twitch.middlewares.x-headers/x-headers-response) - Adds configured X-* headers to the response.
@@ -259,23 +366,80 @@ Adds request token validation and token persistence for unsafe form submissions.
 
 
 
+## <a name="fast-twitch.middlewares.anti-forgery/*anti-forgery-param-name*">`*anti-forgery-param-name*`</a>
+
+
+
+
+The anti-forgery form parameter name bound while rendering a protected request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L11-L13">Source</a></sub></p>
+
 ## <a name="fast-twitch.middlewares.anti-forgery/*anti-forgery-token*">`*anti-forgery-token*`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L5-L5">Source</a></sub></p>
+
+The anti-forgery token bound while rendering a protected request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L7-L9">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/default-error-response">`default-error-response`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L9-L12">Source</a></sub></p>
+
+The default response returned when anti-forgery validation fails.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L19-L23">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/default-exempt-prefixes">`default-exempt-prefixes`</a>
+
+
+
+
+The default URI prefixes exempted from anti-forgery checks.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L33-L35">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/default-header-names">`default-header-names`</a>
+
+
+
+
+The default request headers checked for submitted anti-forgery tokens.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L29-L31">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/default-token-param-name">`default-token-param-name`</a>
+
+
+
+
+The default form parameter name for submitted anti-forgery tokens.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L25-L27">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/request-token">`request-token`</a>
+``` clojure
+(request-token request)
+(request-token request options)
+```
+Function.
+
+Reads a submitted anti-forgery token from params or request headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L73-L82">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/token-param-name">`token-param-name`</a>
+``` clojure
+(token-param-name options)
+```
+Function.
+
+Returns the configured token parameter name, falling back to the default.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L84-L89">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/unsafe-methods">`unsafe-methods`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L7-L7">Source</a></sub></p>
+
+HTTP methods that require anti-forgery validation by default.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L15-L17">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/wrap-anti-forgery">`wrap-anti-forgery`</a>
 ``` clojure
@@ -285,7 +449,132 @@ Adds request token validation and token persistence for unsafe form submissions.
 Function.
 
 Wraps a handler with anti-forgery token validation and session token storage.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L74-L100">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L139-L174">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.cache-policy">fast-twitch.middlewares.cache-policy</a>
+
+
+Applies configurable HTTP cache policy headers with @std/cache-backed memoization.
+
+
+
+
+## <a name="fast-twitch.middlewares.cache-policy/lrucache">`LruCache`</a>
+
+
+
+
+The @std/cache LruCache constructor used by the default policy backend.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L8-L10">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/ttlcache">`TtlCache`</a>
+
+
+
+
+The @std/cache TtlCache constructor available for custom policy backends.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L12-L14">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/cache-policy">`cache-policy`</a>
+``` clojure
+(cache-policy request options)
+```
+Function.
+
+Returns cache policy headers for the request, using the configured backend.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L89-L107">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/cache-policy-key">`cache-policy-key`</a>
+``` clojure
+(cache-policy-key request options)
+```
+Function.
+
+Builds the backend key used for memoizing cache policy headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L53-L62">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/cache-policy-response">`cache-policy-response`</a>
+``` clojure
+(cache-policy-response response request options)
+```
+Function.
+
+Adds cache policy headers to a response without replacing existing headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L109-L117">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/cacheable-request?">`cacheable-request?`</a>
+``` clojure
+(cacheable-request? request)
+(cacheable-request? request options)
+```
+Function.
+
+Returns true when the request should receive a static cache policy.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L43-L51">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/default-dynamic-policy">`default-dynamic-policy`</a>
+
+
+
+
+The default cache policy for non-static responses.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L20-L24">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/default-static-prefixes">`default-static-prefixes`</a>
+
+
+
+
+The default URI prefixes treated as static cacheable assets.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L16-L18">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/dynamic-cache-policy">`dynamic-cache-policy`</a>
+``` clojure
+(dynamic-cache-policy _request options)
+```
+Function.
+
+Builds the cache policy used for non-static responses.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L76-L79">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/lru-cache-backend">`lru-cache-backend`</a>
+``` clojure
+(lru-cache-backend)
+(lru-cache-backend max-size)
+```
+Function.
+
+Creates an @std/cache LRU backend for memoized cache policy headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L26-L31">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/static-cache-policy">`static-cache-policy`</a>
+``` clojure
+(static-cache-policy request options)
+```
+Function.
+
+Builds the cache policy used for static cacheable assets.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L64-L74">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/ttl-cache-backend">`ttl-cache-backend`</a>
+``` clojure
+(ttl-cache-backend ttl-ms)
+```
+Function.
+
+Creates an @std/cache TTL backend for memoized cache policy headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L33-L36">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.cache-policy/wrap-cache-policy">`wrap-cache-policy`</a>
+``` clojure
+(wrap-cache-policy handler)
+(wrap-cache-policy handler options)
+```
+Function.
+
+Wraps a handler so responses receive configurable cache policy headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/cache_policy.cljs#L119-L127">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.common">fast-twitch.middlewares.common</a>
@@ -466,6 +755,356 @@ Function.
 
 Wraps a handler so its responses gain a Content-Length header when possible.
 <p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_length.cljs#L25-L28">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.content-security-policy">fast-twitch.middlewares.content-security-policy</a>
+
+
+Applies Content Security Policy headers from structured directive data.
+
+
+
+
+## <a name="fast-twitch.middlewares.content-security-policy/append-unique-sources">`append-unique-sources`</a>
+``` clojure
+(append-unique-sources base extras)
+```
+Function.
+
+Appends source expressions while preserving first occurrence order.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L156-L167">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/apply-allow-origin-sources">`apply-allow-origin-sources`</a>
+``` clojure
+(apply-allow-origin-sources config input)
+```
+Function.
+
+Applies a source input to the allowed-origin reflection list.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L204-L207">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/apply-asset-base-urls">`apply-asset-base-urls`</a>
+``` clojure
+(apply-asset-base-urls config asset-base-urls)
+```
+Function.
+
+Adds asset base URLs to image/media sources and allowed-origin matching.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L209-L219">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/apply-directive-sources">`apply-directive-sources`</a>
+``` clojure
+(apply-directive-sources config directive input)
+```
+Function.
+
+Applies a source input to one directive in a CSP config.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L196-L202">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/build-csp-config">`build-csp-config`</a>
+``` clojure
+(build-csp-config & inputs)
+```
+Function.
+
+Applies structured CSP inputs to the default CSP configuration.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L240-L243">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/build-csp-policy">`build-csp-policy`</a>
+``` clojure
+(build-csp-policy config)
+```
+Function.
+
+Renders a CSP config into a Content-Security-Policy header value.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L253-L264">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/content-security-policy-response">`content-security-policy-response`</a>
+``` clojure
+(content-security-policy-response response request config)
+(content-security-policy-response response request config options)
+```
+Function.
+
+Adds CSP and optional reflected Access-Control-Allow-Origin headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L281-L297">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive">`csp-directive`</a>
+``` clojure
+(csp-directive directive sources)
+```
+Function.
+
+Renders one CSP directive to a policy fragment.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L245-L251">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-base-uri">`csp-directive-base-uri`</a>
+
+
+
+
+The base-uri CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L44-L46">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-connect-src">`csp-directive-connect-src`</a>
+
+
+
+
+The connect-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L40-L42">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-default-src">`csp-directive-default-src`</a>
+
+
+
+
+The default-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L8-L10">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-font-src">`csp-directive-font-src`</a>
+
+
+
+
+The font-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L12-L14">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-frame-src">`csp-directive-frame-src`</a>
+
+
+
+
+The frame-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L16-L18">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-img-src">`csp-directive-img-src`</a>
+
+
+
+
+The img-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L20-L22">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-media-src">`csp-directive-media-src`</a>
+
+
+
+
+The media-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L32-L34">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-object-src">`csp-directive-object-src`</a>
+
+
+
+
+The object-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L48-L50">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-script-src">`csp-directive-script-src`</a>
+
+
+
+
+The script-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L24-L26">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-style-src">`csp-directive-style-src`</a>
+
+
+
+
+The style-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L28-L30">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-directive-worker-src">`csp-directive-worker-src`</a>
+
+
+
+
+The worker-src CSP directive name.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L36-L38">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-blob">`csp-source-blob`</a>
+
+
+
+
+The CSP source expression for blob: URLs.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L72-L74">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-data">`csp-source-data`</a>
+
+
+
+
+The CSP source expression for data: URLs.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L68-L70">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-fonts-googleapis">`csp-source-fonts-googleapis`</a>
+
+
+
+
+The Google Fonts stylesheet source expression.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L84-L86">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-fonts-gstatic">`csp-source-fonts-gstatic`</a>
+
+
+
+
+The Google Fonts asset source expression.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L88-L90">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-https">`csp-source-https`</a>
+
+
+
+
+The CSP source expression for all HTTPS origins.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L76-L78">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-jsdelivr">`csp-source-jsdelivr`</a>
+
+
+
+
+The jsDelivr CDN source expression.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L80-L82">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-none">`csp-source-none`</a>
+
+
+
+
+The CSP source expression that blocks every source.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L56-L58">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-self">`csp-source-self`</a>
+
+
+
+
+The CSP source expression for the current origin.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L52-L54">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-unsafe-eval">`csp-source-unsafe-eval`</a>
+
+
+
+
+The CSP source expression that allows eval-like script execution.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L60-L62">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-source-unsafe-inline">`csp-source-unsafe-inline`</a>
+
+
+
+
+The CSP source expression that allows inline script or style content.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L64-L66">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/csp-sources">`csp-sources`</a>
+``` clojure
+(csp-sources & sources)
+```
+Function.
+
+Builds an append-mode source input for a directive.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L117-L121">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/default-csp-config">`default-csp-config`</a>
+``` clojure
+(default-csp-config)
+```
+Function.
+
+Returns the shared baseline CSP configuration.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L106-L115">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/default-directive-order">`default-directive-order`</a>
+
+
+
+
+The stable directive order used when rendering CSP policy strings.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L92-L104">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/merge-csp-sources">`merge-csp-sources`</a>
+``` clojure
+(merge-csp-sources base & extras)
+```
+Function.
+
+Merges source expressions with normalization and duplicate removal.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L179-L183">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/normalize-csp-sources">`normalize-csp-sources`</a>
+``` clojure
+(normalize-csp-sources sources)
+```
+Function.
+
+Normalizes CSP source expressions while dropping blanks.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L149-L154">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/origin-allowed?">`origin-allowed?`</a>
+``` clojure
+(origin-allowed? origin allowed-sources)
+```
+Function.
+
+Returns true when an origin matches one of the configured allowed sources.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L275-L279">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/origin-from-source">`origin-from-source`</a>
+``` clojure
+(origin-from-source source)
+```
+Function.
+
+Returns the URL origin for a CSP source expression when it has one.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L266-L273">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/replace-csp-sources">`replace-csp-sources`</a>
+``` clojure
+(replace-csp-sources & sources)
+```
+Function.
+
+Builds a replace-mode source input for a directive.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L123-L127">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/sanitize-exclusive-none-source">`sanitize-exclusive-none-source`</a>
+``` clojure
+(sanitize-exclusive-none-source sources)
+```
+Function.
+
+Removes 'none' when a directive has other source expressions.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L169-L177">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/update-csp-config">`update-csp-config`</a>
+``` clojure
+(update-csp-config base & inputs)
+```
+Function.
+
+Applies structured CSP inputs to a base config without mutating it.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L221-L238">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.content-security-policy/wrap-content-security-policy">`wrap-content-security-policy`</a>
+``` clojure
+(wrap-content-security-policy handler)
+(wrap-content-security-policy handler config)
+(wrap-content-security-policy handler config options)
+```
+Function.
+
+Wraps a handler so responses receive a structured Content Security Policy.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_security_policy.cljs#L299-L308">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.content-type">fast-twitch.middlewares.content-type</a>
@@ -799,13 +1438,17 @@ Preconfigured middleware bundles for common API and site-oriented applications.
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L22-L36">Source</a></sub></p>
+
+Default middleware options for API-oriented applications.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L30-L53">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.defaults/site-defaults">`site-defaults`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L38-L48">Source</a></sub></p>
+
+Default middleware options for browser-facing site applications.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L55-L66">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.defaults/wrap-defaults">`wrap-defaults`</a>
 ``` clojure
@@ -814,7 +1457,7 @@ Preconfigured middleware bundles for common API and site-oriented applications.
 Function.
 
 Applies the configured default middleware bundles to a handler.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L122-L142">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/defaults.cljs#L186-L212">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.file">fast-twitch.middlewares.file</a>
@@ -974,6 +1617,105 @@ Function.
 
 Wraps a handler so parsed parameters use keyword keys.
 <p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/keyword_params.cljs#L47-L52">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.logging">fast-twitch.middlewares.logging</a>
+
+
+Emits request logs through a configurable logger hook.
+
+
+
+
+## <a name="fast-twitch.middlewares.logging/default-logger">`default-logger`</a>
+``` clojure
+(default-logger event)
+```
+Function.
+
+Logs request events to console.log.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L6-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.logging/log-response">`log-response`</a>
+``` clojure
+(log-response response request started-at options)
+```
+Function.
+
+Invokes the configured logger for a request/response pair.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L24-L30">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.logging/request-event">`request-event`</a>
+``` clojure
+(request-event request response started-at)
+```
+Function.
+
+Builds the structured log event for a completed request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L11-L22">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.logging/wrap-logging">`wrap-logging`</a>
+``` clojure
+(wrap-logging handler)
+(wrap-logging handler options)
+```
+Function.
+
+Wraps a handler with structured completion logging.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L32-L48">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.method-override">fast-twitch.middlewares.method-override</a>
+
+
+Overrides request methods for clients that can only submit POST requests.
+
+
+
+
+## <a name="fast-twitch.middlewares.method-override/default-allowed-methods">`default-allowed-methods`</a>
+
+
+
+
+The default set of methods that may be applied by method override.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/method_override.cljs#L15-L17">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.method-override/default-header-name">`default-header-name`</a>
+
+
+
+
+The default header used to tunnel an HTTP method.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/method_override.cljs#L7-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.method-override/default-param-name">`default-param-name`</a>
+
+
+
+
+The default parameter used to tunnel an HTTP method.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/method_override.cljs#L11-L13">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.method-override/method-override-request">`method-override-request`</a>
+``` clojure
+(method-override-request request)
+(method-override-request request options)
+```
+Function.
+
+Updates :request-method when a POST request submits an allowed override.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/method_override.cljs#L36-L50">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.method-override/wrap-method-override">`wrap-method-override`</a>
+``` clojure
+(wrap-method-override handler)
+(wrap-method-override handler options)
+```
+Function.
+
+Wraps a handler so POST requests can opt into PUT, PATCH, or DELETE handling.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/method_override.cljs#L52-L57">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.multipart-params">fast-twitch.middlewares.multipart-params</a>
@@ -1148,28 +1890,294 @@ Wraps a handler so query and form parameters are available on the request.
 # <a name="fast-twitch.middlewares.proxy-headers">fast-twitch.middlewares.proxy-headers</a>
 
 
-Adapts request connection details from common forwarding headers.
+Adapts request connection details from forwarding and real-IP headers.
 
 
 
+
+## <a name="fast-twitch.middlewares.proxy-headers/default-real-ip-headers">`default-real-ip-headers`</a>
+
+
+
+
+The default ordered headers used to derive the real client IP.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L7-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/forwarded-for">`forwarded-for`</a>
+``` clojure
+(forwarded-for request)
+```
+Function.
+
+Reads the first forwarded client address from request headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L51-L55">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/forwarded-host">`forwarded-host`</a>
+``` clojure
+(forwarded-host request)
+```
+Function.
+
+Reads the first forwarded host value from request headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L45-L49">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/forwarded-proto">`forwarded-proto`</a>
+``` clojure
+(forwarded-proto request)
+```
+Function.
+
+Reads the first forwarded protocol value from request headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L39-L43">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/proxy-headers-request">`proxy-headers-request`</a>
 ``` clojure
 (proxy-headers-request request)
+(proxy-headers-request request options)
 ```
 Function.
 
-Associates forwarded connection details onto the request map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L29-L40">Source</a></sub></p>
+Associates forwarded scheme, host, port, and real IP fields onto the request map.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L94-L111">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/real-ip">`real-ip`</a>
+``` clojure
+(real-ip request)
+(real-ip request options)
+```
+Function.
+
+Returns the best client IP candidate from configured forwarding headers.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L85-L92">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/real-ip-request">`real-ip-request`</a>
+``` clojure
+(real-ip-request request)
+(real-ip-request request options)
+```
+Function.
+
+Associates only the derived real client IP without changing scheme or host.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L113-L122">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/split-host-port">`split-host-port`</a>
+``` clojure
+(split-host-port host)
+```
+Function.
+
+Splits a forwarded host value into :server-name and optional :server-port.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L65-L83">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/wrap-forwarded-headers">`wrap-forwarded-headers`</a>
 ``` clojure
 (wrap-forwarded-headers handler)
+(wrap-forwarded-headers handler options)
 ```
 Function.
 
 Wraps a handler so forwarding headers update request connection fields.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L42-L45">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L124-L129">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.proxy-headers/wrap-real-ip">`wrap-real-ip`</a>
+``` clojure
+(wrap-real-ip handler)
+(wrap-real-ip handler options)
+```
+Function.
+
+Wraps a handler so real-IP headers update :real-ip and :remote-addr.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L131-L136">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.rate-limit">fast-twitch.middlewares.rate-limit</a>
+
+
+Applies token-bucket rate limiting to requests.
+
+
+
+
+## <a name="fast-twitch.middlewares.rate-limit/client-key">`client-key`</a>
+``` clojure
+(client-key request)
+```
+Function.
+
+Returns the default rate limit key for a request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L16-L21">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/default-error-response">`default-error-response`</a>
+
+
+
+
+The default response returned when a client exceeds its rate limit.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L4-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/memory-store">`memory-store`</a>
+``` clojure
+(memory-store)
+```
+Function.
+
+Creates an atom-backed in-memory rate limit store.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L11-L14">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/rate-limit-request">`rate-limit-request`</a>
+``` clojure
+(rate-limit-request request result)
+```
+Function.
+
+Associates rate limit metadata with a request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L72-L75">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/rate-limit-response">`rate-limit-response`</a>
+``` clojure
+(rate-limit-response request result options)
+```
+Function.
+
+Builds the response returned when a request exceeds its rate limit.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L65-L70">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/rate-limit-result">`rate-limit-result`</a>
+``` clojure
+(rate-limit-result store key rate burst)
+```
+Function.
+
+Returns a map describing whether the request is allowed by the rate limit.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L44-L63">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.rate-limit/wrap-rate-limit">`wrap-rate-limit`</a>
+``` clojure
+(wrap-rate-limit handler)
+(wrap-rate-limit handler options)
+```
+Function.
+
+Wraps a handler with per-key token-bucket rate limiting.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L77-L96">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.request-id">fast-twitch.middlewares.request-id</a>
+
+
+Generates and propagates request IDs for request correlation.
+
+
+
+
+## <a name="fast-twitch.middlewares.request-id/default-header-name">`default-header-name`</a>
+
+
+
+
+The default request header used to read and write request IDs.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L11-L13">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-id/generate-request-id">`generate-request-id`</a>
+``` clojure
+(generate-request-id)
+```
+Function.
+
+Generates a sortable request ID using @std/ulid.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L15-L18">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-id/monotonic-ulid">`monotonic-ulid`</a>
+
+
+
+
+The @std/ulid monotonic ULID generator used for default request IDs.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L7-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-id/request-id-request">`request-id-request`</a>
+``` clojure
+(request-id-request request)
+(request-id-request request options)
+```
+Function.
+
+Associates a request ID with the request, preserving an incoming ID when present.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L20-L28">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-id/request-id-response">`request-id-response`</a>
+``` clojure
+(request-id-response response request)
+(request-id-response response request options)
+```
+Function.
+
+Adds the request ID to the response headers when configured to do so.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L30-L40">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-id/wrap-request-id">`wrap-request-id`</a>
+``` clojure
+(wrap-request-id handler)
+(wrap-request-id handler options)
+```
+Function.
+
+Wraps a handler with request ID generation and response header propagation.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_id.cljs#L42-L50">Source</a></sub></p>
+
+-----
+# <a name="fast-twitch.middlewares.request-size-limit">fast-twitch.middlewares.request-size-limit</a>
+
+
+Rejects requests whose declared body size exceeds a configured limit.
+
+
+
+
+## <a name="fast-twitch.middlewares.request-size-limit/content-length">`content-length`</a>
+``` clojure
+(content-length request)
+```
+Function.
+
+Returns the request Content-Length header as a number when it can be parsed.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L11-L17">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-size-limit/default-error-response">`default-error-response`</a>
+
+
+
+
+The default response returned when a request body is too large.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L5-L9">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-size-limit/request-size-limit-response">`request-size-limit-response`</a>
+``` clojure
+(request-size-limit-response request options)
+```
+Function.
+
+Builds the response returned for an oversized request.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L25-L30">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-size-limit/request-too-large?">`request-too-large?`</a>
+``` clojure
+(request-too-large? request max-bytes)
+```
+Function.
+
+Returns true when the request declares a body larger than max-bytes.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L19-L23">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.request-size-limit/wrap-request-size-limit">`wrap-request-size-limit`</a>
+``` clojure
+(wrap-request-size-limit handler)
+(wrap-request-size-limit handler options)
+```
+Function.
+
+Wraps a handler with Content-Length based request size enforcement.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L32-L47">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.resource">fast-twitch.middlewares.resource</a>
@@ -1331,6 +2339,59 @@ Wraps a handler so non-HTTPS requests receive a permanent redirect.
 <p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/ssl.cljs#L15-L32">Source</a></sub></p>
 
 -----
+# <a name="fast-twitch.middlewares.timeout">fast-twitch.middlewares.timeout</a>
+
+
+Bounds asynchronous handler execution time with a timeout response.
+
+
+
+
+## <a name="fast-twitch.middlewares.timeout/default-timeout-ms">`default-timeout-ms`</a>
+
+
+
+
+The default timeout in milliseconds.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/timeout.cljs#L6-L8">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.timeout/default-timeout-response">`default-timeout-response`</a>
+
+
+
+
+The default response returned when a handler exceeds the configured timeout.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/timeout.cljs#L10-L14">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.timeout/timeout-promise">`timeout-promise`</a>
+``` clojure
+(timeout-promise request timeout-ms options)
+```
+Function.
+
+Returns a promise that resolves to a timeout response after timeout-ms.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/timeout.cljs#L23-L29">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.timeout/timeout-response">`timeout-response`</a>
+``` clojure
+(timeout-response request options)
+```
+Function.
+
+Builds the response returned when a request times out.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/timeout.cljs#L16-L21">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.timeout/wrap-timeout">`wrap-timeout`</a>
+``` clojure
+(wrap-timeout handler)
+(wrap-timeout handler options)
+```
+Function.
+
+Wraps a handler so promise or callback responses are bounded by a timeout.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/timeout.cljs#L31-L61">Source</a></sub></p>
+
+-----
 # <a name="fast-twitch.middlewares.x-headers">fast-twitch.middlewares.x-headers</a>
 
 
@@ -1479,8 +2540,9 @@ View helpers for rendering anti-forgery form fields.
 ## <a name="fast-twitch.util.anti-forgery/anti-forgery-field">`anti-forgery-field`</a>
 ``` clojure
 (anti-forgery-field)
+(anti-forgery-field options)
 ```
 Function.
 
 Returns a hidden form input populated with the current anti-forgery token.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/util/anti_forgery.cljs#L5-L11">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/util/anti_forgery.cljs#L5-L16">Source</a></sub></p>

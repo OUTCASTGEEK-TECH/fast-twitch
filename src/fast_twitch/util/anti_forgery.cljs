@@ -4,8 +4,13 @@
 
 (defn anti-forgery-field
   "Returns a hidden form input populated with the current anti-forgery token."
-  []
-  [:input {:type "hidden"
-           :id "__anti-forgery-token"
-           :name "__anti-forgery-token"
-           :value (force anti-forgery/*anti-forgery-token*)}])
+  ([]
+   (anti-forgery-field {}))
+  ([options]
+   (let [param-name (or (:param-name options)
+                        (force anti-forgery/*anti-forgery-param-name*)
+                        anti-forgery/default-token-param-name)]
+     [:input {:type "hidden"
+              :id param-name
+              :name param-name
+              :value (force anti-forgery/*anti-forgery-token*)}])))
