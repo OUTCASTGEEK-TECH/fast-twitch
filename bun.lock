@@ -4,7 +4,21 @@
   "workspaces": {
     "": {
       "dependencies": {
+        "@std/bytes": "npm:@jsr/std__bytes",
+        "@std/crypto": "npm:@jsr/std__crypto",
+        "@std/encoding": "npm:@jsr/std__encoding",
+        "@std/html": "npm:@jsr/std__html",
         "@std/http": "npm:@jsr/std__http",
+        "@std/io": "npm:@jsr/std__io",
+        "@std/json": "npm:@jsr/std__json",
+        "@std/math": "npm:@jsr/std__math",
+        "@std/media-types": "npm:@jsr/std__media-types",
+        "@std/random": "npm:@jsr/std__random",
+        "@std/regexp": "npm:@jsr/std__regexp",
+        "@std/streams": "npm:@jsr/std__streams",
+        "@std/text": "npm:@jsr/std__text",
+        "@std/ulid": "npm:@jsr/std__ulid",
+        "@std/uuid": "npm:@jsr/std__uuid",
       },
       "devDependencies": {
         "@cljs-oss/module-deps": "^1.1.1",
@@ -17,6 +31,8 @@
     "@jsr/std__bytes": ["@jsr/std__bytes@1.0.6", "https://npm.jsr.io/~/11/@jsr/std__bytes/1.0.6.tgz", {}, "sha512-St6yKggjFGhxS52IFLJWvkchRFbAKg2Xh8UxA4S1EGz7GJ2Ui+ssDDldj/w2c8vCxvl6qgR0HaYbKeFJNqujmA=="],
 
     "@jsr/std__cli": ["@jsr/std__cli@1.0.28", "https://npm.jsr.io/~/11/@jsr/std__cli/1.0.28.tgz", { "dependencies": { "@jsr/std__fmt": "^1.0.9", "@jsr/std__internal": "^1.0.12" } }, "sha512-PCLSj0MeBw3nAm0qiYACCqz0qWLEmWNbKUbcf7MX9PYZyDbhKiv7FI34vuHFrNGJ8QZeQ5mSiHuSkG210o4L6g=="],
+
+    "@jsr/std__crypto": ["@jsr/std__crypto@1.0.5", "https://npm.jsr.io/~/11/@jsr/std__crypto/1.0.5.tgz", {}, "sha512-iqFCkjeGeQccLgmxH9m1d7abjZcFMW0XrYZu1itNz8vVHzH9crObalonjVQaVDdKHCrNNOklMN1t0u3k46dirA=="],
 
     "@jsr/std__encoding": ["@jsr/std__encoding@1.0.10", "https://npm.jsr.io/~/11/@jsr/std__encoding/1.0.10.tgz", {}, "sha512-WK2njnDTyKefroRNk2Ooq7GStp6Y0ccAvr4To+Z/zecRAGe7+OSvH9DbiaHpAKwEi2KQbmpWMOYsdNt+TsdmSw=="],
 
@@ -34,9 +50,39 @@
 
     "@jsr/std__path": ["@jsr/std__path@1.1.4", "https://npm.jsr.io/~/11/@jsr/std__path/1.1.4.tgz", { "dependencies": { "@jsr/std__internal": "^1.0.12" } }, "sha512-SK4u9H6NVTfolhPdlvdYXfNFefy1W04AEHWJydryYbk+xqzNiVmr5o7TLJLJFqwHXuwMRhwrn+mcYeUfS0YFaA=="],
 
+    "@jsr/std__regexp": ["@jsr/std__regexp@1.0.1", "https://npm.jsr.io/~/11/@jsr/std__regexp/1.0.1.tgz", {}, "sha512-AnGeP//DHpPvhCWjI5dR4o013JhCQioD8yMF8drD7PWb0X4kvmO35hbZi+NZhfSolz4Ts2cpPzJY+DUpi2XE9A=="],
+
     "@jsr/std__streams": ["@jsr/std__streams@1.0.17", "https://npm.jsr.io/~/11/@jsr/std__streams/1.0.17.tgz", { "dependencies": { "@jsr/std__bytes": "^1.0.6" } }, "sha512-LnPlWk20mDIV5/nqoUomAB8umOimfGEyWRApxLgekXFuqKGDsGpUAi58amieVU2XAGNclmUOtQOcQ/qOl3PNFg=="],
 
+    "@std/bytes": ["@jsr/std__bytes@1.0.6", "https://npm.jsr.io/~/11/@jsr/std__bytes/1.0.6.tgz", {}, "sha512-St6yKggjFGhxS52IFLJWvkchRFbAKg2Xh8UxA4S1EGz7GJ2Ui+ssDDldj/w2c8vCxvl6qgR0HaYbKeFJNqujmA=="],
+
+    "@std/crypto": ["@jsr/std__crypto@1.0.5", "https://npm.jsr.io/~/11/@jsr/std__crypto/1.0.5.tgz", {}, "sha512-iqFCkjeGeQccLgmxH9m1d7abjZcFMW0XrYZu1itNz8vVHzH9crObalonjVQaVDdKHCrNNOklMN1t0u3k46dirA=="],
+
+    "@std/encoding": ["@jsr/std__encoding@1.0.10", "https://npm.jsr.io/~/11/@jsr/std__encoding/1.0.10.tgz", {}, "sha512-WK2njnDTyKefroRNk2Ooq7GStp6Y0ccAvr4To+Z/zecRAGe7+OSvH9DbiaHpAKwEi2KQbmpWMOYsdNt+TsdmSw=="],
+
+    "@std/html": ["@jsr/std__html@1.0.5", "https://npm.jsr.io/~/11/@jsr/std__html/1.0.5.tgz", {}, "sha512-8ypLaw6ORY7jisEvsXOS/D631/pMCX78mV7fyromfzJXxqb35OUNCBC2E4Ca0goKQJW8I2XhEgoFu0ZXaIiGvA=="],
+
     "@std/http": ["@jsr/std__http@1.0.25", "https://npm.jsr.io/~/11/@jsr/std__http/1.0.25.tgz", { "dependencies": { "@jsr/std__cli": "^1.0.28", "@jsr/std__encoding": "^1.0.10", "@jsr/std__fmt": "^1.0.9", "@jsr/std__fs": "^1.0.23", "@jsr/std__html": "^1.0.5", "@jsr/std__media-types": "^1.1.0", "@jsr/std__net": "^1.0.6", "@jsr/std__path": "^1.1.4", "@jsr/std__streams": "^1.0.17" } }, "sha512-15aSX8BvkIEDK1hJh0HNji0ejdp/dwypY1NlH53xUkfj9G8bkIfAwEDDDDs7Pm0vUU0UJpmNTonYLccwvdgeqw=="],
+
+    "@std/io": ["@jsr/std__io@0.225.3", "https://npm.jsr.io/~/11/@jsr/std__io/0.225.3.tgz", { "dependencies": { "@jsr/std__bytes": "^1.0.6" } }, "sha512-IDXY253ipW6FV34CJVxO+3ubfvSEEzw9N2W303KnLe9K/Y9+v/ID1dQYf9VsCCOFMpFtCmOLqzIZsRqv6yQnWw=="],
+
+    "@std/json": ["@jsr/std__json@1.0.3", "https://npm.jsr.io/~/11/@jsr/std__json/1.0.3.tgz", { "dependencies": { "@jsr/std__streams": "^1.0.17" } }, "sha512-hxHx1j4Wd4une+SHlpsSchKIPwtmP4naETNaQYqqY2iBawZPkcR7oiZBFwKcdhzjUWqMw5wV6ryZSI4d4YNzbQ=="],
+
+    "@std/math": ["@jsr/std__math@0.0.0", "https://npm.jsr.io/~/11/@jsr/std__math/0.0.0.tgz", {}, "sha512-CMJ41atocRSE8fKlHjDmJ6XylG5X+nAyfMR3XD6HDVrMO9NxNtku7f85QdVP5QDPprnOx3OQM2A+9yZaH92kvg=="],
+
+    "@std/media-types": ["@jsr/std__media-types@1.1.0", "https://npm.jsr.io/~/11/@jsr/std__media-types/1.1.0.tgz", {}, "sha512-dHvaxHL7ENWnltgL653uo3KnKFse3ZbopZop2gqsT7yrscx7irZEClu5Cba7gMPPRk4Lg1FbriNcaBViM2RSBw=="],
+
+    "@std/random": ["@jsr/std__random@0.1.5", "https://npm.jsr.io/~/11/@jsr/std__random/0.1.5.tgz", {}, "sha512-KV/2+Fe0KPXa7EI7yuk5tC70aUATnzcUFiuNurtTAPCNo7mGpyUhIhZuty+nMd2Js1ok4+QB1BN8rZcg5X0GeA=="],
+
+    "@std/regexp": ["@jsr/std__regexp@1.0.1", "https://npm.jsr.io/~/11/@jsr/std__regexp/1.0.1.tgz", {}, "sha512-AnGeP//DHpPvhCWjI5dR4o013JhCQioD8yMF8drD7PWb0X4kvmO35hbZi+NZhfSolz4Ts2cpPzJY+DUpi2XE9A=="],
+
+    "@std/streams": ["@jsr/std__streams@1.0.17", "https://npm.jsr.io/~/11/@jsr/std__streams/1.0.17.tgz", { "dependencies": { "@jsr/std__bytes": "^1.0.6" } }, "sha512-LnPlWk20mDIV5/nqoUomAB8umOimfGEyWRApxLgekXFuqKGDsGpUAi58amieVU2XAGNclmUOtQOcQ/qOl3PNFg=="],
+
+    "@std/text": ["@jsr/std__text@1.0.17", "https://npm.jsr.io/~/11/@jsr/std__text/1.0.17.tgz", { "dependencies": { "@jsr/std__regexp": "^1.0.1" } }, "sha512-oZsihl1bcTy1Ixzven8rin8kjChj1zDJWqgpS0oSMGCJDzyB365gtIfAvcMmji+M+FcIWo3goDXfHcFYt+k/kg=="],
+
+    "@std/ulid": ["@jsr/std__ulid@1.0.0", "https://npm.jsr.io/~/11/@jsr/std__ulid/1.0.0.tgz", {}, "sha512-RvVolUwRoFtoSuYZROBmhCYEIuI4xsxeHjGGbJQZVDCBnDBJwfm16vOJyE1Va9+BnTl1iW7o1nCloBI+EQAWVg=="],
+
+    "@std/uuid": ["@jsr/std__uuid@1.1.0", "https://npm.jsr.io/~/11/@jsr/std__uuid/1.1.0.tgz", { "dependencies": { "@jsr/std__bytes": "^1.0.6", "@jsr/std__crypto": "^1.0.5" } }, "sha512-V5tUE+zEFoOLNqC3W4c/ki0ikE5qzGfvaY3mZpxWd4BczhVjHZYlLLrbTkMkCsWM9quQSf3+eP0kHzEn+e5LvA=="],
 
     "JSONStream": ["JSONStream@1.3.5", "", { "dependencies": { "jsonparse": "^1.2.0", "through": ">=2.2.7 <3" }, "bin": { "JSONStream": "./bin.js" } }, "sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ=="],
 

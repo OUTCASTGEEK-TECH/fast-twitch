@@ -1,6 +1,20 @@
 {
   "dependencies": {
-    "@std/http": "npm:@jsr/std__http"
+    "@std/bytes": "npm:@jsr/std__bytes",
+    "@std/crypto": "npm:@jsr/std__crypto",
+    "@std/encoding": "npm:@jsr/std__encoding",
+    "@std/html": "npm:@jsr/std__html",
+    "@std/http": "npm:@jsr/std__http",
+    "@std/io": "npm:@jsr/std__io",
+    "@std/json": "npm:@jsr/std__json",
+    "@std/math": "npm:@jsr/std__math",
+    "@std/media-types": "npm:@jsr/std__media-types",
+    "@std/random": "npm:@jsr/std__random",
+    "@std/regexp": "npm:@jsr/std__regexp",
+    "@std/streams": "npm:@jsr/std__streams",
+    "@std/text": "npm:@jsr/std__text",
+    "@std/ulid": "npm:@jsr/std__ulid",
+    "@std/uuid": "npm:@jsr/std__uuid"
   },
   "devDependencies": {
     "@cljs-oss/module-deps": "^1.1.1"

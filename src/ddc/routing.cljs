@@ -1,6 +1,8 @@
 (ns ddc.routing
+  [:require-macros [ddc.macros :refer [serve]]]
   [:require
    [cljs.proxy :refer [builder]]
+   [ddc.macros]
    ["@std/http/unstable-route" :refer [route]]]
   [:refer-global :only [Error Headers Number Object Promise
                         Request Response URL URLPattern URLSearchParams
@@ -131,6 +133,10 @@
    (proxy {:status (:status response)
            :headers (header-entries (:headers response))})))
 
+(defn- update-response-promise [response]
+  (-> (Promise.resolve response)
+      (.then update-response)))
+
 (defn ring-handler
   ([handler options]
    (if (:async? options)
@@ -141,7 +147,7 @@
                    #(respond (update-response %))
                    raise))))
      (fn [request params]
-       (update-response
+       (update-response-promise
         (handler (build-request-map request params options)))))))
 
 (defn- route-method [method]
@@ -165,3 +171,9 @@
 (defn ring-routes [routes default-handler options]
   (route (proxy (map #(route-entry options %) routes))
          (ring-handler default-handler options)))
+
+(defn run-adapter
+  ([app]
+   (serve :app app))
+  ([handler options]
+   (serve :app (proxy (assoc options :handler handler)))))

@@ -1,5 +1,19 @@
 {
   "imports": {
-    "@std/http": "jsr:@std/http@^1.0.25"
+    "@std/bytes": "jsr:@std/bytes@^1.0.6",
+    "@std/crypto": "jsr:@std/crypto@^1.0.5",
+    "@std/encoding": "jsr:@std/encoding@^1.0.10",
+    "@std/html": "jsr:@std/html@^1.0.5",
+    "@std/http": "jsr:@std/http@^1.0.25",
+    "@std/io": "jsr:@std/io@^0.225.3",
+    "@std/json": "jsr:@std/json@^1.0.3",
+    "@std/math": "jsr:@std/math@^0.0.0",
+    "@std/media-types": "jsr:@std/media-types@^1.1.0",
+    "@std/random": "jsr:@std/random@^0.1.5",
+    "@std/regexp": "jsr:@std/regexp@^1.0.1",
+    "@std/streams": "jsr:@std/streams@^1.0.17",
+    "@std/text": "jsr:@std/text@^1.0.17",
+    "@std/ulid": "jsr:@std/ulid@^1.0.0",
+    "@std/uuid": "jsr:@std/uuid@^1.1.0"
   }
 }

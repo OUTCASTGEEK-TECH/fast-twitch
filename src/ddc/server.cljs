@@ -1,10 +1,12 @@
 (ns ddc.server
-  [:require-macros [ddc.macros :refer [env-var serve]]]
+  [:require-macros [ddc.macros :refer [env-var]]]
   [:require
    [cljs.proxy :refer [builder]]
    [clojure.string :as str]
    [ddc.macros]
+   [ddc.middlewares.defaults :as defaults]
    [ddc.routing :as routing]
+   [ddc.util.anti-forgery :refer [anti-forgery-field]]
    [replicant.string :as html]]
   [:refer-global :only [Error Headers Number Object Promise Request Response
                         URLPattern console globalThis]])
@@ -16,8 +18,6 @@
          2 {:id 2 :title "Render todos with Replicant" :done? false}}))
 
 (defonce next-todo-id (atom 2))
-
-(defonce sessions (atom {}))
 
 (def session-cookie-name "ddc_session")
 
@@ -37,40 +37,13 @@
    :headers {"Location" location}
    :body ""})
 
-(defn redirect-with-headers [location headers]
-  (assoc (redirect location) :headers (merge {"Location" location} headers)))
-
-(defn parse-cookie [cookie]
-  (into {}
-        (keep (fn [part]
-                (let [[k v] (str/split (str/trim part) #"=" 2)]
-                  (when (seq k)
-                    [k (or v "")]))))
-        (str/split (or cookie "") #";")))
-
-(defn request-cookies [request]
-  (parse-cookie (get-in request [:headers :cookie])))
-
 (defn current-user [request]
-  (some->> (get (request-cookies request) session-cookie-name)
-           (get @sessions)))
+  (get-in request [:session :user]))
 
 (defn authenticated [request handler]
   (if-let [user (current-user request)]
     (handler (assoc request :user user))
     (redirect "/login")))
-
-(defn authenticated-async [request respond handler]
-  (if-let [user (current-user request)]
-    (handler (assoc request :user user))
-    (respond (redirect "/login"))))
-
-(defn session-cookie [token]
-  (str session-cookie-name "=" token
-       "; Path=/; HttpOnly; SameSite=Lax"))
-
-(defn expired-session-cookie []
-  (str session-cookie-name "=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax"))
 
 (defn valid-credentials? [{:keys [username password]}]
   (and (= username (or (env-var "TODO_USER") "admin"))
@@ -99,6 +72,7 @@
        (when user
          [:div.level-right
           [:form {:method "post" :action "/logout"}
+           (anti-forgery-field)
            [:button.button.is-light {:type "submit"} "Sign out"]]])]
       body]]]])
 
@@ -109,6 +83,7 @@
           [:div.columns.is-centered
            [:div.column.is-half-desktop.is-two-thirds-tablet
             [:form.box {:method "post" :action "/login"}
+             (anti-forgery-field)
              [:div.field
               [:label.label {:for "username"} "User"]
               [:div.control
@@ -134,6 +109,7 @@
    [:div.columns.is-mobile.todo-row
     [:div.column.is-narrow
      [:form {:method "post" :action (str "/todos/" id "/toggle")}
+      (anti-forgery-field)
       [:button.button.is-small
        {:class (if done? "is-warning is-light" "is-success is-light")
         :type "submit"}
@@ -144,6 +120,7 @@
       title]]
     [:div.column.is-narrow
      [:form {:method "post" :action (str "/todos/" id "/delete")}
+      (anti-forgery-field)
       [:button.button.is-small.is-danger.is-light {:type "submit"}
        "Delete"]]]]])
 
@@ -154,6 +131,7 @@
             [:div.notification.is-info.is-light
              "Signed in as " [:strong user]]
             [:form.box.mb-5 {:method "post" :action "/todos"}
+             (anti-forgery-field)
              [:label.label {:for "title"} "Add a todo"]
              [:div.field.has-addons
               [:div.control.is-expanded
@@ -177,48 +155,33 @@
 (defn login-form-handler [_request]
   (html-response (login-page {})))
 
-(defn login-handler [request respond raise]
-  (-> (routing/form-params request)
-      (.then
-       (fn [params]
-         (if (valid-credentials? params)
-           (let [token (str (random-uuid))]
-             (swap! sessions assoc token (:username params))
-             (respond
-              (redirect-with-headers
-               "/todos"
-               {"Set-Cookie" (session-cookie token)})))
-           (respond
-            (html-response
-             (login-page {:error "Invalid username or password"})
-             401)))))
-      (.catch raise)))
+(defn login-handler [request]
+  (let [params (:params request)]
+    (if (valid-credentials? params)
+      (assoc (redirect "/todos")
+             :session (assoc (:session request)
+                             :user (:username params)))
+      (html-response
+       (login-page {:error "Invalid username or password"})
+       401))))
 
-(defn logout-handler [request]
-  (when-let [token (get (request-cookies request) session-cookie-name)]
-    (swap! sessions dissoc token))
-  (redirect-with-headers
-   "/login"
-   {"Set-Cookie" (expired-session-cookie)}))
+(defn logout-handler [_request]
+  (assoc (redirect "/login") :session nil))
 
 (defn todos-handler [request]
   (authenticated request #(html-response (todos-page %))))
 
-(defn add-todo-handler [request respond raise]
-  (authenticated-async
+(defn add-todo-handler [request]
+  (authenticated
    request
-   respond
-   (fn [_request]
-     (-> (routing/form-params request)
-         (.then
-          (fn [{:keys [title]}]
-            (when (seq (str/trim (or title "")))
-              (let [id (swap! next-todo-id inc)]
-                (swap! todos assoc id {:id id
-                                       :title (str/trim title)
-                                       :done? false})))
-            (respond (redirect "/todos"))))
-         (.catch raise)))))
+   (fn [request]
+     (let [title (get-in request [:params :title])]
+       (when (seq (str/trim (or title "")))
+         (let [id (swap! next-todo-id inc)]
+           (swap! todos assoc id {:id id
+                                  :title (str/trim title)
+                                  :done? false}))))
+     (redirect "/todos"))))
 
 (defn todo-id [request]
   (Number (get-in request [:path-params :id])))
@@ -250,24 +213,39 @@
 (def routes
   [{:pattern "/" :method :get :handler root-handler}
    {:pattern "/login" :method :get :handler login-form-handler}
-   {:pattern "/login" :method :post :async-handler login-handler}
+   {:pattern "/login" :method :post :handler login-handler}
    {:pattern "/logout" :method :post :handler logout-handler}
    {:pattern "/todos" :method :get :handler todos-handler}
-   {:pattern "/todos" :method :post :async-handler add-todo-handler}
+   {:pattern "/todos" :method :post :handler add-todo-handler}
    {:pattern "/todos/:id/toggle" :method :post :handler toggle-todo-handler}
    {:pattern "/todos/:id/delete" :method :post :handler delete-todo-handler}])
+
+(def app-defaults
+  (assoc-in defaults/site-defaults
+            [:session :cookie-name]
+            session-cookie-name))
+
+(defn wrap-route-defaults [route]
+  (cond-> route
+    (:handler route)
+    (update :handler defaults/wrap-defaults app-defaults)
+
+    (:async-handler route)
+    (update :async-handler defaults/wrap-defaults app-defaults)))
 
 (def request-options
   {:protocol "HTTP/1.1"
    :remote-addr "127.0.0.1"})
 
 (def handler
-  (routing/ring-routes routes default-handler request-options))
+  (routing/ring-routes (mapv wrap-route-defaults routes)
+                       (defaults/wrap-defaults default-handler app-defaults)
+                       request-options))
 
-(def app
-  (proxy
-   {:handler handler
-    :port (env-var "PORT")
+(defn main []
+  (routing/run-adapter
+   handler
+   {:port (env-var "PORT")
     :hostname (or (env-var "HOSTNAME") "127.0.0.1")
     :onListen (fn [addr]
                 (console/log
@@ -277,10 +255,28 @@
                       (aget addr "port"))))
     :reusePort (= "true" (env-var "REUSE_PORT"))}))
 
-(defn main []
-  (serve :app app))
-
 (set! *main-cli-fn* main)
 
 (defn ^:export fetch [request]
   (handler request))
+
+;; (def app
+;;   (proxy
+;;    {:handler handler
+;;     :port (env-var "PORT")
+;;     :hostname (or (env-var "HOSTNAME") "127.0.0.1")
+;;     :onListen (fn [addr]
+;;                 (console/log
+;;                  (str "Server running at "
+;;                       (aget addr "hostname")
+;;                       ":"
+;;                       (aget addr "port"))))
+;;     :reusePort (= "true" (env-var "REUSE_PORT"))}))
+
+;; (defn main []
+;;   (routing/run-adapter app))
+
+;; (set! *main-cli-fn* main)
+
+;; (defn ^:export fetch [request]
+;;   (handler request))
