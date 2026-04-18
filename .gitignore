@@ -226,6 +226,7 @@ pom.xml.asc
 .cpcache/
 
 /.agent-shell/
+.agents
 build
 .calva
 .clj-kondo

@@ -4,9 +4,8 @@
    [cljs.proxy :refer [builder]]
    [ddc.macros]
    ["@std/http/unstable-route" :refer [route]]]
-  [:refer-global :only [Error Headers Number Object Promise
-                        Request Response URL URLPattern URLSearchParams
-                        console globalThis]])
+  [:refer-global :only [Error Headers Number Object Promise Request Response
+                        URL URLPattern console globalThis]])
 
 (def proxy (builder))
 
@@ -64,24 +63,11 @@
 (defn- headers-map [headers]
   (entries-map (.entries headers)))
 
-(defn- params-map [params]
-  (entries-map (.entries params)))
-
 (defn- path-params [params]
   (when-let [groups (some-> params
                             (aget "pathname")
                             (aget "groups"))]
     (entries-map (Object.entries groups))))
-
-(defn url-encoded-params [body]
-  (params-map (URLSearchParams. body)))
-
-(defn form-params [request]
-  (if-let [body (:body request)]
-    (-> (Response. body)
-        (.text)
-        (.then url-encoded-params))
-    (Promise.resolve {})))
 
 (defn- required [options k]
   (or (get options k)
