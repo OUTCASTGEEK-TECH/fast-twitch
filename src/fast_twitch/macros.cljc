@@ -9,6 +9,21 @@
        (when process-env#
          (aget process-env# ~v)))))
 
+(defmacro current-runtime []
+  `(let [g# ~'globalThis
+         deno# (aget g# "Deno")
+         bun# (aget g# "Bun")
+         process# (aget g# "process")]
+     (cond
+       deno# :deno
+       bun# :bun
+       (and process#
+            (aget process# "versions")
+            (aget (aget process# "versions") "node"))
+       :node
+       :else
+       nil)))
+
 (defn serve-deno [deno handler hostname port on-listen reuse-port _proxy]
   `(.serve ~deno
      (~'clj->js

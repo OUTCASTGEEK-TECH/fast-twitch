@@ -2,8 +2,7 @@
   [:require-macros [fast-twitch.macros :refer [serve]]]
   [:require
    [cljs.proxy :refer [builder]]
-   [fast-twitch.macros]
-   ["@std/http/unstable-route" :refer [route]]]
+   [fast-twitch.macros]]
   [:refer-global :only [Error Headers Number Object Promise Request Response
                         URL URLPattern console globalThis]])
 
@@ -83,6 +82,7 @@
          path-params (path-params params)
          body (aget request "body")]
      (cond-> {:headers (headers-map (aget request "headers"))
+              ::request request
               :protocol (required options :protocol)
               :remote-addr (required options :remote-addr)
               :request-method (keyword (.toLowerCase (aget request "method")))
@@ -119,22 +119,37 @@
    (proxy {:status (:status response)
            :headers (header-entries (:headers response))})))
 
-(defn- update-response-promise [response]
-  (-> (Promise.resolve response)
-      (.then update-response)))
+(defn- rejected-promise [error]
+  (Promise. (fn [_ raise] (raise error))))
 
-(defn ft-handler
-  ([handler options]
-   (if (:async? options)
-     (fn [request params]
-       (Promise.
-        (fn [respond raise]
-          (handler (build-request-map request params options)
-                   #(respond (update-response %))
-                   raise))))
-     (fn [request params]
-       (update-response-promise
-        (handler (build-request-map request params options)))))))
+(defn- handler-promise [handler request]
+  (try
+    (Promise.resolve (handler request))
+    (catch :default error
+      (rejected-promise error))))
+
+(defn ft-handler [handler options]
+  (if (:async? options)
+    (let [handle (fn [request]
+                   (Promise.
+                    (fn [respond raise]
+                      (handler (build-request-map request options)
+                               #(respond (update-response %))
+                               raise))))]
+      (fn
+        ([request]
+         (handle request))
+        ([request _info]
+         (handle request))))
+    (let [handle (fn [request]
+                   (-> (handler-promise handler
+                                        (build-request-map request options))
+                       (.then update-response)))]
+      (fn
+        ([request]
+         (handle request))
+        ([request _info]
+         (handle request))))))
 
 (defn- route-method [method]
   (cond
@@ -142,21 +157,75 @@
     (string? method) (.toUpperCase method)
     :else method))
 
-(defn- route-entry [options {:keys [pattern method handler async-handler]}]
-  (proxy
-   (cond-> {:pattern (if (string? pattern)
-                       (url-pattern pattern)
-                       pattern)
-            :handler (if async-handler
-                       (ft-handler async-handler
-                                     (assoc options :async? true))
-                       (ft-handler handler options))}
-     method
-     (assoc :method (route-method method)))))
+(defn- route-entry [{:keys [pattern method handler async-handler]}]
+  {:pattern (if (string? pattern)
+              (url-pattern pattern)
+              pattern)
+   :method method
+   :handler handler
+   :async-handler async-handler})
 
-(defn ft-routes [routes default-handler options]
-  (route (proxy (map #(route-entry options %) routes))
-         (ft-handler default-handler options)))
+(defn- method-matches? [method request-method]
+  (let [request-method (route-method request-method)]
+    (cond
+      (nil? method)
+      true
+
+      (sequential? method)
+      (some #(= (route-method %) request-method) method)
+
+      :else
+      (= (route-method method) request-method))))
+
+(defn- request-url [request]
+  (or (some-> (::request request) (aget "url"))
+      (str (name (:scheme request))
+           "://"
+           (:server-name request)
+           (when-let [port (:server-port request)]
+             (str ":" port))
+           (:uri request)
+           (when-let [query-string (:query-string request)]
+             (str "?" query-string)))))
+
+(defn- route-match [request route]
+  (when (method-matches? (:method route) (:request-method request))
+    (when-let [params (.exec (:pattern route) (request-url request))]
+      (assoc route :path-params (path-params params)))))
+
+(defn- route-request [request route]
+  (cond-> request
+    (:path-params route)
+    (assoc :path-params (:path-params route))))
+
+(defn- route-response [route request]
+  (let [request (route-request request route)]
+    (if-let [async-handler (:async-handler route)]
+      (Promise.
+       (fn [respond raise]
+         (async-handler request respond raise)))
+      ((:handler route) request))))
+
+(defn- respond-to [response respond raise]
+  (-> (Promise.resolve response)
+      (.then respond)
+      (.catch raise)))
+
+(defn routes [routes default-handler]
+  (let [routes (mapv route-entry routes)]
+    (fn
+      ([request]
+       (if-let [route (some #(route-match request %) routes)]
+         (route-response route request)
+         (default-handler request)))
+      ([request respond raise]
+       (try
+         (let [response (if-let [route (some #(route-match request %) routes)]
+                          (route-response route request)
+                          (default-handler request))]
+           (respond-to response respond raise))
+         (catch :default error
+           (raise error)))))))
 
 (defn run-adapter
   ([app]

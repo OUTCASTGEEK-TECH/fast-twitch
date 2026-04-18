@@ -1,8 +1,5 @@
 {:main ddc.server
  :target :nodejs
- :foreign-libs [{:file "node_modules/@std/http/unstable_route.js"
-                 :provides ["@std/http/unstable-route"]
-                 :module-type :es6}]
  :output-to "server.cjs"
  :output-dir "build"
  :optimizations :simple
