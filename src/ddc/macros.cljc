@@ -64,14 +64,27 @@
 
                                       (some? v#)
                                       (.set headers# k# v#)))))
-                      (-> (~'Promise.resolve
-                           (~handler (~'Request. url# init#)))
+	                      (-> (~'Promise.resolve
+	                           (~handler (~'Request. url# init#)))
                           (.then
                            (fn [response#]
                              (aset res# "statusCode" (aget response# "status"))
-                             (.forEach (aget response# "headers")
-                                       (fn [v# k#]
-                                         (.setHeader res# k# v#)))
+                             (let [headers# (aget response# "headers")
+                                   get-set-cookie# (aget headers# "getSetCookie")
+                                   set-cookies# (when get-set-cookie#
+                                                  (.call get-set-cookie#
+                                                         headers#))]
+                               (.forEach headers#
+                                         (fn [v# k#]
+                                           (when-not (= "set-cookie"
+                                                        (.toLowerCase k#))
+                                             (.setHeader res# k# v#))))
+                               (when (and set-cookies#
+                                          (pos? (aget set-cookies#
+                                                      "length")))
+                                 (.setHeader res#
+                                             "Set-Cookie"
+                                             set-cookies#)))
                              (if-let [body# (aget response# "body")]
                                (.pipe (.fromWeb (aget stream# "Readable") body#) res#)
                                (.end res#))))

@@ -6816,7 +6816,7 @@ var cljs$core$IAssociative$_contains_key_QMARK_$dyn_3426 = function(a, b) {
 cljs.core._contains_key_QMARK_ = function(a, b) {
   return a != null && a.cljs$core$IAssociative$_contains_key_QMARK_$arity$2 != null ? a.cljs$core$IAssociative$_contains_key_QMARK_$arity$2(a, b) : cljs$core$IAssociative$_contains_key_QMARK_$dyn_3426(a, b);
 };
-var cljs$core$IAssociative$_assoc$dyn_3429 = function(a, b, c) {
+var cljs$core$IAssociative$_assoc$dyn_3427 = function(a, b, c) {
   var d = cljs.core._assoc[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -6828,11 +6828,11 @@ var cljs$core$IAssociative$_assoc$dyn_3429 = function(a, b, c) {
   throw cljs.core.missing_protocol("IAssociative.-assoc", a);
 };
 cljs.core._assoc = function(a, b, c) {
-  return a != null && a.cljs$core$IAssociative$_assoc$arity$3 != null ? a.cljs$core$IAssociative$_assoc$arity$3(a, b, c) : cljs$core$IAssociative$_assoc$dyn_3429(a, b, c);
+  return a != null && a.cljs$core$IAssociative$_assoc$arity$3 != null ? a.cljs$core$IAssociative$_assoc$arity$3(a, b, c) : cljs$core$IAssociative$_assoc$dyn_3427(a, b, c);
 };
 cljs.core.IFind = function() {
 };
-var cljs$core$IFind$_find$dyn_3430 = function(a, b) {
+var cljs$core$IFind$_find$dyn_3428 = function(a, b) {
   var c = cljs.core._find[goog.typeOf(a == null ? null : a)];
   if (c != null) {
     return c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b);
@@ -6844,7 +6844,7 @@ var cljs$core$IFind$_find$dyn_3430 = function(a, b) {
   throw cljs.core.missing_protocol("IFind.-find", a);
 };
 cljs.core._find = function(a, b) {
-  return a != null && a.cljs$core$IFind$_find$arity$2 != null ? a.cljs$core$IFind$_find$arity$2(a, b) : cljs$core$IFind$_find$dyn_3430(a, b);
+  return a != null && a.cljs$core$IFind$_find$arity$2 != null ? a.cljs$core$IFind$_find$arity$2(a, b) : cljs$core$IFind$_find$dyn_3428(a, b);
 };
 cljs.core.IMap = function() {
 };
@@ -8489,7 +8489,7 @@ Date.prototype.cljs$core$IComparable$_compare$arity$2 = function(a, b) {
 };
 cljs.core.Inst = function() {
 };
-var cljs$core$Inst$inst_ms_STAR_$dyn_3574 = function(a) {
+var cljs$core$Inst$inst_ms_STAR_$dyn_3573 = function(a) {
   var b = cljs.core.inst_ms_STAR_[goog.typeOf(a == null ? null : a)];
   if (b != null) {
     return b.cljs$core$IFn$_invoke$arity$1 ? b.cljs$core$IFn$_invoke$arity$1(a) : b(a);
@@ -8501,7 +8501,7 @@ var cljs$core$Inst$inst_ms_STAR_$dyn_3574 = function(a) {
   throw cljs.core.missing_protocol("Inst.inst-ms*", a);
 };
 cljs.core.inst_ms_STAR_ = function(a) {
-  return a != null && a.cljs$core$Inst$inst_ms_STAR_$arity$1 != null ? a.cljs$core$Inst$inst_ms_STAR_$arity$1(a) : cljs$core$Inst$inst_ms_STAR_$dyn_3574(a);
+  return a != null && a.cljs$core$Inst$inst_ms_STAR_$arity$1 != null ? a.cljs$core$Inst$inst_ms_STAR_$arity$1(a) : cljs$core$Inst$inst_ms_STAR_$dyn_3573(a);
 };
 Date.prototype.cljs$core$Inst$ = cljs.core.PROTOCOL_SENTINEL;
 Date.prototype.cljs$core$Inst$inst_ms_STAR_$arity$1 = function(a) {
@@ -12990,28 +12990,28 @@ cljs.core.not_empty = function(a) {
   return cljs.core.seq(a) ? a : null;
 };
 cljs.core.nil_iter = function() {
-  if (typeof cljs === "undefined" || typeof cljs.core === "undefined" || typeof cljs.core.t_reify_cljs$core4277 === "undefined") {
-    cljs.core.t_reify_cljs$core4277 = function(a) {
-      this.meta4278 = a;
+  if (typeof cljs === "undefined" || typeof cljs.core === "undefined" || typeof cljs.core.t_reify_cljs$core4281 === "undefined") {
+    cljs.core.t_reify_cljs$core4281 = function(a) {
+      this.meta4282 = a;
       this.cljs$lang$protocol_mask$partition0$ = 393216;
       this.cljs$lang$protocol_mask$partition1$ = 0;
-    }, cljs.core.t_reify_cljs$core4277.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-      return new cljs.core.t_reify_cljs$core4277(b);
-    }, cljs.core.t_reify_cljs$core4277.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
-      return this.meta4278;
-    }, cljs.core.t_reify_cljs$core4277.prototype.hasNext = function() {
+    }, cljs.core.t_reify_cljs$core4281.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+      return new cljs.core.t_reify_cljs$core4281(b);
+    }, cljs.core.t_reify_cljs$core4281.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
+      return this.meta4282;
+    }, cljs.core.t_reify_cljs$core4281.prototype.hasNext = function() {
       return !1;
-    }, cljs.core.t_reify_cljs$core4277.prototype.next = function() {
+    }, cljs.core.t_reify_cljs$core4281.prototype.next = function() {
       return Error("No such element");
-    }, cljs.core.t_reify_cljs$core4277.prototype.remove = function() {
+    }, cljs.core.t_reify_cljs$core4281.prototype.remove = function() {
       return Error("Unsupported operation");
-    }, cljs.core.t_reify_cljs$core4277.cljs$lang$type = !0, cljs.core.t_reify_cljs$core4277.cljs$lang$ctorStr = "cljs.core/t_reify_cljs$core4277", cljs.core.t_reify_cljs$core4277.cljs$lang$ctorPrWriter = function(a, b, c) {
-      return cljs.core._write(b, "cljs.core/t_reify_cljs$core4277");
-    }, cljs.core.__GT_t_reify_cljs$core4277 = function(a) {
-      return new cljs.core.t_reify_cljs$core4277(a);
+    }, cljs.core.t_reify_cljs$core4281.cljs$lang$type = !0, cljs.core.t_reify_cljs$core4281.cljs$lang$ctorStr = "cljs.core/t_reify_cljs$core4281", cljs.core.t_reify_cljs$core4281.cljs$lang$ctorPrWriter = function(a, b, c) {
+      return cljs.core._write(b, "cljs.core/t_reify_cljs$core4281");
+    }, cljs.core.__GT_t_reify_cljs$core4281 = function(a) {
+      return new cljs.core.t_reify_cljs$core4281(a);
     };
   }
-  return new cljs.core.t_reify_cljs$core4277(null);
+  return new cljs.core.t_reify_cljs$core4281(null);
 };
 cljs.core.StringIter = function(a, b) {
   this.s = a;
@@ -24605,8 +24605,8 @@ cljs.core.iteration = function(a) {
 };
 cljs.core.iteration.cljs$core$IFn$_invoke$arity$variadic = function(a, b) {
   var c = cljs.core.__destructure_map(b), d = cljs.core.get.cljs$core$IFn$_invoke$arity$3(c, cljs.core.cst$kw$somef, cljs.core.some_QMARK_), e = cljs.core.get.cljs$core$IFn$_invoke$arity$3(c, cljs.core.cst$kw$vf, cljs.core.identity), f = cljs.core.get.cljs$core$IFn$_invoke$arity$3(c, cljs.core.cst$kw$kf, cljs.core.identity), g = cljs.core.get.cljs$core$IFn$_invoke$arity$3(c, cljs.core.cst$kw$initk, null);
-  if (typeof cljs === "undefined" || typeof cljs.core === "undefined" || typeof cljs.core.t_reify_cljs$core5736 === "undefined") {
-    cljs.core.t_reify_cljs$core5736 = function(h, k, l, m, p, q, r, v) {
+  if (typeof cljs === "undefined" || typeof cljs.core === "undefined" || typeof cljs.core.t_reify_cljs$core5738 === "undefined") {
+    cljs.core.t_reify_cljs$core5738 = function(h, k, l, m, p, q, r, v) {
       this.step = h;
       this.p__5734 = k;
       this.map__5735 = l;
@@ -24614,14 +24614,14 @@ cljs.core.iteration.cljs$core$IFn$_invoke$arity$variadic = function(a, b) {
       this.vf = p;
       this.kf = q;
       this.initk = r;
-      this.meta5737 = v;
+      this.meta5739 = v;
       this.cljs$lang$protocol_mask$partition0$ = 9306112;
       this.cljs$lang$protocol_mask$partition1$ = 0;
-    }, cljs.core.t_reify_cljs$core5736.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(h, k) {
-      return new cljs.core.t_reify_cljs$core5736(this.step, this.p__5734, this.map__5735, this.somef, this.vf, this.kf, this.initk, k);
-    }, cljs.core.t_reify_cljs$core5736.prototype.cljs$core$IMeta$_meta$arity$1 = function(h) {
-      return this.meta5737;
-    }, cljs.core.t_reify_cljs$core5736.prototype.cljs$core$ISeqable$_seq$arity$1 = function(h) {
+    }, cljs.core.t_reify_cljs$core5738.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(h, k) {
+      return new cljs.core.t_reify_cljs$core5738(this.step, this.p__5734, this.map__5735, this.somef, this.vf, this.kf, this.initk, k);
+    }, cljs.core.t_reify_cljs$core5738.prototype.cljs$core$IMeta$_meta$arity$1 = function(h) {
+      return this.meta5739;
+    }, cljs.core.t_reify_cljs$core5738.prototype.cljs$core$ISeqable$_seq$arity$1 = function(h) {
       var k = this;
       return function p(m) {
         return cljs.core.truth_(k.somef.cljs$core$IFn$_invoke$arity$1 ? k.somef.cljs$core$IFn$_invoke$arity$1(m) : k.somef(m)) ? cljs.core.cons(k.vf.cljs$core$IFn$_invoke$arity$1 ? k.vf.cljs$core$IFn$_invoke$arity$1(m) : k.vf(m), function() {
@@ -24631,7 +24631,7 @@ cljs.core.iteration.cljs$core$IFn$_invoke$arity$variadic = function(a, b) {
           }, null, null);
         }()) : null;
       }(k.step.cljs$core$IFn$_invoke$arity$1 ? k.step.cljs$core$IFn$_invoke$arity$1(k.initk) : k.step(k.initk));
-    }, cljs.core.t_reify_cljs$core5736.prototype.cljs$core$IReduce$_reduce$arity$3 = function(h, k, l) {
+    }, cljs.core.t_reify_cljs$core5738.prototype.cljs$core$IReduce$_reduce$arity$3 = function(h, k, l) {
       for (h = this.step.cljs$core$IFn$_invoke$arity$1 ? this.step.cljs$core$IFn$_invoke$arity$1(this.initk) : this.step(this.initk);;) {
         if (cljs.core.truth_(this.somef.cljs$core$IFn$_invoke$arity$1 ? this.somef.cljs$core$IFn$_invoke$arity$1(h) : this.somef(h))) {
           var m = this.vf.cljs$core$IFn$_invoke$arity$1 ? this.vf.cljs$core$IFn$_invoke$arity$1(h) : this.vf(h);
@@ -24648,13 +24648,13 @@ cljs.core.iteration.cljs$core$IFn$_invoke$arity$variadic = function(a, b) {
           return l;
         }
       }
-    }, cljs.core.t_reify_cljs$core5736.cljs$lang$type = !0, cljs.core.t_reify_cljs$core5736.cljs$lang$ctorStr = "cljs.core/t_reify_cljs$core5736", cljs.core.t_reify_cljs$core5736.cljs$lang$ctorPrWriter = function(h, k, l) {
-      return cljs.core._write(k, "cljs.core/t_reify_cljs$core5736");
-    }, cljs.core.__GT_t_reify_cljs$core5736 = function(h, k, l, m, p, q, r, v) {
-      return new cljs.core.t_reify_cljs$core5736(h, k, l, m, p, q, r, v);
+    }, cljs.core.t_reify_cljs$core5738.cljs$lang$type = !0, cljs.core.t_reify_cljs$core5738.cljs$lang$ctorStr = "cljs.core/t_reify_cljs$core5738", cljs.core.t_reify_cljs$core5738.cljs$lang$ctorPrWriter = function(h, k, l) {
+      return cljs.core._write(k, "cljs.core/t_reify_cljs$core5738");
+    }, cljs.core.__GT_t_reify_cljs$core5738 = function(h, k, l, m, p, q, r, v) {
+      return new cljs.core.t_reify_cljs$core5738(h, k, l, m, p, q, r, v);
     };
   }
-  return new cljs.core.t_reify_cljs$core5736(a, b, c, d, e, f, g, null);
+  return new cljs.core.t_reify_cljs$core5738(a, b, c, d, e, f, g, null);
 };
 cljs.core.iteration.cljs$lang$maxFixedArity = 1;
 cljs.core.iteration.cljs$lang$applyTo = function(a) {
@@ -24664,7 +24664,7 @@ cljs.core.iteration.cljs$lang$applyTo = function(a) {
 };
 cljs.core.IEncodeJS = function() {
 };
-var cljs$core$IEncodeJS$_clj__GT_js$dyn_5753 = function(a) {
+var cljs$core$IEncodeJS$_clj__GT_js$dyn_5754 = function(a) {
   var b = cljs.core._clj__GT_js[goog.typeOf(a == null ? null : a)];
   if (b != null) {
     return b.cljs$core$IFn$_invoke$arity$1 ? b.cljs$core$IFn$_invoke$arity$1(a) : b(a);
@@ -24676,7 +24676,7 @@ var cljs$core$IEncodeJS$_clj__GT_js$dyn_5753 = function(a) {
   throw cljs.core.missing_protocol("IEncodeJS.-clj-\x3ejs", a);
 };
 cljs.core._clj__GT_js = function(a) {
-  return a != null && a.cljs$core$IEncodeJS$_clj__GT_js$arity$1 != null ? a.cljs$core$IEncodeJS$_clj__GT_js$arity$1(a) : cljs$core$IEncodeJS$_clj__GT_js$dyn_5753(a);
+  return a != null && a.cljs$core$IEncodeJS$_clj__GT_js$arity$1 != null ? a.cljs$core$IEncodeJS$_clj__GT_js$arity$1(a) : cljs$core$IEncodeJS$_clj__GT_js$dyn_5754(a);
 };
 var cljs$core$IEncodeJS$_key__GT_js$dyn_5755 = function(a) {
   var b = cljs.core._key__GT_js[goog.typeOf(a == null ? null : a)];
@@ -27385,36 +27385,35 @@ cljs.core.constants = {};
 cljs.core.cst$kw$rel = new cljs.core.Keyword(null, "rel", "rel", 1378823488);
 cljs.core.cst$sym$_AMPERSAND_ = new cljs.core.Symbol(null, "\x26", "\x26", -2144855648, null);
 cljs.core.cst$sym$clojure$string_SLASH_join = new cljs.core.Symbol("clojure.string", "join", "clojure.string/join", -539723360, null);
-cljs.core.cst$sym$p1____6834____6853____auto____ = new cljs.core.Symbol(null, "p1__6834__6853__auto__", "p1__6834__6853__auto__", 1694478784, null);
 cljs.core.cst$sym$cljs$core_SLASH_some_QMARK_ = new cljs.core.Symbol("cljs.core", "some?", "cljs.core/some?", -440439360, null);
-cljs.core.cst$sym$stream____6839____auto____ = new cljs.core.Symbol(null, "stream__6839__auto__", "stream__6839__auto__", 28812768, null);
 cljs.core.cst$kw$line_DASH_height = new cljs.core.Keyword(null, "line-height", "line-height", 1870784992);
 cljs.core.cst$sym$cljs$proxy_SLASH_builder = new cljs.core.Symbol("cljs.proxy", "builder", "cljs.proxy/builder", 102304256, null);
-cljs.core.cst$sym$name____7456____auto____ = new cljs.core.Symbol(null, "name__7456__auto__", "name__7456__auto__", -841896448, null);
-cljs.core.cst$sym$text____6610____auto____ = new cljs.core.Symbol(null, "text__6610__auto__", "text__6610__auto__", 1366013472, null);
 cljs.core.cst$kw$path = new cljs.core.Keyword(null, "path", "path", -188191168);
+cljs.core.cst$sym$fn____7096____auto____ = new cljs.core.Symbol(null, "fn__7096__auto__", "fn__7096__auto__", -1078644064, null);
 cljs.core.cst$sym$replicant$hiccup_SLASH_hiccup_QMARK_ = new cljs.core.Symbol("replicant.hiccup", "hiccup?", "replicant.hiccup/hiccup?", -2019294528, null);
+cljs.core.cst$sym$f____9200____auto____ = new cljs.core.Symbol(null, "f__9200__auto__", "f__9200__auto__", -1774498112, null);
 cljs.core.cst$kw$encoding = new cljs.core.Keyword(null, "encoding", "encoding", 1728578272);
-cljs.core.cst$sym$listen_DASH_opts____6857____auto____ = new cljs.core.Symbol(null, "listen-opts__6857__auto__", "listen-opts__6857__auto__", 1123135200, null);
+cljs.core.cst$sym$k____6577____auto____ = new cljs.core.Symbol(null, "k__6577__auto__", "k__6577__auto__", -234725664, null);
 cljs.core.cst$sym$case_STAR_ = new cljs.core.Symbol(null, "case*", "case*", -1938255072, null);
 cljs.core.cst$kw$div$control$is_DASH_expanded = new cljs.core.Keyword(null, "div.control.is-expanded", "div.control.is-expanded", -89440448);
 cljs.core.cst$kw$same_DASH_site = new cljs.core.Keyword(null, "same-site", "same-site", -580539552);
-cljs.core.cst$sym$vdom____7066____auto____ = new cljs.core.Symbol(null, "vdom__7066__auto__", "vdom__7066__auto__", 608728000, null);
+cljs.core.cst$sym$ctx____7092____auto____ = new cljs.core.Symbol(null, "ctx__7092__auto__", "ctx__7092__auto__", -998342784, null);
+cljs.core.cst$kw$q = new cljs.core.Keyword(null, "q", "q", 689001697);
+cljs.core.cst$kw$tags = new cljs.core.Keyword(null, "tags", "tags", 1771418977);
+cljs.core.cst$sym$hh____6805____auto____ = new cljs.core.Symbol(null, "hh__6805__auto__", "hh__6805__auto__", 1869233537, null);
 cljs.core.cst$sym$defrecord_STAR_ = new cljs.core.Symbol(null, "defrecord*", "defrecord*", -1936366207, null);
 cljs.core.cst$sym$obj = new cljs.core.Symbol(null, "obj", "obj", -1672671807, null);
 cljs.core.cst$sym$cljs$core_SLASH_keyword = new cljs.core.Symbol("cljs.core", "keyword", "cljs.core/keyword", -337316415, null);
+cljs.core.cst$sym$host____6847____auto____ = new cljs.core.Symbol(null, "host__6847__auto__", "host__6847__auto__", 1353124321, null);
 cljs.core.cst$sym$$serve = new cljs.core.Symbol(null, ".serve", ".serve", -377103711, null);
 cljs.core.cst$sym$cljs$core_SLASH_str = new cljs.core.Symbol("cljs.core", "str", "cljs.core/str", -1971828991, null);
 cljs.core.cst$sym$cljs$core_SLASH__LT_ = new cljs.core.Symbol("cljs.core", "\x3c", "cljs.core/\x3c", 1677496129, null);
 cljs.core.cst$kw$box_DASH_flex_DASH_group = new cljs.core.Keyword(null, "box-flex-group", "box-flex-group", -1468550335);
-cljs.core.cst$sym$opts____6832____auto____ = new cljs.core.Symbol(null, "opts__6832__auto__", "opts__6832__auto__", -1708168319, null);
+cljs.core.cst$sym$args____9134____auto____ = new cljs.core.Symbol(null, "args__9134__auto__", "args__9134__auto__", -1982821471, null);
 cljs.core.cst$kw$preload_QMARK_ = new cljs.core.Keyword(null, "preload?", "preload?", 445442977);
 cljs.core.cst$sym$try = new cljs.core.Symbol(null, "try", "try", -1273693247, null);
 cljs.core.cst$kw$div$level_DASH_right = new cljs.core.Keyword(null, "div.level-right", "div.level-right", -216046623);
-cljs.core.cst$sym$host____6846____auto____ = new cljs.core.Symbol(null, "host__6846__auto__", "host__6846__auto__", -701464607, null);
 cljs.core.cst$kw$replicant_SLASH_js_DASH_event = new cljs.core.Keyword("replicant", "js-event", "replicant/js-event", 1927942146);
-cljs.core.cst$sym$alias____6814____auto____ = new cljs.core.Symbol(null, "alias__6814__auto__", "alias__6814__auto__", 2063943810, null);
-cljs.core.cst$sym$alias____7049____auto____ = new cljs.core.Symbol(null, "alias__7049__auto__", "alias__7049__auto__", 1313418402, null);
 cljs.core.cst$kw$frame_DASH_options = new cljs.core.Keyword(null, "frame-options", "frame-options", 942536866);
 cljs.core.cst$sym$clojure$string_SLASH_starts_DASH_with_QMARK_ = new cljs.core.Symbol("clojure.string", "starts-with?", "clojure.string/starts-with?", 656256322, null);
 cljs.core.cst$sym$vdom____7123____auto____ = new cljs.core.Symbol(null, "vdom__7123__auto__", "vdom__7123__auto__", 2134566306, null);
@@ -27429,73 +27428,79 @@ cljs.core.cst$sym$cljs$core_SLASH_keyword_QMARK_ = new cljs.core.Symbol("cljs.co
 cljs.core.cst$kw$data_DASH_replicant_DASH_error = new cljs.core.Keyword(null, "data-replicant-error", "data-replicant-error", 1583668098);
 cljs.core.cst$sym$iter = new cljs.core.Symbol(null, "iter", "iter", -1346195486, null);
 cljs.core.cst$sym$js_SLASH_console$error = new cljs.core.Symbol("js", "console.error", "js/console.error", 1736729603, null);
+cljs.core.cst$sym$server____6835____auto____ = new cljs.core.Symbol(null, "server__6835__auto__", "server__6835__auto__", 1143484451, null);
 cljs.core.cst$kw$x_DASH_forwarded_DASH_proto = new cljs.core.Keyword(null, "x-forwarded-proto", "x-forwarded-proto", -76593117);
-cljs.core.cst$sym$headers____7143____auto____ = new cljs.core.Symbol(null, "headers__7143__auto__", "headers__7143__auto__", -1290366909, null);
 cljs.core.cst$kw$error_DASH_response = new cljs.core.Keyword(null, "error-response", "error-response", -2125312957);
-cljs.core.cst$sym$method____6845____auto____ = new cljs.core.Symbol(null, "method__6845__auto__", "method__6845__auto__", 972569699, null);
+cljs.core.cst$kw$div$columns = new cljs.core.Keyword(null, "div.columns", "div.columns", -437221213);
 cljs.core.cst$kw$get = new cljs.core.Keyword(null, "get", "get", 1683182755);
 cljs.core.cst$kw$div$box = new cljs.core.Keyword(null, "div.box", "div.box", 2023391427);
-cljs.core.cst$sym$addr____6858____auto____ = new cljs.core.Symbol(null, "addr__6858__auto__", "addr__6858__auto__", 1223312643, null);
 cljs.core.cst$kw$indent = new cljs.core.Keyword(null, "indent", "indent", -148200125);
 cljs.core.cst$kw$proxy_DASH_headers = new cljs.core.Keyword(null, "proxy-headers", "proxy-headers", -1522315965);
+cljs.core.cst$sym$class____7419____auto____ = new cljs.core.Symbol(null, "class__7419__auto__", "class__7419__auto__", 411733379, null);
 cljs.core.cst$kw$fname = new cljs.core.Keyword(null, "fname", "fname", 1500291491);
 cljs.core.cst$kw$somef = new cljs.core.Keyword(null, "somef", "somef", -622590365);
 cljs.core.cst$kw$ready = new cljs.core.Keyword(null, "ready", "ready", 1086465795);
+cljs.core.cst$sym$cljs$core_SLASH_pos_QMARK_ = new cljs.core.Symbol("cljs.core", "pos?", "cljs.core/pos?", -652182749, null);
+cljs.core.cst$kw$label$checkbox = new cljs.core.Keyword(null, "label.checkbox", "label.checkbox", -1425898685);
 cljs.core.cst$kw$urlencoded = new cljs.core.Keyword(null, "urlencoded", "urlencoded", 52330307);
 cljs.core.cst$sym$replicant$protocols_SLASH_create_DASH_text_DASH_node = new cljs.core.Symbol("replicant.protocols", "create-text-node", "replicant.protocols/create-text-node", 984762211, null);
-cljs.core.cst$sym$has_DASH_body_QMARK_____6848____auto____ = new cljs.core.Symbol(null, "has-body?__6848__auto__", "has-body?__6848__auto__", -587829373, null);
-cljs.core.cst$sym$k____6589____auto____ = new cljs.core.Symbol(null, "k__6589__auto__", "k__6589__auto__", -1393635357, null);
 cljs.core.cst$kw$safe_DASH_header = new cljs.core.Keyword(null, "safe-header", "safe-header", 1419508740);
 cljs.core.cst$kw$cause = new cljs.core.Keyword(null, "cause", "cause", 231901252);
 cljs.core.cst$sym$$get = new cljs.core.Symbol(null, ".get", ".get", 1446963300, null);
-cljs.core.cst$sym$fn____7092____auto____ = new cljs.core.Symbol(null, "fn__7092__auto__", "fn__7092__auto__", -385469148, null);
 cljs.core.cst$sym$headers____6790____auto____ = new cljs.core.Symbol(null, "headers__6790__auto__", "headers__6790__auto__", 1538247972, null);
 cljs.core.cst$sym$cljs$core_SLASH_vector_QMARK_ = new cljs.core.Symbol("cljs.core", "vector?", "cljs.core/vector?", -1550392028, null);
-cljs.core.cst$sym$builtin____6837____auto____ = new cljs.core.Symbol(null, "builtin__6837__auto__", "builtin__6837__auto__", -129138364, null);
 cljs.core.cst$kw$sameorigin = new cljs.core.Keyword(null, "sameorigin", "sameorigin", -366814876);
 cljs.core.cst$kw$h1$title$is_DASH_2 = new cljs.core.Keyword(null, "h1.title.is-2", "h1.title.is-2", -1973107324);
-cljs.core.cst$sym$event____7449____auto____ = new cljs.core.Symbol(null, "event__7449__auto__", "event__7449__auto__", 696265156, null);
+cljs.core.cst$sym$name____7466____auto____ = new cljs.core.Symbol(null, "name__7466__auto__", "name__7466__auto__", -1781593628, null);
 cljs.core.cst$kw$meta = new cljs.core.Keyword(null, "meta", "meta", 1499536964);
+cljs.core.cst$sym$e____6859____auto____ = new cljs.core.Symbol(null, "e__6859__auto__", "e__6859__auto__", 431372868, null);
+cljs.core.cst$kw$selected = new cljs.core.Keyword(null, "selected", "selected", 574897764);
 cljs.core.cst$sym$cljs$core_SLASH__EQ_ = new cljs.core.Symbol("cljs.core", "\x3d", "cljs.core/\x3d", -1891498332, null);
 cljs.core.cst$sym$Object$entries = new cljs.core.Symbol(null, "Object.entries", "Object.entries", 1292297956, null);
 cljs.core.cst$kw$column_DASH_count = new cljs.core.Keyword(null, "column-count", "column-count", 1235131236);
 cljs.core.cst$sym$cljs$core_SLASH_vswap_BANG_ = new cljs.core.Symbol("cljs.core", "vswap!", "cljs.core/vswap!", -2062892188, null);
 cljs.core.cst$kw$flex_DASH_negative = new cljs.core.Keyword(null, "flex-negative", "flex-negative", -1543996476);
 cljs.core.cst$kw$kf = new cljs.core.Keyword(null, "kf", "kf", 1608087589);
-cljs.core.cst$sym$text____7071____auto____ = new cljs.core.Symbol(null, "text__7071__auto__", "text__7071__auto__", 1017722117, null);
 cljs.core.cst$kw$key_DASH_parser = new cljs.core.Keyword(null, "key-parser", "key-parser", -766020347);
 cljs.core.cst$kw$dup = new cljs.core.Keyword(null, "dup", "dup", 556298533);
+cljs.core.cst$sym$hh____6814____auto____ = new cljs.core.Symbol(null, "hh__6814__auto__", "hh__6814__auto__", 1101332805, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_style = new cljs.core.Symbol("replicant.protocols", "remove-style", "replicant.protocols/remove-style", 31335845, null);
 cljs.core.cst$sym$hh____6625____auto____ = new cljs.core.Symbol(null, "hh__6625__auto__", "hh__6625__auto__", -38082139, null);
 cljs.core.cst$kw$tab_DASH_size = new cljs.core.Keyword(null, "tab-size", "tab-size", -1265790523);
 cljs.core.cst$kw$x_DASH_xss_DASH_protection = new cljs.core.Keyword(null, "x-xss-protection", "x-xss-protection", 201698821);
+cljs.core.cst$kw$pre = new cljs.core.Keyword(null, "pre", "pre", 2118456869);
+cljs.core.cst$sym$get_DASH_set_DASH_cookie____6856____auto____ = new cljs.core.Symbol(null, "get-set-cookie__6856__auto__", "get-set-cookie__6856__auto__", -853297627, null);
 cljs.core.cst$sym$ctx____6716____auto____ = new cljs.core.Symbol(null, "ctx__6716__auto__", "ctx__6716__auto__", -905116027, null);
 cljs.core.cst$kw$patch = new cljs.core.Keyword(null, "patch", "patch", 380775109);
-cljs.core.cst$sym$res____9176____auto____ = new cljs.core.Symbol(null, "res__9176__auto__", "res__9176__auto__", 360094597, null);
+cljs.core.cst$sym$k____6852____auto____ = new cljs.core.Symbol(null, "k__6852__auto__", "k__6852__auto__", -1684916539, null);
 cljs.core.cst$kw$placeholder = new cljs.core.Keyword(null, "placeholder", "placeholder", -104873083);
 cljs.core.cst$kw$x_DASH_content_DASH_type_DASH_options = new cljs.core.Keyword(null, "x-content-type-options", "x-content-type-options", 451168197);
 cljs.core.cst$sym$cljs$core_SLASH_some_DASH__GT_ = new cljs.core.Symbol("cljs.core", "some-\x3e", "cljs.core/some-\x3e", -67411995, null);
 cljs.core.cst$kw$store = new cljs.core.Keyword(null, "store", "store", 1512230022);
-cljs.core.cst$sym$text____6611____auto____ = new cljs.core.Symbol(null, "text__6611__auto__", "text__6611__auto__", 590872806, null);
+cljs.core.cst$kw$label$checkbox$mr_DASH_4 = new cljs.core.Keyword(null, "label.checkbox.mr-4", "label.checkbox.mr-4", 1320909030);
+cljs.core.cst$kw$div$field$is_DASH_grouped = new cljs.core.Keyword(null, "div.field.is-grouped", "div.field.is-grouped", -1903572570);
 cljs.core.cst$kw$else = new cljs.core.Keyword(null, "else", "else", -1508377146);
 cljs.core.cst$kw$onListen = new cljs.core.Keyword(null, "onListen", "onListen", 670171686);
 cljs.core.cst$kw$keywordize = new cljs.core.Keyword(null, "keywordize", "keywordize", 1381210758);
 cljs.core.cst$kw$form$box = new cljs.core.Keyword(null, "form.box", "form.box", 8497862);
-cljs.core.cst$sym$init____6849____auto____ = new cljs.core.Symbol(null, "init__6849__auto__", "init__6849__auto__", -116616442, null);
+cljs.core.cst$sym$addr____6861____auto____ = new cljs.core.Symbol(null, "addr__6861__auto__", "addr__6861__auto__", 377248486, null);
+cljs.core.cst$sym$res____6843____auto____ = new cljs.core.Symbol(null, "res__6843__auto__", "res__6843__auto__", 67839750, null);
 cljs.core.cst$kw$clojure$error_SLASH_phase = new cljs.core.Keyword("clojure.error", "phase", "clojure.error/phase", 275140358);
 cljs.core.cst$sym$replicant$protocols_SLASH_add_DASH_class = new cljs.core.Symbol("replicant.protocols", "add-class", "replicant.protocols/add-class", 620888870, null);
 cljs.core.cst$kw$protocol = new cljs.core.Keyword(null, "protocol", "protocol", 652470118);
+cljs.core.cst$kw$credentials = new cljs.core.Keyword(null, "credentials", "credentials", 1373178854);
 cljs.core.cst$sym$cljs$core_SLASH_deref = new cljs.core.Symbol("cljs.core", "deref", "cljs.core/deref", 1901963335, null);
 cljs.core.cst$sym$ns_STAR_ = new cljs.core.Symbol(null, "ns*", "ns*", 1840949383, null);
 cljs.core.cst$kw$cljs$core_SLASH_none = new cljs.core.Keyword("cljs.core", "none", "cljs.core/none", 926646439);
-cljs.core.cst$sym$req____6841____auto____ = new cljs.core.Symbol(null, "req__6841__auto__", "req__6841__auto__", -350074713, null);
 cljs.core.cst$sym$e____6726____auto____ = new cljs.core.Symbol(null, "e__6726__auto__", "e__6726__auto__", 1138346151, null);
 cljs.core.cst$sym$cljs$core_SLASH_aset = new cljs.core.Symbol("cljs.core", "aset", "cljs.core/aset", -898215545, null);
+cljs.core.cst$sym$text____7134____auto____ = new cljs.core.Symbol(null, "text__7134__auto__", "text__7134__auto__", -1475053113, null);
 cljs.core.cst$kw$password = new cljs.core.Keyword(null, "password", "password", 417022471);
 cljs.core.cst$kw$font_DASH_weight = new cljs.core.Keyword(null, "font-weight", "font-weight", 2085804583);
+cljs.core.cst$kw$div$message_DASH_body = new cljs.core.Keyword(null, "div.message-body", "div.message-body", 566197895);
 cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_ = new cljs.core.Symbol("cljs.core", "-\x3e", "cljs.core/-\x3e", 1488366311, null);
 cljs.core.cst$kw$mounts = new cljs.core.Keyword(null, "mounts", "mounts", -791474425);
-cljs.core.cst$sym$process_DASH_env____6828____auto____ = new cljs.core.Symbol(null, "process-env__6828__auto__", "process-env__6828__auto__", 79682439, null);
+cljs.core.cst$kw$filters = new cljs.core.Keyword(null, "filters", "filters", 974726919);
 cljs.core.cst$kw$security = new cljs.core.Keyword(null, "security", "security", 886963079);
 cljs.core.cst$kw$validator = new cljs.core.Keyword(null, "validator", "validator", -1966190681);
 cljs.core.cst$sym$finally = new cljs.core.Symbol(null, "finally", "finally", -1065347064, null);
@@ -27505,17 +27510,19 @@ cljs.core.cst$kw$content = new cljs.core.Keyword(null, "content", "content", 158
 cljs.core.cst$sym$replicant$errors_SLASH_log = new cljs.core.Symbol("replicant.errors", "log", "replicant.errors/log", -1538571064, null);
 cljs.core.cst$kw$default = new cljs.core.Keyword(null, "default", "default", -1987822328);
 cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_event_DASH_handler = new cljs.core.Symbol("replicant.protocols", "remove-event-handler", "replicant.protocols/remove-event-handler", 1301579080, null);
+cljs.core.cst$kw$div$select$is_DASH_fullwidth = new cljs.core.Keyword(null, "div.select.is-fullwidth", "div.select.is-fullwidth", -696274616);
 cljs.core.cst$kw$via = new cljs.core.Keyword(null, "via", "via", -1904457336);
 cljs.core.cst$kw$pathname = new cljs.core.Keyword(null, "pathname", "pathname", -1420497528);
 cljs.core.cst$sym$replicant$protocols_SLASH_get_DASH_child = new cljs.core.Symbol("replicant.protocols", "get-child", "replicant.protocols/get-child", -1508400696, null);
 cljs.core.cst$sym$$substring = new cljs.core.Symbol(null, ".substring", ".substring", 1294989768, null);
-cljs.core.cst$sym$e____6797____auto____ = new cljs.core.Symbol(null, "e__6797__auto__", "e__6797__auto__", 1099667016, null);
-cljs.core.cst$sym$hh____6810____auto____ = new cljs.core.Symbol(null, "hh__6810__auto__", "hh__6810__auto__", 366107272, null);
+cljs.core.cst$kw$button$button$is_DASH_link = new cljs.core.Keyword(null, "button.button.is-link", "button.button.is-link", 510779944);
 cljs.core.cst$sym$loop_STAR_ = new cljs.core.Symbol(null, "loop*", "loop*", 615029416, null);
+cljs.core.cst$kw$a$button$is_DASH_light = new cljs.core.Keyword(null, "a.button.is-light", "a.button.is-light", 583527112);
 cljs.core.cst$kw$__flash = new cljs.core.Keyword(null, "_flash", "_flash", -1348788472);
 cljs.core.cst$kw$ns = new cljs.core.Keyword(null, "ns", "ns", 441598760);
 cljs.core.cst$kw$data_DASH_replicant_DASH_sexp = new cljs.core.Keyword(null, "data-replicant-sexp", "data-replicant-sexp", 1848901448);
 cljs.core.cst$kw$not_DASH_modified_DASH_responses = new cljs.core.Keyword(null, "not-modified-responses", "not-modified-responses", 995197800);
+cljs.core.cst$sym$alias____7097____auto____ = new cljs.core.Symbol(null, "alias__7097__auto__", "alias__7097__auto__", -1947498648, null);
 cljs.core.cst$kw$replicant$life_DASH_cycle_SLASH_unmount = new cljs.core.Keyword("replicant.life-cycle", "unmount", "replicant.life-cycle/unmount", -144344184);
 cljs.core.cst$kw$strong = new cljs.core.Keyword(null, "strong", "strong", 269529000);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey = new cljs.core.Symbol("replicant.hiccup-headers", "rkey", "replicant.hiccup-headers/rkey", -816557144, null);
@@ -27529,25 +27536,29 @@ cljs.core.cst$kw$cookie_DASH_name = new cljs.core.Keyword(null, "cookie-name", "
 cljs.core.cst$kw$remote_DASH_addr = new cljs.core.Keyword(null, "remote-addr", "remote-addr", 815723977);
 cljs.core.cst$kw$trace = new cljs.core.Keyword(null, "trace", "trace", -1082747415);
 cljs.core.cst$sym$cljs$core_SLASH_when_DASH_not = new cljs.core.Symbol("cljs.core", "when-not", "cljs.core/when-not", -556141047, null);
+cljs.core.cst$sym$text____6782____auto____ = new cljs.core.Symbol(null, "text__6782__auto__", "text__6782__auto__", -1249244631, null);
 cljs.core.cst$kw$stroke_DASH_opacity = new cljs.core.Keyword(null, "stroke-opacity", "stroke-opacity", -1191543159);
 cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context = new cljs.core.Symbol("replicant.assert", "current-context", "replicant.assert/current-context", 571969225, null);
+cljs.core.cst$sym$e____6796____auto____ = new cljs.core.Symbol(null, "e__6796__auto__", "e__6796__auto__", 140327657, null);
 cljs.core.cst$kw$nested = new cljs.core.Keyword(null, "nested", "nested", 18943849);
 cljs.core.cst$kw$value = new cljs.core.Keyword(null, "value", "value", 305978217);
 cljs.core.cst$kw$max_DASH_age = new cljs.core.Keyword(null, "max-age", "max-age", -270129271);
+cljs.core.cst$sym$alias____6815____auto____ = new cljs.core.Symbol(null, "alias__6815__auto__", "alias__6815__auto__", -2030356438, null);
 cljs.core.cst$kw$absolute_DASH_redirects = new cljs.core.Keyword(null, "absolute-redirects", "absolute-redirects", 1651530890);
 cljs.core.cst$sym$replicant$protocols_SLASH_create_DASH_element = new cljs.core.Symbol("replicant.protocols", "create-element", "replicant.protocols/create-element", -546701046, null);
 cljs.core.cst$kw$replicant_SLASH_life_DASH_cycle = new cljs.core.Keyword("replicant", "life-cycle", "replicant/life-cycle", 1802888458);
 cljs.core.cst$kw$done_QMARK_ = new cljs.core.Keyword(null, "done?", "done?", -1847001718);
-cljs.core.cst$sym$headers____7082____auto____ = new cljs.core.Symbol(null, "headers__7082__auto__", "headers__7082__auto__", -1654506038, null);
 cljs.core.cst$kw$file = new cljs.core.Keyword(null, "file", "file", -1269645878);
 cljs.core.cst$kw$flex_DASH_order = new cljs.core.Keyword(null, "flex-order", "flex-order", -621251126);
+cljs.core.cst$sym$fd____7098____auto____ = new cljs.core.Symbol(null, "fd__7098__auto__", "fd__7098__auto__", -1589005814, null);
 cljs.core.cst$kw$default_DASH_value = new cljs.core.Keyword(null, "default-value", "default-value", 232220170);
+cljs.core.cst$sym$set_DASH_cookies____6857____auto____ = new cljs.core.Symbol(null, "set-cookies__6857__auto__", "set-cookies__6857__auto__", -2113449398, null);
 cljs.core.cst$kw$username = new cljs.core.Keyword(null, "username", "username", 1605666410);
 cljs.core.cst$sym$cljs$core_SLASH_ExceptionInfo = new cljs.core.Symbol("cljs.core", "ExceptionInfo", "cljs.core/ExceptionInfo", 701839050, null);
 cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str = new cljs.core.Symbol("cljs.core", "pr-str", "cljs.core/pr-str", -552799478, null);
 cljs.core.cst$kw$div$columns$is_DASH_centered = new cljs.core.Keyword(null, "div.columns.is-centered", "div.columns.is-centered", -583364726);
 cljs.core.cst$kw$flex_DASH_grow = new cljs.core.Keyword(null, "flex-grow", "flex-grow", 1865160747);
-cljs.core.cst$sym$http____6838____auto____ = new cljs.core.Symbol(null, "http__6838__auto__", "http__6838__auto__", 1385887851, null);
+cljs.core.cst$kw$div$field$is_DASH_grouped$is_DASH_grouped_DASH_multiline = new cljs.core.Keyword(null, "div.field.is-grouped.is-grouped-multiline", "div.field.is-grouped.is-grouped-multiline", -2028572565);
 cljs.core.cst$kw$params = new cljs.core.Keyword(null, "params", "params", 710516235);
 cljs.core.cst$kw$flash = new cljs.core.Keyword(null, "flash", "flash", 934660619);
 cljs.core.cst$kw$replicant_SLASH_key = new cljs.core.Keyword("replicant", "key", "replicant/key", -670108117);
@@ -27555,13 +27566,19 @@ cljs.core.cst$sym$Request$ = new cljs.core.Symbol(null, "Request.", "Request.", 
 cljs.core.cst$kw$div$control = new cljs.core.Keyword(null, "div.control", "div.control", 1957951243);
 cljs.core.cst$kw$on_DASH_alias_DASH_exception = new cljs.core.Keyword(null, "on-alias-exception", "on-alias-exception", 1142240043);
 cljs.core.cst$kw$fn_DASH_name = new cljs.core.Keyword(null, "fn-name", "fn-name", -766594004);
+cljs.core.cst$sym$url____6848____auto____ = new cljs.core.Symbol(null, "url__6848__auto__", "url__6848__auto__", 1572294700, null);
 cljs.core.cst$kw$val = new cljs.core.Keyword(null, "val", "val", 128701612);
+cljs.core.cst$sym$response____6855____auto____ = new cljs.core.Symbol(null, "response__6855__auto__", "response__6855__auto__", -1115250452, null);
 cljs.core.cst$kw$stroke_DASH_dashoffset = new cljs.core.Keyword(null, "stroke-dashoffset", "stroke-dashoffset", -782320340);
+cljs.core.cst$sym$alias____7048____auto____ = new cljs.core.Symbol(null, "alias__7048__auto__", "alias__7048__auto__", 697128236, null);
+cljs.core.cst$kw$h2$title$is_DASH_5 = new cljs.core.Keyword(null, "h2.title.is-5", "h2.title.is-5", 1452630316);
+cljs.core.cst$sym$req____6842____auto____ = new cljs.core.Symbol(null, "req__6842__auto__", "req__6842__auto__", -652850836, null);
 cljs.core.cst$kw$phase = new cljs.core.Keyword(null, "phase", "phase", 575722892);
 cljs.core.cst$kw$type = new cljs.core.Keyword(null, "type", "type", 1174270348);
-cljs.core.cst$sym$pt____6779____auto____ = new cljs.core.Symbol(null, "pt__6779__auto__", "pt__6779__auto__", 2118621644, null);
 cljs.core.cst$kw$async_DASH_handler = new cljs.core.Keyword(null, "async-handler", "async-handler", 1050366412);
 cljs.core.cst$kw$etag = new cljs.core.Keyword(null, "etag", "etag", -329255476);
+cljs.core.cst$sym$init____6850____auto____ = new cljs.core.Symbol(null, "init__6850__auto__", "init__6850__auto__", 1097217580, null);
+cljs.core.cst$sym$listen_DASH_opts____6860____auto____ = new cljs.core.Symbol(null, "listen-opts__6860__auto__", "listen-opts__6860__auto__", 180250156, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_all_DASH_children = new cljs.core.Symbol("replicant.protocols", "remove-all-children", "replicant.protocols/remove-all-children", 1448729164, null);
 cljs.core.cst$kw$if_DASH_none_DASH_match = new cljs.core.Keyword(null, "if-none-match", "if-none-match", -1406592404);
 cljs.core.cst$kw$delete = new cljs.core.Keyword(null, "delete", "delete", -1768633620);
@@ -27569,34 +27586,35 @@ cljs.core.cst$kw$flex = new cljs.core.Keyword(null, "flex", "flex", -1425124628)
 cljs.core.cst$sym$$append = new cljs.core.Symbol(null, ".append", ".append", 1595439852, null);
 cljs.core.cst$sym$do = new cljs.core.Symbol(null, "do", "do", 1686842252, null);
 cljs.core.cst$kw$read_DASH_token = new cljs.core.Keyword(null, "read-token", "read-token", -1247906900);
+cljs.core.cst$sym$deno_DASH_env____6829____auto____ = new cljs.core.Symbol(null, "deno-env__6829__auto__", "deno-env__6829__auto__", -1322951732, null);
 cljs.core.cst$kw$replicant_SLASH_mounting = new cljs.core.Keyword("replicant", "mounting", "replicant/mounting", -699756499);
 cljs.core.cst$kw$input$input = new cljs.core.Keyword(null, "input.input", "input.input", -850828147);
+cljs.core.cst$sym$headers____6845____auto____ = new cljs.core.Symbol(null, "headers__6845__auto__", "headers__6845__auto__", 221418669, null);
 cljs.core.cst$sym$Error$ = new cljs.core.Symbol(null, "Error.", "Error.", 750652653, null);
 cljs.core.cst$kw$xmlns = new cljs.core.Keyword(null, "xmlns", "xmlns", -1862095571);
+cljs.core.cst$kw$div$box$request_DASH_snapshot = new cljs.core.Keyword(null, "div.box.request-snapshot", "div.box.request-snapshot", 419743021);
 cljs.core.cst$kw$hostname = new cljs.core.Keyword(null, "hostname", "hostname", 2105669933);
+cljs.core.cst$sym$headers____7084____auto____ = new cljs.core.Symbol(null, "headers__7084__auto__", "headers__7084__auto__", 1387219309, null);
 cljs.core.cst$kw$fallback_DASH_impl = new cljs.core.Keyword(null, "fallback-impl", "fallback-impl", -1501286995);
 cljs.core.cst$sym$cljs$core_SLASH_contains_QMARK_ = new cljs.core.Symbol("cljs.core", "contains?", "cljs.core/contains?", -976526835, null);
 cljs.core.cst$sym$globalThis = new cljs.core.Symbol(null, "globalThis", "globalThis", -1006966259, null);
 cljs.core.cst$kw$replicant_SLASH_internal = new cljs.core.Keyword("replicant", "internal", "replicant/internal", -1504696787);
-cljs.core.cst$sym$e____6856____auto____ = new cljs.core.Symbol(null, "e__6856__auto__", "e__6856__auto__", -1712294355, null);
 cljs.core.cst$kw$keyword_DASH_fn = new cljs.core.Keyword(null, "keyword-fn", "keyword-fn", -64566675);
 cljs.core.cst$kw$replicant$life_DASH_cycle_SLASH_update = new cljs.core.Keyword("replicant.life-cycle", "update", "replicant.life-cycle/update", -439589235);
 cljs.core.cst$kw$replicant_SLASH_on_DASH_render = new cljs.core.Keyword("replicant", "on-render", "replicant/on-render", 1674377901);
 cljs.core.cst$sym$cljs$core_SLASH_map_QMARK_ = new cljs.core.Symbol("cljs.core", "map?", "cljs.core/map?", -1390345523, null);
 cljs.core.cst$sym$cljs$core_SLASH_reset_BANG_ = new cljs.core.Symbol("cljs.core", "reset!", "cljs.core/reset!", 657404621, null);
+cljs.core.cst$kw$todo_DASH_density = new cljs.core.Keyword(null, "todo-density", "todo-density", 2003226381);
 cljs.core.cst$sym$replicant$protocols_SLASH_next_DASH_frame = new cljs.core.Symbol("replicant.protocols", "next-frame", "replicant.protocols/next-frame", -1979859155, null);
 cljs.core.cst$kw$div$columns$is_DASH_mobile$todo_DASH_row = new cljs.core.Keyword(null, "div.columns.is-mobile.todo-row", "div.columns.is-mobile.todo-row", -806363347);
-cljs.core.cst$sym$attr____7421____auto____ = new cljs.core.Symbol(null, "attr__7421__auto__", "attr__7421__auto__", 188728141, null);
 cljs.core.cst$kw$flush_DASH_on_DASH_newline = new cljs.core.Keyword(null, "flush-on-newline", "flush-on-newline", -151457939);
-cljs.core.cst$sym$alias____9140____auto____ = new cljs.core.Symbol(null, "alias__9140__auto__", "alias__9140__auto__", -771592307, null);
 cljs.core.cst$kw$replicant_SLASH_details = new cljs.core.Keyword("replicant", "details", "replicant/details", -1846218867);
-cljs.core.cst$sym$text____7131____auto____ = new cljs.core.Symbol(null, "text__7131__auto__", "text__7131__auto__", -911516755, null);
+cljs.core.cst$sym$pt____6592____auto____ = new cljs.core.Symbol(null, "pt__6592__auto__", "pt__6592__auto__", 1613722541, null);
 cljs.core.cst$sym$cljs$core_SLASH_conj = new cljs.core.Symbol("cljs.core", "conj", "cljs.core/conj", -460750931, null);
 cljs.core.cst$kw$ssl_DASH_redirect_QMARK_ = new cljs.core.Keyword(null, "ssl-redirect?", "ssl-redirect?", 1866846157);
 cljs.core.cst$kw$reuse_DASH_port = new cljs.core.Keyword(null, "reuse-port", "reuse-port", -1347956755);
-cljs.core.cst$sym$ctx____7040____auto____ = new cljs.core.Symbol(null, "ctx__7040__auto__", "ctx__7040__auto__", -1726941203, null);
+cljs.core.cst$sym$method____6846____auto____ = new cljs.core.Symbol(null, "method__6846__auto__", "method__6846__auto__", 83777517, null);
 cljs.core.cst$kw$div$container$is_DASH_max_DASH_desktop = new cljs.core.Keyword(null, "div.container.is-max-desktop", "div.container.is-max-desktop", -944363474);
-cljs.core.cst$sym$name____7418____auto____ = new cljs.core.Symbol(null, "name__7418__auto__", "name__7418__auto__", -1014905778, null);
 cljs.core.cst$kw$port = new cljs.core.Keyword(null, "port", "port", 1534937262);
 cljs.core.cst$kw$vdom = new cljs.core.Keyword(null, "vdom", "vdom", 953162958);
 cljs.core.cst$kw$no_DASH_test = new cljs.core.Keyword(null, "no-test", "no-test", -1679482642);
@@ -27606,25 +27624,26 @@ cljs.core.cst$sym$__ = new cljs.core.Symbol(null, "_", "_", -1201019570, null);
 cljs.core.cst$kw$button$button$is_DASH_small$is_DASH_danger$is_DASH_light = new cljs.core.Keyword(null, "button.button.is-small.is-danger.is-light", "button.button.is-small.is-danger.is-light", 56095086);
 cljs.core.cst$kw$on_DASH_listen = new cljs.core.Keyword(null, "on-listen", "on-listen", 1472185838);
 cljs.core.cst$kw$replicant_SLASH_move_DASH_node = new cljs.core.Keyword("replicant", "move-node", "replicant/move-node", -1189251602);
-cljs.core.cst$sym$k____6784____auto____ = new cljs.core.Symbol(null, "k__6784__auto__", "k__6784__auto__", -1788318162, null);
 cljs.core.cst$kw$replicant$assert_SLASH_default = new cljs.core.Keyword("replicant.assert", "default", "replicant.assert/default", -504441266);
 cljs.core.cst$sym$letfn_STAR_ = new cljs.core.Symbol(null, "letfn*", "letfn*", -110097810, null);
 cljs.core.cst$sym$cljs$core_SLASH_update = new cljs.core.Symbol("cljs.core", "update", "cljs.core/update", -908565906, null);
-cljs.core.cst$sym$server____6833____auto____ = new cljs.core.Symbol(null, "server__6833__auto__", "server__6833__auto__", -556337522, null);
 cljs.core.cst$sym$if = new cljs.core.Symbol(null, "if", "if", 1181717262, null);
 cljs.core.cst$sym$cljs$core_SLASH_run_BANG_ = new cljs.core.Symbol("cljs.core", "run!", "cljs.core/run!", -591566066, null);
 cljs.core.cst$sym$cljs$core_SLASH_with_DASH_meta = new cljs.core.Symbol("cljs.core", "with-meta", "cljs.core/with-meta", 749126446, null);
 cljs.core.cst$kw$hiccup = new cljs.core.Keyword(null, "hiccup", "hiccup", 1218876238);
+cljs.core.cst$sym$$toLowerCase = new cljs.core.Symbol(null, ".toLowerCase", ".toLowerCase", -1056889938, null);
+cljs.core.cst$sym$attr____7431____auto____ = new cljs.core.Symbol(null, "attr__7431__auto__", "attr__7431__auto__", -1483324466, null);
 cljs.core.cst$kw$flex_DASH_shrink = new cljs.core.Keyword(null, "flex-shrink", "flex-shrink", 1481146383);
 cljs.core.cst$sym$$forEach = new cljs.core.Symbol(null, ".forEach", ".forEach", 1742223407, null);
 cljs.core.cst$sym$$listen = new cljs.core.Symbol(null, ".listen", ".listen", 335744143, null);
 cljs.core.cst$kw$charset = new cljs.core.Keyword(null, "charset", "charset", -1063822193);
 cljs.core.cst$sym$new = new cljs.core.Symbol(null, "new", "new", -444906321, null);
 cljs.core.cst$kw$last_DASH_modified = new cljs.core.Keyword(null, "last-modified", "last-modified", 1593411791);
+cljs.core.cst$sym$class____7457____auto____ = new cljs.core.Symbol(null, "class__7457__auto__", "class__7457__auto__", 1965801679, null);
 cljs.core.cst$kw$stop_DASH_opacity = new cljs.core.Keyword(null, "stop-opacity", "stop-opacity", -2018003729);
+cljs.core.cst$sym$name____7428____auto____ = new cljs.core.Symbol(null, "name__7428__auto__", "name__7428__auto__", -1866051345, null);
 cljs.core.cst$kw$className = new cljs.core.Keyword(null, "className", "className", -1983287057);
 cljs.core.cst$kw$descendants = new cljs.core.Keyword(null, "descendants", "descendants", 1824886031);
-cljs.core.cst$sym$hh____6813____auto____ = new cljs.core.Symbol(null, "hh__6813__auto__", "hh__6813__auto__", 1299799343, null);
 cljs.core.cst$kw$replicant_SLASH_updated_DASH_attrs = new cljs.core.Keyword("replicant", "updated-attrs", "replicant/updated-attrs", 295362895);
 cljs.core.cst$kw$renderer = new cljs.core.Keyword(null, "renderer", "renderer", 336841071);
 cljs.core.cst$sym$ns = new cljs.core.Symbol(null, "ns", "ns", 2082130287, null);
@@ -27632,73 +27651,73 @@ cljs.core.cst$kw$size = new cljs.core.Keyword(null, "size", "size", 1098693007);
 cljs.core.cst$kw$title = new cljs.core.Keyword(null, "title", "title", 636505583);
 cljs.core.cst$sym$replicant$protocols_SLASH_remember = new cljs.core.Symbol("replicant.protocols", "remember", "replicant.protocols/remember", 1562758639, null);
 cljs.core.cst$sym$replicant$assert_SLASH_add_DASH_reporter = new cljs.core.Symbol("replicant.assert", "add-reporter", "replicant.assert/add-reporter", 843910703, null);
-cljs.core.cst$sym$headers____6844____auto____ = new cljs.core.Symbol(null, "headers__6844__auto__", "headers__6844__auto__", 1802029615, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_set_DASH_style = new cljs.core.Symbol("replicant.protocols", "set-style", "replicant.protocols/set-style", 1371207247, null);
 cljs.core.cst$sym$cljs$core_SLASH_fn_QMARK_ = new cljs.core.Symbol("cljs.core", "fn?", "cljs.core/fn?", 71876239, null);
 cljs.core.cst$kw$headers = new cljs.core.Keyword(null, "headers", "headers", -835030129);
 cljs.core.cst$kw$orphans = new cljs.core.Keyword(null, "orphans", "orphans", 1913357231);
+cljs.core.cst$sym$text____6607____auto____ = new cljs.core.Symbol(null, "text__6607__auto__", "text__6607__auto__", -38706257, null);
+cljs.core.cst$sym$opts____6834____auto____ = new cljs.core.Symbol(null, "opts__6834__auto__", "opts__6834__auto__", 1871282127, null);
+cljs.core.cst$kw$note = new cljs.core.Keyword(null, "note", "note", 1426297904);
 cljs.core.cst$kw$replicant_SLASH_memory = new cljs.core.Keyword("replicant", "memory", "replicant/memory", -1882688464);
 cljs.core.cst$kw$server_DASH_port = new cljs.core.Keyword(null, "server-port", "server-port", 663745648);
+cljs.core.cst$sym$pt____6774____auto____ = new cljs.core.Symbol(null, "pt__6774__auto__", "pt__6774__auto__", 1316814992, null);
 cljs.core.cst$sym$$split = new cljs.core.Symbol(null, ".split", ".split", 1261516944, null);
 cljs.core.cst$kw$error_DASH_handler = new cljs.core.Keyword(null, "error-handler", "error-handler", -484945776);
 cljs.core.cst$kw$ancestors = new cljs.core.Keyword(null, "ancestors", "ancestors", -776045424);
 cljs.core.cst$kw$expires = new cljs.core.Keyword(null, "expires", "expires", 1393008816);
 cljs.core.cst$kw$button$button$is_DASH_primary = new cljs.core.Keyword(null, "button.button.is-primary", "button.button.is-primary", -883309392);
-cljs.core.cst$sym$text____7132____auto____ = new cljs.core.Symbol(null, "text__7132__auto__", "text__7132__auto__", -376684272, null);
+cljs.core.cst$sym$pt____6775____auto____ = new cljs.core.Symbol(null, "pt__6775__auto__", "pt__6775__auto__", 621401360, null);
+cljs.core.cst$sym$fd____7049____auto____ = new cljs.core.Symbol(null, "fd__7049__auto__", "fd__7049__auto__", 790181200, null);
+cljs.core.cst$kw$div$message_DASH_header = new cljs.core.Keyword(null, "div.message-header", "div.message-header", 912962896);
 cljs.core.cst$kw$style = new cljs.core.Keyword(null, "style", "style", -496642736);
+cljs.core.cst$kw$theme = new cljs.core.Keyword(null, "theme", "theme", -1247880880);
 cljs.core.cst$kw$hsts_QMARK_ = new cljs.core.Keyword(null, "hsts?", "hsts?", -1339611760);
 cljs.core.cst$kw$replicant_SLASH_dom_DASH_event = new cljs.core.Keyword("replicant", "dom-event", "replicant/dom-event", -1613182512);
 cljs.core.cst$sym$replicant$alias_SLASH_aliasfn = new cljs.core.Symbol("replicant.alias", "aliasfn", "replicant.alias/aliasfn", 636525104, null);
-cljs.core.cst$sym$alias____9191____auto____ = new cljs.core.Symbol(null, "alias__9191__auto__", "alias__9191__auto__", 1492759248, null);
 cljs.core.cst$kw$div = new cljs.core.Keyword(null, "div", "div", 1057191632);
+cljs.core.cst$kw$option = new cljs.core.Keyword(null, "option", "option", 65132272);
 cljs.core.cst$kw$readably = new cljs.core.Keyword(null, "readably", "readably", 1129599760);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp = new cljs.core.Symbol("replicant.hiccup-headers", "sexp", "replicant.hiccup-headers/sexp", 1005814672, null);
 cljs.core.cst$sym$$push = new cljs.core.Symbol(null, ".push", ".push", -1497267248, null);
-cljs.core.cst$sym$f____9190____auto____ = new cljs.core.Symbol(null, "f__9190__auto__", "f__9190__auto__", -75289583, null);
 cljs.core.cst$kw$more_DASH_marker = new cljs.core.Keyword(null, "more-marker", "more-marker", -14717935);
 cljs.core.cst$sym$cljs$core_SLASH_let = new cljs.core.Symbol("cljs.core", "let", "cljs.core/let", -308701135, null);
-cljs.core.cst$sym$ctx____6783____auto____ = new cljs.core.Symbol(null, "ctx__6783__auto__", "ctx__6783__auto__", 1540706353, null);
 cljs.core.cst$kw$dispatch = new cljs.core.Keyword(null, "dispatch", "dispatch", 1319337009);
 cljs.core.cst$kw$replicant_SLASH_unmounting = new cljs.core.Keyword("replicant", "unmounting", "replicant/unmounting", 1629433009);
-cljs.core.cst$sym$text____6788____auto____ = new cljs.core.Symbol(null, "text__6788__auto__", "text__6788__auto__", -1060069135, null);
-cljs.core.cst$sym$res____6842____auto____ = new cljs.core.Symbol(null, "res__6842__auto__", "res__6842__auto__", 19308817, null);
 cljs.core.cst$kw$innerHTML = new cljs.core.Keyword(null, "innerHTML", "innerHTML", -1856751343);
 cljs.core.cst$sym$alias____6621____auto____ = new cljs.core.Symbol(null, "alias__6621__auto__", "alias__6621__auto__", -596060879, null);
 cljs.core.cst$kw$head = new cljs.core.Keyword(null, "head", "head", -771383919);
 cljs.core.cst$sym$replicant$assert_SLASH_error = new cljs.core.Symbol("replicant.assert", "error", "replicant.assert/error", -1901066831, null);
 cljs.core.cst$kw$header$level$mb_DASH_6 = new cljs.core.Keyword(null, "header.level.mb-6", "header.level.mb-6", 732124689);
-cljs.core.cst$sym$url____6847____auto____ = new cljs.core.Symbol(null, "url__6847__auto__", "url__6847__auto__", -2041502159, null);
 cljs.core.cst$sym$cljs$core_SLASH_doto = new cljs.core.Symbol("cljs.core", "doto", "cljs.core/doto", -1284816239, null);
 cljs.core.cst$kw$filename = new cljs.core.Keyword(null, "filename", "filename", -1428840783);
-cljs.core.cst$sym$pt____6780____auto____ = new cljs.core.Symbol(null, "pt__6780__auto__", "pt__6780__auto__", -1973589231, null);
+cljs.core.cst$kw$warning = new cljs.core.Keyword(null, "warning", "warning", -1685650671);
 cljs.core.cst$kw$section$section = new cljs.core.Keyword(null, "section.section", "section.section", -416807119);
 cljs.core.cst$kw$host = new cljs.core.Keyword(null, "host", "host", -1558485167);
 cljs.core.cst$kw$for = new cljs.core.Keyword(null, "for", "for", -1323786319);
-cljs.core.cst$sym$fd____7094____auto____ = new cljs.core.Symbol(null, "fd__7094__auto__", "fd__7094__auto__", 2135489457, null);
 cljs.core.cst$kw$widows = new cljs.core.Keyword(null, "widows", "widows", 1989591025);
 cljs.core.cst$sym$cljs$core_SLASH_cond = new cljs.core.Symbol("cljs.core", "cond", "cljs.core/cond", 2005388338, null);
 cljs.core.cst$kw$alias = new cljs.core.Keyword(null, "alias", "alias", -2039751630);
 cljs.core.cst$kw$div$notification$is_DASH_light = new cljs.core.Keyword(null, "div.notification.is-light", "div.notification.is-light", 1626494098);
+cljs.core.cst$sym$v____6788____auto____ = new cljs.core.Symbol(null, "v__6788__auto__", "v__6788__auto__", -273988206, null);
 cljs.core.cst$kw$div$column = new cljs.core.Keyword(null, "div.column", "div.column", -1380853326);
-cljs.core.cst$sym$node_DASH_headers____6843____auto____ = new cljs.core.Symbol(null, "node-headers__6843__auto__", "node-headers__6843__auto__", -1885594158, null);
 cljs.core.cst$sym$deftype_STAR_ = new cljs.core.Symbol(null, "deftype*", "deftype*", 962659890, null);
 cljs.core.cst$kw$event = new cljs.core.Keyword(null, "event", "event", 301435442);
 cljs.core.cst$sym$let_STAR_ = new cljs.core.Symbol(null, "let*", "let*", 1920721458, null);
-cljs.core.cst$sym$text____6789____auto____ = new cljs.core.Symbol(null, "text__6789__auto__", "text__6789__auto__", 1824468594, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_append_DASH_child = new cljs.core.Symbol("replicant.protocols", "append-child", "replicant.protocols/append-child", -871268718, null);
 cljs.core.cst$sym$replicant$asserts_SLASH_has_DASH_bad_DASH_conditional_DASH_attrs_QMARK_ = new cljs.core.Symbol("replicant.asserts", "has-bad-conditional-attrs?", "replicant.asserts/has-bad-conditional-attrs?", -1661216974, null);
+cljs.core.cst$sym$headers____7086____auto____ = new cljs.core.Symbol(null, "headers__7086__auto__", "headers__7086__auto__", -998269102, null);
+cljs.core.cst$kw$div$column$is_DASH_one_DASH_quarter = new cljs.core.Keyword(null, "div.column.is-one-quarter", "div.column.is-one-quarter", -204193934);
+cljs.core.cst$kw$success = new cljs.core.Keyword(null, "success", "success", 1890645906);
 cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_class = new cljs.core.Symbol("replicant.protocols", "remove-class", "replicant.protocols/remove-class", -246602798, null);
 cljs.core.cst$kw$z_DASH_index = new cljs.core.Keyword(null, "z-index", "z-index", 1892827090);
 cljs.core.cst$sym$js_STAR_ = new cljs.core.Symbol(null, "js*", "js*", -1134233646, null);
 cljs.core.cst$kw$content_DASH_length = new cljs.core.Keyword(null, "content-length", "content-length", 441319507);
-cljs.core.cst$sym$k____6775____auto____ = new cljs.core.Symbol(null, "k__6775__auto__", "k__6775__auto__", -379666317, null);
+cljs.core.cst$sym$builtin____6838____auto____ = new cljs.core.Symbol(null, "builtin__6838__auto__", "builtin__6838__auto__", -756873133, null);
 cljs.core.cst$kw$replicant_SLASH_dispatch = new cljs.core.Keyword("replicant", "dispatch", "replicant/dispatch", 2079272115);
-cljs.core.cst$sym$headers____7146____auto____ = new cljs.core.Symbol(null, "headers__7146__auto__", "headers__7146__auto__", -562001677, null);
 cljs.core.cst$kw$form_DASH_params = new cljs.core.Keyword(null, "form-params", "form-params", 1884296467);
 cljs.core.cst$kw$stroke_DASH_width = new cljs.core.Keyword(null, "stroke-width", "stroke-width", 716836435);
 cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_node = new cljs.core.Symbol("replicant.assert", "current-node", "replicant.assert/current-node", 1498009235, null);
 cljs.core.cst$sym$fn_STAR_ = new cljs.core.Symbol(null, "fn*", "fn*", -752876845, null);
-cljs.core.cst$sym$response____6854____auto____ = new cljs.core.Symbol(null, "response__6854__auto__", "response__6854__auto__", -1646045485, null);
 cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let = new cljs.core.Symbol("cljs.core", "when-let", "cljs.core/when-let", -2049838349, null);
 cljs.core.cst$kw$cookie = new cljs.core.Keyword(null, "cookie", "cookie", 1772025619);
 cljs.core.cst$sym$recur = new cljs.core.Symbol(null, "recur", "recur", 1202958259, null);
@@ -27706,9 +27725,9 @@ cljs.core.cst$kw$session_SLASH_key = new cljs.core.Keyword("session", "key", "se
 cljs.core.cst$kw$root = new cljs.core.Keyword(null, "root", "root", -448657453);
 cljs.core.cst$kw$status = new cljs.core.Keyword(null, "status", "status", -1997798413);
 cljs.core.cst$kw$div$level_DASH_left = new cljs.core.Keyword(null, "div.level-left", "div.level-left", 1700565044);
+cljs.core.cst$sym$headers____7149____auto____ = new cljs.core.Symbol(null, "headers__7149__auto__", "headers__7149__auto__", 1502265396, null);
 cljs.core.cst$sym$k____6717____auto____ = new cljs.core.Symbol(null, "k__6717__auto__", "k__6717__auto__", -2014200716, null);
 cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_ = new cljs.core.Symbol("cljs.core", "cond-\x3e", "cljs.core/cond-\x3e", -113941356, null);
-cljs.core.cst$sym$g____6824____auto____ = new cljs.core.Symbol(null, "g__6824__auto__", "g__6824__auto__", 1859526836, null);
 cljs.core.cst$kw$replicant$trigger_SLASH_life_DASH_cycle = new cljs.core.Keyword("replicant.trigger", "life-cycle", "replicant.trigger/life-cycle", -205660972);
 cljs.core.cst$kw$print_DASH_length = new cljs.core.Keyword(null, "print-length", "print-length", 1931866356);
 cljs.core.cst$kw$link = new cljs.core.Keyword(null, "link", "link", -1769163468);
@@ -27717,7 +27736,6 @@ cljs.core.cst$kw$x_DASH_frame_DASH_options = new cljs.core.Keyword(null, "x-fram
 cljs.core.cst$kw$replicant_SLASH_alias = new cljs.core.Keyword("replicant", "alias", "replicant/alias", 563629492);
 cljs.core.cst$kw$replicant_SLASH_node = new cljs.core.Keyword("replicant", "node", "replicant/node", 1306451380);
 cljs.core.cst$kw$opacity = new cljs.core.Keyword(null, "opacity", "opacity", 397153780);
-cljs.core.cst$sym$attr____7459____auto____ = new cljs.core.Symbol(null, "attr__7459__auto__", "attr__7459__auto__", -1376971244, null);
 cljs.core.cst$kw$id = new cljs.core.Keyword(null, "id", "id", -1388402092);
 cljs.core.cst$kw$button$button$is_DASH_light = new cljs.core.Keyword(null, "button.button.is-light", "button.button.is-light", -1718089036);
 cljs.core.cst$kw$if_DASH_modified_DASH_since = new cljs.core.Keyword(null, "if-modified-since", "if-modified-since", 203822772);
@@ -27727,16 +27745,18 @@ cljs.core.cst$sym$$setHeader = new cljs.core.Symbol(null, ".setHeader", ".setHea
 cljs.core.cst$kw$ok = new cljs.core.Keyword(null, "ok", "ok", 967785236);
 cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find = new cljs.core.Symbol("cljs.core", "re-find", "cljs.core/re-find", 745076500, null);
 cljs.core.cst$kw$autofocus = new cljs.core.Keyword(null, "autofocus", "autofocus", -712814732);
-cljs.core.cst$sym$res____9125____auto____ = new cljs.core.Symbol(null, "res__9125__auto__", "res__9125__auto__", 647742549, null);
 cljs.core.cst$kw$cljs$core_SLASH_halt = new cljs.core.Keyword("cljs.core", "halt", "cljs.core/halt", -1049036715);
 cljs.core.cst$kw$div$notification$is_DASH_info$is_DASH_light = new cljs.core.Keyword(null, "div.notification.is-info.is-light", "div.notification.is-info.is-light", 1361586325);
 cljs.core.cst$sym$replicant$asserts_SLASH_convey_DASH_bad_DASH_conditional_DASH_attributes = new cljs.core.Symbol("replicant.asserts", "convey-bad-conditional-attributes", "replicant.asserts/convey-bad-conditional-attributes", -1766355755, null);
 cljs.core.cst$sym$Headers$ = new cljs.core.Symbol(null, "Headers.", "Headers.", 2088682709, null);
 cljs.core.cst$kw$replicant_SLASH_updated_DASH_children = new cljs.core.Keyword("replicant", "updated-children", "replicant/updated-children", 2041302229);
 cljs.core.cst$kw$x_DASH_forwarded_DASH_host = new cljs.core.Keyword(null, "x-forwarded-host", "x-forwarded-host", -1569486603);
+cljs.core.cst$sym$event____7459____auto____ = new cljs.core.Symbol(null, "event__7459__auto__", "event__7459__auto__", -1797852939, null);
+cljs.core.cst$kw$last_DASH_upload = new cljs.core.Keyword(null, "last-upload", "last-upload", 576609621);
 cljs.core.cst$sym$$indexOf = new cljs.core.Symbol(null, ".indexOf", ".indexOf", -1910538923, null);
 cljs.core.cst$kw$div$column$is_DASH_half_DASH_desktop$is_DASH_two_DASH_thirds_DASH_tablet = new cljs.core.Keyword(null, "div.column.is-half-desktop.is-two-thirds-tablet", "div.column.is-half-desktop.is-two-thirds-tablet", 1653559765);
-cljs.core.cst$sym$v____6852____auto____ = new cljs.core.Symbol(null, "v__6852__auto__", "v__6852__auto__", -2080058859, null);
+cljs.core.cst$kw$checked = new cljs.core.Keyword(null, "checked", "checked", -50955819);
+cljs.core.cst$sym$ctx____6789____auto____ = new cljs.core.Symbol(null, "ctx__6789__auto__", "ctx__6789__auto__", -1723727307, null);
 cljs.core.cst$kw$parents = new cljs.core.Keyword(null, "parents", "parents", -2027538891);
 cljs.core.cst$sym$hh____6620____auto____ = new cljs.core.Symbol(null, "hh__6620__auto__", "hh__6620__auto__", 376693301, null);
 cljs.core.cst$sym$cnt = new cljs.core.Symbol(null, "cnt", "cnt", 1924510325, null);
@@ -27746,57 +27766,67 @@ cljs.core.cst$kw$responses = new cljs.core.Keyword(null, "responses", "responses
 cljs.core.cst$kw$initk = new cljs.core.Keyword(null, "initk", "initk", -1693342987);
 cljs.core.cst$sym$cljs$core_SLASH_nil_QMARK_ = new cljs.core.Symbol("cljs.core", "nil?", "cljs.core/nil?", 945071861, null);
 cljs.core.cst$sym$ctx____6719____auto____ = new cljs.core.Symbol(null, "ctx__6719__auto__", "ctx__6719__auto__", 110968597, null);
+cljs.core.cst$sym$args____9185____auto____ = new cljs.core.Symbol(null, "args__9185__auto__", "args__9185__auto__", 557700917, null);
 cljs.core.cst$kw$xss_DASH_protection = new cljs.core.Keyword(null, "xss-protection", "xss-protection", 2105379669);
 cljs.core.cst$sym$$catch = new cljs.core.Symbol(null, ".catch", ".catch", -642269355, null);
 cljs.core.cst$kw$app = new cljs.core.Keyword(null, "app", "app", -560961707);
 cljs.core.cst$kw$ssl_DASH_redirect = new cljs.core.Keyword(null, "ssl-redirect", "ssl-redirect", 985122709);
+cljs.core.cst$kw$last_DASH_filters = new cljs.core.Keyword(null, "last-filters", "last-filters", 1801684917);
 cljs.core.cst$sym$cljs$core_SLASH_nth = new cljs.core.Symbol("cljs.core", "nth", "cljs.core/nth", 1961052085, null);
 cljs.core.cst$kw$anti_DASH_forgery = new cljs.core.Keyword(null, "anti-forgery", "anti-forgery", -2121760746);
 cljs.core.cst$sym$cljs$core_SLASH_meta = new cljs.core.Symbol("cljs.core", "meta", "cljs.core/meta", -748218346, null);
+cljs.core.cst$sym$attr____7469____auto____ = new cljs.core.Symbol(null, "attr__7469__auto__", "attr__7469__auto__", -1881230250, null);
+cljs.core.cst$sym$process_DASH_env____6830____auto____ = new cljs.core.Symbol(null, "process-env__6830__auto__", "process-env__6830__auto__", 652181622, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_attribute = new cljs.core.Symbol("replicant.protocols", "remove-attribute", "replicant.protocols/remove-attribute", 1352379510, null);
 cljs.core.cst$kw$default_DASH_charset = new cljs.core.Keyword(null, "default-charset", "default-charset", -1183575786);
 cljs.core.cst$sym$cljs$core_SLASH_fn = new cljs.core.Symbol("cljs.core", "fn", "cljs.core/fn", -1065745098, null);
+cljs.core.cst$kw$info = new cljs.core.Keyword(null, "info", "info", -317069002);
 cljs.core.cst$sym$headers____6613____auto____ = new cljs.core.Symbol(null, "headers__6613__auto__", "headers__6613__auto__", 17841526, null);
-cljs.core.cst$sym$fd____7050____auto____ = new cljs.core.Symbol(null, "fd__7050__auto__", "fd__7050__auto__", -142605866, null);
-cljs.core.cst$sym$f____9139____auto____ = new cljs.core.Symbol(null, "f__9139__auto__", "f__9139__auto__", 747051542, null);
+cljs.core.cst$kw$todo = new cljs.core.Keyword(null, "todo", "todo", -1046442570);
 cljs.core.cst$kw$box_DASH_ordinal_DASH_group = new cljs.core.Keyword(null, "box-ordinal-group", "box-ordinal-group", 201694774);
+cljs.core.cst$sym$text____6783____auto____ = new cljs.core.Symbol(null, "text__6783__auto__", "text__6783__auto__", 1092430422, null);
 cljs.core.cst$kw$div$field = new cljs.core.Keyword(null, "div.field", "div.field", 1089355414);
 cljs.core.cst$kw$button$button$is_DASH_primary$is_DASH_fullwidth = new cljs.core.Keyword(null, "button.button.is-primary.is-fullwidth", "button.button.is-primary.is-fullwidth", -375206250);
+cljs.core.cst$sym$stream____6840____auto____ = new cljs.core.Symbol(null, "stream__6840__auto__", "stream__6840__auto__", 1754105526, null);
 cljs.core.cst$sym$console_SLASH_error = new cljs.core.Symbol("console", "error", "console/error", 1872216790, null);
 cljs.core.cst$sym$ctx____6786____auto____ = new cljs.core.Symbol(null, "ctx__6786__auto__", "ctx__6786__auto__", 1155882710, null);
+cljs.core.cst$sym$event____7421____auto____ = new cljs.core.Symbol(null, "event__7421__auto__", "event__7421__auto__", -791935242, null);
 cljs.core.cst$sym$js_SLASH_console$log = new cljs.core.Symbol("js", "console.log", "js/console.log", -2005248266, null);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget = new cljs.core.Symbol("replicant.hiccup-headers", "hget", "replicant.hiccup-headers/hget", 872029974, null);
 cljs.core.cst$kw$query_DASH_params = new cljs.core.Keyword(null, "query-params", "query-params", 900640534);
 cljs.core.cst$kw$then = new cljs.core.Keyword(null, "then", "then", 460598070);
 cljs.core.cst$kw$content_DASH_type = new cljs.core.Keyword(null, "content-type", "content-type", -508222634);
+cljs.core.cst$sym$body____6858____auto____ = new cljs.core.Symbol(null, "body__6858__auto__", "body__6858__auto__", 599648086, null);
 cljs.core.cst$kw$session_DASH_cookie_DASH_attrs = new cljs.core.Keyword(null, "session-cookie-attrs", "session-cookie-attrs", -680857706);
 cljs.core.cst$sym$cljs$core_SLASH_println = new cljs.core.Symbol("cljs.core", "println", "cljs.core/println", -331834442, null);
 cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve = new cljs.core.Keyword("cljs.analyzer", "no-resolve", "cljs.analyzer/no-resolve", -1872351017);
 cljs.core.cst$kw$content_DASH_types = new cljs.core.Keyword(null, "content-types", "content-types", 1736685783);
+cljs.core.cst$sym$$call = new cljs.core.Symbol(null, ".call", ".call", 1496874263, null);
 cljs.core.cst$sym$Number = new cljs.core.Symbol(null, "Number", "Number", -508146185, null);
 cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case = new cljs.core.Symbol("clojure.string", "lower-case", "clojure.string/lower-case", 1816618551, null);
 cljs.core.cst$kw$replicant_SLASH_on_DASH_unmount = new cljs.core.Keyword("replicant", "on-unmount", "replicant/on-unmount", -1287095753);
+cljs.core.cst$sym$alias____6806____auto____ = new cljs.core.Symbol(null, "alias__6806__auto__", "alias__6806__auto__", -1063269769, null);
 cljs.core.cst$sym$cljs$core_SLASH_vec = new cljs.core.Symbol("cljs.core", "vec", "cljs.core/vec", 307622519, null);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_tag_DASH_name = new cljs.core.Symbol("replicant.hiccup-headers", "tag-name", "replicant.hiccup-headers/tag-name", 899692183, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_replace_DASH_child = new cljs.core.Symbol("replicant.protocols", "replace-child", "replicant.protocols/replace-child", 411778711, null);
 cljs.core.cst$kw$post = new cljs.core.Keyword(null, "post", "post", 269697687);
-cljs.core.cst$sym$k____6851____auto____ = new cljs.core.Symbol(null, "k__6851__auto__", "k__6851__auto__", 2060240695, null);
 cljs.core.cst$sym$replicant$console_DASH_logger_SLASH_report = new cljs.core.Symbol("replicant.console-logger", "report", "replicant.console-logger/report", 1551984535, null);
 cljs.core.cst$kw$hsts = new cljs.core.Keyword(null, "hsts", "hsts", 490537911);
-cljs.core.cst$sym$fn____7048____auto____ = new cljs.core.Symbol(null, "fn__7048__auto__", "fn__7048__auto__", 2024197111, null);
+cljs.core.cst$sym$text____6609____auto____ = new cljs.core.Symbol(null, "text__6609__auto__", "text__6609__auto__", -514047944, null);
+cljs.core.cst$sym$k____6787____auto____ = new cljs.core.Symbol(null, "k__6787__auto__", "k__6787__auto__", -456014632, null);
 cljs.core.cst$kw$label$label = new cljs.core.Keyword(null, "label.label", "label.label", 725637336);
 cljs.core.cst$sym$v____6718____auto____ = new cljs.core.Symbol(null, "v__6718__auto__", "v__6718__auto__", -1404037896, null);
 cljs.core.cst$kw$order = new cljs.core.Keyword(null, "order", "order", -1254677256);
+cljs.core.cst$sym$g____6828____auto____ = new cljs.core.Symbol(null, "g__6828__auto__", "g__6828__auto__", -1609835240, null);
 cljs.core.cst$kw$action = new cljs.core.Keyword(null, "action", "action", -811238024);
-cljs.core.cst$sym$v____6785____auto____ = new cljs.core.Symbol(null, "v__6785__auto__", "v__6785__auto__", -1643936360, null);
 cljs.core.cst$kw$x_DASH_csrf_DASH_token = new cljs.core.Keyword(null, "x-csrf-token", "x-csrf-token", -2072938056);
 cljs.core.cst$kw$error = new cljs.core.Keyword(null, "error", "error", -978969032);
 cljs.core.cst$kw$depth = new cljs.core.Keyword(null, "depth", "depth", 1768663640);
-cljs.core.cst$sym$alias____7093____auto____ = new cljs.core.Symbol(null, "alias__7093__auto__", "alias__7093__auto__", -17396008, null);
 cljs.core.cst$kw$on = new cljs.core.Keyword(null, "on", "on", 173873944);
 cljs.core.cst$sym$cljs$core_SLASH_not = new cljs.core.Symbol("cljs.core", "not", "cljs.core/not", 100665144, null);
 cljs.core.cst$kw$replicant$event_SLASH_wrap_DASH_handler_QMARK_ = new cljs.core.Keyword("replicant.event", "wrap-handler?", "replicant.event/wrap-handler?", 845655928);
 cljs.core.cst$sym$replicant$asserts_SLASH_camel_DASH__GT_dash = new cljs.core.Symbol("replicant.asserts", "camel-\x3edash", "replicant.asserts/camel-\x3edash", -398519400, null);
+cljs.core.cst$sym$alias____9151____auto____ = new cljs.core.Symbol(null, "alias__9151__auto__", "alias__9151__auto__", -1194926088, null);
 cljs.core.cst$kw$replicant_SLASH_trigger = new cljs.core.Keyword("replicant", "trigger", "replicant/trigger", 543650841);
 cljs.core.cst$kw$button$button$is_DASH_small = new cljs.core.Keyword(null, "button.button.is-small", "button.button.is-small", 368635001);
 cljs.core.cst$sym$$pipe = new cljs.core.Symbol(null, ".pipe", ".pipe", -1761596199, null);
@@ -27810,10 +27840,11 @@ cljs.core.cst$kw$uri = new cljs.core.Keyword(null, "uri", "uri", -774711847);
 cljs.core.cst$kw$form = new cljs.core.Keyword(null, "form", "form", -1624062471);
 cljs.core.cst$kw$missing = new cljs.core.Keyword(null, "missing", "missing", 362507769);
 cljs.core.cst$sym$cljs$core_SLASH_assoc = new cljs.core.Symbol("cljs.core", "assoc", "cljs.core/assoc", 322326297, null);
-cljs.core.cst$sym$deno_DASH_env____6825____auto____ = new cljs.core.Symbol(null, "deno-env__6825__auto__", "deno-env__6825__auto__", 766140217, null);
 cljs.core.cst$kw$domain = new cljs.core.Keyword(null, "domain", "domain", 1847214937);
+cljs.core.cst$sym$p1____6837____6854____auto____ = new cljs.core.Symbol(null, "p1__6837__6854__auto__", "p1__6837__6854__auto__", 252169049, null);
 cljs.core.cst$kw$input = new cljs.core.Keyword(null, "input", "input", 556931961);
 cljs.core.cst$kw$server_DASH_name = new cljs.core.Keyword(null, "server-name", "server-name", -1012104295);
+cljs.core.cst$sym$text____7075____auto____ = new cljs.core.Symbol(null, "text__7075__auto__", "text__7075__auto__", -961815591, null);
 cljs.core.cst$kw$anti_DASH_forgery_DASH_token = new cljs.core.Keyword(null, "anti-forgery-token", "anti-forgery-token", 806990841);
 cljs.core.cst$kw$ignore_DASH_missing_DASH_alias_QMARK_ = new cljs.core.Keyword(null, "ignore-missing-alias?", "ignore-missing-alias?", 1175846938);
 cljs.core.cst$sym$_DOT_ = new cljs.core.Symbol(null, ".", ".", 1975675962, null);
@@ -27824,14 +27855,15 @@ cljs.core.cst$kw$mutable = new cljs.core.Keyword(null, "mutable", "mutable", 875
 cljs.core.cst$kw$aliases = new cljs.core.Keyword(null, "aliases", "aliases", 1346874714);
 cljs.core.cst$sym$quote = new cljs.core.Symbol(null, "quote", "quote", 1377916282, null);
 cljs.core.cst$sym$replicant$vdom_SLASH_vget = new cljs.core.Symbol("replicant.vdom", "vget", "replicant.vdom/vget", 85815738, null);
-cljs.core.cst$sym$args____9175____auto____ = new cljs.core.Symbol(null, "args__9175__auto__", "args__9175__auto__", 1801691674, null);
 cljs.core.cst$sym$$fromWeb = new cljs.core.Symbol(null, ".fromWeb", ".fromWeb", 1786790426, null);
 cljs.core.cst$sym$Exception = new cljs.core.Symbol(null, "Exception", "Exception", 1902226074, null);
 cljs.core.cst$sym$alias____6626____auto____ = new cljs.core.Symbol(null, "alias__6626__auto__", "alias__6626__auto__", 432311994, null);
 cljs.core.cst$kw$multipart = new cljs.core.Keyword(null, "multipart", "multipart", 1158197946);
+cljs.core.cst$sym$alias____9202____auto____ = new cljs.core.Symbol(null, "alias__9202__auto__", "alias__9202__auto__", 421923610, null);
 cljs.core.cst$kw$data_DASH_replicant_DASH_exception = new cljs.core.Keyword(null, "data-replicant-exception", "data-replicant-exception", -506817638);
+cljs.core.cst$kw$prefs = new cljs.core.Keyword(null, "prefs", "prefs", -1818938470);
 cljs.core.cst$sym$cljs$core_SLASH_coll_QMARK_ = new cljs.core.Symbol("cljs.core", "coll?", "cljs.core/coll?", 1208130522, null);
-cljs.core.cst$sym$ctx____7090____auto____ = new cljs.core.Symbol(null, "ctx__7090__auto__", "ctx__7090__auto__", -1575277541, null);
+cljs.core.cst$sym$v____6853____auto____ = new cljs.core.Symbol(null, "v__6853__auto__", "v__6853__auto__", 832106555, null);
 cljs.core.cst$kw$vf = new cljs.core.Keyword(null, "vf", "vf", -321423269);
 cljs.core.cst$kw$query_DASH_string = new cljs.core.Keyword(null, "query-string", "query-string", -1018845061);
 cljs.core.cst$sym$cljs$core_SLASH_and = new cljs.core.Symbol("cljs.core", "and", "cljs.core/and", -6692549, null);
@@ -27841,7 +27873,8 @@ cljs.core.cst$sym$array_QMARK_ = new cljs.core.Symbol(null, "array?", "array?", 
 cljs.core.cst$kw$path_DASH_params = new cljs.core.Keyword(null, "path-params", "path-params", -48130597);
 cljs.core.cst$kw$body = new cljs.core.Keyword(null, "body", "body", -2049205669);
 cljs.core.cst$sym$$end = new cljs.core.Symbol(null, ".end", ".end", -1784718757, null);
-cljs.core.cst$sym$alias____6811____auto____ = new cljs.core.Symbol(null, "alias__6811__auto__", "alias__6811__auto__", 674680539, null);
+cljs.core.cst$sym$headers____7148____auto____ = new cljs.core.Symbol(null, "headers__7148__auto__", "headers__7148__auto__", -450816389, null);
+cljs.core.cst$kw$density = new cljs.core.Keyword(null, "density", "density", -1664155941);
 cljs.core.cst$kw$alt_DASH_impl = new cljs.core.Keyword(null, "alt-impl", "alt-impl", 670969595);
 cljs.core.cst$sym$Promise$resolve = new cljs.core.Symbol(null, "Promise.resolve", "Promise.resolve", -1251200197, null);
 cljs.core.cst$sym$js_SLASH_Array$ = new cljs.core.Symbol("js", "Array.", "js/Array.", 1235645307, null);
@@ -27850,6 +27883,7 @@ cljs.core.cst$kw$tempfile = new cljs.core.Keyword(null, "tempfile", "tempfile", 
 cljs.core.cst$kw$p$heading = new cljs.core.Keyword(null, "p.heading", "p.heading", 938013724);
 cljs.core.cst$kw$lax = new cljs.core.Keyword(null, "lax", "lax", 1673471068);
 cljs.core.cst$kw$secure = new cljs.core.Keyword(null, "secure", "secure", 176883900);
+cljs.core.cst$sym$res____9135____auto____ = new cljs.core.Symbol(null, "res__9135__auto__", "res__9135__auto__", 16629948, null);
 cljs.core.cst$kw$location = new cljs.core.Keyword(null, "location", "location", 1815599388);
 cljs.core.cst$kw$____anti_DASH_forgery_DASH_token = new cljs.core.Keyword(null, "__anti-forgery-token", "__anti-forgery-token", -1690887812);
 cljs.core.cst$sym$replicant$protocols_SLASH_on_DASH_transition_DASH_end = new cljs.core.Symbol("replicant.protocols", "on-transition-end", "replicant.protocols/on-transition-end", -1368016388, null);
@@ -27859,58 +27893,68 @@ cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_html_DASH_ns = new cljs.co
 cljs.core.cst$sym$cljs$core_SLASH_first = new cljs.core.Symbol("cljs.core", "first", "cljs.core/first", -752535972, null);
 cljs.core.cst$kw$handler = new cljs.core.Keyword(null, "handler", "handler", -195596612);
 cljs.core.cst$kw$keywordize_DASH_keys = new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 1310784252);
-cljs.core.cst$sym$server____6840____auto____ = new cljs.core.Symbol(null, "server__6840__auto__", "server__6840__auto__", 784868124, null);
-cljs.core.cst$sym$event____7411____auto____ = new cljs.core.Symbol(null, "event__7411__auto__", "event__7411__auto__", 714485596, null);
+cljs.core.cst$kw$div$message$is_DASH_link = new cljs.core.Keyword(null, "div.message.is-link", "div.message.is-link", 938677084);
 cljs.core.cst$kw$user = new cljs.core.Keyword(null, "user", "user", 1532431356);
 cljs.core.cst$kw$fetch = new cljs.core.Keyword(null, "fetch", "fetch", -1081994244);
 cljs.core.cst$kw$replicant_SLASH_alias_DASH_data = new cljs.core.Keyword("replicant", "alias-data", "replicant/alias-data", 1929752572);
+cljs.core.cst$sym$res____9186____auto____ = new cljs.core.Symbol(null, "res__9186__auto__", "res__9186__auto__", 1797690461, null);
+cljs.core.cst$kw$p = new cljs.core.Keyword(null, "p", "p", 151049309);
 cljs.core.cst$kw$multipart_DASH_params = new cljs.core.Keyword(null, "multipart-params", "multipart-params", -1033508707);
-cljs.core.cst$sym$body____6855____auto____ = new cljs.core.Symbol(null, "body__6855__auto__", "body__6855__auto__", 462317725, null);
 cljs.core.cst$kw$http_DASH_only = new cljs.core.Keyword(null, "http-only", "http-only", -825379555);
-cljs.core.cst$sym$args____9124____auto____ = new cljs.core.Symbol(null, "args__9124__auto__", "args__9124__auto__", -1317963363, null);
+cljs.core.cst$sym$http____6839____auto____ = new cljs.core.Symbol(null, "http__6839__auto__", "http__6839__auto__", -350955235, null);
+cljs.core.cst$sym$f____9150____auto____ = new cljs.core.Symbol(null, "f__9150__auto__", "f__9150__auto__", 746122653, null);
+cljs.core.cst$sym$entry____6851____auto____ = new cljs.core.Symbol(null, "entry__6851__auto__", "entry__6851__auto__", 373363133, null);
 cljs.core.cst$kw$animation_DASH_iteration_DASH_count = new cljs.core.Keyword(null, "animation-iteration-count", "animation-iteration-count", -1410888227);
 cljs.core.cst$kw$line_DASH_clamp = new cljs.core.Keyword(null, "line-clamp", "line-clamp", -1079334403);
 cljs.core.cst$kw$scheme = new cljs.core.Keyword(null, "scheme", "scheme", 90199613);
-cljs.core.cst$sym$text____7072____auto____ = new cljs.core.Symbol(null, "text__7072__auto__", "text__7072__auto__", -666929603, null);
+cljs.core.cst$kw$enctype = new cljs.core.Keyword(null, "enctype", "enctype", -2053093795);
 cljs.core.cst$sym$cljs$core_SLASH_if_DASH_let = new cljs.core.Symbol("cljs.core", "if-let", "cljs.core/if-let", 1346583165, null);
 cljs.core.cst$sym$cljs$core_SLASH_or = new cljs.core.Symbol("cljs.core", "or", "cljs.core/or", 1201033885, null);
+cljs.core.cst$sym$text____7135____auto____ = new cljs.core.Symbol(null, "text__7135__auto__", "text__7135__auto__", -446928227, null);
 cljs.core.cst$kw$content_DASH_type_DASH_options = new cljs.core.Keyword(null, "content-type-options", "content-type-options", 1370920637);
 cljs.core.cst$sym$cljs$core_SLASH_name = new cljs.core.Symbol("cljs.core", "name", "cljs.core/name", -260873443, null);
-cljs.core.cst$sym$pt____6598____auto____ = new cljs.core.Symbol(null, "pt__6598__auto__", "pt__6598__auto__", -1033017571, null);
 cljs.core.cst$kw$test = new cljs.core.Keyword(null, "test", "test", 577538877);
+cljs.core.cst$sym$text____7077____auto____ = new cljs.core.Symbol(null, "text__7077__auto__", "text__7077__auto__", -1418536099, null);
 cljs.core.cst$sym$$set = new cljs.core.Symbol(null, ".set", ".set", -1719619715, null);
+cljs.core.cst$sym$fn____7047____auto____ = new cljs.core.Symbol(null, "fn__7047__auto__", "fn__7047__auto__", 375144317, null);
 cljs.core.cst$kw$async_QMARK_ = new cljs.core.Keyword(null, "async?", "async?", 1523057758);
 cljs.core.cst$kw$href = new cljs.core.Keyword(null, "href", "href", -793805698);
 cljs.core.cst$sym$throw = new cljs.core.Symbol(null, "throw", "throw", 595905694, null);
 cljs.core.cst$kw$fill_DASH_opacity = new cljs.core.Keyword(null, "fill-opacity", "fill-opacity", -537571170);
 cljs.core.cst$kw$div$column$is_DASH_narrow = new cljs.core.Keyword(null, "div.column.is-narrow", "div.column.is-narrow", -1214583650);
+cljs.core.cst$sym$k____6770____auto____ = new cljs.core.Symbol(null, "k__6770__auto__", "k__6770__auto__", -450069314, null);
 cljs.core.cst$kw$x_DASH_forwarded_DASH_for = new cljs.core.Keyword(null, "x-forwarded-for", "x-forwarded-for", 1699076318);
 cljs.core.cst$kw$required = new cljs.core.Keyword(null, "required", "required", 1807647006);
 cljs.core.cst$kw$contenteditable = new cljs.core.Keyword(null, "contenteditable", "contenteditable", -770210530);
 cljs.core.cst$kw$form$box$mb_DASH_5 = new cljs.core.Keyword(null, "form.box.mb-5", "form.box.mb-5", 844492094);
 cljs.core.cst$kw$cookie_DASH_attrs = new cljs.core.Keyword(null, "cookie-attrs", "cookie-attrs", -1318966946);
-cljs.core.cst$sym$headers____7081____auto____ = new cljs.core.Symbol(null, "headers__7081__auto__", "headers__7081__auto__", -1174658690, null);
+cljs.core.cst$sym$server____6841____auto____ = new cljs.core.Symbol(null, "server__6841__auto__", "server__6841__auto__", 1694464350, null);
+cljs.core.cst$kw$upload = new cljs.core.Keyword(null, "upload", "upload", -255769218);
 cljs.core.cst$kw$request_DASH_method = new cljs.core.Keyword(null, "request-method", "request-method", 1764796830);
 cljs.core.cst$kw$classes = new cljs.core.Keyword(null, "classes", "classes", 2037804510);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_classes = new cljs.core.Symbol("replicant.hiccup-headers", "classes", "replicant.hiccup-headers/classes", 384486910, null);
+cljs.core.cst$sym$ctx____7042____auto____ = new cljs.core.Symbol(null, "ctx__7042__auto__", "ctx__7042__auto__", 2027411006, null);
 cljs.core.cst$sym$cljs$core_SLASH_boolean = new cljs.core.Symbol("cljs.core", "boolean", "cljs.core/boolean", -1222483266, null);
 cljs.core.cst$kw$flex_DASH_positive = new cljs.core.Keyword(null, "flex-positive", "flex-positive", -239614242);
+cljs.core.cst$kw$todo_DASH_theme = new cljs.core.Keyword(null, "todo-theme", "todo-theme", -1742911778);
 cljs.core.cst$kw$replicant_SLASH_on_DASH_mount = new cljs.core.Keyword("replicant", "on-mount", "replicant/on-mount", -1518504162);
 cljs.core.cst$sym$replicant$protocols_SLASH_insert_DASH_before = new cljs.core.Symbol("replicant.protocols", "insert-before", "replicant.protocols/insert-before", 255701854, null);
 cljs.core.cst$sym$$then = new cljs.core.Symbol(null, ".then", ".then", 224668574, null);
-cljs.core.cst$sym$class____7409____auto____ = new cljs.core.Symbol(null, "class__7409__auto__", "class__7409__auto__", -196759650, null);
 cljs.core.cst$kw$message = new cljs.core.Keyword(null, "message", "message", -406056002);
 cljs.core.cst$kw$box_DASH_flex = new cljs.core.Keyword(null, "box-flex", "box-flex", -831196194);
 cljs.core.cst$sym$cljs$core_SLASH_inc = new cljs.core.Symbol("cljs.core", "inc", "cljs.core/inc", -879172610, null);
 cljs.core.cst$sym$replicant$vdom_SLASH_id = new cljs.core.Symbol("replicant.vdom", "id", "replicant.vdom/id", -902324193, null);
 cljs.core.cst$kw$x_DASH_xsrf_DASH_token = new cljs.core.Keyword(null, "x-xsrf-token", "x-xsrf-token", 342070335);
+cljs.core.cst$sym$node_DASH_headers____6844____auto____ = new cljs.core.Symbol(null, "node-headers__6844__auto__", "node-headers__6844__auto__", 448088127, null);
 cljs.core.cst$sym$cljs$core_SLASH_aget = new cljs.core.Symbol("cljs.core", "aget", "cljs.core/aget", 6345791, null);
 cljs.core.cst$sym$replicant$protocols_SLASH_set_DASH_attribute = new cljs.core.Symbol("replicant.protocols", "set-attribute", "replicant.protocols/set-attribute", -1168739265, null);
 cljs.core.cst$sym$replicant$assert_SLASH_assert = new cljs.core.Symbol("replicant.assert", "assert", "replicant.assert/assert", -2143937441, null);
+cljs.core.cst$kw$select = new cljs.core.Keyword(null, "select", "select", 1147833503);
 cljs.core.cst$sym$replicant$alias_SLASH_register_BANG_ = new cljs.core.Symbol("replicant.alias", "register!", "replicant.alias/register!", 1762236575, null);
 cljs.core.cst$kw$https = new cljs.core.Keyword(null, "https", "https", -1983909665);
 cljs.core.cst$kw$replicant$life_DASH_cycle_SLASH_mount = new cljs.core.Keyword("replicant.life-cycle", "mount", "replicant.life-cycle/mount", -1685508865);
 cljs.core.cst$kw$include_DASH_subdomains_QMARK_ = new cljs.core.Keyword(null, "include-subdomains?", "include-subdomains?", -607408897);
+cljs.core.cst$sym$vdom____7072____auto____ = new cljs.core.Symbol(null, "vdom__7072__auto__", "vdom__7072__auto__", 1100287263, null);
 cljs.core.cst$kw$pattern = new cljs.core.Keyword(null, "pattern", "pattern", 242135423);
 cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_get_DASH_key = new cljs.core.Symbol("replicant.hiccup-headers", "get-key", "replicant.hiccup-headers/get-key", 2052356479, null);
 cljs.core.cst$kw$html = new cljs.core.Keyword(null, "html", "html", -998796897);
@@ -27918,10 +27962,10 @@ cljs.core.cst$kw$cljs$core_SLASH_not_DASH_found = new cljs.core.Keyword("cljs.co
 cljs.core.cst$kw$reusePort = new cljs.core.Keyword(null, "reusePort", "reusePort", 147582367);
 cljs.core.cst$sym$def = new cljs.core.Symbol(null, "def", "def", 597100991, null);
 cljs.core.cst$kw$session = new cljs.core.Keyword(null, "session", "session", 1008279103);
-cljs.core.cst$sym$entry____6850____auto____ = new cljs.core.Symbol(null, "entry__6850__auto__", "entry__6850__auto__", 1079340703, null);
+cljs.core.cst$kw$text = new cljs.core.Keyword(null, "text", "text", -1790561697);
+cljs.core.cst$sym$has_DASH_body_QMARK_____6849____auto____ = new cljs.core.Symbol(null, "has-body?__6849__auto__", "has-body?__6849__auto__", 305675967, null);
 cljs.core.cst$kw$div$field$has_DASH_addons = new cljs.core.Keyword(null, "div.field.has-addons", "div.field.has-addons", 1626128127);
 cljs.core.cst$kw$data = new cljs.core.Keyword(null, "data", "data", -232669377);
-cljs.core.cst$sym$class____7447____auto____ = new cljs.core.Symbol(null, "class__7447__auto__", "class__7447__auto__", 1317650303, null);
 cljs.core.cst$sym$f = new cljs.core.Symbol(null, "f", "f", 43394975, null);
 cljs.core.cst$kw$mime_DASH_types = new cljs.core.Keyword(null, "mime-types", "mime-types", 731457503);
 cljs.nodejs = {};
@@ -28800,7 +28844,7 @@ replicant.protocols.remove_class = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_class, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
   return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$remove_class$arity$3 != null ? a.replicant$protocols$IRender$remove_class$arity$3(a, b, c) : replicant$protocols$IRender$remove_class$dyn_6733(a, b, c);
 };
-var replicant$protocols$IRender$set_attribute$dyn_6734 = function(a, b, c, d, e) {
+var replicant$protocols$IRender$set_attribute$dyn_6738 = function(a, b, c, d, e) {
   var f = replicant.protocols.set_attribute[goog.typeOf(a == null ? null : a)];
   if (f != null) {
     return f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e);
@@ -28813,9 +28857,9 @@ var replicant$protocols$IRender$set_attribute$dyn_6734 = function(a, b, c, d, e)
 };
 replicant.protocols.set_attribute = function(a, b, c, d, e) {
   var f = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_set_DASH_attribute, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return f ? f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e) : a != null && a.replicant$protocols$IRender$set_attribute$arity$5 != null ? a.replicant$protocols$IRender$set_attribute$arity$5(a, b, c, d, e) : replicant$protocols$IRender$set_attribute$dyn_6734(a, b, c, d, e);
+  return f ? f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e) : a != null && a.replicant$protocols$IRender$set_attribute$arity$5 != null ? a.replicant$protocols$IRender$set_attribute$arity$5(a, b, c, d, e) : replicant$protocols$IRender$set_attribute$dyn_6738(a, b, c, d, e);
 };
-var replicant$protocols$IRender$remove_attribute$dyn_6739 = function(a, b, c) {
+var replicant$protocols$IRender$remove_attribute$dyn_6741 = function(a, b, c) {
   var d = replicant.protocols.remove_attribute[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28828,9 +28872,9 @@ var replicant$protocols$IRender$remove_attribute$dyn_6739 = function(a, b, c) {
 };
 replicant.protocols.remove_attribute = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_attribute, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$remove_attribute$arity$3 != null ? a.replicant$protocols$IRender$remove_attribute$arity$3(a, b, c) : replicant$protocols$IRender$remove_attribute$dyn_6739(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$remove_attribute$arity$3 != null ? a.replicant$protocols$IRender$remove_attribute$arity$3(a, b, c) : replicant$protocols$IRender$remove_attribute$dyn_6741(a, b, c);
 };
-var replicant$protocols$IRender$set_event_handler$dyn_6740 = function(a, b, c, d, e) {
+var replicant$protocols$IRender$set_event_handler$dyn_6746 = function(a, b, c, d, e) {
   var f = replicant.protocols.set_event_handler[goog.typeOf(a == null ? null : a)];
   if (f != null) {
     return f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e);
@@ -28843,9 +28887,9 @@ var replicant$protocols$IRender$set_event_handler$dyn_6740 = function(a, b, c, d
 };
 replicant.protocols.set_event_handler = function(a, b, c, d, e) {
   var f = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_set_DASH_event_DASH_handler, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return f ? f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e) : a != null && a.replicant$protocols$IRender$set_event_handler$arity$5 != null ? a.replicant$protocols$IRender$set_event_handler$arity$5(a, b, c, d, e) : replicant$protocols$IRender$set_event_handler$dyn_6740(a, b, c, d, e);
+  return f ? f.cljs$core$IFn$_invoke$arity$5 ? f.cljs$core$IFn$_invoke$arity$5(a, b, c, d, e) : f(a, b, c, d, e) : a != null && a.replicant$protocols$IRender$set_event_handler$arity$5 != null ? a.replicant$protocols$IRender$set_event_handler$arity$5(a, b, c, d, e) : replicant$protocols$IRender$set_event_handler$dyn_6746(a, b, c, d, e);
 };
-var replicant$protocols$IRender$remove_event_handler$dyn_6746 = function(a, b, c, d) {
+var replicant$protocols$IRender$remove_event_handler$dyn_6756 = function(a, b, c, d) {
   var e = replicant.protocols.remove_event_handler[goog.typeOf(a == null ? null : a)];
   if (e != null) {
     return e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d);
@@ -28858,9 +28902,9 @@ var replicant$protocols$IRender$remove_event_handler$dyn_6746 = function(a, b, c
 };
 replicant.protocols.remove_event_handler = function(a, b, c, d) {
   var e = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_event_DASH_handler, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$remove_event_handler$arity$4 != null ? a.replicant$protocols$IRender$remove_event_handler$arity$4(a, b, c, d) : replicant$protocols$IRender$remove_event_handler$dyn_6746(a, b, c, d);
+  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$remove_event_handler$arity$4 != null ? a.replicant$protocols$IRender$remove_event_handler$arity$4(a, b, c, d) : replicant$protocols$IRender$remove_event_handler$dyn_6756(a, b, c, d);
 };
-var replicant$protocols$IRender$insert_before$dyn_6748 = function(a, b, c, d) {
+var replicant$protocols$IRender$insert_before$dyn_6759 = function(a, b, c, d) {
   var e = replicant.protocols.insert_before[goog.typeOf(a == null ? null : a)];
   if (e != null) {
     return e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d);
@@ -28873,9 +28917,9 @@ var replicant$protocols$IRender$insert_before$dyn_6748 = function(a, b, c, d) {
 };
 replicant.protocols.insert_before = function(a, b, c, d) {
   var e = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_insert_DASH_before, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$insert_before$arity$4 != null ? a.replicant$protocols$IRender$insert_before$arity$4(a, b, c, d) : replicant$protocols$IRender$insert_before$dyn_6748(a, b, c, d);
+  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$insert_before$arity$4 != null ? a.replicant$protocols$IRender$insert_before$arity$4(a, b, c, d) : replicant$protocols$IRender$insert_before$dyn_6759(a, b, c, d);
 };
-var replicant$protocols$IRender$append_child$dyn_6757 = function(a, b, c) {
+var replicant$protocols$IRender$append_child$dyn_6764 = function(a, b, c) {
   var d = replicant.protocols.append_child[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28888,9 +28932,9 @@ var replicant$protocols$IRender$append_child$dyn_6757 = function(a, b, c) {
 };
 replicant.protocols.append_child = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_append_DASH_child, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$append_child$arity$3 != null ? a.replicant$protocols$IRender$append_child$arity$3(a, b, c) : replicant$protocols$IRender$append_child$dyn_6757(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$append_child$arity$3 != null ? a.replicant$protocols$IRender$append_child$arity$3(a, b, c) : replicant$protocols$IRender$append_child$dyn_6764(a, b, c);
 };
-var replicant$protocols$IRender$remove_child$dyn_6759 = function(a, b, c) {
+var replicant$protocols$IRender$remove_child$dyn_6768 = function(a, b, c) {
   var d = replicant.protocols.remove_child[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28903,9 +28947,9 @@ var replicant$protocols$IRender$remove_child$dyn_6759 = function(a, b, c) {
 };
 replicant.protocols.remove_child = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_child, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$remove_child$arity$3 != null ? a.replicant$protocols$IRender$remove_child$arity$3(a, b, c) : replicant$protocols$IRender$remove_child$dyn_6759(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$remove_child$arity$3 != null ? a.replicant$protocols$IRender$remove_child$arity$3(a, b, c) : replicant$protocols$IRender$remove_child$dyn_6768(a, b, c);
 };
-var replicant$protocols$IRender$on_transition_end$dyn_6762 = function(a, b, c) {
+var replicant$protocols$IRender$on_transition_end$dyn_6771 = function(a, b, c) {
   var d = replicant.protocols.on_transition_end[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28918,9 +28962,9 @@ var replicant$protocols$IRender$on_transition_end$dyn_6762 = function(a, b, c) {
 };
 replicant.protocols.on_transition_end = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_on_DASH_transition_DASH_end, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$on_transition_end$arity$3 != null ? a.replicant$protocols$IRender$on_transition_end$arity$3(a, b, c) : replicant$protocols$IRender$on_transition_end$dyn_6762(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$on_transition_end$arity$3 != null ? a.replicant$protocols$IRender$on_transition_end$arity$3(a, b, c) : replicant$protocols$IRender$on_transition_end$dyn_6771(a, b, c);
 };
-var replicant$protocols$IRender$replace_child$dyn_6765 = function(a, b, c, d) {
+var replicant$protocols$IRender$replace_child$dyn_6773 = function(a, b, c, d) {
   var e = replicant.protocols.replace_child[goog.typeOf(a == null ? null : a)];
   if (e != null) {
     return e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d);
@@ -28933,9 +28977,9 @@ var replicant$protocols$IRender$replace_child$dyn_6765 = function(a, b, c, d) {
 };
 replicant.protocols.replace_child = function(a, b, c, d) {
   var e = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_replace_DASH_child, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$replace_child$arity$4 != null ? a.replicant$protocols$IRender$replace_child$arity$4(a, b, c, d) : replicant$protocols$IRender$replace_child$dyn_6765(a, b, c, d);
+  return e ? e.cljs$core$IFn$_invoke$arity$4 ? e.cljs$core$IFn$_invoke$arity$4(a, b, c, d) : e(a, b, c, d) : a != null && a.replicant$protocols$IRender$replace_child$arity$4 != null ? a.replicant$protocols$IRender$replace_child$arity$4(a, b, c, d) : replicant$protocols$IRender$replace_child$dyn_6773(a, b, c, d);
 };
-var replicant$protocols$IRender$remove_all_children$dyn_6768 = function(a, b) {
+var replicant$protocols$IRender$remove_all_children$dyn_6776 = function(a, b) {
   var c = replicant.protocols.remove_all_children[goog.typeOf(a == null ? null : a)];
   if (c != null) {
     return c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b);
@@ -28948,9 +28992,9 @@ var replicant$protocols$IRender$remove_all_children$dyn_6768 = function(a, b) {
 };
 replicant.protocols.remove_all_children = function(a, b) {
   var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remove_DASH_all_DASH_children, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IRender$remove_all_children$arity$2 != null ? a.replicant$protocols$IRender$remove_all_children$arity$2(a, b) : replicant$protocols$IRender$remove_all_children$dyn_6768(a, b);
+  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IRender$remove_all_children$arity$2 != null ? a.replicant$protocols$IRender$remove_all_children$arity$2(a, b) : replicant$protocols$IRender$remove_all_children$dyn_6776(a, b);
 };
-var replicant$protocols$IRender$get_child$dyn_6771 = function(a, b, c) {
+var replicant$protocols$IRender$get_child$dyn_6777 = function(a, b, c) {
   var d = replicant.protocols.get_child[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28963,9 +29007,9 @@ var replicant$protocols$IRender$get_child$dyn_6771 = function(a, b, c) {
 };
 replicant.protocols.get_child = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_get_DASH_child, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$get_child$arity$3 != null ? a.replicant$protocols$IRender$get_child$arity$3(a, b, c) : replicant$protocols$IRender$get_child$dyn_6771(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IRender$get_child$arity$3 != null ? a.replicant$protocols$IRender$get_child$arity$3(a, b, c) : replicant$protocols$IRender$get_child$dyn_6777(a, b, c);
 };
-var replicant$protocols$IRender$next_frame$dyn_6773 = function(a, b) {
+var replicant$protocols$IRender$next_frame$dyn_6778 = function(a, b) {
   var c = replicant.protocols.next_frame[goog.typeOf(a == null ? null : a)];
   if (c != null) {
     return c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b);
@@ -28978,11 +29022,11 @@ var replicant$protocols$IRender$next_frame$dyn_6773 = function(a, b) {
 };
 replicant.protocols.next_frame = function(a, b) {
   var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_next_DASH_frame, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IRender$next_frame$arity$2 != null ? a.replicant$protocols$IRender$next_frame$arity$2(a, b) : replicant$protocols$IRender$next_frame$dyn_6773(a, b);
+  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IRender$next_frame$arity$2 != null ? a.replicant$protocols$IRender$next_frame$arity$2(a, b) : replicant$protocols$IRender$next_frame$dyn_6778(a, b);
 };
 replicant.protocols.IMemory = function() {
 };
-var replicant$protocols$IMemory$remember$dyn_6776 = function(a, b, c) {
+var replicant$protocols$IMemory$remember$dyn_6779 = function(a, b, c) {
   var d = replicant.protocols.remember[goog.typeOf(a == null ? null : a)];
   if (d != null) {
     return d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c);
@@ -28995,9 +29039,9 @@ var replicant$protocols$IMemory$remember$dyn_6776 = function(a, b, c) {
 };
 replicant.protocols.remember = function(a, b, c) {
   var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_remember, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IMemory$remember$arity$3 != null ? a.replicant$protocols$IMemory$remember$arity$3(a, b, c) : replicant$protocols$IMemory$remember$dyn_6776(a, b, c);
+  return d ? d.cljs$core$IFn$_invoke$arity$3 ? d.cljs$core$IFn$_invoke$arity$3(a, b, c) : d(a, b, c) : a != null && a.replicant$protocols$IMemory$remember$arity$3 != null ? a.replicant$protocols$IMemory$remember$arity$3(a, b, c) : replicant$protocols$IMemory$remember$dyn_6779(a, b, c);
 };
-var replicant$protocols$IMemory$recall$dyn_6777 = function(a, b) {
+var replicant$protocols$IMemory$recall$dyn_6780 = function(a, b) {
   var c = replicant.protocols.recall[goog.typeOf(a == null ? null : a)];
   if (c != null) {
     return c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b);
@@ -29010,66 +29054,66 @@ var replicant$protocols$IMemory$recall$dyn_6777 = function(a, b) {
 };
 replicant.protocols.recall = function(a, b) {
   var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.meta(a), cljs.core.with_meta(cljs.core.cst$sym$replicant$protocols_SLASH_recall, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$cljs$analyzer_SLASH_no_DASH_resolve, !0], null)));
-  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IMemory$recall$arity$2 != null ? a.replicant$protocols$IMemory$recall$arity$2(a, b) : replicant$protocols$IMemory$recall$dyn_6777(a, b);
+  return c ? c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b) : a != null && a.replicant$protocols$IMemory$recall$arity$2 != null ? a.replicant$protocols$IMemory$recall$arity$2(a, b) : replicant$protocols$IMemory$recall$dyn_6780(a, b);
 };
 replicant.hiccup_headers = {};
-var ret__5931__auto___6758 = replicant.hiccup_headers.hget = function(a, b, c, d) {
+var ret__5931__auto___6752 = replicant.hiccup_headers.hget = function(a, b, c, d) {
   return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_nth, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.hget.cljs$lang$macro = !0;
-var ret__5931__auto___6760 = replicant.hiccup_headers.tag_name = function(a, b, c) {
+var ret__5931__auto___6757 = replicant.hiccup_headers.tag_name = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.tag_name.cljs$lang$macro = !0;
-var ret__5931__auto___6763 = replicant.hiccup_headers.id = function(a, b, c) {
+var ret__5931__auto___6758 = replicant.hiccup_headers.id = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 1, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.id.cljs$lang$macro = !0;
-var ret__5931__auto___6764 = replicant.hiccup_headers.classes = function(a, b, c) {
+var ret__5931__auto___6760 = replicant.hiccup_headers.classes = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 2, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.classes.cljs$lang$macro = !0;
-var ret__5931__auto___6766 = replicant.hiccup_headers.rkey = function(a, b, c) {
+var ret__5931__auto___6762 = replicant.hiccup_headers.rkey = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 3, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.rkey.cljs$lang$macro = !0;
-var ret__5931__auto___6767 = replicant.hiccup_headers.attrs = function(a, b, c) {
+var ret__5931__auto___6763 = replicant.hiccup_headers.attrs = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 4, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.attrs.cljs$lang$macro = !0;
-var ret__5931__auto___6769 = replicant.hiccup_headers.children = function(a, b, c) {
+var ret__5931__auto___6765 = replicant.hiccup_headers.children = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 5, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.children.cljs$lang$macro = !0;
-var ret__5931__auto___6770 = replicant.hiccup_headers.html_ns = function(a, b, c) {
+var ret__5931__auto___6766 = replicant.hiccup_headers.html_ns = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 6, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.html_ns.cljs$lang$macro = !0;
-var ret__5931__auto___6772 = replicant.hiccup_headers.sexp = function(a, b, c) {
+var ret__5931__auto___6767 = replicant.hiccup_headers.sexp = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 7, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.sexp.cljs$lang$macro = !0;
-var ret__5931__auto___6774 = replicant.hiccup_headers.text = function(a, b, c) {
+var ret__5931__auto___6769 = replicant.hiccup_headers.text = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 8, null, 1, null)], 0))));
 };
 replicant.hiccup_headers.text.cljs$lang$macro = !0;
-var ret__5931__auto___6778 = replicant.hiccup_headers.get_key = function(a, b, c, d) {
-  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$k____6775____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+var ret__5931__auto___6772 = replicant.hiccup_headers.get_key = function(a, b, c, d) {
+  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$k____6770____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$kw$replicant_SLASH_key, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6775____auto____, null, 1, null))))), null, 1, null)], 0))));
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_hget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6770____auto____, null, 1, null))))), null, 1, null)], 0))));
 };
 replicant.hiccup_headers.get_key.cljs$lang$macro = !0;
-var ret__5931__auto___6787 = replicant.hiccup_headers.create = function(a, b, c, d, e, f, g) {
-  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$pt____6779____auto____, null, 
-  1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_doto, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6779____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_get_DASH_key, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6779____auto____, null, 
+var ret__5931__auto___6781 = replicant.hiccup_headers.create = function(a, b, c, d, e, f, g) {
+  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$pt____6774____auto____, null, 
+  1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_doto, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6774____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_get_DASH_key, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6774____auto____, null, 
   1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, e, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, f, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, g, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, null, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$$push, null, 1, null), new cljs.core.List(null, null, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$pt____6780____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6780____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_get_DASH_key, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6780____auto____, 
+  cljs.core.cst$sym$pt____6775____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6775____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_get_DASH_key, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$pt____6775____auto____, 
   null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, e, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, f, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, g, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_conj, null, 1, null), new cljs.core.List(null, null, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
@@ -29077,15 +29121,15 @@ var ret__5931__auto___6787 = replicant.hiccup_headers.create = function(a, b, c,
 };
 replicant.hiccup_headers.create.cljs$lang$macro = !0;
 var ret__5931__auto___6795 = replicant.hiccup_headers.create_text_node = function(a, b, c) {
-  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____6788____auto____, null, 
+  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____6782____auto____, null, 
   1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$js_SLASH_Array$, null, 1, null), new cljs.core.List(null, null, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, 
-  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6788____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6788____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____6789____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6789____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6789____auto____, 
+  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6782____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6782____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____6783____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6783____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____6783____auto____, 
   null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0))))), null, 1, null)], 0))));
 };
 replicant.hiccup_headers.create_text_node.cljs$lang$macro = !0;
-var ret__5931__auto___6812 = function() {
+var ret__5931__auto___6804 = function() {
   replicant.hiccup_headers.update_attrs = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -29116,26 +29160,26 @@ var ret__5931__auto___6812 = function() {
   return null;
 }();
 replicant.hiccup_headers.update_attrs.cljs$lang$macro = !0;
-var ret__5931__auto___6830 = replicant.hiccup_headers.from_alias = function(a, b, c, d) {
-  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$hh____6810____auto____, 
-  null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____6811____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6810____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_doto, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6810____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+var ret__5931__auto___6825 = replicant.hiccup_headers.from_alias = function(a, b, c, d) {
+  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$hh____6805____auto____, 
+  null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____6806____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6805____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_doto, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6805____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 3, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 
-  1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6811____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6810____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 6, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_html_DASH_ns, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6811____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 7, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6810____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 
+  1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6806____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6805____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 6, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_html_DASH_ns, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6806____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 7, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6805____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 
   1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, 9, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6811____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$hh____6813____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____6814____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6813____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6813____auto____, null, 1, null), 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6806____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$hh____6814____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____6815____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6814____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6814____auto____, null, 1, null), 
   cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 3, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6814____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6813____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 6, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_html_DASH_ns, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6814____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 7, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6813____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 
+  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6815____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6814____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 6, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_html_DASH_ns, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6815____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 7, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$hh____6814____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 
   1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, 9, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6814____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____6815____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.hiccup_headers.from_alias.cljs$lang$macro = !0;
 replicant.assert = {};
@@ -29145,18 +29189,18 @@ replicant.assert.error = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null);
 replicant.assert.assert_QMARK_ = function() {
   return null;
 };
-var ret__5931__auto___7091 = replicant.assert.enter_node = function(a, b, c) {
+var ret__5931__auto___7095 = replicant.assert.enter_node = function(a, b, c) {
   return cljs.core.truth_(replicant.assert.assert_QMARK_()) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$ctx____7090____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, 
+  cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$ctx____7092____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, 
   null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_context, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, c, 
   null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_context, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_meta, 
   null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_reset_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$ctx____7090____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_reset_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$ctx____7092____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_reset_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_node, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 
   1, null)], 0)))), null, 1, null)], 0)))) : null;
 };
 replicant.assert.enter_node.cljs$lang$macro = !0;
-var ret__5931__auto___7116 = function() {
+var ret__5931__auto___7128 = function() {
   replicant.assert.assert = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -29171,18 +29215,18 @@ var ret__5931__auto___7116 = function() {
   replicant.assert.assert.cljs$core$IFn$_invoke$arity$variadic = function(a, b, c, d, e, f) {
     a = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null);
     return cljs.core.truth_(replicant.assert.assert_QMARK_()) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, 
-    c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$fn____7092____auto____, 
+    c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$fn____7096____auto____, 
     null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$fn_DASH_name, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_deref, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, 
-    null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____7093____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$alias, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-    cljs.core.cst$sym$cljs$core_SLASH_deref, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$fd____7094____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), new cljs.core.List(null, 
+    null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____7097____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$alias, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+    cljs.core.cst$sym$cljs$core_SLASH_deref, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$fd____7098____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), new cljs.core.List(null, 
     cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_deref, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_context, null, 1, null)))), null, 1, null)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
     cljs.core.cst$sym$cljs$core_SLASH_reset_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_error, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, 
     cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$kw$title, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$message, null, 1, null), new cljs.core.List(null, e, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$hiccup, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
     cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_deref, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_current_DASH_node, null, 1, null)))), null, 1, null)], 0)))), null, 
-    1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$fn____7092____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$fname, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-    cljs.core.cst$sym$fn____7092____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____7093____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$alias, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-    cljs.core.cst$sym$alias____7093____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$fd____7094____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-    cljs.core.cst$sym$fd____7094____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))) : null;
+    1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$fn____7096____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$fname, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+    cljs.core.cst$sym$fn____7096____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____7097____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$alias, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+    cljs.core.cst$sym$alias____7097____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$fd____7098____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+    cljs.core.cst$sym$fd____7098____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))) : null;
   };
   replicant.assert.assert.cljs$lang$maxFixedArity = 5;
   replicant.assert.assert.cljs$lang$applyTo = function(a) {
@@ -29213,7 +29257,7 @@ replicant.assert.remove_reporter = function(a) {
   return cljs.core.remove_watch(replicant.assert.error, a);
 };
 goog.exportSymbol("replicant.assert.remove_reporter", replicant.assert.remove_reporter);
-var ret__5931__auto___7137 = replicant.assert.configure = function(a, b) {
+var ret__5931__auto___7153 = replicant.assert.configure = function(a, b) {
   return cljs.core.truth_(replicant.assert.assert_QMARK_()) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_add_DASH_reporter, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$replicant$assert_SLASH_default, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$replicant$console_DASH_logger_SLASH_report, 
   null, 1, null)], 0)))) : null;
 };
@@ -29247,48 +29291,48 @@ replicant.hiccup.set_attr = function(a, b, c) {
 };
 replicant.vdom = {};
 replicant.vdom.id = cljs.core.volatile_BANG_(0);
-var ret__5931__auto___7107 = replicant.vdom.vget = function(a, b, c, d) {
+var ret__5931__auto___7099 = replicant.vdom.vget = function(a, b, c, d) {
   return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_nth, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0))));
 };
 replicant.vdom.vget.cljs$lang$macro = !0;
-var ret__5931__auto___7108 = replicant.vdom.tag_name = function(a, b, c) {
+var ret__5931__auto___7106 = replicant.vdom.tag_name = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0))));
 };
 replicant.vdom.tag_name.cljs$lang$macro = !0;
-var ret__5931__auto___7109 = replicant.vdom.rkey = function(a, b, c) {
+var ret__5931__auto___7107 = replicant.vdom.rkey = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 1, null, 1, null)], 0))));
 };
 replicant.vdom.rkey.cljs$lang$macro = !0;
-var ret__5931__auto___7110 = replicant.vdom.classes = function(a, b, c) {
+var ret__5931__auto___7112 = replicant.vdom.classes = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 2, null, 1, null)], 0))));
 };
 replicant.vdom.classes.cljs$lang$macro = !0;
-var ret__5931__auto___7111 = replicant.vdom.attrs = function(a, b, c) {
+var ret__5931__auto___7113 = replicant.vdom.attrs = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 3, null, 1, null)], 0))));
 };
 replicant.vdom.attrs.cljs$lang$macro = !0;
-var ret__5931__auto___7112 = replicant.vdom.children = function(a, b, c) {
+var ret__5931__auto___7114 = replicant.vdom.children = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 4, null, 1, null)], 0))));
 };
 replicant.vdom.children.cljs$lang$macro = !0;
-var ret__5931__auto___7113 = replicant.vdom.child_ks = function(a, b, c) {
+var ret__5931__auto___7115 = replicant.vdom.child_ks = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 5, null, 1, null)], 0))));
 };
 replicant.vdom.child_ks.cljs$lang$macro = !0;
-var ret__5931__auto___7114 = replicant.vdom.async_unmount_QMARK_ = function(a, b, c) {
+var ret__5931__auto___7116 = replicant.vdom.async_unmount_QMARK_ = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 6, null, 1, null)], 0))));
 };
 replicant.vdom.async_unmount_QMARK_.cljs$lang$macro = !0;
-var ret__5931__auto___7115 = replicant.vdom.sexp = function(a, b, c) {
+var ret__5931__auto___7117 = replicant.vdom.sexp = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 7, null, 1, null)], 0))));
 };
 replicant.vdom.sexp.cljs$lang$macro = !0;
-var ret__5931__auto___7120 = replicant.vdom.text = function(a, b, c) {
+var ret__5931__auto___7118 = replicant.vdom.text = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 8, null, 1, null)], 0))));
 };
 replicant.vdom.text.cljs$lang$macro = !0;
-var ret__5931__auto___7121 = replicant.vdom.unmount_id = function(a, b, c) {
+var ret__5931__auto___7119 = replicant.vdom.unmount_id = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 9, null, 1, null)], 0))));
 };
 replicant.vdom.unmount_id.cljs$lang$macro = !0;
@@ -29296,7 +29340,7 @@ var ret__5931__auto___7122 = replicant.vdom.n_children = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_vget, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 10, null, 1, null)], 0))));
 };
 replicant.vdom.n_children.cljs$lang$macro = !0;
-var ret__5931__auto___7130 = replicant.vdom.mark_unmounting = function(a, b, c) {
+var ret__5931__auto___7132 = replicant.vdom.mark_unmounting = function(a, b, c) {
   return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$vdom____7123____auto____, null, 
   1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$vdom____7123____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   9, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_vswap_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_id, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_inc, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 
@@ -29304,79 +29348,79 @@ var ret__5931__auto___7130 = replicant.vdom.mark_unmounting = function(a, b, c) 
   cljs.core.cst$sym$cljs$core_SLASH_vswap_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$replicant$vdom_SLASH_id, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_inc, null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.vdom.mark_unmounting.cljs$lang$macro = !0;
-var ret__5931__auto___7142 = replicant.vdom.create_text_node = function(a, b, c) {
-  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____7131____auto____, null, 
+var ret__5931__auto___7147 = replicant.vdom.create_text_node = function(a, b, c) {
+  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____7134____auto____, null, 
   1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$js_SLASH_Array$, null, 1, null), new cljs.core.List(null, null, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, 
-  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, !1, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7131____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7131____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0)))), null, 1, null)], 0)))) : 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____7132____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, !1, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7134____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7134____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0)))), null, 1, null)], 0)))) : 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$text____7135____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, !1, null, 1, 
-  null), new cljs.core.List(null, cljs.core.cst$sym$text____7132____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7132____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0))))), null, 1, null)], 0))));
+  null), new cljs.core.List(null, cljs.core.cst$sym$text____7135____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$text____7135____auto____, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null)], 0))))), null, 1, null)], 0))));
 };
 replicant.vdom.create_text_node.cljs$lang$macro = !0;
-var ret__5931__auto___7176 = replicant.vdom.from_hiccup = function(a, b, c, d, e, f, g) {
-  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$headers____7143____auto____, null, 
+var ret__5931__auto___7180 = replicant.vdom.from_hiccup = function(a, b, c, d, e, f, g) {
+  return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$headers____7148____auto____, null, 
   1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$js_SLASH_Array$, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_tag_DASH_name, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7143____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, 
-  cljs.core.cst$sym$headers____7143____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_classes, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7143____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, d, null, 1, null), new cljs.core.List(null, e, 
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_tag_DASH_name, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7148____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, null, 1, null), new cljs.core.List(null, 
+  cljs.core.cst$sym$headers____7148____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_classes, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7148____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, d, null, 1, null), new cljs.core.List(null, e, 
   null, 1, null), new cljs.core.List(null, f, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_boolean, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_unmounting, null, 1, null), 
-  new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7143____auto____, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7143____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, g, null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, 
-  null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_tag_DASH_name, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_classes, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null)))), 
+  new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7148____auto____, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7148____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, g, null, 1, null)], 0)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, 
+  null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_tag_DASH_name, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_rkey, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_classes, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null)))), 
   null, 1, null), new cljs.core.List(null, d, null, 1, null), new cljs.core.List(null, e, null, 1, null), new cljs.core.List(null, f, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_boolean, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$kw$replicant_SLASH_unmounting, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7146____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, g, null, 1, null)], 0))))), null, 1, null)], 0))));
+  cljs.core.cst$kw$replicant_SLASH_unmounting, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____7149____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, null, null, 1, null), new cljs.core.List(null, g, null, 1, null)], 0))))), null, 1, null)], 0))));
 };
 replicant.vdom.from_hiccup.cljs$lang$macro = !0;
 replicant.asserts = {};
-var ret__5931__auto___7445 = replicant.asserts.assert_no_nested_renders = function(a, b) {
+var ret__5931__auto___7455 = replicant.asserts.assert_no_nested_renders = function(a, b) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, !1, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Triggered a render while rendering", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "replicant.dom/render was called while working on a previous render. ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "This call will be throttled.\n\nNested renders can occur when", null, 1, null), new cljs.core.List(null, "life-cycle hooks trigger renders, e.g. by storing some information from", null, 1, null), new cljs.core.List(null, "the DOM (size of elements, etc) in the state that triggers rendering.", 
   null, 1, null), new cljs.core.List(null, "Doing so isn't catagorically wrong, but should be used with care.", null, 1, null), new cljs.core.List(null, "Nested renders can cause performance issues, or, in the worst case - ", null, 1, null), new cljs.core.List(null, "unresponsive UIs.", null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_nested_renders.cljs$lang$macro = !0;
-var ret__5931__auto___7446 = replicant.asserts.assert_no_class_name = function(a, b, c) {
+var ret__5931__auto___7456 = replicant.asserts.assert_no_class_name = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_contains_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$className, null, 1, null)], 0)))), null, 
   1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Use :class, not :className", null, 1, null), new cljs.core.List(null, ":className is not supported, please use :class instead. It takes a keyword, a string, or a collection of either of those.", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, 
   null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_class_name.cljs$lang$macro = !0;
-var ret__5931__auto___7448 = replicant.asserts.assert_no_space_separated_class = function(a, b, c) {
+var ret__5931__auto___7458 = replicant.asserts.assert_no_space_separated_class = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$class____7447____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$class, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, 
+  cljs.core.cst$sym$class____7457____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$class, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, 
   c, null, 1, null)))), null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_string_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7447____auto____, null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH__LT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$indexOf, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7447____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, " ", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_string_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7457____auto____, null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH__LT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$indexOf, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7457____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, " ", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   0, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Avoid space separated :class strings", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$class____7447____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$class, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, 
+  cljs.core.cst$sym$class____7457____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$class, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), new cljs.core.List(null, 
   c, null, 1, null)))), null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, ":class supports collections of keywords and/or strings as classes. These perform better, and are usually more convenient to work with. Solve by converting ", 
-  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7447____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, " to ", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$class____7457____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, " to ", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_vec, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$split, null, 1, null), new cljs.core.List(null, 
-  cljs.core.cst$sym$class____7447____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, " ", null, 1, null)], 0)))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), 
+  cljs.core.cst$sym$class____7457____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, " ", null, 1, null)], 0)))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), 
   new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_space_separated_class.cljs$lang$macro = !0;
-var ret__5931__auto___7450 = replicant.asserts.assert_no_string_style = function(a, b, c) {
+var ret__5931__auto___7460 = replicant.asserts.assert_no_string_style = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_string_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$style, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_attrs, null, 1, null), 
   new cljs.core.List(null, c, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Avoid string styles", null, 1, null), new cljs.core.List(null, ":style supports structured maps of CSS property/value pairs. Strings must be parsed, so they're both slower and harder to read and write.", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$replicant$hiccup_DASH_headers_SLASH_sexp, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_string_style.cljs$lang$macro = !0;
-var ret__5931__auto___7451 = replicant.asserts.assert_event_handler_casing = function(a, b, c) {
+var ret__5931__auto___7461 = replicant.asserts.assert_event_handler_casing = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$event____7449____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, "DOMContentLoaded", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$event____7449____auto____, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$event____7449____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$event____7449____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Use ", null, 
+  cljs.core.cst$sym$event____7459____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, "DOMContentLoaded", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$event____7459____auto____, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$event____7459____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$event____7459____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Use ", null, 
   1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_keyword, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case, null, 
   1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, ", not ", null, 1, null), new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Most event names should be in all lower-case. Replicant passes your event names directly to addEventListener, and mis-cased event names will fail silently.", null, 1, null)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_event_handler_casing.cljs$lang$macro = !0;
-var ret__5931__auto___7452 = replicant.asserts.assert_style_key_type = function(a, b, c) {
+var ret__5931__auto___7462 = replicant.asserts.assert_style_key_type = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_keyword_QMARK_, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null), 
   cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Style key ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, " should be a keyword", null, 1, null)], 0)))), null, 
   1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Replicant expects your style keys to be keywords. While anything that supports `name` (strings, symbols) will ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "technically work, mixing types will hinder Replicant from recognizing changes properly. Rendering once with ", 
@@ -29385,21 +29429,21 @@ var ret__5931__auto___7452 = replicant.asserts.assert_style_key_type = function(
   0))));
 };
 replicant.asserts.assert_style_key_type.cljs$lang$macro = !0;
-var ret__5931__auto___7453 = replicant.asserts.assert_non_empty_id = function(a, b, c, d) {
+var ret__5931__auto___7463 = replicant.asserts.assert_non_empty_id = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /#($|\.)/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Hiccup tag ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, " contains an empty id", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, "Either complete the id or remove the # character.", 
   null, 1, null), new cljs.core.List(null, d, null, 1, null)], 0))));
 };
 replicant.asserts.assert_non_empty_id.cljs$lang$macro = !0;
-var ret__5931__auto___7454 = replicant.asserts.assert_valid_id = function(a, b, c, d) {
+var ret__5931__auto___7464 = replicant.asserts.assert_valid_id = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /#[^a-zA-Z_\.]/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Hiccup tag ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, " contains an invalid id", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, "IDs must start with a letter.", null, 
   1, null), new cljs.core.List(null, d, null, 1, null)], 0))));
 };
 replicant.asserts.assert_valid_id.cljs$lang$macro = !0;
-var ret__5931__auto___7455 = replicant.asserts.assert_non_empty_class = function(a, b, c, d) {
+var ret__5931__auto___7465 = replicant.asserts.assert_non_empty_class = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /\.$/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Hiccup tag ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, " contains an empty class", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, "This may cause a DOMException and is considered a coding error. Replicant will not sacrifice performance to work around it.", 
@@ -29412,17 +29456,17 @@ replicant.asserts.camel__GT_dash = function(a) {
 replicant.asserts.camel__GT_dash_k = function(a) {
   return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(replicant.asserts.camel__GT_dash(cljs.core.name(a)));
 };
-var ret__5931__auto___7457 = replicant.asserts.assert_style_key_casing = function(a, b, c) {
+var ret__5931__auto___7467 = replicant.asserts.assert_style_key_casing = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$name____7456____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$clojure$string_SLASH_starts_DASH_with_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7456____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "--", null, 1, null)], 0)))), null, 1, 
-  null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7456____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7456____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, 
+  cljs.core.cst$sym$name____7466____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$clojure$string_SLASH_starts_DASH_with_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7466____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "--", null, 1, null)], 0)))), null, 1, 
+  null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7466____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$clojure$string_SLASH_lower_DASH_case, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$name____7466____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, 
   null, 1, null), new cljs.core.List(null, "Use ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$asserts_SLASH_camel_DASH__GT_dash_DASH_k, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null), new cljs.core.List(null, ", not ", null, 1, null), new cljs.core.List(null, 
   c, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, "Replicant passes style keys directly to `el.style.setProperty`, which expects CSS-style dash-cased property names.", null, 1, null)], 0))));
 };
 replicant.asserts.assert_style_key_casing.cljs$lang$macro = !0;
-var ret__5931__auto___7458 = replicant.asserts.assert_no_event_attribute = function(a, b, c) {
+var ret__5931__auto___7468 = replicant.asserts.assert_no_event_attribute = function(a, b, c) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$clojure$string_SLASH_starts_DASH_with_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "on", null, 1, null)], 0)))), null, 1, null)))), null, 1, null), 
   cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Set event listeners in the :on map", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Event handler attributes are not supported. Instead of ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
@@ -29431,17 +29475,17 @@ var ret__5931__auto___7458 = replicant.asserts.assert_no_event_attribute = funct
   null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 2, null, 1, null)], 0)))), null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, " ,,,}", null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_event_attribute.cljs$lang$macro = !0;
-var ret__5931__auto___7460 = replicant.asserts.assert_valid_attribute_name = function(a, b, c, d) {
+var ret__5931__auto___7470 = replicant.asserts.assert_valid_attribute_name = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /^[a-zA-Z\-:_][a-zA-Z0-9\-:\._]*$/, 
   null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Invalid attribute name ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$attr____7459____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$attr____7469____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_name, null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Tried to set attribute ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.cst$sym$attr____7459____auto____, null, 1, null), new cljs.core.List(null, " to value ", null, 1, null), new cljs.core.List(null, d, null, 1, null), new cljs.core.List(null, ". This will fail", null, 1, null), new cljs.core.List(null, "horribly in the browser because ", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond, 
-  null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /^[0-9]/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7459____auto____, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  " it starts with a number", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /^\./, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7459____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, 
+  cljs.core.cst$sym$attr____7469____auto____, null, 1, null), new cljs.core.List(null, " to value ", null, 1, null), new cljs.core.List(null, d, null, 1, null), new cljs.core.List(null, ". This will fail", null, 1, null), new cljs.core.List(null, "horribly in the browser because ", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond, 
+  null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /^[0-9]/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7469____auto____, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  " it starts with a number", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /^\./, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7469____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, 
   " it starts with a dot", null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$else, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, " it contains the character ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /[^a-zA-Z0-9\-:\._]/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7459____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, ", which isn't allowed as per the HTML spec.", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
+  cljs.core.cst$sym$cljs$core_SLASH_re_DASH_find, null, 1, null), new cljs.core.List(null, /[^a-zA-Z0-9\-:\._]/, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$attr____7469____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, ", which isn't allowed as per the HTML spec.", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_valid_attribute_name.cljs$lang$macro = !0;
 replicant.asserts.has_bad_conditional_attrs_QMARK_ = function(a, b) {
@@ -29487,20 +29531,20 @@ replicant.asserts.convey_bad_conditional_attributes = function(a, b) {
   cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(b[7])) + " (when something? {" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.truth_(c) ? "" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(c) + " " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([d], 0))) : null) + "}) ,,,]\n\nConsider:\n[" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(b[7])) + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.truth_(c) ? 
   "\n  (cond-\x3e {}\n    something? (assoc " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(c) + " " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([d], 0))) + "))\n" : " {}") + " ,,,]";
 };
-var ret__5931__auto___7478 = replicant.asserts.assert_no_conditional_attributes = function(a, b, c, d) {
+var ret__5931__auto___7488 = replicant.asserts.assert_no_conditional_attributes = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$replicant$asserts_SLASH_has_DASH_bad_DASH_conditional_DASH_attrs_QMARK_, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Avoid conditionals around the attribute map", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$replicant$asserts_SLASH_convey_DASH_bad_DASH_conditional_DASH_attributes, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_no_conditional_attributes.cljs$lang$macro = !0;
-var ret__5931__auto___7479 = replicant.asserts.assert_alias_exists = function(a, b, c, d, e) {
+var ret__5931__auto___7489 = replicant.asserts.assert_alias_exists = function(a, b, c, d, e) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn_QMARK_, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Alias ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, " isn't defined", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "There's no available function to render this alias. Replicant will ", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "render an empty element with data attributes in its place. Available ", null, 1, null), new cljs.core.List(null, "aliases are:\n", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$clojure$string_SLASH_join, null, 1, null), new cljs.core.List(null, "\n", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, e, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 replicant.asserts.assert_alias_exists.cljs$lang$macro = !0;
-var ret__5931__auto___7480 = replicant.asserts.assert_valid_alias_result = function(a, b, c, d) {
+var ret__5931__auto___7490 = replicant.asserts.assert_valid_alias_result = function(a, b, c, d) {
   return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$assert_SLASH_assert, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_string_QMARK_, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$replicant$hiccup_SLASH_hiccup_QMARK_, null, 1, null), new cljs.core.List(null, d, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "Aliases must return valid hiccup", null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, 
@@ -29726,15 +29770,15 @@ cljs.proxy.builder.cljs$core$IFn$_invoke$arity$2 = function(a, b) {
 cljs.proxy.builder.cljs$lang$maxFixedArity = 2;
 cljs.proxy.proxy = cljs.proxy.builder.cljs$core$IFn$_invoke$arity$0();
 ddc.macros = {};
-var ret__5931__auto___6831 = ddc.macros.env_var = function(a, b, c) {
-  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$g____6824____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$globalThis, null, 
-  1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6825____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$g____6824____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Deno", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
-  null, 1, null), new cljs.core.List(null, "env", null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6828____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$g____6824____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "process", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
-  null, 1, null), new cljs.core.List(null, "env", null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$if, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6825____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$get, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6825____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6828____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6828____auto____, 
+var ret__5931__auto___6833 = ddc.macros.env_var = function(a, b, c) {
+  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$g____6828____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$globalThis, null, 
+  1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6829____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$g____6828____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Deno", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
+  null, 1, null), new cljs.core.List(null, "env", null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6830____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$g____6828____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "process", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
+  null, 1, null), new cljs.core.List(null, "env", null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$if, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6829____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$get, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$deno_DASH_env____6829____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6830____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$process_DASH_env____6830____auto____, 
   null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, c, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))));
 };
 ddc.macros.env_var.cljs$lang$macro = !0;
@@ -29746,77 +29790,87 @@ ddc.macros.serve_deno = function(a, b, c, d, e, f, g) {
   1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$reusePort, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, f, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null)], 0))));
 };
 ddc.macros.serve_bun = function(a, b, c, d, e, f, g) {
-  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$opts____6832____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$opts____6834____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$clj_DASH__GT_js, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$kw$fetch, null, 1, null), new cljs.core.List(null, b, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$hostname, null, 1, null), new cljs.core.List(null, c, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$port, null, 1, null), new cljs.core.List(null, d, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_some_QMARK_, null, 1, null), new cljs.core.List(null, f, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$reusePort, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, f, null, 
-  1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$server____6833____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$serve, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.cst$sym$opts____6832____auto____, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, e, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$server____6835____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$serve, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.cst$sym$opts____6834____auto____, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, e, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
   cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, e, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, g, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$kw$hostname, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$port, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6833____auto____, null, 
-  1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "port", null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6833____auto____, null, 1, null)], 0))));
+  cljs.core.cst$kw$hostname, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$port, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6835____auto____, null, 
+  1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "port", null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6835____auto____, null, 1, null)], 0))));
 };
 ddc.macros.serve_node = function(a, b, c, d, e, f, g) {
-  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$builtin____6837____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "getBuiltinModule", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$http____6838____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$builtin____6837____auto____, null, 1, null), new cljs.core.List(null, "node:http", null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$stream____6839____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$builtin____6837____auto____, null, 1, null), new cljs.core.List(null, "node:stream", null, 1, null)))), 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6840____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$createServer, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$http____6838____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$req____6841____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6843____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6841____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "headers", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$headers____6844____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, 
-  cljs.core.cst$sym$Headers$, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6845____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6841____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  "method", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$host____6846____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6843____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "host", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, 
-  null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, ":", null, 1, null), new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$url____6847____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "http://", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$host____6846____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6841____auto____, 
-  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "url", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$has_DASH_body_QMARK_____6848____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, 
-  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_set, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, "HEAD", null, 1, null), new cljs.core.List(null, "GET", null, 1, null))))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6845____auto____, 
-  null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$init____6849____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clj_DASH__GT_js, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$kw$method, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6845____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.cst$kw$headers, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6844____auto____, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$has_DASH_body_QMARK_____6848____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$body, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$req____6841____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$duplex, null, 1, null), new cljs.core.List(null, "half", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$Object$entries, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6843____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$entry____6850____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$k____6851____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$entry____6850____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$entry____6850____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 1, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_cond, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$array_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$fn_STAR_, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, 
-  cljs.core.cst$sym$p1____6834____6853____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$append, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6844____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  cljs.core.cst$sym$k____6851____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$p1____6834____6853____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, 
-  null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$set, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6844____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$k____6851____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, 
+  return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$builtin____6838____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "getBuiltinModule", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$http____6839____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$builtin____6838____auto____, null, 1, null), new cljs.core.List(null, "node:http", null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$stream____6840____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$builtin____6838____auto____, null, 1, null), new cljs.core.List(null, "node:stream", null, 1, null)))), 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6841____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$createServer, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$http____6839____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$req____6842____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6844____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "headers", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, 
+  cljs.core.cst$sym$Headers$, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6846____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  "method", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$host____6847____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6844____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "host", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_str, 
+  null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, ":", null, 1, null), new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$url____6848____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_str, null, 1, null), new cljs.core.List(null, "http://", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$host____6847____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$req____6842____auto____, 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "url", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$has_DASH_body_QMARK_____6849____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_not, null, 1, null), new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_set, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, "HEAD", null, 1, null), new cljs.core.List(null, "GET", null, 1, null))))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6846____auto____, 
+  null, 1, null)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$init____6850____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clj_DASH__GT_js, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$kw$method, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$method____6846____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.cst$kw$headers, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$has_DASH_body_QMARK_____6849____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_assoc, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$body, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$req____6842____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$duplex, null, 1, null), new cljs.core.List(null, "half", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$Object$entries, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$node_DASH_headers____6844____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$entry____6851____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$k____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$entry____6851____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 0, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$entry____6851____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 1, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_cond, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$array_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$fn_STAR_, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, 
+  cljs.core.cst$sym$p1____6837____6854____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$append, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.cst$sym$k____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$p1____6837____6854____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, 
+  null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$set, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$k____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, 
   null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__DASH__GT_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$Promise$resolve, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, b, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$Request$, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$url____6847____auto____, 
-  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$init____6849____auto____, null, 1, null)], 0)))), null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$then, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$response____6854____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "statusCode", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6854____auto____, 
-  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "status", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6854____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "headers", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn, 
-  null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6851____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$$setHeader, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$k____6851____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6852____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_if_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$body____6855____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6854____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "body", null, 1, null)], 0)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$pipe, null, 1, 
-  null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$fromWeb, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$stream____6839____auto____, 
-  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Readable", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$body____6855____auto____, null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$$end, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$catch, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$e____6856____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$console_SLASH_error, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$e____6856____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-  "statusCode", null, 1, null), new cljs.core.List(null, 500, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$end, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6842____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Internal Server Error", null, 1, 
-  null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$listen_DASH_opts____6857____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clj_DASH__GT_js, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, 
+  cljs.core.cst$sym$Promise$resolve, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, b, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$Request$, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$url____6848____auto____, 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$init____6850____auto____, null, 1, null)], 0)))), null, 1, null)))), null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$then, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$response____6855____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "statusCode", null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6855____auto____, 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "status", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$headers____6845____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6855____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "headers", null, 1, null)], 0)))), null, 1, null), 
+  cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$get_DASH_set_DASH_cookie____6856____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  "getSetCookie", null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$set_DASH_cookies____6857____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$get_DASH_set_DASH_cookie____6856____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$call, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$get_DASH_set_DASH_cookie____6856____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), 
+  cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$forEach, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$headers____6845____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6852____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_when_DASH_not, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH__EQ_, null, 1, null), new cljs.core.List(null, "set-cookie", null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$$toLowerCase, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6852____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$setHeader, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$k____6852____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6853____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when, 
+  null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_and, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$set_DASH_cookies____6857____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_pos_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$set_DASH_cookies____6857____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "length", null, 1, null)], 0)))), null, 1, 
+  null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$setHeader, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Set-Cookie", null, 1, null), 
+  new cljs.core.List(null, cljs.core.cst$sym$set_DASH_cookies____6857____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_if_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$body____6858____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$response____6855____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "body", null, 1, null)], 0)))), null, 1, null))))), 
+  null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$pipe, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$fromWeb, null, 1, null), new cljs.core.List(null, 
+  cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$stream____6840____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Readable", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$body____6858____auto____, 
+  null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$end, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null)))), null, 1, null)], 
+  0)))), null, 1, null)], 0)))), null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$catch, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, 
+  cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.cst$sym$e____6859____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$console_SLASH_error, null, 1, null), new cljs.core.List(null, 
+  cljs.core.cst$sym$e____6859____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_aset, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "statusCode", null, 1, null), new cljs.core.List(null, 
+  500, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$end, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____6843____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "Internal Server Error", null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)))), 
+  null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$listen_DASH_opts____6860____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$clj_DASH__GT_js, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, 
   null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$kw$host, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$port, null, 1, null), new cljs.core.List(null, d, null, 1, null)], 0))))), 
   null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_some_QMARK_, null, 1, null), new cljs.core.List(null, f, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_assoc, null, 1, null), new cljs.core.List(null, cljs.core.cst$kw$reusePort, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_boolean, null, 1, null), new cljs.core.List(null, f, null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, 
-  null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$listen, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6840____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$listen_DASH_opts____6857____auto____, 
+  null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$$listen, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6841____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$listen_DASH_opts____6860____auto____, 
   null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$0()))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
   cljs.core.cst$sym$cljs$core_SLASH_when, null, 1, null), new cljs.core.List(null, e, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$addr____6858____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$address, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6840____auto____, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$addr____6861____auto____, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$$address, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6841____auto____, null, 1, null)))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   e, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, g, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$kw$hostname, null, 1, null), new cljs.core.List(null, 
   c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$port, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$addr____6858____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "port", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), 
-  null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6840____auto____, null, 1, null)], 0))));
+  cljs.core.cst$sym$cljs$core_SLASH_aget, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$addr____6861____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, "port", null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, d, null, 1, null)], 0)))), null, 1, null)], 0))))), null, 1, null)))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), 
+  null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$server____6841____auto____, null, 1, null)], 0))));
 };
-var ret__5931__auto___6917 = function() {
+var ret__5931__auto___6924 = function() {
   ddc.macros.serve = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -30136,9 +30190,12 @@ ddc.routing.run_adapter.cljs$core$IFn$_invoke$arity$1 = function(a) {
         return Promise.resolve(n);
       }().then(function(n) {
         D.statusCode = n.status;
-        n.headers.forEach(function(t, u) {
-          return D.setHeader(u, t);
+        var t = n.headers, u = t.getSetCookie;
+        u = cljs.core.truth_(u) ? u.call(t) : null;
+        t.forEach(function(w, x) {
+          return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("set-cookie", x.toLowerCase()) ? null : D.setHeader(x, w);
         });
+        cljs.core.truth_(cljs.core.truth_(u) ? u.length > 0 : u) && D.setHeader("Set-Cookie", u);
         n = n.body;
         return cljs.core.truth_(n) ? q.Readable.fromWeb(n).pipe(D) : D.end();
       }).catch(function(n) {
@@ -30247,9 +30304,12 @@ ddc.routing.run_adapter.cljs$core$IFn$_invoke$arity$2 = function(a, b) {
         return Promise.resolve(u);
       }().then(function(u) {
         L.statusCode = u.status;
-        u.headers.forEach(function(w, x) {
-          return L.setHeader(x, w);
+        var w = u.headers, x = w.getSetCookie;
+        x = cljs.core.truth_(x) ? x.call(w) : null;
+        w.forEach(function(y, z) {
+          return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("set-cookie", z.toLowerCase()) ? null : L.setHeader(z, y);
         });
+        cljs.core.truth_(cljs.core.truth_(x) ? x.length > 0 : x) && L.setHeader("Set-Cookie", x);
         u = u.body;
         return cljs.core.truth_(u) ? v.Readable.fromWeb(u).pipe(L) : L.end();
       }).catch(function(u) {
@@ -31122,23 +31182,23 @@ replicant.errors = {};
 replicant.errors.catch_exceptions_QMARK_ = function() {
   return null;
 };
-var ret__5931__auto___6796 = replicant.errors.log = function(a, b, c, d, e) {
+var ret__5931__auto___6797 = replicant.errors.log = function(a, b, c, d, e) {
   return cljs.core.truth_(cljs.core.cst$kw$ns.cljs$core$IFn$_invoke$arity$1(b)) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$do, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$js_SLASH_console$log, null, 1, null), new cljs.core.List(null, 
-  c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$ctx____6783____auto____, 
+  c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$ctx____6786____auto____, 
   null, 1, null), new cljs.core.List(null, d, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_run_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$k____6784____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6785____auto____, 
+  cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$1(new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$k____6787____auto____, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6788____auto____, 
   null, 1, null))))), null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$js_SLASH_console$log, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, 
-  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6784____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$if, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_coll_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6785____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$cljs$core_SLASH_keyword_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6785____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6785____auto____, 
-  null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6785____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$ctx____6783____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$k____6787____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$if, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_or, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_coll_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6788____auto____, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+  cljs.core.cst$sym$cljs$core_SLASH_keyword_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6788____auto____, null, 1, null)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_pr_DASH_str, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6788____auto____, 
+  null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$v____6788____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$ctx____6786____auto____, null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
   cljs.core.cst$sym$js_SLASH_console$error, null, 1, null), new cljs.core.List(null, e, null, 1, null)))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$do, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_println, 
   null, 1, null), new cljs.core.List(null, c, null, 1, null)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_when_DASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
-  cljs.core.cst$sym$ctx____6786____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_prn, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$ctx____6786____auto____, null, 1, null)))), null, 1, null)], 0)))), 
+  cljs.core.cst$sym$ctx____6789____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_prn, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$ctx____6789____auto____, null, 1, null)))), null, 1, null)], 0)))), 
   null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_prn, null, 1, null), new cljs.core.List(null, e, null, 1, null)))), null, 1, null)], 0))));
 };
 replicant.errors.log.cljs$lang$macro = !0;
-var ret__5931__auto___6821 = function() {
+var ret__5931__auto___6819 = function() {
   replicant.errors.with_error_handling = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -31153,7 +31213,7 @@ var ret__5931__auto___6821 = function() {
   replicant.errors.with_error_handling.cljs$core$IFn$_invoke$arity$variadic = function(a, b, c, d, e, f) {
     var g = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null);
     if (cljs.core.truth_(replicant.errors.catch_exceptions_QMARK_())) {
-      var h = cljs.core.cst$sym$e____6797____auto____;
+      var h = cljs.core.cst$sym$e____6796____auto____;
       a = cljs.core.sequence;
       f = a.cljs$core$IFn$_invoke$arity$1;
       var k = cljs.core, l = k.seq, m = cljs.core.concat, p = m.cljs$core$IFn$_invoke$arity$variadic, q = new cljs.core.List(null, cljs.core.cst$sym$try, null, 1, null);
@@ -32195,7 +32255,7 @@ replicant.core.reconcile.cljs$lang$applyTo = function(a) {
 };
 replicant.alias = {};
 replicant.alias.aliases = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(cljs.core.PersistentArrayMap.EMPTY);
-var ret__5931__auto___9187 = function() {
+var ret__5931__auto___9197 = function() {
   replicant.alias.aliasfn = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -32217,12 +32277,12 @@ var ret__5931__auto___9187 = function() {
     d = cljs.core.count(a);
     a = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(0, d) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$sym$__, cljs.core.cst$sym$__], null) : cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(1, d) ? cljs.core.conj.cljs$core$IFn$_invoke$arity$2(a, cljs.core.cst$sym$__) : a;
     return cljs.core.truth_(replicant.assert.assert_QMARK_()) ? cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_with_DASH_meta, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, 
-    cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$_AMPERSAND_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9175____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-    cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, a, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9175____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$res____9176____auto____, null, 1, null), new cljs.core.List(null, 
+    cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$_AMPERSAND_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9185____auto____, null, 1, null))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
+    cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, a, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9185____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$res____9186____auto____, null, 1, null), new cljs.core.List(null, 
     cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$do, null, 1, null), b))), null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_cond_DASH__GT_, null, 1, null), 
-    new cljs.core.List(null, cljs.core.cst$sym$res____9176____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_vector_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____9176____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
+    new cljs.core.List(null, cljs.core.cst$sym$res____9186____auto____, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_vector_QMARK_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$res____9186____auto____, null, 1, null)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, 
     cljs.core.cst$sym$cljs$core_SLASH_with_DASH_meta, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_context, null, 1, null), new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, 
-    cljs.core.cst$kw$alias, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_first, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9175____auto____, null, 1, null)))), 
+    cljs.core.cst$kw$alias, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$kw$data, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_first, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$args____9185____auto____, null, 1, null)))), 
     null, 1, null)], 0))))), null, 1, null))))), null, 1, null)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null)], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_alias, null, 1, null), new cljs.core.List(null, 
     c, null, 1, null))))), null, 1, null)], 0)))) : cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_with_DASH_meta, null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_fn, null, 1, null), new cljs.core.List(null, 
     a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([b], 0)))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.array_map, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.List(null, cljs.core.cst$kw$replicant_SLASH_alias, null, 1, null), new cljs.core.List(null, c, null, 1, null))))), null, 1, null)], 0))));
@@ -32242,7 +32302,7 @@ replicant.alias.aliasfn.cljs$lang$macro = !0;
 replicant.alias.register_BANG_ = function(a, b) {
   return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(replicant.alias.aliases, cljs.core.assoc, a, b);
 };
-var ret__5931__auto___9198 = function() {
+var ret__5931__auto___9207 = function() {
   replicant.alias.defalias = function(a) {
     for (var b = [], c = arguments.length, d = 0;;) {
       if (d < c) {
@@ -32257,9 +32317,9 @@ var ret__5931__auto___9198 = function() {
   replicant.alias.defalias.cljs$core$IFn$_invoke$arity$variadic = function(a, b, c, d) {
     a = cljs.core.keyword.cljs$core$IFn$_invoke$arity$2("" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core._STAR_ns_STAR_), cljs.core.name(c));
     d = cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$alias_SLASH_aliasfn, null, 1, null), new cljs.core.List(null, a, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([d], 0))));
-    return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$f____9190____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
-    cljs.core.cst$sym$alias____9191____auto____, null, 1, null), new cljs.core.List(null, a, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$alias_SLASH_register_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____9191____auto____, null, 1, 
-    null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$f____9190____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$def, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____9191____auto____, 
+    return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$cljs$core_SLASH_let, null, 1, null), new cljs.core.List(null, cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$f____9200____auto____, null, 1, null), new cljs.core.List(null, d, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, 
+    cljs.core.cst$sym$alias____9202____auto____, null, 1, null), new cljs.core.List(null, a, null, 1, null)], 0))))), null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$replicant$alias_SLASH_register_BANG_, null, 1, null), new cljs.core.List(null, cljs.core.cst$sym$alias____9202____auto____, null, 1, 
+    null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$f____9200____auto____, null, 1, null)], 0)))), null, 1, null), new cljs.core.List(null, cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.List(null, cljs.core.cst$sym$def, null, 1, null), new cljs.core.List(null, c, null, 1, null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.List(null, cljs.core.cst$sym$alias____9202____auto____, 
     null, 1, null)], 0)))), null, 1, null)], 0))));
   };
   replicant.alias.defalias.cljs$lang$maxFixedArity = 3;
@@ -32364,7 +32424,7 @@ replicant.alias.expand.cljs$lang$applyTo = function(a) {
 replicant.string = {};
 replicant.string.IStringifier = function() {
 };
-var replicant$string$IStringifier$append$dyn_9320 = function(a, b) {
+var replicant$string$IStringifier$append$dyn_9330 = function(a, b) {
   var c = replicant.string.append[goog.typeOf(a == null ? null : a)];
   if (c != null) {
     return c.cljs$core$IFn$_invoke$arity$2 ? c.cljs$core$IFn$_invoke$arity$2(a, b) : c(a, b);
@@ -32376,9 +32436,9 @@ var replicant$string$IStringifier$append$dyn_9320 = function(a, b) {
   throw cljs.core.missing_protocol("IStringifier.append", a);
 };
 replicant.string.append = function(a, b) {
-  return a != null && a.replicant$string$IStringifier$append$arity$2 != null ? a.replicant$string$IStringifier$append$arity$2(a, b) : replicant$string$IStringifier$append$dyn_9320(a, b);
+  return a != null && a.replicant$string$IStringifier$append$arity$2 != null ? a.replicant$string$IStringifier$append$arity$2(a, b) : replicant$string$IStringifier$append$dyn_9330(a, b);
 };
-var replicant$string$IStringifier$to_string$dyn_9324 = function(a) {
+var replicant$string$IStringifier$to_string$dyn_9334 = function(a) {
   var b = replicant.string.to_string[goog.typeOf(a == null ? null : a)];
   if (b != null) {
     return b.cljs$core$IFn$_invoke$arity$1 ? b.cljs$core$IFn$_invoke$arity$1(a) : b(a);
@@ -32390,30 +32450,30 @@ var replicant$string$IStringifier$to_string$dyn_9324 = function(a) {
   throw cljs.core.missing_protocol("IStringifier.to-string", a);
 };
 replicant.string.to_string = function(a) {
-  return a != null && a.replicant$string$IStringifier$to_string$arity$1 != null ? a.replicant$string$IStringifier$to_string$arity$1(a) : replicant$string$IStringifier$to_string$dyn_9324(a);
+  return a != null && a.replicant$string$IStringifier$to_string$arity$1 != null ? a.replicant$string$IStringifier$to_string$arity$1(a) : replicant$string$IStringifier$to_string$dyn_9334(a);
 };
 replicant.string.create_renderer = function() {
-  if (typeof replicant === "undefined" || typeof replicant.string === "undefined" || typeof replicant.string.t_reify_replicant$string9321 === "undefined") {
-    replicant.string.t_reify_replicant$string9321 = function(a, b) {
+  if (typeof replicant === "undefined" || typeof replicant.string === "undefined" || typeof replicant.string.t_reify_replicant$string9331 === "undefined") {
+    replicant.string.t_reify_replicant$string9331 = function(a, b) {
       this.sb = a;
-      this.meta9322 = b;
+      this.meta9332 = b;
       this.cljs$lang$protocol_mask$partition0$ = 393216;
       this.cljs$lang$protocol_mask$partition1$ = 0;
-    }, replicant.string.t_reify_replicant$string9321.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-      return new replicant.string.t_reify_replicant$string9321(this.sb, b);
-    }, replicant.string.t_reify_replicant$string9321.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
-      return this.meta9322;
-    }, replicant.string.t_reify_replicant$string9321.prototype.replicant$string$IStringifier$ = cljs.core.PROTOCOL_SENTINEL, replicant.string.t_reify_replicant$string9321.prototype.replicant$string$IStringifier$append$arity$2 = function(a, b) {
+    }, replicant.string.t_reify_replicant$string9331.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+      return new replicant.string.t_reify_replicant$string9331(this.sb, b);
+    }, replicant.string.t_reify_replicant$string9331.prototype.cljs$core$IMeta$_meta$arity$1 = function(a) {
+      return this.meta9332;
+    }, replicant.string.t_reify_replicant$string9331.prototype.replicant$string$IStringifier$ = cljs.core.PROTOCOL_SENTINEL, replicant.string.t_reify_replicant$string9331.prototype.replicant$string$IStringifier$append$arity$2 = function(a, b) {
       return this.sb.push(b);
-    }, replicant.string.t_reify_replicant$string9321.prototype.replicant$string$IStringifier$to_string$arity$1 = function(a) {
+    }, replicant.string.t_reify_replicant$string9331.prototype.replicant$string$IStringifier$to_string$arity$1 = function(a) {
       return this.sb.join("");
-    }, replicant.string.t_reify_replicant$string9321.cljs$lang$type = !0, replicant.string.t_reify_replicant$string9321.cljs$lang$ctorStr = "replicant.string/t_reify_replicant$string9321", replicant.string.t_reify_replicant$string9321.cljs$lang$ctorPrWriter = function(a, b, c) {
-      return cljs.core._write(b, "replicant.string/t_reify_replicant$string9321");
-    }, replicant.string.__GT_t_reify_replicant$string9321 = function(a, b) {
-      return new replicant.string.t_reify_replicant$string9321(a, b);
+    }, replicant.string.t_reify_replicant$string9331.cljs$lang$type = !0, replicant.string.t_reify_replicant$string9331.cljs$lang$ctorStr = "replicant.string/t_reify_replicant$string9331", replicant.string.t_reify_replicant$string9331.cljs$lang$ctorPrWriter = function(a, b, c) {
+      return cljs.core._write(b, "replicant.string/t_reify_replicant$string9331");
+    }, replicant.string.__GT_t_reify_replicant$string9331 = function(a, b) {
+      return new replicant.string.t_reify_replicant$string9331(a, b);
     };
   }
-  return new replicant.string.t_reify_replicant$string9321([], null);
+  return new replicant.string.t_reify_replicant$string9331([], null);
 };
 replicant.string.self_closing_QMARK_ = new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 15, ["track", null, "br", null, "img", null, "area", null, "base", null, "hr", null, "col", null, "param", null, "input", null, "link", null, "source", null, "audio", null, "meta", null, "wbr", null, "embed", null], null), null);
 replicant.string.str_join = function(a, b, c) {
@@ -32565,8 +32625,51 @@ if (typeof ddc === "undefined" || typeof ddc.server === "undefined" || typeof dd
   ddc.server.next_todo_id = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(2);
 }
 ddc.server.session_cookie_name = "ddc_session";
+ddc.server.health_etag = 'W/"ddc-health-v1"';
+ddc.server.health_last_modified = "Fri, 17 Apr 2026 00:00:00 GMT";
 ddc.server.todo_list = function() {
   return cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$id, cljs.core.vals(cljs.core.deref(ddc.server.todos)));
+};
+ddc.server.cookie_value = function(a, b) {
+  return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(a, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$cookies, b, cljs.core.cst$kw$value], null));
+};
+ddc.server.user_theme = function(a) {
+  a = ddc.server.cookie_value(a, cljs.core.cst$kw$todo_DASH_theme);
+  return cljs.core.truth_(a) ? a : "default";
+};
+ddc.server.user_density = function(a) {
+  a = ddc.server.cookie_value(a, cljs.core.cst$kw$todo_DASH_density);
+  return cljs.core.truth_(a) ? a : "comfortable";
+};
+ddc.server.todo_filters = function(a) {
+  var b = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(a, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$params, cljs.core.cst$kw$filters], null));
+  if (cljs.core.truth_(b)) {
+    return b;
+  }
+  a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(a, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$session, cljs.core.cst$kw$last_DASH_filters], null));
+  return cljs.core.truth_(a) ? a : cljs.core.PersistentArrayMap.EMPTY;
+};
+ddc.server.todo_tags = function(a) {
+  var b = cljs.core.cst$kw$tags.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(a));
+  a = cljs.core.truth_(b) ? b : cljs.core.cst$kw$tags.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$query_DASH_params.cljs$core$IFn$_invoke$arity$1(a));
+  return a == null ? cljs.core.PersistentVector.EMPTY : cljs.core.sequential_QMARK_(a) ? cljs.core.vec(cljs.core.flatten(a)) : new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [a], null);
+};
+ddc.server.flash_class = function(a) {
+  switch(a instanceof cljs.core.Keyword ? a.fqn : null) {
+    case "success":
+      return "is-success";
+    case "warning":
+      return "is-warning";
+    case "danger":
+      return "is-danger";
+    case "info":
+      return "is-info";
+    default:
+      return "is-info";
+  }
+};
+ddc.server.flash_view = function(a) {
+  return cljs.core.truth_(a) ? new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_light, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class, ddc.server.flash_class(cljs.core.cst$kw$type.cljs$core$IFn$_invoke$arity$1(a))], null), cljs.core.cst$kw$text.cljs$core$IFn$_invoke$arity$1(a)], null) : null;
 };
 ddc.server.html_response = function(a) {
   switch(arguments.length) {
@@ -32639,14 +32742,15 @@ ddc.server.layout = function(a) {
 ddc.server.layout.cljs$core$IFn$_invoke$arity$variadic = function(a, b) {
   var c = cljs.core.__destructure_map(a);
   a = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$title);
-  c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$user);
+  var d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$user), e = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$flash), f = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$theme);
+  c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$density);
   return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$html, new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$head, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$meta, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$charset, "utf-8"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
   [cljs.core.cst$kw$meta, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$name, "viewport", cljs.core.cst$kw$content, "width\x3ddevice-width, initial-scale\x3d1"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$title, a], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$link, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$rel, "stylesheet", cljs.core.cst$kw$href, 
-  "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$style, ".is-done{text-decoration:line-through}\n      .todo-row{align-items:center}\n      .todo-title{overflow-wrap:anywhere}"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$body, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
-  [cljs.core.cst$kw$section$section, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$container$is_DASH_max_DASH_desktop, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$header$level$mb_DASH_6, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$level_DASH_left, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, 
-  [cljs.core.cst$kw$div, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p$heading, "Data-driven clarity"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h1$title$is_DASH_2, a], null)], null)], null), cljs.core.truth_(c) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$level_DASH_right, new cljs.core.PersistentVector(null, 4, 5, 
-  cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/logout"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_light, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Sign out"], null)], null)], null) : null], null), b], null)], 
-  null)], null)], null);
+  "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$style, ".is-done{text-decoration:line-through}\n      .todo-row{align-items:center}\n      .todo-title{overflow-wrap:anywhere}\n      .request-snapshot pre{white-space:pre-wrap;word-break:break-word}\n      .density-compact .box{padding:.75rem}\n      .theme-dark{background:#111827;color:#f9fafb}\n      .theme-dark .box,.theme-dark .notification{background:#1f2937;color:#f9fafb}\n      .theme-dark .label,.theme-dark .title,.theme-dark .heading{color:#f9fafb}"], 
+  null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$body, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["theme-" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(f), "density-" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(c)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$section$section, 
+  new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$container$is_DASH_max_DASH_desktop, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$header$level$mb_DASH_6, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$level_DASH_left, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div, new cljs.core.PersistentVector(null, 
+  2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p$heading, "Data-driven clarity"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h1$title$is_DASH_2, a], null)], null)], null), cljs.core.truth_(d) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$level_DASH_right, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form, 
+  new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/logout"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_light, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Sign out"], null)], null)], null) : null], null), ddc.server.flash_view(e), b], null)], null)], null)], null);
 };
 ddc.server.layout.cljs$lang$maxFixedArity = 1;
 ddc.server.layout.cljs$lang$applyTo = function(a) {
@@ -32654,15 +32758,39 @@ ddc.server.layout.cljs$lang$applyTo = function(a) {
   a = cljs.core.next(a);
   return this.cljs$core$IFn$_invoke$arity$variadic(b, a);
 };
-ddc.server.login_page = function(a) {
+ddc.server.login_page = function(a, b) {
+  b = cljs.core.__destructure_map(b);
+  b = cljs.core.get.cljs$core$IFn$_invoke$arity$2(b, cljs.core.cst$kw$error);
+  return ddc.server.layout.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$title, "Sign in", cljs.core.cst$kw$flash, cljs.core.cst$kw$flash.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$theme, ddc.server.user_theme(a), cljs.core.cst$kw$density, ddc.server.user_density(a)], null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.truth_(b) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_danger$is_DASH_light, 
+  b], null) : null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$columns$is_DASH_centered, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column$is_DASH_half_DASH_desktop$is_DASH_two_DASH_thirds_DASH_tablet, new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, 
+  "post", cljs.core.cst$kw$action, "/login"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "username"], null), "User"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$id, "username", cljs.core.cst$kw$type, "text", cljs.core.cst$kw$name, "credentials[username]", cljs.core.cst$kw$autocomplete, "username", cljs.core.cst$kw$autofocus, !0], null)], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, 
+  new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "password"], null), "Password"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$id, 
+  "password", cljs.core.cst$kw$type, "password", cljs.core.cst$kw$name, "credentials[password]", cljs.core.cst$kw$autocomplete, "current-password"], null)], null)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_primary$is_DASH_fullwidth, 
+  new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Sign in"], null)], null)], null)], null)], null)], null)], 0));
+};
+ddc.server.todo_matches_QMARK_ = function(a, b) {
   a = cljs.core.__destructure_map(a);
-  a = cljs.core.get.cljs$core$IFn$_invoke$arity$2(a, cljs.core.cst$kw$error);
-  return ddc.server.layout.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$title, "Sign in"], null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.truth_(a) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_danger$is_DASH_light, a], null) : null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$columns$is_DASH_centered, 
-  new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column$is_DASH_half_DASH_desktop$is_DASH_two_DASH_thirds_DASH_tablet, new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/login"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, 
-  [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "username"], null), "User"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 
-  5, [cljs.core.cst$kw$id, "username", cljs.core.cst$kw$type, "text", cljs.core.cst$kw$name, "username", cljs.core.cst$kw$autocomplete, "username", cljs.core.cst$kw$autofocus, !0], null)], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, 
-  "password"], null), "Password"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$id, "password", cljs.core.cst$kw$type, "password", cljs.core.cst$kw$name, "password", cljs.core.cst$kw$autocomplete, "current-password"], null)], null)], null)], null), new cljs.core.PersistentVector(null, 
-  2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_primary$is_DASH_fullwidth, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Sign in"], null)], null)], null)], null)], null)], null)], 0));
+  var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(a, cljs.core.cst$kw$status), d = cljs.core.get.cljs$core$IFn$_invoke$arity$2(a, cljs.core.cst$kw$q);
+  a = clojure.string.lower_case(cljs.core.cst$kw$title.cljs$core$IFn$_invoke$arity$1(b));
+  d = clojure.string.lower_case(cljs.core.truth_(d) ? d : "");
+  var e = function() {
+    switch(c) {
+      case "open":
+        return cljs.core.not(cljs.core.cst$kw$done_QMARK_.cljs$core$IFn$_invoke$arity$1(b));
+      case "done":
+        return cljs.core.cst$kw$done_QMARK_.cljs$core$IFn$_invoke$arity$1(b);
+      default:
+        return !0;
+    }
+  }();
+  return cljs.core.truth_(e) ? clojure.string.blank_QMARK_(d) || clojure.string.includes_QMARK_(a, d) : e;
+};
+ddc.server.filtered_todos = function(a) {
+  var b = ddc.server.todo_filters(a);
+  return cljs.core.filter.cljs$core$IFn$_invoke$arity$2(function(c) {
+    return ddc.server.todo_matches_QMARK_(b, c);
+  }, ddc.server.todo_list());
 };
 ddc.server.todo_item = function(a) {
   var b = cljs.core.__destructure_map(a);
@@ -32675,25 +32803,73 @@ ddc.server.todo_item = function(a) {
   [cljs.core.cst$kw$div$column$is_DASH_narrow, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/todos/" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(a) + "/delete"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_small$is_DASH_danger$is_DASH_light, 
   new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Delete"], null)], null)], null)], null)], null);
 };
+ddc.server.filter_form = function(a) {
+  var b = ddc.server.todo_filters(a), c = cljs.core.__destructure_map(b);
+  b = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$status);
+  c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(c, cljs.core.cst$kw$q);
+  a = cljs.core.set(ddc.server.todo_tags(a));
+  return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box$mb_DASH_5, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "get", cljs.core.cst$kw$action, "/todos"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$columns, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column, new cljs.core.PersistentVector(null, 
+  3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "filter-q"], null), "Search"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$id, "filter-q", cljs.core.cst$kw$type, "search", cljs.core.cst$kw$name, "filters[q]", cljs.core.cst$kw$value, c, cljs.core.cst$kw$placeholder, "Title contains"], 
+  null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column$is_DASH_one_DASH_quarter, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "filter-status"], null), "Status"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$select$is_DASH_fullwidth, 
+  new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$select, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$id, "filter-status", cljs.core.cst$kw$name, "filters[status]"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value, "", cljs.core.cst$kw$selected, b == null || cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("", 
+  b)], null), "All"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value, "open", cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("open", b)], null), "Open"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value, "done", 
+  cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("done", b)], null), "Done"], null)], null)], null)], null)], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field$is_DASH_grouped$is_DASH_grouped_DASH_multiline, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$checkbox$mr_DASH_4, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$input, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$type, "checkbox", cljs.core.cst$kw$name, "tags[]", cljs.core.cst$kw$value, "cljs", cljs.core.cst$kw$checked, cljs.core.contains_QMARK_(a, "cljs")], null)], null), " CLJS"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$checkbox$mr_DASH_4, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input, new cljs.core.PersistentArrayMap(null, 
+  4, [cljs.core.cst$kw$type, "checkbox", cljs.core.cst$kw$name, "tags[]", cljs.core.cst$kw$value, "ring", cljs.core.cst$kw$checked, cljs.core.contains_QMARK_(a, "ring")], null)], null), " Ring"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$checkbox, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$type, "checkbox", 
+  cljs.core.cst$kw$name, "tags[]", cljs.core.cst$kw$value, "std", cljs.core.cst$kw$checked, cljs.core.contains_QMARK_(a, "std")], null)], null), " @std"], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field$is_DASH_grouped, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_link, 
+  new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Apply"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$a$button$is_DASH_light, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$href, "/todos"], null), "Reset"], null)], null)], null)], null);
+};
+ddc.server.preferences_form = function(a) {
+  var b = ddc.server.user_theme(a);
+  a = ddc.server.user_density(a);
+  return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/preferences"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h2$title$is_DASH_5, "Preferences"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "pref-theme"], null), "Theme"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$select$is_DASH_fullwidth, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$select, new cljs.core.PersistentArrayMap(null, 
+  2, [cljs.core.cst$kw$id, "pref-theme", cljs.core.cst$kw$name, "prefs[theme]"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value, "default", cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("default", b)], null), "Default"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 
+  2, [cljs.core.cst$kw$value, "dark", cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("dark", b)], null), "Dark"], null)], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "pref-density"], null), "Density"], null), 
+  new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$select$is_DASH_fullwidth, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$select, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$id, "pref-density", cljs.core.cst$kw$name, "prefs[density]"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 
+  2, [cljs.core.cst$kw$value, "comfortable", cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("comfortable", a)], null), "Comfortable"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$option, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value, "compact", cljs.core.cst$kw$selected, cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("compact", a)], null), "Compact"], null)], null)], null)], null), new cljs.core.PersistentVector(null, 
+  3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_primary, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Save"], null)], null);
+};
+ddc.server.upload_form = function() {
+  return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box, new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/imports", cljs.core.cst$kw$enctype, "multipart/form-data"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h2$title$is_DASH_5, "Import"], null), new cljs.core.PersistentVector(null, 
+  3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "upload-note"], null), "Note"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$id, "upload-note", cljs.core.cst$kw$type, 
+  "text", cljs.core.cst$kw$name, "upload[note]", cljs.core.cst$kw$placeholder, "Optional note"], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "upload-file"], null), "File"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$input, new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$id, "upload-file", cljs.core.cst$kw$type, "file", cljs.core.cst$kw$name, "upload[file]"], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_link, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Upload"], null)], null);
+};
+ddc.server.upload_summary = function(a) {
+  a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(a, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$session, cljs.core.cst$kw$last_DASH_upload], null));
+  return cljs.core.truth_(a) ? new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$message$is_DASH_link, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$message_DASH_header, "Last import"], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$message_DASH_body, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, cljs.core.cst$kw$filename.cljs$core$IFn$_invoke$arity$1(a)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, "" + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$size.cljs$core$IFn$_invoke$arity$1(a)) + " bytes, " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$content_DASH_type.cljs$core$IFn$_invoke$arity$1(a))], 
+  null), cljs.core.seq(cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(a)) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(a)], null) : null], null)], null) : null;
+};
+ddc.server.request_snapshot = function(a) {
+  return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$box$request_DASH_snapshot, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h2$title$is_DASH_5, "Request"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$columns, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column, 
+  new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, "Method"], null), " ", cljs.core.name(cljs.core.cst$kw$request_DASH_method.cljs$core$IFn$_invoke$arity$1(a))], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$strong, "Scheme"], null), " ", cljs.core.name(cljs.core.cst$kw$scheme.cljs$core$IFn$_invoke$arity$1(a))], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, "Remote"], null), " ", cljs.core.cst$kw$remote_DASH_addr.cljs$core$IFn$_invoke$arity$1(a)], null)], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$div$column, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, "Theme"], null), " ", ddc.server.user_theme(a)], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, 
+  "Density"], null), " ", ddc.server.user_density(a)], null), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, "Tags"], null), " ", cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([ddc.server.todo_tags(a)], 0))], null)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$pre, cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$params, cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$query_DASH_params, cljs.core.cst$kw$query_DASH_params.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$form_DASH_params, cljs.core.cst$kw$form_DASH_params.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$multipart_DASH_params, 
+  cljs.core.cst$kw$multipart_DASH_params.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$cookies, cljs.core.keys(cljs.core.cst$kw$cookies.cljs$core$IFn$_invoke$arity$1(a))], null)], 0))], null)], null);
+};
 ddc.server.todos_page = function(a) {
-  a = cljs.core.cst$kw$user.cljs$core$IFn$_invoke$arity$1(a);
-  var b = ddc.server.todo_list();
-  return ddc.server.layout.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$title, "Todos", cljs.core.cst$kw$user, a], null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_info$is_DASH_light, "Signed in as ", new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, a], null)], 
-  null), new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box$mb_DASH_5, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/todos"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "title"], null), "Add a todo"], 
-  null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field$has_DASH_addons, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control$is_DASH_expanded, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$id, "title", cljs.core.cst$kw$type, "text", cljs.core.cst$kw$name, 
-  "title", cljs.core.cst$kw$placeholder, "New todo", cljs.core.cst$kw$required, !0, cljs.core.cst$kw$autofocus, !0], null)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_primary, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Add"], null)], null)], null)], null), 
-  cljs.core.seq(b) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div, cljs.core.map.cljs$core$IFn$_invoke$arity$2(ddc.server.todo_item, b)], null) : new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_light, "No todos yet."], null)], 0));
+  var b = cljs.core.cst$kw$user.cljs$core$IFn$_invoke$arity$1(a), c = ddc.server.filtered_todos(a);
+  return ddc.server.layout.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$title, "Todos", cljs.core.cst$kw$user, b, cljs.core.cst$kw$flash, cljs.core.cst$kw$flash.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$theme, ddc.server.user_theme(a), cljs.core.cst$kw$density, ddc.server.user_density(a)], null), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_info$is_DASH_light, 
+  "Signed in as ", new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$strong, b], null)], null), ddc.server.filter_form(a), new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$form$box$mb_DASH_5, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$method, "post", cljs.core.cst$kw$action, "/todos"], null), ddc.util.anti_forgery.anti_forgery_field(), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  [cljs.core.cst$kw$label$label, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$for, "title"], null), "Add a todo"], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$field$has_DASH_addons, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control$is_DASH_expanded, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input$input, 
+  new cljs.core.PersistentArrayMap(null, 6, [cljs.core.cst$kw$id, "title", cljs.core.cst$kw$type, "text", cljs.core.cst$kw$name, "todo[title]", cljs.core.cst$kw$placeholder, "New todo", cljs.core.cst$kw$required, !0, cljs.core.cst$kw$autofocus, !0], null)], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$control, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$button$is_DASH_primary, 
+  new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type, "submit"], null), "Add"], null)], null)], null)], null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$columns, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column, ddc.server.preferences_form(a)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$column, 
+  ddc.server.upload_form()], null)], null), ddc.server.upload_summary(a), cljs.core.seq(c) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div, cljs.core.map.cljs$core$IFn$_invoke$arity$2(ddc.server.todo_item, c)], null) : new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$notification$is_DASH_light, "No todos matched."], null), ddc.server.request_snapshot(a)], 0));
 };
 ddc.server.root_handler = function(a) {
   return cljs.core.truth_(ddc.server.current_user(a)) ? ddc.server.redirect("/todos") : ddc.server.redirect("/login");
 };
 ddc.server.login_form_handler = function(a) {
-  return ddc.server.html_response.cljs$core$IFn$_invoke$arity$1(ddc.server.login_page(cljs.core.PersistentArrayMap.EMPTY));
+  return ddc.server.html_response.cljs$core$IFn$_invoke$arity$1(ddc.server.login_page(a, cljs.core.PersistentArrayMap.EMPTY));
 };
 ddc.server.login_handler = function(a) {
-  var b = cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(a);
-  return ddc.server.valid_credentials_QMARK_(b) ? cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(ddc.server.redirect("/todos"), cljs.core.cst$kw$session, cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.cst$kw$session.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$user, cljs.core.cst$kw$username.cljs$core$IFn$_invoke$arity$1(b))) : ddc.server.html_response.cljs$core$IFn$_invoke$arity$2(ddc.server.login_page(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$error, "Invalid username or password"], 
-  null)), 401);
+  var b = cljs.core.cst$kw$credentials.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(a));
+  return ddc.server.valid_credentials_QMARK_(b) ? cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(ddc.server.redirect("/todos"), cljs.core.cst$kw$session, cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.cst$kw$session.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$user, cljs.core.cst$kw$username.cljs$core$IFn$_invoke$arity$1(b)), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$success, 
+  cljs.core.cst$kw$text, "Signed in as " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$username.cljs$core$IFn$_invoke$arity$1(b))], null)], 0)) : ddc.server.html_response.cljs$core$IFn$_invoke$arity$2(ddc.server.login_page(a, new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$error, "Invalid username or password"], null)), 401);
 };
 ddc.server.logout_handler = function(a) {
   return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(ddc.server.redirect("/login"), cljs.core.cst$kw$session, null);
@@ -32705,11 +32881,36 @@ ddc.server.todos_handler = function(a) {
 };
 ddc.server.add_todo_handler = function(a) {
   return ddc.server.authenticated(a, function(b) {
-    b = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(b, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$params, cljs.core.cst$kw$title], null));
+    b = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(b, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$params, cljs.core.cst$kw$todo, cljs.core.cst$kw$title], null));
     var c = cljs.core, d = c.seq, e = clojure.string, f = e.trim;
     var g = cljs.core.truth_(b) ? b : "";
     d.call(c, f.call(e, g)) && (c = cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(ddc.server.next_todo_id, cljs.core.inc), cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(ddc.server.todos, cljs.core.assoc, c, new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$id, c, cljs.core.cst$kw$title, clojure.string.trim(b), cljs.core.cst$kw$done_QMARK_, !1], null)));
-    return ddc.server.redirect("/todos");
+    return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(ddc.server.redirect("/todos"), cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$success, cljs.core.cst$kw$text, "Todo added"], null));
+  });
+};
+ddc.server.preference_cookies = function(a) {
+  var b = cljs.core.__destructure_map(a);
+  a = cljs.core.get.cljs$core$IFn$_invoke$arity$2(b, cljs.core.cst$kw$theme);
+  b = cljs.core.get.cljs$core$IFn$_invoke$arity$2(b, cljs.core.cst$kw$density);
+  return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$todo_DASH_theme, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$value, cljs.core.truth_(a) ? a : "default", cljs.core.cst$kw$path, "/", cljs.core.cst$kw$http_DASH_only, !0, cljs.core.cst$kw$same_DASH_site, cljs.core.cst$kw$lax], null), cljs.core.cst$kw$todo_DASH_density, new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$value, cljs.core.truth_(b) ? b : "comfortable", cljs.core.cst$kw$path, "/", cljs.core.cst$kw$http_DASH_only, 
+  !0, cljs.core.cst$kw$same_DASH_site, cljs.core.cst$kw$lax], null)], null);
+};
+ddc.server.preferences_handler = function(a) {
+  return ddc.server.authenticated(a, function(b) {
+    b = cljs.core.cst$kw$prefs.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(b));
+    return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(ddc.server.redirect("/todos"), cljs.core.cst$kw$cookies, ddc.server.preference_cookies(b), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$success, cljs.core.cst$kw$text, "Preferences saved"], null)], 0));
+  });
+};
+ddc.server.upload_file_summary = function(a, b) {
+  return cljs.core.map_QMARK_(a) ? new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$filename, cljs.core.cst$kw$filename.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$content_DASH_type, cljs.core.cst$kw$content_DASH_type.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$size, cljs.core.cst$kw$size.cljs$core$IFn$_invoke$arity$1(a), cljs.core.cst$kw$note, b], null) : new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$filename, "No file selected", cljs.core.cst$kw$content_DASH_type, 
+  "application/octet-stream", cljs.core.cst$kw$size, 0, cljs.core.cst$kw$note, b], null);
+};
+ddc.server.imports_handler = function(a) {
+  return ddc.server.authenticated(a, function(b) {
+    var c = cljs.core.cst$kw$upload.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$params.cljs$core$IFn$_invoke$arity$1(b));
+    c = ddc.server.upload_file_summary(cljs.core.cst$kw$file.cljs$core$IFn$_invoke$arity$1(c), cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(c));
+    return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(ddc.server.redirect("/todos"), cljs.core.cst$kw$session, cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.cst$kw$session.cljs$core$IFn$_invoke$arity$1(b), cljs.core.cst$kw$last_DASH_upload, c), cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$info, cljs.core.cst$kw$text, "Import received: " + cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$filename.cljs$core$IFn$_invoke$arity$1(c))], 
+    null)], 0));
   });
 };
 ddc.server.todo_id = function(a) {
@@ -32722,23 +32923,28 @@ ddc.server.toggle_todo_handler = function(a) {
     cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(ddc.server.todos, function(d) {
       return cljs.core.contains_QMARK_(d, c) ? cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(d, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [c, cljs.core.cst$kw$done_QMARK_], null), cljs.core.not) : d;
     });
-    return ddc.server.redirect("/todos");
+    return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(ddc.server.redirect("/todos"), cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$success, cljs.core.cst$kw$text, "Todo updated"], null));
   });
 };
 ddc.server.delete_todo_handler = function(a) {
   return ddc.server.authenticated(a, function(b) {
     cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3(ddc.server.todos, cljs.core.dissoc, ddc.server.todo_id(b));
-    return ddc.server.redirect("/todos");
+    return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(ddc.server.redirect("/todos"), cljs.core.cst$kw$flash, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$type, cljs.core.cst$kw$warning, cljs.core.cst$kw$text, "Todo deleted"], null));
   });
+};
+ddc.server.health_handler = function(a) {
+  return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$status, 200, cljs.core.cst$kw$headers, new cljs.core.PersistentArrayMap(null, 2, ["ETag", ddc.server.health_etag, "Last-Modified", ddc.server.health_last_modified], null), cljs.core.cst$kw$body, "ok\n"], null);
 };
 ddc.server.default_handler = function(a) {
   return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$status, 404, cljs.core.cst$kw$headers, new cljs.core.PersistentArrayMap(null, 1, ["Content-Type", "text/plain"], null), cljs.core.cst$kw$body, "Not found\n"], null);
 };
-ddc.server.routes = new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/", cljs.core.cst$kw$method, cljs.core.cst$kw$get, cljs.core.cst$kw$handler, ddc.server.root_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/login", cljs.core.cst$kw$method, cljs.core.cst$kw$get, cljs.core.cst$kw$handler, ddc.server.login_form_handler], null), new cljs.core.PersistentArrayMap(null, 
+ddc.server.routes = new cljs.core.PersistentVector(null, 11, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/", cljs.core.cst$kw$method, cljs.core.cst$kw$get, cljs.core.cst$kw$handler, ddc.server.root_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/login", cljs.core.cst$kw$method, cljs.core.cst$kw$get, cljs.core.cst$kw$handler, ddc.server.login_form_handler], null), new cljs.core.PersistentArrayMap(null, 
 3, [cljs.core.cst$kw$pattern, "/login", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.login_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/logout", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.logout_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos", cljs.core.cst$kw$method, cljs.core.cst$kw$get, cljs.core.cst$kw$handler, ddc.server.todos_handler], 
-null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.add_todo_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos/:id/toggle", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.toggle_todo_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos/:id/delete", cljs.core.cst$kw$method, 
-cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.delete_todo_handler], null)], null);
-ddc.server.app_defaults = cljs.core.assoc_in(ddc.middlewares.defaults.site_defaults, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$session, cljs.core.cst$kw$cookie_DASH_name], null), ddc.server.session_cookie_name);
+null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.add_todo_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/preferences", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.preferences_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/imports", cljs.core.cst$kw$method, 
+cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.imports_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos/:id/toggle", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.toggle_todo_handler], null), new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$pattern, "/todos/:id/delete", cljs.core.cst$kw$method, cljs.core.cst$kw$post, cljs.core.cst$kw$handler, ddc.server.delete_todo_handler], null), new cljs.core.PersistentArrayMap(null, 
+2, [cljs.core.cst$kw$pattern, "/health.txt", cljs.core.cst$kw$handler, ddc.server.health_handler], null)], null);
+ddc.server.app_defaults = cljs.core.assoc_in(cljs.core.assoc_in(cljs.core.assoc_in(cljs.core.assoc_in(ddc.middlewares.defaults.site_defaults, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$session, cljs.core.cst$kw$cookie_DASH_name], null), ddc.server.session_cookie_name), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$security, cljs.core.cst$kw$absolute_DASH_redirects], null), !0), new cljs.core.PersistentVector(null, 
+2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$security, cljs.core.cst$kw$proxy_DASH_headers], null), !0), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$security, cljs.core.cst$kw$hsts], null), new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$max_DASH_age, 31536000, cljs.core.cst$kw$include_DASH_subdomains_QMARK_, !0], null));
 ddc.server.wrap_route_defaults = function(a) {
   var b = cljs.core.truth_(cljs.core.cst$kw$handler.cljs$core$IFn$_invoke$arity$1(a)) ? cljs.core.update.cljs$core$IFn$_invoke$arity$4(a, cljs.core.cst$kw$handler, ddc.middlewares.defaults.wrap_defaults, ddc.server.app_defaults) : a;
   return cljs.core.truth_(cljs.core.cst$kw$async_DASH_handler.cljs$core$IFn$_invoke$arity$1(a)) ? cljs.core.update.cljs$core$IFn$_invoke$arity$4(b, cljs.core.cst$kw$async_DASH_handler, ddc.middlewares.defaults.wrap_defaults, ddc.server.app_defaults) : b;
