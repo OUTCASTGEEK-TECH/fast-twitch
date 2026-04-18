@@ -1,6 +1,9 @@
-(ns fast-twitch.macros)
+(ns fast-twitch.macros
+  "Compile-time helpers for runtime detection, environment lookup, and server startup code generation.")
 
-(defmacro env-var [v]
+(defmacro env-var
+  "Reads an environment variable from Deno or Node-compatible globals at runtime."
+  [v]
   `(let [g# ~'globalThis
          deno-env# (some-> (aget g# "Deno") (aget "env"))
          process-env# (some-> (aget g# "process") (aget "env"))]
@@ -9,7 +12,9 @@
        (when process-env#
          (aget process-env# ~v)))))
 
-(defmacro current-runtime []
+(defmacro current-runtime
+  "Expands to a keyword naming the active JavaScript runtime, or nil when unsupported."
+  []
   `(let [g# ~'globalThis
          deno# (aget g# "Deno")
          bun# (aget g# "Bun")
@@ -24,7 +29,9 @@
        :else
        nil)))
 
-(defn serve-deno [deno handler hostname port on-listen reuse-port _proxy]
+(defn serve-deno
+  "Builds the Deno server bootstrap form for the provided handler and options."
+  [deno handler hostname port on-listen reuse-port _proxy]
   `(.serve ~deno
      (~'clj->js
       (cond-> {:handler ~handler
@@ -36,7 +43,9 @@
         (some? ~reuse-port)
         (assoc :reusePort ~reuse-port)))))
 
-(defn serve-bun [bun handler hostname port on-listen reuse-port proxy]
+(defn serve-bun
+  "Builds the Bun server bootstrap form and normalizes the listen callback payload."
+  [bun handler hostname port on-listen reuse-port proxy]
   `(let [opts# (~'clj->js
                 (cond-> {:fetch ~handler
                          :hostname ~hostname
@@ -50,7 +59,9 @@
                  :port (aget server# "port")})))
      server#))
 
-(defn serve-node [process handler hostname port on-listen reuse-port proxy]
+(defn serve-node
+  "Builds the Node HTTP server bootstrap form, including request and response adaptation."
+  [process handler hostname port on-listen reuse-port proxy]
   `(let [builtin# (aget ~process "getBuiltinModule")
          http# (builtin# "node:http")
          stream# (builtin# "node:stream")
@@ -71,16 +82,16 @@
                                    (assoc :body req# :duplex "half")))]
                       (.forEach (~'Object.entries node-headers#)
                                 (fn [entry#]
-                                    (let [k# (aget entry# 0)
-                                          v# (aget entry# 1)]
+                                  (let [k# (aget entry# 0)
+                                        v# (aget entry# 1)]
                                     (cond
                                       (~'array? v#)
                                       (.forEach v# #(.append headers# k# %))
 
                                       (some? v#)
                                       (.set headers# k# v#)))))
-	                      (-> (~'Promise.resolve
-	                           (~handler (~'Request. url# init#)))
+                      (-> (~'Promise.resolve
+                           (~handler (~'Request. url# init#)))
                           (.then
                            (fn [response#]
                              (aset res# "statusCode" (aget response# "status"))
@@ -124,6 +135,7 @@
      server#))
 
 (defmacro serve
+  "Expands to runtime-specific server startup code for Deno, Bun, or Node."
   [& {:keys [app handler host hostname port on-listen reuse-port]}]
   (let [g (gensym "g")
         proxy (gensym "proxy")

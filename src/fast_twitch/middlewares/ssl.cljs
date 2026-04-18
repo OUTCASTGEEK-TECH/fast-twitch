@@ -1,8 +1,11 @@
 (ns fast-twitch.middlewares.ssl
+  "Redirects insecure traffic and adds strict transport security headers when configured."
   [:require
    [fast-twitch.middlewares.common :as common]])
 
-(defn- https-url [request]
+(defn- https-url
+  "Builds the HTTPS URL for the current request."
+  [request]
   (str "https://"
        (:server-name request)
        (:uri request)
@@ -10,6 +13,7 @@
          (str "?" query-string))))
 
 (defn wrap-ssl-redirect
+  "Wraps a handler so non-HTTPS requests receive a permanent redirect."
   ([handler]
    (wrap-ssl-redirect handler {}))
   ([handler _options]
@@ -28,6 +32,7 @@
                   :body ""}))))))
 
 (defn hsts-response
+  "Adds a Strict-Transport-Security header to HTTPS responses."
   ([response request]
    (hsts-response response request {}))
   ([response request options]
@@ -42,12 +47,14 @@
      response)))
 
 (defn wrap-hsts
+  "Wraps a handler so HTTPS responses include strict transport security metadata."
   ([handler]
    (wrap-hsts handler {}))
   ([handler options]
    (common/wrap-response handler #(hsts-response %1 %2 options))))
 
 (defn wrap-ssl
+  "Composes HTTPS redirect and strict transport security behavior from options."
   ([handler]
    (wrap-ssl handler {}))
   ([handler options]

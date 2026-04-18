@@ -1,4 +1,5 @@
 (ns fast-twitch.middlewares.defaults
+  "Preconfigured middleware bundles for common API and site-oriented applications."
   [:require
    [fast-twitch.middlewares.absolute-redirects :as absolute-redirects]
    [fast-twitch.middlewares.anti-forgery :as anti-forgery]
@@ -46,13 +47,17 @@
       (assoc-in [:security :anti-forgery]
                 {:safe-header "X-Ft-Anti-Forgery"})))
 
-(defn- truthy-options [options]
+(defn- truthy-options
+  "Normalizes boolean-or-map options into either a map or nil."
+  [options]
   (cond
     (true? options) {}
     (map? options) options
     :else nil))
 
-(defn- wrap-params-defaults [handler options]
+(defn- wrap-params-defaults
+  "Applies the configured parameter parsing middleware stack."
+  [handler options]
   (cond-> handler
     (get-in options [:params :keywordize])
     (keyword-params/wrap-keyword-params)
@@ -66,7 +71,9 @@
     (get-in options [:params :urlencoded])
     (params/wrap-params)))
 
-(defn- wrap-response-defaults [handler options]
+(defn- wrap-response-defaults
+  "Applies the configured response middleware stack."
+  [handler options]
   (cond-> handler
     (get-in options [:responses :default-charset])
     (default-charset/wrap-default-charset
@@ -84,7 +91,9 @@
     true
     (head/wrap-head)))
 
-(defn- wrap-security-defaults [handler options]
+(defn- wrap-security-defaults
+  "Applies the configured security and deployment-related middleware stack."
+  [handler options]
   (let [security (:security options)]
     (cond-> handler
       (:anti-forgery security)
@@ -110,7 +119,9 @@
         :frame-options (:x-frame-options security)
         :xss-protection (:x-xss-protection security)}))))
 
-(defn wrap-defaults [handler options]
+(defn wrap-defaults
+  "Applies the configured default middleware bundles to a handler."
+  [handler options]
   (cond-> handler
     true
     (wrap-security-defaults options)

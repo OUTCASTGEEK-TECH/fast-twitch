@@ -1,0 +1,12 @@
+{:tasks
+ {docs
+  {:doc "Generate API.md from src/ using quickdoc"
+   :extra-deps {io.github.borkdude/quickdoc {:git/tag "v0.2.6"
+                                             :git/sha "ce86780"}}
+   :task (exec 'quickdoc.api/quickdoc)
+   :exec-args {:github/repo "https://github.com/OUTCASTGEEK-TECH/fast-twitch"
+               :git/branch "main"
+               :source-paths ["src"]
+               :outfile "docs/API.md"
+               :toc true
+               :var-links true}}}}

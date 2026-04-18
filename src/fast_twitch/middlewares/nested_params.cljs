@@ -1,7 +1,10 @@
 (ns fast-twitch.middlewares.nested-params
+  "Turns bracketed parameter names into nested maps and vectors."
   [:require [fast-twitch.middlewares.common :as common]])
 
-(defn parse-nested-keys [param-name]
+(defn parse-nested-keys
+  "Splits a bracketed parameter name into its path segments."
+  [param-name]
   (let [s (str param-name)]
     (loop [chars (seq s)
            token ""
@@ -13,13 +16,17 @@
           (recur (next chars) (str token c) tokens))
         (conj tokens token)))))
 
-(defn- put-value [old value]
+(defn- put-value
+  "Appends repeated values while preserving a single initial value."
+  [old value]
   (cond
     (nil? old) value
     (vector? old) (conj old value)
     :else [old value]))
 
-(defn- assoc-nested [m keys value]
+(defn- assoc-nested
+  "Associates a value into a nested structure described by key segments."
+  [m keys value]
   (let [k (first keys)
         more (next keys)]
     (if more
@@ -30,13 +37,16 @@
         (conj (or m []) value)
         (update (or m {}) k put-value value)))))
 
-(defn- nested-map [params key-parser]
+(defn- nested-map
+  "Builds a nested parameter map from flat key/value pairs."
+  [params key-parser]
   (reduce (fn [m [k v]]
             (assoc-nested m (key-parser k) v))
           {}
           params))
 
 (defn nested-params-request
+  "Rewrites parsed parameter maps using nested structures."
   ([request]
    (nested-params-request request {}))
   ([request options]
@@ -55,6 +65,7 @@
        (update :multipart-params nested-map key-parser)))))
 
 (defn wrap-nested-params
+  "Wraps a handler so bracketed parameter names become nested data."
   ([handler]
    (wrap-nested-params handler {}))
   ([handler options]

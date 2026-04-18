@@ -1,13 +1,17 @@
 (ns fast-twitch.middlewares.x-headers
+  "Adds common hardening headers to outgoing responses."
   [:require [fast-twitch.middlewares.common :as common]])
 
-(defn- frame-options-value [value]
+(defn- frame-options-value
+  "Normalizes frame options keywords to their header values."
+  [value]
   (case value
     :deny "DENY"
     :sameorigin "SAMEORIGIN"
     value))
 
 (defn x-headers-response
+  "Adds configured X-* headers to the response."
   ([response request]
    (x-headers-response response request {}))
   ([response _request options]
@@ -25,6 +29,7 @@
                           (:xss-protection options)))))
 
 (defn wrap-x-headers
+  "Wraps a handler so configured X-* headers are applied to responses."
   ([handler]
    (wrap-x-headers handler {}))
   ([handler options]

@@ -1,13 +1,18 @@
 (ns fast-twitch.middlewares.keyword-params
+  "Converts string parameter keys into keywords throughout parsed parameter maps."
   [:require [fast-twitch.middlewares.common :as common]])
 
-(defn- keyword-key [k]
+(defn- keyword-key
+  "Converts supported map keys into keywords."
+  [k]
   (cond
     (keyword? k) k
     (string? k) (keyword k)
     :else k))
 
-(defn- keywordize [x]
+(defn- keywordize
+  "Recursively keywordizes map keys while preserving vectors and values."
+  [x]
   (cond
     (map? x)
     (into {}
@@ -22,6 +27,7 @@
     x))
 
 (defn keyword-params-request
+  "Keywordizes parameter maps already associated with the request."
   ([request]
    (keyword-params-request request {}))
   ([request _options]
@@ -39,6 +45,7 @@
      (update :multipart-params keywordize))))
 
 (defn wrap-keyword-params
+  "Wraps a handler so parsed parameters use keyword keys."
   ([handler]
    (wrap-keyword-params handler {}))
   ([handler options]

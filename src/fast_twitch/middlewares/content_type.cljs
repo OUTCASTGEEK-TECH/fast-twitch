@@ -1,4 +1,5 @@
 (ns fast-twitch.middlewares.content-type
+  "Infers content types from filenames, bytes, and file metadata for responses and uploads."
   [:require
    [cljs.nodejs :as nodejs]
    [clojure.string :as str]
@@ -17,39 +18,55 @@
 ;; https://mimesniff.spec.whatwg.org/#reading-the-resource-header
 (def resource-header-size 1445)
 
-(defn- u8 [& xs]
+(defn- u8
+  "Creates a Uint8Array from numeric byte values."
+  [& xs]
   (Uint8Array. (clj->js xs)))
 
-(defn- ascii-u8 [s]
+(defn- ascii-u8
+  "Creates a Uint8Array from the ASCII bytes of a string."
+  [s]
   (Uint8Array.
    (clj->js (map #(.charCodeAt s %) (range (count s))))))
 
-(defn- byte-length [bytes]
+(defn- byte-length
+  "Returns the number of bytes in a byte array, or zero when absent."
+  [bytes]
   (if bytes
     (aget bytes "length")
     0))
 
-(defn- byte-at [bytes idx]
+(defn- byte-at
+  "Returns the byte value at the given index."
+  [bytes idx]
   (aget bytes idx))
 
-(defn- whitespace-byte? [b]
+(defn- whitespace-byte?
+  "Returns true when a byte is treated as leading ASCII whitespace."
+  [b]
   (or (= b 0x09)
       (= b 0x0a)
       (= b 0x0c)
       (= b 0x0d)
       (= b 0x20)))
 
-(defn- binary-data-byte? [b]
+(defn- binary-data-byte?
+  "Returns true when a byte strongly suggests binary rather than text data."
+  [b]
   (or (<= 0x00 b 0x08)
       (= b 0x0b)
       (<= 0x0e b 0x1a)
       (<= 0x1c b 0x1f)))
 
-(defn- tag-terminating-byte? [b]
+(defn- tag-terminating-byte?
+  "Returns true when a byte can terminate an HTML or SVG tag prefix match."
+  [b]
   (or (= b 0x20)
       (= b 0x3e)))
 
-(defn- lower-ascii-byte [b]
+(defn- lower-ascii-byte
+  "Lowercases an ASCII uppercase byte without affecting other bytes."
+  [b]
   (if (<= 0x41 b 0x5a)
     (+ b 0x20)
     b))
@@ -152,7 +169,9 @@
 (def eot-prefix
   (ascii-u8 "LP"))
 
-(defn base-content-type [s]
+(defn base-content-type
+  "Strips parameters from a content type and lowercases the main media type."
+  [s]
   (when (seq s)
     (-> s
         (str/split #";" 2)
@@ -160,19 +179,27 @@
         str/lower-case
         str/trim)))
 
-(defn filename-extension [filename]
+(defn filename-extension
+  "Returns the extension portion of a filename, including the leading dot."
+  [filename]
   (when-let [idx (str/last-index-of (or filename "") ".")]
     (subs filename idx)))
 
-(defn- extension [path]
+(defn- extension
+  "Extracts the extension from the final path segment."
+  [path]
   (when-let [file-name (last (str/split (or path "") "/"))]
     (filename-extension file-name)))
 
-(defn- body-path [body]
+(defn- body-path
+  "Returns a useful filename or path from a file-like response body."
+  [body]
   (when (map? body)
     (or (:path body) (:filename body))))
 
-(defn- mime-type [path options]
+(defn- mime-type
+  "Chooses a content type from explicit mappings, extension lookup, or a binary fallback."
+  [path options]
   (let [ext (extension path)
         mime-types (:mime-types options)]
     (or (get mime-types ext)
@@ -180,26 +207,36 @@
         (when ext (content-type ext))
         "application/octet-stream")))
 
-(defn expected-content-type [filename]
+(defn expected-content-type
+  "Looks up the extension-derived content type for a filename."
+  [filename]
   (when-let [ext (filename-extension filename)]
     (base-content-type (content-type ext))))
 
-(defn file-bytes [file]
+(defn file-bytes
+  "Reads the leading bytes used for file content sniffing."
+  [file]
   (if (and file (aget file "slice") (aget file "arrayBuffer"))
     (-> (.arrayBuffer (.slice file 0 resource-header-size))
         (.then #(Uint8Array. %)))
     (Promise.resolve nil)))
 
-(defn bytes-at? [bytes offset signature]
+(defn bytes-at?
+  "Returns true when the bytes at an offset match the given signature."
+  [bytes offset signature]
   (and bytes
        signature
        (<= (+ offset (byte-length signature)) (byte-length bytes))
        (starts-with (.subarray bytes offset) signature)))
 
-(defn bytes-start-with? [bytes signature]
+(defn bytes-start-with?
+  "Returns true when the byte sequence starts with the given signature."
+  [bytes signature]
   (bytes-at? bytes 0 signature))
 
-(defn- bytes-ci-at? [bytes offset signature]
+(defn- bytes-ci-at?
+  "Performs a case-insensitive signature match at the given offset."
+  [bytes offset signature]
   (and bytes
        signature
        (<= (+ offset (byte-length signature)) (byte-length bytes))
@@ -208,26 +245,34 @@
                     (lower-ascii-byte (byte-at signature idx))))
                (range (byte-length signature)))))
 
-(defn- leading-content-offset [bytes]
+(defn- leading-content-offset
+  "Skips leading whitespace bytes and returns the first content offset."
+  [bytes]
   (loop [idx 0]
     (if (and (< idx (byte-length bytes))
              (whitespace-byte? (byte-at bytes idx)))
       (recur (inc idx))
       idx)))
 
-(defn- tag-prefix? [bytes offset signature]
+(defn- tag-prefix?
+  "Checks whether a tag-like prefix appears at an offset and ends cleanly."
+  [bytes offset signature]
   (let [end (+ offset (byte-length signature))]
     (and (bytes-ci-at? bytes offset signature)
          (< end (byte-length bytes))
          (tag-terminating-byte? (byte-at bytes end)))))
 
-(defn- prefix-content-type [bytes]
+(defn- prefix-content-type
+  "Matches well-known file signatures against the leading bytes."
+  [bytes]
   (some (fn [[signature mime-type]]
           (when (bytes-start-with? bytes signature)
             mime-type))
         prefix-content-types))
 
-(defn- scriptable-content-type [bytes]
+(defn- scriptable-content-type
+  "Detects HTML, SVG, and XML content from leading markup."
+  [bytes]
   (let [offset (leading-content-offset bytes)]
     (cond
       (tag-prefix? bytes offset svg-tag-prefix)
@@ -239,7 +284,9 @@
       (bytes-at? bytes offset xml-prefix)
       "application/xml")))
 
-(defn- riff-content-type [bytes]
+(defn- riff-content-type
+  "Detects RIFF-based formats such as WebP, WAV, and AVI."
+  [bytes]
   (when (bytes-start-with? bytes riff-prefix)
     (cond
       (and (bytes-at? bytes 8 webp-prefix)
@@ -252,7 +299,9 @@
       (bytes-at? bytes 8 avi-prefix)
       "video/avi")))
 
-(defn- aiff-content-type [bytes]
+(defn- aiff-content-type
+  "Detects AIFF-family audio containers."
+  [bytes]
   (when (bytes-start-with? bytes form-prefix)
     (cond
       (bytes-at? bytes 8 aiff-prefix)
@@ -261,7 +310,9 @@
       (bytes-at? bytes 8 aifc-prefix)
       "audio/aiff")))
 
-(defn- mp3-frame-content-type [bytes]
+(defn- mp3-frame-content-type
+  "Detects MPEG audio frames when no ID3 tag is present."
+  [bytes]
   (when (and (<= 4 (byte-length bytes))
              (= 0xff (byte-at bytes 0))
              (= 0xe0 (bit-and (byte-at bytes 1) 0xe0))
@@ -270,7 +321,9 @@
              (not= 0x03 (bit-shift-right (bit-and (byte-at bytes 2) 0x0c) 2)))
     "audio/mpeg"))
 
-(defn- mp4-content-type [bytes]
+(defn- mp4-content-type
+  "Detects MP4 files by inspecting the ftyp box and compatible brands."
+  [bytes]
   (when (and (<= 12 (byte-length bytes))
              (bytes-at? bytes 4 ftyp-prefix))
     (let [box-size (+ (bit-shift-left (byte-at bytes 0) 24)
@@ -289,7 +342,9 @@
           :else
           (recur (+ idx 4)))))))
 
-(defn- webm-content-type [bytes]
+(defn- webm-content-type
+  "Detects WebM content from EBML headers and doctype markers."
+  [bytes]
   (when (bytes-start-with? bytes ebml-prefix)
     (let [limit (min 38 (byte-length bytes))]
       (loop [idx 4]
@@ -303,21 +358,29 @@
           :else
           (recur (inc idx)))))))
 
-(defn- tar-content-type [bytes]
+(defn- tar-content-type
+  "Detects tar archives from the ustar signature."
+  [bytes]
   (when (bytes-at? bytes 257 tar-prefix)
     "application/x-tar"))
 
-(defn- eot-content-type [bytes]
+(defn- eot-content-type
+  "Detects embedded OpenType font files."
+  [bytes]
   (when (bytes-at? bytes 34 eot-prefix)
     "application/vnd.ms-fontobject"))
 
-(defn- text-bytes? [bytes]
+(defn- text-bytes?
+  "Returns true when the sampled bytes look like plain text."
+  [bytes]
   (and bytes
        (pos? (aget bytes "length"))
        (not-any? #(binary-data-byte? (aget bytes %))
                (range (aget bytes "length")))))
 
-(defn sniff-content-type [bytes]
+(defn sniff-content-type
+  "Infers a content type from leading bytes using signature and text heuristics."
+  [bytes]
   (or (scriptable-content-type bytes)
       (prefix-content-type bytes)
       (riff-content-type bytes)
@@ -341,7 +404,9 @@
    "image/x-icon" #{"image/vnd.microsoft.icon"}
    "image/vnd.microsoft.icon" #{"image/x-icon"}})
 
-(defn compatible-content-type? [expected sniffed]
+(defn compatible-content-type?
+  "Returns true when two content types should be treated as equivalent."
+  [expected sniffed]
   (let [expected (base-content-type expected)
         sniffed (base-content-type sniffed)]
     (or (= expected sniffed)
@@ -351,7 +416,9 @@
              (str/starts-with? expected "text/")
              (= "text/plain" sniffed)))))
 
-(defn content-type-warning [declared expected sniffed]
+(defn content-type-warning
+  "Explains the first mismatch found between declared, expected, and sniffed types."
+  [declared expected sniffed]
   (cond
     (and expected sniffed
          (not (compatible-content-type? expected sniffed)))
@@ -368,7 +435,9 @@
     (str "Declared upload type does not match filename extension: declared "
          declared ", expected " expected)))
 
-(defn file-content-type-summary [file]
+(defn file-content-type-summary
+  "Builds an upload summary with declared, expected, sniffed, and warning fields."
+  [file]
   (if (map? file)
     (let [filename (:filename file)
           declared (base-content-type (:content-type file))
@@ -392,6 +461,7 @@
       :size 0})))
 
 (defn content-type-response
+  "Adds a Content-Type header to responses that do not already specify one."
   ([response request]
    (content-type-response response request {}))
   ([response request options]
@@ -404,6 +474,7 @@
       (mime-type (or (body-path (:body response)) (:uri request)) options)))))
 
 (defn wrap-content-type
+  "Wraps a handler so missing Content-Type headers are inferred automatically."
   ([handler]
    (wrap-content-type handler {}))
   ([handler options]

@@ -1,4 +1,5 @@
 (ns fast-twitch.routing
+  "Routing and handler adaptation helpers for translating between Fetch APIs and request maps."
   [:require-macros [fast-twitch.macros :refer [serve]]]
   [:require
    [cljs.proxy :refer [builder]]
@@ -8,12 +9,15 @@
 
 (def proxy (builder))
 
-(defn response [body]
+(defn response
+  "Builds a 200 response map with the supplied body."
+  [body]
   {:status 200
    :headers {}
    :body body})
 
 (defn status
+  "Creates a bare response for a status code or updates an existing response map."
   ([status]
    {:status status
     :headers {}
@@ -21,58 +25,81 @@
   ([response status]
    (assoc response :status status)))
 
-(defn header [response name value]
+(defn header
+  "Associates a header value on a response map."
+  [response name value]
   (assoc-in response [:headers name] (str value)))
 
-(defn not-found [body]
+(defn not-found
+  "Builds a 404 response map with the supplied body."
+  [body]
   {:status 404
    :headers {}
    :body body})
 
-(defn response? [response]
+(defn response?
+  "Returns true when a value matches the expected response map shape."
+  [response]
   (and (map? response)
        (integer? (:status response))
        (map? (:headers response))))
 
-(defn url-pattern [pathname]
+(defn url-pattern
+  "Builds a URLPattern that matches the given pathname."
+  [pathname]
   (URLPattern. (clj->js {:pathname pathname})))
 
-(defn- query-string [url]
+(defn- query-string
+  "Extracts the query string without the leading question mark."
+  [url]
   (let [search (aget url "search")]
     (when (pos? (count search))
       (subs search 1))))
 
-(defn- url-scheme [url]
+(defn- url-scheme
+  "Returns the URL protocol as a lowercase keyword."
+  [url]
   (let [protocol (aget url "protocol")]
     (keyword (subs protocol 0 (dec (count protocol))))))
 
-(defn- url-port [url scheme]
+(defn- url-port
+  "Returns the explicit or default port for a URL and scheme."
+  [url scheme]
   (Number
    (or (not-empty (aget url "port"))
        (case scheme
          :https "443"
          "80"))))
 
-(defn- entries-map [entries]
+(defn- entries-map
+  "Converts entry pairs into a keyword-keyed map."
+  [entries]
   (into {}
         (map (fn [entry]
                [(keyword (aget entry 0)) (aget entry 1)]))
         entries))
 
-(defn- headers-map [headers]
+(defn- headers-map
+  "Converts a Fetch Headers instance into a keyword-keyed map."
+  [headers]
   (entries-map (.entries headers)))
 
-(defn- path-params [params]
+(defn- path-params
+  "Extracts pathname group matches from a URLPattern execution result."
+  [params]
   (when-let [groups (some-> params
                             (aget "pathname")
                             (aget "groups"))]
     (entries-map (Object.entries groups))))
 
-(defn- required [options k]
+(defn- required
+  "Reads a required option or throws an explanatory error."
+  [options k]
   (or (get options k)
       (throw (Error. (str "ft request option required: " k)))))
 
 (defn build-request-map
+  "Builds the request map consumed by application handlers."
   ([request options]
    (build-request-map request nil options))
   ([request params options]
@@ -101,34 +128,46 @@
        body
        (assoc :body body)))))
 
-(defn- header-entries [headers]
+(defn- header-entries
+  "Expands response headers into entries, preserving multi-value headers."
+  [headers]
   (mapcat (fn [[k v]]
             (if (vector? v)
               (map #(vector k %) v)
               [[k v]]))
           headers))
 
-(defn- response-body [body]
+(defn- response-body
+  "Normalizes sequential response bodies into a single string."
+  [body]
   (if (sequential? body)
     (apply str body)
     body))
 
-(defn- update-response [response]
+(defn- update-response
+  "Converts a response map into a Fetch Response instance."
+  [response]
   (Response.
    (response-body (:body response))
    (proxy {:status (:status response)
            :headers (header-entries (:headers response))})))
 
-(defn- rejected-promise [error]
+(defn- rejected-promise
+  "Creates a promise already rejected with the supplied error."
+  [error]
   (Promise. (fn [_ raise] (raise error))))
 
-(defn- handler-promise [handler request]
+(defn- handler-promise
+  "Calls a handler and captures thrown errors as rejected promises."
+  [handler request]
   (try
     (Promise.resolve (handler request))
     (catch :default error
       (rejected-promise error))))
 
-(defn ft-handler [handler options]
+(defn ft-handler
+  "Wraps an application handler as a Fetch-compatible function."
+  [handler options]
   (if (:async? options)
     (let [handle (fn [request]
                    (Promise.
@@ -151,13 +190,17 @@
         ([request _info]
          (handle request))))))
 
-(defn- route-method [method]
+(defn- route-method
+  "Normalizes a method value into its uppercase string form."
+  [method]
   (cond
     (keyword? method) (.toUpperCase (name method))
     (string? method) (.toUpperCase method)
     :else method))
 
-(defn- route-entry [{:keys [pattern method handler async-handler]}]
+(defn- route-entry
+  "Normalizes one route definition into the internal route entry shape."
+  [{:keys [pattern method handler async-handler]}]
   {:pattern (if (string? pattern)
               (url-pattern pattern)
               pattern)
@@ -165,7 +208,9 @@
    :handler handler
    :async-handler async-handler})
 
-(defn- method-matches? [method request-method]
+(defn- method-matches?
+  "Returns true when a route method matches the incoming request method."
+  [method request-method]
   (let [request-method (route-method request-method)]
     (cond
       (nil? method)
@@ -177,7 +222,9 @@
       :else
       (= (route-method method) request-method))))
 
-(defn- request-url [request]
+(defn- request-url
+  "Builds a URL string for route matching from a request map."
+  [request]
   (or (some-> (::request request) (aget "url"))
       (str (name (:scheme request))
            "://"
@@ -188,17 +235,23 @@
            (when-let [query-string (:query-string request)]
              (str "?" query-string)))))
 
-(defn- route-match [request route]
+(defn- route-match
+  "Returns route data with extracted path params when a route matches."
+  [request route]
   (when (method-matches? (:method route) (:request-method request))
     (when-let [params (.exec (:pattern route) (request-url request))]
       (assoc route :path-params (path-params params)))))
 
-(defn- route-request [request route]
+(defn- route-request
+  "Associates matched path params onto the request map."
+  [request route]
   (cond-> request
     (:path-params route)
     (assoc :path-params (:path-params route))))
 
-(defn- route-response [route request]
+(defn- route-response
+  "Invokes the matching route handler in sync or async form."
+  [route request]
   (let [request (route-request request route)]
     (if-let [async-handler (:async-handler route)]
       (Promise.
@@ -206,12 +259,16 @@
          (async-handler request respond raise)))
       ((:handler route) request))))
 
-(defn- respond-to [response respond raise]
+(defn- respond-to
+  "Delivers a response through async callbacks with promise-aware error handling."
+  [response respond raise]
   (-> (Promise.resolve response)
       (.then respond)
       (.catch raise)))
 
-(defn routes [routes default-handler]
+(defn routes
+  "Builds a dispatching handler from route definitions and a fallback handler."
+  [routes default-handler]
   (let [routes (mapv route-entry routes)]
     (fn
       ([request]
@@ -228,6 +285,7 @@
            (raise error)))))))
 
 (defn run-adapter
+  "Starts the runtime adapter for an application or handler."
   ([app]
    (serve :app app))
   ([handler options]

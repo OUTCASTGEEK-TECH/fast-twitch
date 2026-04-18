@@ -1,27 +1,37 @@
 (ns fast-twitch.middlewares.session
+  "Stores per-client session data in an atom-backed store and persists the key in a cookie."
   [:require
    [fast-twitch.middlewares.cookies :as cookies]
    [fast-twitch.middlewares.common :as common]])
 
 (defonce default-store (atom {}))
 
-(defn memory-store []
+(defn memory-store
+  "Creates a fresh in-memory session store."
+  []
   (atom {}))
 
-(defn read-session [store key]
+(defn read-session
+  "Reads session data for the given key from the store."
+  [store key]
   (get @store key))
 
-(defn write-session [store key data]
+(defn write-session
+  "Writes session data and returns the existing or generated session key."
+  [store key data]
   (let [key (or key (str (random-uuid)))]
     (swap! store assoc key data)
     key))
 
-(defn delete-session [store key]
+(defn delete-session
+  "Removes session data for the given key and returns nil for convenience."
+  [store key]
   (when key
     (swap! store dissoc key))
   nil)
 
 (defn session-request
+  "Associates session metadata and session data onto the request map."
   ([request]
    (session-request request {}))
   ([request options]
@@ -36,6 +46,7 @@
             :session (or (read-session store session-key) {})))))
 
 (defn session-response
+  "Persists response session data and emits the corresponding session cookie."
   ([response request]
    (session-response response request {}))
   ([response request options]
@@ -60,6 +71,7 @@
      response)))
 
 (defn wrap-session
+  "Wraps a handler with session loading and persistence."
   ([handler]
    (wrap-session handler {}))
   ([handler options]
