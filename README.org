@@ -1,0 +1,163 @@
+#+title: fast-twitch
+#+startup: overview
+
+* fast-twitch
+
+~fast-twitch~ is a ClojureScript HTTP framework for server-side JavaScript
+runtimes.
+
+It provides a small request/response, middleware, routing, and adapter layer
+that runs on top of the built-in server features of the three major JavaScript
+runtimes:
+
+- Node.js, through ~node:http~
+- Deno, through ~Deno.serve~
+- Bun, through ~Bun.serve~
+
+The framework defines its own API for handlers, middleware, adapters, request
+maps, response maps, and async callback handlers.
+
+The implementation intentionally keeps its dependency surface narrow. Runtime
+features come from Node, Deno, and Bun themselves, with a small set of Deno
+~@std/...~ packages used where they make sense for portable server-side
+JavaScript work.
+
+* Documentation
+
+Generated API documentation is available in [[file:docs/API.md][docs/API.md]].
+
+The API docs cover:
+
+- ~fast-twitch.routing~
+- ~fast-twitch.macros~
+- ~fast-twitch.middlewares.*~
+- ~fast-twitch.util.anti-forgery~
+
+* Project layout
+
+#+begin_src text
+.
+├── src/fast_twitch
+│   ├── macros.cljc
+│   ├── routing.cljs
+│   ├── middlewares
+│   └── util
+├── examples
+└── docs/API.md
+#+end_src
+
+The root project contains the framework. Example projects consume the framework
+through local dependencies and demonstrate different parts of the API.
+
+* Core ideas
+
+** Handlers
+
+A synchronous handler accepts one request map and returns one response map:
+
+#+begin_src clojure
+(fn [request]
+  {:status 200
+   :headers {"Content-Type" "text/plain"}
+   :body "ok\n"})
+#+end_src
+
+An asynchronous handler accepts a request map, a response callback, and an error
+callback:
+
+#+begin_src clojure
+(fn [request respond raise]
+  (respond {:status 200
+            :headers {"Content-Type" "text/plain"}
+            :body "ok\n"}))
+#+end_src
+
+** Request maps
+
+~fast-twitch~ adapters convert runtime requests into maps with keys such as:
+
+- ~:request-method~
+- ~:scheme~
+- ~:server-name~
+- ~:server-port~
+- ~:uri~
+- ~:query-string~
+- ~:headers~
+- ~:body~
+- ~:remote-addr~
+- ~:protocol~
+- ~:path-params~
+
+Middleware may add additional keys such as ~:params~, ~:query-params~,
+~:form-params~, ~:multipart-params~, ~:cookies~, ~:session~, and ~:flash~.
+
+** Response maps
+
+Handlers return maps with:
+
+- ~:status~
+- ~:headers~
+- ~:body~
+
+Middleware may also use framework-level keys such as ~:cookies~, ~:session~,
+~:session-cookie-attrs~, and ~:flash~ before the final adapter turns the
+response into a runtime HTTP response.
+
+** Middleware
+
+Middleware is ordinary higher-order handler composition. The framework includes
+middleware for common server concerns:
+
+- request params
+- nested params
+- multipart params
+- keyword params
+- cookies
+- sessions
+- flash
+- anti-forgery tokens
+- static files
+- content type inference and upload sniffing
+- content length
+- default charsets
+- conditional ~304 Not Modified~ responses
+- absolute redirects
+- proxy headers
+- SSL redirects and HSTS
+- common security headers
+
+The ~fast-twitch.middlewares.defaults~ namespace provides preconfigured API and
+site middleware bundles.
+
+* Runtime support
+
+~fast-twitch.macros/serve~ expands to runtime-specific startup code. At runtime,
+it detects the available JavaScript server runtime and starts the server with
+the native primitive for that runtime:
+
+- Deno: ~Deno.serve~
+- Bun: ~Bun.serve~
+- Node.js: ~node:http~
+
+Applications can also export a Fetch-compatible handler for environments that
+expect a ~fetch~ function.
+
+* Examples
+
+Example applications live in [[file:examples][examples]].
+
+* Generate API docs
+
+From the repository root:
+
+#+begin_src sh
+bb docs
+#+end_src
+
+This regenerates [[file:docs/API.md][docs/API.md]] from the source docstrings.
+
+* Current status
+
+~fast-twitch~ is a new implementation. The repository focuses on the core
+adapter, routing, middleware, runtime bootstrap, generated API docs, and example
+applications.
