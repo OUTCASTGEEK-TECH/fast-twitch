@@ -6,6 +6,12 @@
     -  [`serve-bun`](#fast-twitch.macros/serve-bun) - Builds the Bun server bootstrap form and normalizes the listen callback payload.
     -  [`serve-deno`](#fast-twitch.macros/serve-deno) - Builds the Deno server bootstrap form for the provided handler and options.
     -  [`serve-node`](#fast-twitch.macros/serve-node) - Builds the Node HTTP server bootstrap form, including request and response adaptation.
+    -  [`shutdown`](#fast-twitch.macros/shutdown) - Expands to runtime-specific server shutdown code for a server returned by serve.
+    -  [`shutdown-bun`](#fast-twitch.macros/shutdown-bun) - Builds Bun server shutdown code using server.stop().
+    -  [`shutdown-deno`](#fast-twitch.macros/shutdown-deno) - Builds Deno HttpServer shutdown code using the documented shutdown method.
+    -  [`shutdown-node`](#fast-twitch.macros/shutdown-node) - Builds Node http.Server shutdown code using close and connection cleanup.
+    -  [`shutdown-registered`](#fast-twitch.macros/shutdown-registered) - Builds shutdown code for servers registered by serve with an AbortController.
+    -  [`shutdown-registry`](#fast-twitch.macros/shutdown-registry) - Builds the shared WeakMap lookup/initialization form for shutdown metadata.
 -  [`fast-twitch.middlewares.absolute-redirects`](#fast-twitch.middlewares.absolute-redirects)  - Rewrites redirect targets so clients receive fully qualified locations when needed.
     -  [`absolute-redirects-response`](#fast-twitch.middlewares.absolute-redirects/absolute-redirects-response) - Normalizes redirect responses so their Location header is absolute.
     -  [`redirect-statuses`](#fast-twitch.middlewares.absolute-redirects/redirect-statuses)
@@ -255,8 +261,10 @@
     -  [`response`](#fast-twitch.routing/response) - Builds a 200 response map with the supplied body.
     -  [`response?`](#fast-twitch.routing/response?) - Returns true when a value matches the expected response map shape.
     -  [`routes`](#fast-twitch.routing/routes) - Builds a dispatching handler from route definitions and a fallback handler.
-    -  [`run-adapter`](#fast-twitch.routing/run-adapter) - Starts the runtime adapter for an application or handler.
+    -  [`server*`](#fast-twitch.routing/server*)
+    -  [`start-server!`](#fast-twitch.routing/start-server!) - Starts the runtime adapter for an application or handler.
     -  [`status`](#fast-twitch.routing/status) - Creates a bare response for a status code or updates an existing response map.
+    -  [`stop-server!`](#fast-twitch.routing/stop-server!)
     -  [`url-pattern`](#fast-twitch.routing/url-pattern) - Builds a URLPattern that matches the given pathname.
 -  [`fast-twitch.util.anti-forgery`](#fast-twitch.util.anti-forgery)  - View helpers for rendering anti-forgery form fields.
     -  [`anti-forgery-field`](#fast-twitch.util.anti-forgery/anti-forgery-field) - Returns a hidden form input populated with the current anti-forgery token.
@@ -295,7 +303,7 @@ Reads an environment variable from Deno or Node-compatible globals at runtime.
 Macro.
 
 Expands to runtime-specific server startup code for Deno, Bun, or Node.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L137-L193">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L235-L291">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-bun">`serve-bun`</a>
 ``` clojure
@@ -304,7 +312,7 @@ Expands to runtime-specific server startup code for Deno, Bun, or Node.
 Function.
 
 Builds the Bun server bootstrap form and normalizes the listen callback payload.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L46-L60">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L69-L110">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-deno">`serve-deno`</a>
 ``` clojure
@@ -313,7 +321,7 @@ Builds the Bun server bootstrap form and normalizes the listen callback payload.
 Function.
 
 Builds the Deno server bootstrap form for the provided handler and options.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L32-L44">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L40-L67">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-node">`serve-node`</a>
 ``` clojure
@@ -322,7 +330,62 @@ Builds the Deno server bootstrap form for the provided handler and options.
 Function.
 
 Builds the Node HTTP server bootstrap form, including request and response adaptation.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L62-L135">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L112-L233">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown">`shutdown`</a>
+``` clojure
+(shutdown server & {:keys [force]})
+```
+Macro.
+
+Expands to runtime-specific server shutdown code for a server returned by serve.
+  Returns a promise that resolves when the runtime reports shutdown completion.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L354-L388">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown-bun">`shutdown-bun`</a>
+``` clojure
+(shutdown-bun server force)
+```
+Function.
+
+Builds Bun server shutdown code using server.stop().
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L303-L311">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown-deno">`shutdown-deno`</a>
+``` clojure
+(shutdown-deno server)
+```
+Function.
+
+Builds Deno HttpServer shutdown code using the documented shutdown method.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L293-L301">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown-node">`shutdown-node`</a>
+``` clojure
+(shutdown-node server force)
+```
+Function.
+
+Builds Node http.Server shutdown code using close and connection cleanup.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L313-L342">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown-registered">`shutdown-registered`</a>
+``` clojure
+(shutdown-registered entry force)
+```
+Function.
+
+Builds shutdown code for servers registered by serve with an AbortController.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L344-L352">Source</a></sub></p>
+
+## <a name="fast-twitch.macros/shutdown-registry">`shutdown-registry`</a>
+``` clojure
+(shutdown-registry)
+```
+Function.
+
+Builds the shared WeakMap lookup/initialization form for shutdown metadata.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L32-L38">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.absolute-redirects">fast-twitch.middlewares.absolute-redirects</a>
@@ -2437,7 +2500,7 @@ Routing and handler adaptation helpers for translating between Fetch APIs and re
 Function.
 
 Builds the request map consumed by application handlers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L101-L129">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L102-L130">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/ft-handler">`ft-handler`</a>
 ``` clojure
@@ -2446,7 +2509,7 @@ Builds the request map consumed by application handlers.
 Function.
 
 Wraps an application handler as a Fetch-compatible function.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L168-L191">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L169-L192">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/header">`header`</a>
 ``` clojure
@@ -2455,7 +2518,7 @@ Wraps an application handler as a Fetch-compatible function.
 Function.
 
 Associates a header value on a response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L28-L31">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L29-L32">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/not-found">`not-found`</a>
 ``` clojure
@@ -2464,13 +2527,13 @@ Associates a header value on a response map.
 Function.
 
 Builds a 404 response map with the supplied body.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L33-L38">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L34-L39">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/proxy">`proxy`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L10-L10">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L11-L11">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/response">`response`</a>
 ``` clojure
@@ -2479,7 +2542,7 @@ Builds a 404 response map with the supplied body.
 Function.
 
 Builds a 200 response map with the supplied body.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L12-L17">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L13-L18">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/response?">`response?`</a>
 ``` clojure
@@ -2488,7 +2551,7 @@ Builds a 200 response map with the supplied body.
 Function.
 
 Returns true when a value matches the expected response map shape.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L40-L45">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L41-L46">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/routes">`routes`</a>
 ``` clojure
@@ -2497,17 +2560,23 @@ Returns true when a value matches the expected response map shape.
 Function.
 
 Builds a dispatching handler from route definitions and a fallback handler.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L269-L285">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L270-L286">Source</a></sub></p>
 
-## <a name="fast-twitch.routing/run-adapter">`run-adapter`</a>
+## <a name="fast-twitch.routing/server*">`server*`</a>
+
+
+
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L288-L288">Source</a></sub></p>
+
+## <a name="fast-twitch.routing/start-server!">`start-server!`</a>
 ``` clojure
-(run-adapter app)
-(run-adapter handler options)
+(start-server! app)
+(start-server! handler options)
 ```
 Function.
 
 Starts the runtime adapter for an application or handler.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L287-L292">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L290-L295">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/status">`status`</a>
 ``` clojure
@@ -2517,7 +2586,14 @@ Starts the runtime adapter for an application or handler.
 Function.
 
 Creates a bare response for a status code or updates an existing response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L19-L26">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L20-L27">Source</a></sub></p>
+
+## <a name="fast-twitch.routing/stop-server!">`stop-server!`</a>
+``` clojure
+(stop-server! & {:keys [force callback]})
+```
+Function.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L297-L303">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/url-pattern">`url-pattern`</a>
 ``` clojure
@@ -2526,7 +2602,7 @@ Creates a bare response for a status code or updates an existing response map.
 Function.
 
 Builds a URLPattern that matches the given pathname.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L47-L50">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L48-L51">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.util.anti-forgery">fast-twitch.util.anti-forgery</a>

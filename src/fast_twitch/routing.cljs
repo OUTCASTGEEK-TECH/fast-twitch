@@ -1,11 +1,12 @@
 (ns fast-twitch.routing
   "Routing and handler adaptation helpers for translating between Fetch APIs and request maps."
-  [:require-macros [fast-twitch.macros :refer [serve]]]
+  [:require-macros [fast-twitch.macros :refer [serve shutdown]]]
   [:require
    [cljs.proxy :refer [builder]]
    [fast-twitch.macros]]
-  [:refer-global :only [Error Headers Number Object Promise Request Response
-                        URL URLPattern console globalThis]])
+  [:refer-global :only [AbortController Error Headers Number Object Promise
+                        Request Response URL URLPattern WeakMap console
+                        globalThis]])
 
 (def proxy (builder))
 
@@ -284,9 +285,19 @@
          (catch :default error
            (raise error)))))))
 
-(defn run-adapter
+(defonce server* (atom nil))
+
+(defn start-server!
   "Starts the runtime adapter for an application or handler."
   ([app]
-   (serve :app app))
+   (reset! server* (serve :app app)))
   ([handler options]
-   (serve :app (proxy (assoc options :handler handler)))))
+   (reset! server* (serve :app (proxy (assoc options :handler handler))))))
+
+(defn stop-server! [& {:keys [force callback]}]
+  (when-let [server @server*]
+    (-> (shutdown server :force force)
+        (.then (fn []
+                 (reset! server* nil)
+                 (when callback
+                   (callback)))))))

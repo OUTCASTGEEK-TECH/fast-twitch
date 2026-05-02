@@ -29,30 +29,80 @@
        :else
        nil)))
 
+(defn shutdown-registry
+  "Builds the shared WeakMap lookup/initialization form for shutdown metadata."
+  []
+  `(or (aget ~'globalThis "__fastTwitchShutdownRegistry")
+       (let [registry# (~'WeakMap.)]
+         (aset ~'globalThis "__fastTwitchShutdownRegistry" registry#)
+         registry#)))
+
 (defn serve-deno
   "Builds the Deno server bootstrap form for the provided handler and options."
   [deno handler hostname port on-listen reuse-port _proxy]
-  `(.serve ~deno
-     (~'clj->js
-      (cond-> {:handler ~handler
-               :hostname ~hostname
-               :port ~port}
-        ~on-listen
-        (assoc :onListen ~on-listen)
+  `(let [controller# (~'AbortController.)
+         opts# (~'clj->js
+                (cond-> {:handler ~handler
+                         :hostname ~hostname
+                         :port ~port
+                         :signal (aget controller# "signal")}
+                  ~on-listen
+                  (assoc :onListen ~on-listen)
 
-        (some? ~reuse-port)
-        (assoc :reusePort ~reuse-port)))))
+                  (some? ~reuse-port)
+                  (assoc :reusePort ~reuse-port)))
+         server# (.serve ~deno opts#)
+         shutdown-server# (fn [_force?#]
+                            (let [signal# (aget controller# "signal")
+                                  finished# (aget server# "finished")]
+                              (when-not (aget signal# "aborted")
+                                (.abort controller#))
+                              (or finished# (~'Promise.resolve nil))))
+         registry# ~(shutdown-registry)]
+     (.set registry#
+           server#
+           (~'js-obj "controller" controller#
+                     "runtime" "deno"
+                     "shutdown" shutdown-server#))
+     server#))
 
 (defn serve-bun
   "Builds the Bun server bootstrap form and normalizes the listen callback payload."
   [bun handler hostname port on-listen reuse-port proxy]
-  `(let [opts# (~'clj->js
+  `(let [controller# (~'AbortController.)
+         opts# (~'clj->js
                 (cond-> {:fetch ~handler
                          :hostname ~hostname
                          :port ~port}
                   (some? ~reuse-port)
                   (assoc :reusePort ~reuse-port)))
-         server# (.serve ~bun opts#)]
+         server# (.serve ~bun opts#)
+         stop# (aget server# "stop")
+         state# (~'js-obj)
+         stop-server# (fn [force?#]
+                        (or (aget state# "promise")
+                            (let [promise# (.call stop#
+                                                  server#
+                                                  (boolean force?#))]
+                              (aset state# "promise" promise#)
+                              promise#)))
+         signal# (aget controller# "signal")
+         shutdown-server# (fn [force?#]
+                            (let [promise# (stop-server# force?#)]
+                              (when-not (aget signal# "aborted")
+                                (.abort controller#))
+                              promise#))
+         registry# ~(shutdown-registry)]
+     (.addEventListener signal#
+                        "abort"
+                        (fn []
+                          (stop-server# false))
+                        (~'clj->js {:once true}))
+     (.set registry#
+           server#
+           (~'js-obj "controller" controller#
+                     "runtime" "bun"
+                     "shutdown" shutdown-server#))
      (when ~on-listen
        (~on-listen
         (~proxy {:hostname ~hostname
@@ -62,7 +112,8 @@
 (defn serve-node
   "Builds the Node HTTP server bootstrap form, including request and response adaptation."
   [process handler hostname port on-listen reuse-port proxy]
-  `(let [builtin# (aget ~process "getBuiltinModule")
+  `(let [controller# (~'AbortController.)
+         builtin# (aget ~process "getBuiltinModule")
          http# (builtin# "node:http")
          stream# (builtin# "node:stream")
          server# (.createServer
@@ -119,6 +170,53 @@
                              (~'console/error e#)
                              (aset res# "statusCode" 500)
                              (.end res# "Internal Server Error")))))))]
+     (let [close# (aget server# "close")
+           close-idle-connections# (aget server# "closeIdleConnections")
+           close-all-connections# (aget server# "closeAllConnections")
+           state# (~'js-obj)
+           close-server# (fn [force?#]
+                           (or (aget state# "promise")
+                               (let [force?# (boolean force?#)
+                                     promise#
+                                     (~'Promise.
+                                      (fn [resolve# reject#]
+                                        (try
+                                          (.call close#
+                                                 server#
+                                                 (fn [error#]
+                                                   (if error#
+                                                     (reject# error#)
+                                                     (resolve# nil))))
+                                          (cond
+                                            (and force?#
+                                                 close-all-connections#)
+                                            (.call close-all-connections#
+                                                   server#)
+
+                                            close-idle-connections#
+                                            (.call close-idle-connections#
+                                                   server#))
+                                          (catch :default error#
+                                            (reject# error#)))))]
+                                 (aset state# "promise" promise#)
+                                 promise#)))
+           signal# (aget controller# "signal")
+           shutdown-server# (fn [force?#]
+                              (let [promise# (close-server# force?#)]
+                                (when-not (aget signal# "aborted")
+                                  (.abort controller#))
+                                promise#))
+           registry# ~(shutdown-registry)]
+       (.addEventListener signal#
+                          "abort"
+                          (fn []
+                            (close-server# false))
+                          (~'clj->js {:once true}))
+       (.set registry#
+             server#
+             (~'js-obj "controller" controller#
+                       "runtime" "node"
+                       "shutdown" shutdown-server#)))
      (let [listen-opts# (~'clj->js
                          (cond-> {:host ~hostname
                                   :port ~port}
@@ -191,3 +289,100 @@
 
          :else
          (throw (~'Error. "No supported server runtime found"))))))
+
+(defn shutdown-deno
+  "Builds Deno HttpServer shutdown code using the documented shutdown method."
+  [server]
+  `(let [server# ~server
+         shutdown# (when server#
+                     (aget server# "shutdown"))]
+     (if shutdown#
+       (.call shutdown# server#)
+       (throw (~'Error. "shutdown requires a Deno server returned by serve")))))
+
+(defn shutdown-bun
+  "Builds Bun server shutdown code using server.stop()."
+  [server force]
+  `(let [server# ~server
+         stop# (when server#
+                 (aget server# "stop"))]
+     (if stop#
+       (.call stop# server# (boolean ~force))
+       (throw (~'Error. "shutdown requires a Bun server returned by serve")))))
+
+(defn shutdown-node
+  "Builds Node http.Server shutdown code using close and connection cleanup."
+  [server force]
+  `(let [server# ~server
+         force?# (boolean ~force)
+         close# (when server#
+                  (aget server# "close"))
+         close-idle-connections# (when server#
+                                   (aget server# "closeIdleConnections"))
+         close-all-connections# (when server#
+                                  (aget server# "closeAllConnections"))]
+     (if close#
+       (~'Promise.
+        (fn [resolve# reject#]
+          (try
+            (.call close#
+                   server#
+                   (fn [error#]
+                     (if error#
+                       (reject# error#)
+                       (resolve# nil))))
+            (cond
+              (and force?# close-all-connections#)
+              (.call close-all-connections# server#)
+
+              close-idle-connections#
+              (.call close-idle-connections# server#))
+            (catch :default error#
+              (reject# error#)))))
+       (throw (~'Error. "shutdown requires a Node http.Server returned by serve")))))
+
+(defn shutdown-registered
+  "Builds shutdown code for servers registered by serve with an AbortController."
+  [entry force]
+  `(let [entry# ~entry
+         shutdown# (when entry#
+                     (aget entry# "shutdown"))]
+     (if shutdown#
+       (.call shutdown# entry# (boolean ~force))
+       (throw (~'Error. "shutdown requires a server returned by serve")))))
+
+(defmacro shutdown
+  "Expands to runtime-specific server shutdown code for a server returned by serve.
+  Returns a promise that resolves when the runtime reports shutdown completion."
+  [server & {:keys [force]}]
+  (let [server-sym (gensym "server")
+        registry-sym (gensym "registry")
+        entry-sym (gensym "entry")
+        shutdown-sym (gensym "shutdown")
+        stop-sym (gensym "stop")
+        close-sym (gensym "close")]
+    `(let [~server-sym ~server
+           ~registry-sym (aget ~'globalThis "__fastTwitchShutdownRegistry")
+           ~entry-sym (when (and ~server-sym ~registry-sym)
+                        (.get ~registry-sym ~server-sym))
+           ~shutdown-sym (when ~server-sym
+                           (aget ~server-sym "shutdown"))
+           ~stop-sym (when ~server-sym
+                       (aget ~server-sym "stop"))
+           ~close-sym (when ~server-sym
+                        (aget ~server-sym "close"))]
+       (cond
+         ~entry-sym
+         ~(shutdown-registered entry-sym force)
+
+         ~shutdown-sym
+         ~(shutdown-deno server-sym)
+
+         ~stop-sym
+         ~(shutdown-bun server-sym force)
+
+         ~close-sym
+         ~(shutdown-node server-sym force)
+
+         :else
+         (throw (~'Error. "shutdown requires a server returned by serve"))))))
