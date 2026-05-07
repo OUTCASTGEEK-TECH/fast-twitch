@@ -1,0 +1,28 @@
+{:tasks
+ {build
+  {:doc "Compile ClojureScript to server.cjs"
+   :task (shell "clj" "-M" "-m" "cljs.main" "-co" "app.edn" "-c")}
+
+  run-node
+  {:doc "Build and run server.cjs with Node"
+   :depends [build]
+   :task (shell "node server.cjs")}
+
+  run-deno
+  {:doc "Build and run server.cjs with Deno"
+   :depends [build]
+   :task (shell "deno run -A server.cjs")}
+
+  deno-serve
+  {:doc "Build and serve server.cjs with Deno"
+   :depends [build]
+   :task (let [port (or (System/getenv "PORT") "6464")
+               jobs (or (System/getenv "DENO_JOBS") "1")]
+           (shell {:extra-env {"DENO_JOBS" jobs
+                               "PORT" port}}
+                  "deno" "serve" "--parallel" "-A" "--port" port "server.cjs"))}
+
+  run-bun
+  {:doc "Build and run server.cjs with Bun"
+   :depends [build]
+   :task (shell "bun server.cjs")}}}

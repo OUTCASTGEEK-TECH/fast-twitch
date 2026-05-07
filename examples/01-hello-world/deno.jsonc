@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "build": "bb build",
+    "start": "bb run-deno",
+    "serve": "bb deno-serve"
+  }
+}
+

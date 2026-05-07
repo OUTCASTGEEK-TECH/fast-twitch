@@ -1,0 +1,20 @@
+{:main hello.server
+ :target :nodejs
+ :output-to "server.cjs"
+ :output-dir "build"
+ :optimizations :simple
+ :output-wrapper "%s\nexports.fetch = hello.server.fetch;\n"
+ :pretty-print true
+ :source-map "server.cjs.map"
+ :infer-externs :all
+ :language-in :es-next
+ :language-out :es-next
+ :dump-core true
+ :stable-names true
+ :optimize-constants true
+ :parallel-build true
+ :static-fns true
+ :fn-invoke-direct true
+ :aot-cache true
+ :cache-analysis true}
+

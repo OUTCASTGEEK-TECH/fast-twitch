@@ -1,0 +1,15 @@
+{
+  "name": "fast-twitch-04-file-upload-static-integrant-bulma",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "bb build",
+    "node": "bb run-node",
+    "deno": "bb run-deno",
+    "bun": "bb run-bun"
+  },
+  "devDependencies": {
+    "@cljs-oss/module-deps": "^1.1.1"
+  }
+}
+
