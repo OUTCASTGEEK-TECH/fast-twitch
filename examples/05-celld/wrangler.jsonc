@@ -1,0 +1,6 @@
+{
+  "name": "fast-twitch-celld-example",
+  "main": "target/worker.mjs",
+  "compatibility_date": "2026-10-03",
+  "no_bundle": true
+}

@@ -1,0 +1,7 @@
+{:tasks
+ {build {:doc "Compile ClojureScript and bundle the Worker with Vite."
+         :task (do (shell "clj" "-M" "-m" "build")
+                   (shell "npm" "run" "bundle"))}
+  run-workerd {:doc "Build and start Cloudflare workerd locally."
+       :depends [build]
+       :task (shell "npm" "run" "serve")}}}

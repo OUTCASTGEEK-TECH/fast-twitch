@@ -1,0 +1,10 @@
+{:main celld-example.worker
+ :target :bundle
+ :output-to "target/compiled.cjs"
+ :output-dir "target/cljs"
+ :optimizations :simple
+ :source-map false
+ :infer-externs :all
+ :language-in :es-next
+ :language-out :es-next
+ :output-wrapper "%s\nmodule.exports = {fetch: celld_example.worker.fetch};\n"}

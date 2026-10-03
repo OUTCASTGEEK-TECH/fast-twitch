@@ -132,11 +132,11 @@
 (defn- header-entries
   "Expands response headers into entries, preserving multi-value headers."
   [headers]
-  (mapcat (fn [[k v]]
-            (if (vector? v)
-              (map #(vector k %) v)
-              [[k v]]))
-          headers))
+  (into-array
+    (mapcat (fn [[k v]]
+              (map (fn [value] #js [(name k) (str value)])
+                   (if (vector? v) v [v])))
+            headers)))
 
 (defn- response-body
   "Normalizes sequential response bodies into a single string."
@@ -150,8 +150,8 @@
   [response]
   (Response.
    (response-body (:body response))
-   (proxy {:status (:status response)
-           :headers (header-entries (:headers response))})))
+   #js {:status (:status response)
+        :headers (header-entries (:headers response))}))
 
 (defn- rejected-promise
   "Creates a promise already rejected with the supplied error."

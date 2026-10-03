@@ -1,0 +1,15 @@
+{
+  "name": "fast-twitch-06-cloudflare-workerd",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bb build",
+    "bundle": "vite build",
+    "start": "bb run-workerd",
+    "serve": "workerd serve config.capnp"
+  },
+  "devDependencies": {
+    "vite": "8.3.2",
+    "workerd": "1.20261001.1"
+  }
+}

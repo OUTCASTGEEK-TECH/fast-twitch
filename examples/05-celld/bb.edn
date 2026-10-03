@@ -1,0 +1,7 @@
+{:tasks
+ {build {:doc "Compile ClojureScript and bundle the Worker with Vite."
+         :task (do (shell "clj" "-M" "-m" "build")
+                   (shell "npm" "run" "bundle"))}
+  run-celld {:doc "Build and start Celld locally."
+       :depends [build]
+       :task (shell (or (System/getenv "CELLD_BIN") "celld") "dev" "." "--port" "9876")}}}

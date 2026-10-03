@@ -146,6 +146,12 @@ expect a ~fetch~ function.
 
 Example applications live in [[file:examples][examples]].
 
+- [[file:examples/05-celld/README.md][05 - Celld]]: run a ClojureScript Fetch handler with Celld.
+- [[file:examples/06-cloudflare-workerd/README.md][06 - Cloudflare workerd]]: run the same handler shape directly with workerd.
+
+Both examples use this checkout through ~:local/root~ and exercise the native
+response/header adapter, including separate ~Set-Cookie~ values.
+
 * Generate API docs
 
 From the repository root:
