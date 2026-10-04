@@ -19,6 +19,7 @@
 -  [`fast-twitch.middlewares.anti-forgery`](#fast-twitch.middlewares.anti-forgery)  - Adds request token validation and token persistence for unsafe form submissions.
     -  [`*anti-forgery-param-name*`](#fast-twitch.middlewares.anti-forgery/*anti-forgery-param-name*) - The anti-forgery form parameter name bound while rendering a protected request.
     -  [`*anti-forgery-token*`](#fast-twitch.middlewares.anti-forgery/*anti-forgery-token*) - The anti-forgery token bound while rendering a protected request.
+    -  [`bound-anti-forgery-fn`](#fast-twitch.middlewares.anti-forgery/bound-anti-forgery-fn) - Captures the current anti-forgery binding and restores it while f runs.
     -  [`default-error-response`](#fast-twitch.middlewares.anti-forgery/default-error-response) - The default response returned when anti-forgery validation fails.
     -  [`default-exempt-prefixes`](#fast-twitch.middlewares.anti-forgery/default-exempt-prefixes) - The default URI prefixes exempted from anti-forgery checks.
     -  [`default-header-names`](#fast-twitch.middlewares.anti-forgery/default-header-names) - The default request headers checked for submitted anti-forgery tokens.
@@ -285,7 +286,7 @@ Compile-time helpers for runtime detection, environment lookup, and server start
 Macro.
 
 Expands to a keyword naming the active JavaScript runtime, or nil when unsupported.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L15-L30">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L14-L24">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/env-var">`env-var`</a>
 ``` clojure
@@ -294,7 +295,7 @@ Expands to a keyword naming the active JavaScript runtime, or nil when unsupport
 Macro.
 
 Reads an environment variable from Deno or Node-compatible globals at runtime.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L4-L13">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L4-L12">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve">`serve`</a>
 ``` clojure
@@ -303,7 +304,7 @@ Reads an environment variable from Deno or Node-compatible globals at runtime.
 Macro.
 
 Expands to runtime-specific server startup code for Deno, Bun, or Node.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L235-L291">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L175-L222">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-bun">`serve-bun`</a>
 ``` clojure
@@ -312,7 +313,7 @@ Expands to runtime-specific server startup code for Deno, Bun, or Node.
 Function.
 
 Builds the Bun server bootstrap form and normalizes the listen callback payload.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L69-L110">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L56-L82">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-deno">`serve-deno`</a>
 ``` clojure
@@ -321,7 +322,7 @@ Builds the Bun server bootstrap form and normalizes the listen callback payload.
 Function.
 
 Builds the Deno server bootstrap form for the provided handler and options.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L40-L67">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L34-L54">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/serve-node">`serve-node`</a>
 ``` clojure
@@ -330,7 +331,7 @@ Builds the Deno server bootstrap form for the provided handler and options.
 Function.
 
 Builds the Node HTTP server bootstrap form, including request and response adaptation.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L112-L233">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L84-L173">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown">`shutdown`</a>
 ``` clojure
@@ -340,7 +341,7 @@ Macro.
 
 Expands to runtime-specific server shutdown code for a server returned by serve.
   Returns a promise that resolves when the runtime reports shutdown completion.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L354-L388">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L268-L288">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown-bun">`shutdown-bun`</a>
 ``` clojure
@@ -349,7 +350,7 @@ Expands to runtime-specific server shutdown code for a server returned by serve.
 Function.
 
 Builds Bun server shutdown code using server.stop().
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L303-L311">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L233-L240">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown-deno">`shutdown-deno`</a>
 ``` clojure
@@ -358,7 +359,7 @@ Builds Bun server shutdown code using server.stop().
 Function.
 
 Builds Deno HttpServer shutdown code using the documented shutdown method.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L293-L301">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L224-L231">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown-node">`shutdown-node`</a>
 ``` clojure
@@ -367,7 +368,7 @@ Builds Deno HttpServer shutdown code using the documented shutdown method.
 Function.
 
 Builds Node http.Server shutdown code using close and connection cleanup.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L313-L342">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L242-L257">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown-registered">`shutdown-registered`</a>
 ``` clojure
@@ -376,7 +377,7 @@ Builds Node http.Server shutdown code using close and connection cleanup.
 Function.
 
 Builds shutdown code for servers registered by serve with an AbortController.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L344-L352">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L259-L266">Source</a></sub></p>
 
 ## <a name="fast-twitch.macros/shutdown-registry">`shutdown-registry`</a>
 ``` clojure
@@ -385,7 +386,7 @@ Builds shutdown code for servers registered by serve with an AbortController.
 Function.
 
 Builds the shared WeakMap lookup/initialization form for shutdown metadata.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L32-L38">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/macros.cljc#L26-L32">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.absolute-redirects">fast-twitch.middlewares.absolute-redirects</a>
@@ -435,7 +436,7 @@ Adds request token validation and token persistence for unsafe form submissions.
 
 
 The anti-forgery form parameter name bound while rendering a protected request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L11-L13">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L12-L14">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/*anti-forgery-token*">`*anti-forgery-token*`</a>
 
@@ -443,7 +444,16 @@ The anti-forgery form parameter name bound while rendering a protected request.
 
 
 The anti-forgery token bound while rendering a protected request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L7-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L8-L10">Source</a></sub></p>
+
+## <a name="fast-twitch.middlewares.anti-forgery/bound-anti-forgery-fn">`bound-anti-forgery-fn`</a>
+``` clojure
+(bound-anti-forgery-fn f)
+```
+Function.
+
+Captures the current anti-forgery binding and restores it while f runs.
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L92-L100">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/default-error-response">`default-error-response`</a>
 
@@ -451,7 +461,7 @@ The anti-forgery token bound while rendering a protected request.
 
 
 The default response returned when anti-forgery validation fails.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L19-L23">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L20-L24">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/default-exempt-prefixes">`default-exempt-prefixes`</a>
 
@@ -459,7 +469,7 @@ The default response returned when anti-forgery validation fails.
 
 
 The default URI prefixes exempted from anti-forgery checks.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L33-L35">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L34-L36">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/default-header-names">`default-header-names`</a>
 
@@ -467,7 +477,7 @@ The default URI prefixes exempted from anti-forgery checks.
 
 
 The default request headers checked for submitted anti-forgery tokens.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L29-L31">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L30-L32">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/default-token-param-name">`default-token-param-name`</a>
 
@@ -475,7 +485,7 @@ The default request headers checked for submitted anti-forgery tokens.
 
 
 The default form parameter name for submitted anti-forgery tokens.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L25-L27">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L26-L28">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/request-token">`request-token`</a>
 ``` clojure
@@ -485,7 +495,7 @@ The default form parameter name for submitted anti-forgery tokens.
 Function.
 
 Reads a submitted anti-forgery token from params or request headers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L73-L82">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L74-L83">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/token-param-name">`token-param-name`</a>
 ``` clojure
@@ -494,7 +504,7 @@ Reads a submitted anti-forgery token from params or request headers.
 Function.
 
 Returns the configured token parameter name, falling back to the default.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L84-L89">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L85-L90">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/unsafe-methods">`unsafe-methods`</a>
 
@@ -502,7 +512,7 @@ Returns the configured token parameter name, falling back to the default.
 
 
 HTTP methods that require anti-forgery validation by default.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L15-L17">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L16-L18">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.anti-forgery/wrap-anti-forgery">`wrap-anti-forgery`</a>
 ``` clojure
@@ -512,7 +522,7 @@ HTTP methods that require anti-forgery validation by default.
 Function.
 
 Wraps a handler with anti-forgery token validation and session token storage.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L139-L174">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/anti_forgery.cljs#L150-L185">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.cache-policy">fast-twitch.middlewares.cache-policy</a>
@@ -655,7 +665,7 @@ Shared helpers for header handling, request conversion, and middleware compositi
 Function.
 
 Appends a header value while preserving any existing header entries.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L41-L50">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L42-L51">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/assoc-header">`assoc-header`</a>
 ``` clojure
@@ -664,7 +674,7 @@ Appends a header value while preserving any existing header entries.
 Function.
 
 Associates a header on a response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L36-L39">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L37-L40">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/fetch-response->ft">`fetch-response->ft`</a>
 ``` clojure
@@ -673,7 +683,7 @@ Associates a header on a response map.
 Function.
 
 Converts a Fetch Response instance into a response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L98-L103">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L99-L104">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/ft->fetch-request">`ft->fetch-request`</a>
 ``` clojure
@@ -682,7 +692,7 @@ Converts a Fetch Response instance into a response map.
 Function.
 
 Converts a request map into a Fetch Request instance.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L86-L96">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L87-L97">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/has-header?">`has-header?`</a>
 ``` clojure
@@ -691,7 +701,7 @@ Converts a request map into a Fetch Request instance.
 Function.
 
 Returns true when the given header is present.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L31-L34">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L32-L35">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/header-key">`header-key`</a>
 ``` clojure
@@ -700,7 +710,7 @@ Returns true when the given header is present.
 Function.
 
 Normalizes a header name to a lowercase keyword.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L16-L19">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L17-L20">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/header-value">`header-value`</a>
 ``` clojure
@@ -709,7 +719,7 @@ Normalizes a header name to a lowercase keyword.
 Function.
 
 Looks up a header value without caring about header name casing.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L21-L29">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L22-L30">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/headers->entries">`headers->entries`</a>
 ``` clojure
@@ -718,7 +728,7 @@ Looks up a header value without caring about header name casing.
 Function.
 
 Converts a header map into name/value entry pairs for Fetch APIs.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L61-L64">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L62-L65">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/headers->map">`headers->map`</a>
 ``` clojure
@@ -727,7 +737,7 @@ Converts a header map into name/value entry pairs for Fetch APIs.
 Function.
 
 Converts a Fetch Headers instance into a plain Clojure map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L66-L72">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L67-L73">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/promise">`promise`</a>
 ``` clojure
@@ -736,7 +746,7 @@ Converts a Fetch Headers instance into a plain Clojure map.
 Function.
 
 Wraps x in a resolved JavaScript promise.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L11-L14">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L12-L15">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/promise?">`promise?`</a>
 ``` clojure
@@ -745,7 +755,7 @@ Wraps x in a resolved JavaScript promise.
 Function.
 
 Returns true when x behaves like a JavaScript promise.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L6-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L7-L10">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/remove-headers">`remove-headers`</a>
 ``` clojure
@@ -754,7 +764,7 @@ Returns true when x behaves like a JavaScript promise.
 Function.
 
 Removes all headers whose names match the supplied collection.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L52-L59">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L53-L60">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/request-url">`request-url`</a>
 ``` clojure
@@ -763,7 +773,7 @@ Removes all headers whose names match the supplied collection.
 Function.
 
 Builds a full request URL string from a request map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L74-L84">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L75-L85">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/wrap-request">`wrap-request`</a>
 ``` clojure
@@ -772,7 +782,7 @@ Builds a full request URL string from a request map.
 Function.
 
 Wraps a handler with a request transformation that may be asynchronous.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L105-L118">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L106-L120">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/wrap-request-response">`wrap-request-response`</a>
 ``` clojure
@@ -781,7 +791,7 @@ Wraps a handler with a request transformation that may be asynchronous.
 Function.
 
 Wraps a handler with coordinated request and response transformations.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L134-L154">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L136-L158">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.common/wrap-response">`wrap-response`</a>
 ``` clojure
@@ -790,7 +800,7 @@ Wraps a handler with coordinated request and response transformations.
 Function.
 
 Wraps a handler with a response transformation that sees the original request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L120-L132">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/common.cljs#L122-L134">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.content-length">fast-twitch.middlewares.content-length</a>
@@ -1182,19 +1192,19 @@ Infers content types from filenames, bytes, and file metadata for responses and 
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L151-L152">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L152-L153">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/aiff-prefix">`aiff-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L148-L149">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L149-L150">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/avi-prefix">`avi-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L142-L143">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L143-L144">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/base-content-type">`base-content-type`</a>
 ``` clojure
@@ -1203,7 +1213,7 @@ Infers content types from filenames, bytes, and file metadata for responses and 
 Function.
 
 Strips parameters from a content type and lowercases the main media type.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L172-L180">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L173-L181">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/bytes-at?">`bytes-at?`</a>
 ``` clojure
@@ -1212,7 +1222,7 @@ Strips parameters from a content type and lowercases the main media type.
 Function.
 
 Returns true when the bytes at an offset match the given signature.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L224-L230">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L225-L231">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/bytes-start-with?">`bytes-start-with?`</a>
 ``` clojure
@@ -1221,7 +1231,7 @@ Returns true when the bytes at an offset match the given signature.
 Function.
 
 Returns true when the byte sequence starts with the given signature.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L232-L235">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L233-L236">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/compatible-content-type?">`compatible-content-type?`</a>
 ``` clojure
@@ -1230,19 +1240,19 @@ Returns true when the byte sequence starts with the given signature.
 Function.
 
 Returns true when two content types should be treated as equivalent.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L407-L417">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L408-L418">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/content-type">`content-type`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L9-L11">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L10-L12">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/content-type-aliases">`content-type-aliases`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L396-L405">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L397-L406">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/content-type-response">`content-type-response`</a>
 ``` clojure
@@ -1252,7 +1262,7 @@ Returns true when two content types should be treated as equivalent.
 Function.
 
 Adds a Content-Type header to responses that do not already specify one.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L463-L474">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L464-L475">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/content-type-warning">`content-type-warning`</a>
 ``` clojure
@@ -1261,19 +1271,19 @@ Adds a Content-Type header to responses that do not already specify one.
 Function.
 
 Explains the first mismatch found between declared, expected, and sniffed types.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L419-L436">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L420-L437">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/ebml-prefix">`ebml-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L160-L161">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L161-L162">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/eot-prefix">`eot-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L169-L170">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L170-L171">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/expected-content-type">`expected-content-type`</a>
 ``` clojure
@@ -1282,7 +1292,7 @@ Explains the first mismatch found between declared, expected, and sniffed types.
 Function.
 
 Looks up the extension-derived content type for a filename.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L210-L214">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L211-L215">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/file-bytes">`file-bytes`</a>
 ``` clojure
@@ -1291,7 +1301,7 @@ Looks up the extension-derived content type for a filename.
 Function.
 
 Reads the leading bytes used for file content sniffing.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L216-L222">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L217-L223">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/file-content-type-summary">`file-content-type-summary`</a>
 ``` clojure
@@ -1300,7 +1310,7 @@ Reads the leading bytes used for file content sniffing.
 Function.
 
 Builds an upload summary with declared, expected, sniffed, and warning fields.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L438-L461">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L439-L462">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/filename-extension">`filename-extension`</a>
 ``` clojure
@@ -1309,49 +1319,49 @@ Builds an upload summary with declared, expected, sniffed, and warning fields.
 Function.
 
 Returns the extension portion of a filename, including the leading dot.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L182-L186">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L183-L187">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/form-prefix">`form-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L145-L146">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L146-L147">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/ftyp-prefix">`ftyp-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L154-L155">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L155-L156">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/html-tag-prefixes">`html-tag-prefixes`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L105-L122">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L106-L123">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/mp4-brand-prefix">`mp4-brand-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L157-L158">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L158-L159">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/prefix-content-types">`prefix-content-types`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L74-L103">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L75-L104">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/resource-header-size">`resource-header-size`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L19-L19">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L20-L20">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/riff-prefix">`riff-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L130-L131">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L131-L132">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/sniff-content-type">`sniff-content-type`</a>
 ``` clojure
@@ -1360,49 +1370,49 @@ Returns the extension portion of a filename, including the leading dot.
 Function.
 
 Infers a content type from leading bytes using signature and text heuristics.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L381-L394">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L382-L395">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/starts-with">`starts-with`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L13-L15">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L14-L16">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/svg-tag-prefix">`svg-tag-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L124-L125">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L125-L126">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/tar-prefix">`tar-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L166-L167">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L167-L168">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/wave-prefix">`wave-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L139-L140">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L140-L141">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/webm-doctype">`webm-doctype`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L163-L164">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L164-L165">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/webp-chunk-prefix">`webp-chunk-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L136-L137">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L137-L138">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/webp-prefix">`webp-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L133-L134">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L134-L135">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/wrap-content-type">`wrap-content-type`</a>
 ``` clojure
@@ -1412,13 +1422,13 @@ Infers a content type from leading bytes using signature and text heuristics.
 Function.
 
 Wraps a handler so missing Content-Type headers are inferred automatically.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L476-L481">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L477-L482">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.content-type/xml-prefix">`xml-prefix`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L127-L128">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/content_type.cljs#L128-L129">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.cookies">fast-twitch.middlewares.cookies</a>
@@ -1539,7 +1549,7 @@ Serves files from a local path with runtime-specific filesystem access and path 
 Function.
 
 Attempts to serve a file for the request and returns nil when nothing matches.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/file.cljs#L225-L239">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/file.cljs#L226-L237">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.file/wrap-file">`wrap-file`</a>
 ``` clojure
@@ -1549,7 +1559,7 @@ Attempts to serve a file for the request and returns nil when nothing matches.
 Function.
 
 Wraps a handler with filesystem-backed static file serving.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/file.cljs#L241-L264">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/file.cljs#L239-L264">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.file-info">fast-twitch.middlewares.file-info</a>
@@ -1697,7 +1707,7 @@ Emits request logs through a configurable logger hook.
 Function.
 
 Logs request events to console.log.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L6-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L7-L10">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.logging/log-response">`log-response`</a>
 ``` clojure
@@ -1706,7 +1716,7 @@ Logs request events to console.log.
 Function.
 
 Invokes the configured logger for a request/response pair.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L24-L30">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L25-L31">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.logging/request-event">`request-event`</a>
 ``` clojure
@@ -1715,7 +1725,7 @@ Invokes the configured logger for a request/response pair.
 Function.
 
 Builds the structured log event for a completed request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L11-L22">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L12-L23">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.logging/wrap-logging">`wrap-logging`</a>
 ``` clojure
@@ -1725,7 +1735,7 @@ Builds the structured log event for a completed request.
 Function.
 
 Wraps a handler with structured completion logging.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L32-L48">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/logging.cljs#L33-L49">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.method-override">fast-twitch.middlewares.method-override</a>
@@ -1797,13 +1807,13 @@ Parses multipart form bodies and exposes uploads in a request-friendly map shape
 Function.
 
 Returns a standard 413 response in both sync and async handler forms.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L13-L18">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L14-L19">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.multipart-params/content-too-large-response">`content-too-large-response`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L8-L11">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L9-L12">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.multipart-params/multipart-params-request">`multipart-params-request`</a>
 ``` clojure
@@ -1823,7 +1833,7 @@ Associates parsed multipart parameters onto the request.
 Function.
 
 Parses multipart parameters from the request body.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L60-L69">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/multipart_params.cljs#L61-L69">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.multipart-params/wrap-multipart-params">`wrap-multipart-params`</a>
 ``` clojure
@@ -1917,7 +1927,7 @@ Parses query strings and URL-encoded form bodies into request parameter maps.
 Function.
 
 Associates parsed URL-encoded form parameters onto the request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L48-L63">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L49-L63">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.params/assoc-query-params">`assoc-query-params`</a>
 ``` clojure
@@ -1927,7 +1937,7 @@ Associates parsed URL-encoded form parameters onto the request.
 Function.
 
 Associates parsed query parameters onto the request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L38-L46">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L39-L47">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.params/params-request">`params-request`</a>
 ``` clojure
@@ -1937,7 +1947,7 @@ Associates parsed query parameters onto the request.
 Function.
 
 Parses query and URL-encoded form parameters for a request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L65-L76">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L65-L77">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.params/wrap-params">`wrap-params`</a>
 ``` clojure
@@ -1947,7 +1957,7 @@ Parses query and URL-encoded form parameters for a request.
 Function.
 
 Wraps a handler so query and form parameters are available on the request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L78-L83">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/params.cljs#L79-L84">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.proxy-headers">fast-twitch.middlewares.proxy-headers</a>
@@ -1964,7 +1974,7 @@ Adapts request connection details from forwarding and real-IP headers.
 
 
 The default ordered headers used to derive the real client IP.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L7-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L8-L10">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/forwarded-for">`forwarded-for`</a>
 ``` clojure
@@ -1973,7 +1983,7 @@ The default ordered headers used to derive the real client IP.
 Function.
 
 Reads the first forwarded client address from request headers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L51-L55">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L52-L56">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/forwarded-host">`forwarded-host`</a>
 ``` clojure
@@ -1982,7 +1992,7 @@ Reads the first forwarded client address from request headers.
 Function.
 
 Reads the first forwarded host value from request headers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L45-L49">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L46-L50">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/forwarded-proto">`forwarded-proto`</a>
 ``` clojure
@@ -1991,7 +2001,7 @@ Reads the first forwarded host value from request headers.
 Function.
 
 Reads the first forwarded protocol value from request headers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L39-L43">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L40-L44">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/proxy-headers-request">`proxy-headers-request`</a>
 ``` clojure
@@ -2001,7 +2011,7 @@ Reads the first forwarded protocol value from request headers.
 Function.
 
 Associates forwarded scheme, host, port, and real IP fields onto the request map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L94-L111">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L95-L112">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/real-ip">`real-ip`</a>
 ``` clojure
@@ -2011,7 +2021,7 @@ Associates forwarded scheme, host, port, and real IP fields onto the request map
 Function.
 
 Returns the best client IP candidate from configured forwarding headers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L85-L92">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L86-L93">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/real-ip-request">`real-ip-request`</a>
 ``` clojure
@@ -2021,7 +2031,7 @@ Returns the best client IP candidate from configured forwarding headers.
 Function.
 
 Associates only the derived real client IP without changing scheme or host.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L113-L122">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L114-L123">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/split-host-port">`split-host-port`</a>
 ``` clojure
@@ -2030,7 +2040,7 @@ Associates only the derived real client IP without changing scheme or host.
 Function.
 
 Splits a forwarded host value into :server-name and optional :server-port.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L65-L83">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L66-L84">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/wrap-forwarded-headers">`wrap-forwarded-headers`</a>
 ``` clojure
@@ -2040,7 +2050,7 @@ Splits a forwarded host value into :server-name and optional :server-port.
 Function.
 
 Wraps a handler so forwarding headers update request connection fields.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L124-L129">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L125-L130">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.proxy-headers/wrap-real-ip">`wrap-real-ip`</a>
 ``` clojure
@@ -2050,7 +2060,7 @@ Wraps a handler so forwarding headers update request connection fields.
 Function.
 
 Wraps a handler so real-IP headers update :real-ip and :remote-addr.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L131-L136">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/proxy_headers.cljs#L132-L137">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.rate-limit">fast-twitch.middlewares.rate-limit</a>
@@ -2068,7 +2078,7 @@ Applies token-bucket rate limiting to requests.
 Function.
 
 Returns the default rate limit key for a request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L16-L21">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L17-L22">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/default-error-response">`default-error-response`</a>
 
@@ -2076,7 +2086,7 @@ Returns the default rate limit key for a request.
 
 
 The default response returned when a client exceeds its rate limit.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L4-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L5-L10">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/memory-store">`memory-store`</a>
 ``` clojure
@@ -2085,7 +2095,7 @@ The default response returned when a client exceeds its rate limit.
 Function.
 
 Creates an atom-backed in-memory rate limit store.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L11-L14">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L12-L15">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/rate-limit-request">`rate-limit-request`</a>
 ``` clojure
@@ -2094,7 +2104,7 @@ Creates an atom-backed in-memory rate limit store.
 Function.
 
 Associates rate limit metadata with a request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L72-L75">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L73-L76">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/rate-limit-response">`rate-limit-response`</a>
 ``` clojure
@@ -2103,7 +2113,7 @@ Associates rate limit metadata with a request.
 Function.
 
 Builds the response returned when a request exceeds its rate limit.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L65-L70">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L66-L71">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/rate-limit-result">`rate-limit-result`</a>
 ``` clojure
@@ -2112,7 +2122,7 @@ Builds the response returned when a request exceeds its rate limit.
 Function.
 
 Returns a map describing whether the request is allowed by the rate limit.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L44-L63">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L45-L64">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.rate-limit/wrap-rate-limit">`wrap-rate-limit`</a>
 ``` clojure
@@ -2122,7 +2132,7 @@ Returns a map describing whether the request is allowed by the rate limit.
 Function.
 
 Wraps a handler with per-key token-bucket rate limiting.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L77-L96">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/rate_limit.cljs#L78-L97">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.request-id">fast-twitch.middlewares.request-id</a>
@@ -2204,7 +2214,7 @@ Rejects requests whose declared body size exceeds a configured limit.
 Function.
 
 Returns the request Content-Length header as a number when it can be parsed.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L11-L17">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L12-L18">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.request-size-limit/default-error-response">`default-error-response`</a>
 
@@ -2212,7 +2222,7 @@ Returns the request Content-Length header as a number when it can be parsed.
 
 
 The default response returned when a request body is too large.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L5-L9">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L6-L10">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.request-size-limit/request-size-limit-response">`request-size-limit-response`</a>
 ``` clojure
@@ -2221,7 +2231,7 @@ The default response returned when a request body is too large.
 Function.
 
 Builds the response returned for an oversized request.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L25-L30">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L26-L31">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.request-size-limit/request-too-large?">`request-too-large?`</a>
 ``` clojure
@@ -2230,7 +2240,7 @@ Builds the response returned for an oversized request.
 Function.
 
 Returns true when the request declares a body larger than max-bytes.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L19-L23">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L20-L24">Source</a></sub></p>
 
 ## <a name="fast-twitch.middlewares.request-size-limit/wrap-request-size-limit">`wrap-request-size-limit`</a>
 ``` clojure
@@ -2240,7 +2250,7 @@ Returns true when the request declares a body larger than max-bytes.
 Function.
 
 Wraps a handler with Content-Length based request size enforcement.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L32-L47">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/middlewares/request_size_limit.cljs#L33-L48">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.middlewares.resource">fast-twitch.middlewares.resource</a>
@@ -2500,7 +2510,7 @@ Routing and handler adaptation helpers for translating between Fetch APIs and re
 Function.
 
 Builds the request map consumed by application handlers.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L102-L130">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L103-L131">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/ft-handler">`ft-handler`</a>
 ``` clojure
@@ -2509,7 +2519,7 @@ Builds the request map consumed by application handlers.
 Function.
 
 Wraps an application handler as a Fetch-compatible function.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L169-L192">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L170-L194">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/header">`header`</a>
 ``` clojure
@@ -2518,7 +2528,7 @@ Wraps an application handler as a Fetch-compatible function.
 Function.
 
 Associates a header value on a response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L29-L32">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L30-L33">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/not-found">`not-found`</a>
 ``` clojure
@@ -2527,13 +2537,13 @@ Associates a header value on a response map.
 Function.
 
 Builds a 404 response map with the supplied body.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L34-L39">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L35-L40">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/proxy">`proxy`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L11-L11">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L12-L12">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/response">`response`</a>
 ``` clojure
@@ -2542,7 +2552,7 @@ Builds a 404 response map with the supplied body.
 Function.
 
 Builds a 200 response map with the supplied body.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L13-L18">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L14-L19">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/response?">`response?`</a>
 ``` clojure
@@ -2551,7 +2561,7 @@ Builds a 200 response map with the supplied body.
 Function.
 
 Returns true when a value matches the expected response map shape.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L41-L46">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L42-L47">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/routes">`routes`</a>
 ``` clojure
@@ -2560,13 +2570,13 @@ Returns true when a value matches the expected response map shape.
 Function.
 
 Builds a dispatching handler from route definitions and a fallback handler.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L270-L286">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L275-L291">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/server*">`server*`</a>
 
 
 
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L288-L288">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L293-L293">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/start-server!">`start-server!`</a>
 ``` clojure
@@ -2576,7 +2586,7 @@ Builds a dispatching handler from route definitions and a fallback handler.
 Function.
 
 Starts the runtime adapter for an application or handler.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L290-L295">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L295-L300">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/status">`status`</a>
 ``` clojure
@@ -2586,14 +2596,14 @@ Starts the runtime adapter for an application or handler.
 Function.
 
 Creates a bare response for a status code or updates an existing response map.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L20-L27">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L21-L28">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/stop-server!">`stop-server!`</a>
 ``` clojure
 (stop-server! & {:keys [force callback]})
 ```
 Function.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L297-L303">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L302-L308">Source</a></sub></p>
 
 ## <a name="fast-twitch.routing/url-pattern">`url-pattern`</a>
 ``` clojure
@@ -2602,7 +2612,7 @@ Function.
 Function.
 
 Builds a URLPattern that matches the given pathname.
-<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L48-L51">Source</a></sub></p>
+<p><sub><a href="https://github.com/OUTCASTGEEK-TECH/fast-twitch/blob/main/src/fast_twitch/routing.cljs#L49-L52">Source</a></sub></p>
 
 -----
 # <a name="fast-twitch.util.anti-forgery">fast-twitch.util.anti-forgery</a>
