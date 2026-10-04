@@ -3,7 +3,7 @@
   [:require
    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [Date]])
+  [:refer-global :only [Date isNaN]])
 
 (defn- etag-match?
   "Checks whether an If-None-Match header matches the current entity tag."
@@ -16,7 +16,7 @@
   "Parses an HTTP date into milliseconds since epoch when valid."
   [s]
   (let [ms (Date.parse s)]
-    (when-not (js/isNaN ms)
+    (when-not (isNaN ms)
       ms)))
 
 (defn- modified-since?

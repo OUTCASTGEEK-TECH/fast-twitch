@@ -2,7 +2,8 @@
   "Adapts request connection details from forwarding and real-IP headers."
   [:require
    [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]])
+   [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only [isNaN Number]])
 
 (def default-real-ip-headers
   "The default ordered headers used to derive the real client IP."
@@ -58,8 +59,8 @@
   "Parses a numeric port string."
   [port]
   (when (seq port)
-    (let [n (js/Number port)]
-      (when-not (js/isNaN n)
+    (let [n (Number port)]
+      (when-not (isNaN n)
         n))))
 
 (defn split-host-port

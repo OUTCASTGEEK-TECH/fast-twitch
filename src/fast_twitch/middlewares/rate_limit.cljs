@@ -1,5 +1,6 @@
 (ns fast-twitch.middlewares.rate-limit
-  "Applies token-bucket rate limiting to requests.")
+  "Applies token-bucket rate limiting to requests."
+  [:refer-global :only [Date Math]])
 
 (def default-error-response
   "The default response returned when a client exceeds its rate limit."
@@ -23,7 +24,7 @@
 (defn- now-ms
   "Returns the current JavaScript timestamp in milliseconds."
   []
-  (.now js/Date))
+  (.now Date))
 
 (defn- refill-tokens
   "Refills a bucket based on elapsed time and the configured rate."
@@ -53,7 +54,7 @@
                  (do
                    (reset! result {:allowed? true
                                    :key key
-                                   :remaining (js/Math.floor (:tokens bucket))})
+                                   :remaining (Math.floor (:tokens bucket))})
                    (assoc buckets key bucket))
                  (do
                    (reset! result {:allowed? false
@@ -81,7 +82,7 @@
   ([handler options]
    (let [store (or (:store options) (memory-store))
          rate (or (:requests-per-second options) (:rate options) 10)
-         burst (or (:burst options) (js/Math.ceil rate))
+         burst (or (:burst options) (Math.ceil rate))
          key-fn (or (:key-fn options) client-key)]
      (fn
        ([request]

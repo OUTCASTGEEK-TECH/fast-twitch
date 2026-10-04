@@ -2,9 +2,12 @@
   "Serves files from a local path with runtime-specific filesystem access and path safety checks."
   [:require-macros [fast-twitch.macros :refer [current-runtime]]]
   [:require
-   [clojure.string :as str]
+    [cljs.core :refer [await]]
+    [cljs.nodejs :as nodejs]
+    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [Date Error Promise decodeURIComponent globalThis]])
+  [:refer-global :only [Date Error Promise decodeURIComponent globalThis
+                        Bun Deno]])
 
 (defn- url-root-path
   "Normalizes a configured URL root into a single leading-slash path segment."
@@ -96,43 +99,42 @@
 (defn- node-fs
   "Loads Node's promise-based filesystem module."
   []
-  (js/require "node:fs/promises"))
+  (nodejs/require "node:fs/promises"))
 
 (defn- stat-file
   "Stats a file path and returns normalized metadata for the active runtime."
   [file-path]
   (case (current-runtime)
     :deno
-    (-> (.stat js/Deno file-path)
-        (.then (fn [stat]
-                 {:path file-path
-                  :file? (aget stat "isFile")
-                  :directory? (aget stat "isDirectory")
-                  :size (aget stat "size")
-                  :last-modified (aget stat "mtime")})))
+    ((^:async fn []
+       (let [stat (await (.stat Deno file-path))]
+         {:path file-path
+          :file? (aget stat "isFile")
+          :directory? (aget stat "isDirectory")
+          :size (aget stat "size")
+          :last-modified (aget stat "mtime")})))
 
     :bun
-    (let [file (.file js/Bun file-path)]
-      (-> (.exists file)
-          (.then (fn [exists?]
-                   (when exists?
-                     {:path file-path
-                      :file? true
-                      :directory? false
-                      :size (aget file "size")
-                      :last-modified (when-let [ms (aget file "lastModified")]
-                                       (Date. ms))
-                      :bun-file file})))))
+    (let [file (.file Bun file-path)]
+      ((^:async fn []
+         (when (await (.exists file))
+           {:path file-path
+            :file? true
+            :directory? false
+            :size (aget file "size")
+            :last-modified (when-let [ms (aget file "lastModified")]
+                             (Date. ms))
+            :bun-file file}))))
 
     :node
     (let [fs (node-fs)]
-      (-> (.stat fs file-path)
-          (.then (fn [stat]
-                   {:path file-path
-                    :file? (.isFile stat)
-                    :directory? (.isDirectory stat)
-                    :size (aget stat "size")
-                    :last-modified (aget stat "mtime")}))))
+      ((^:async fn []
+         (let [stat (await (.stat fs file-path))]
+           {:path file-path
+            :file? (.isFile stat)
+            :directory? (.isDirectory stat)
+            :size (aget stat "size")
+            :last-modified (aget stat "mtime")}))))
 
     (Promise.reject (Error. "No supported file server runtime found"))))
 
@@ -153,26 +155,25 @@
 (defn- resolve-file
   "Resolves a file path to either a direct file or an index file in a directory."
   [file-path options]
-  (-> (maybe-stat-file file-path)
-      (.then
-       (fn [entry]
-         (cond
-           (:file? entry)
-           entry
+  ((^:async fn []
+     (let [entry (await (maybe-stat-file file-path))]
+       (cond
+         (:file? entry)
+         entry
 
-           (and (:directory? entry)
-                (get options :index-files? true))
-           (maybe-stat-file (index-path file-path))
+         (and (:directory? entry)
+              (get options :index-files? true))
+         (await (maybe-stat-file (index-path file-path)))
 
-           :else
-           nil)))))
+         :else
+         nil)))))
 
 (defn- read-file-async
   "Reads the contents of a resolved file entry for the active runtime."
   [entry]
   (case (current-runtime)
     :deno
-    (.readFile js/Deno (:path entry))
+    (.readFile Deno (:path entry))
 
     :bun
     (Promise.resolve (:bun-file entry))
@@ -229,12 +230,9 @@
   ([request root-path options]
    (if (file-request? request options)
      (if-let [file-path (file-path request root-path options)]
-       (-> (resolve-file file-path options)
-           (.then (fn [entry]
-                    (when entry
-                      (-> (read-file-async entry)
-                          (.then #(file-response request entry % options))))))
-           (.then identity))
+        ((^:async fn []
+           (when-let [entry (await (resolve-file file-path options))]
+             (file-response request entry (await (read-file-async entry)) options))))
        (common/promise nil))
      (common/promise nil))))
 
@@ -248,17 +246,19 @@
       (if (:prefer-handler? options)
         (handler request)
         (if (file-request? request options)
-          (-> (file-request request root-path options)
-              (.then #(or % (handler request))))
+           ((^:async fn []
+              (or (await (file-request request root-path options)) (handler request))))
           (handler request))))
      ([request respond raise]
       (if (:prefer-handler? options)
         (handler request respond raise)
         (if (file-request? request options)
-          (-> (file-request request root-path options)
-              (.then (fn [response]
-                       (if response
-                         (respond response)
-                         (handler request respond raise))))
-              (.catch raise))
+           ((^:async fn []
+              (try
+                (await
+                 (if-let [response (await (file-request request root-path options))]
+                   (respond response)
+                   (handler request respond raise)))
+                (catch :default error
+                  (raise error)))))
           (handler request respond raise)))))))

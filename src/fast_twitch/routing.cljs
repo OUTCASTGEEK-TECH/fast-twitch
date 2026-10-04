@@ -2,6 +2,7 @@
   "Routing and handler adaptation helpers for translating between Fetch APIs and request maps."
   [:require-macros [fast-twitch.macros :refer [serve shutdown]]]
   [:require
+   [cljs.core :refer [await]]
    [cljs.proxy :refer [builder]]
    [fast-twitch.macros]]
   [:refer-global :only [AbortController Error Headers Number Object Promise
@@ -182,9 +183,10 @@
         ([request _info]
          (handle request))))
     (let [handle (fn [request]
-                   (-> (handler-promise handler
-                                        (build-request-map request options))
-                       (.then update-response)))]
+                   ((^:async fn []
+                      (update-response
+                       (await (handler-promise handler
+                                               (build-request-map request options)))))))]
       (fn
         ([request]
          (handle request))
@@ -226,15 +228,16 @@
 (defn- request-url
   "Builds a URL string for route matching from a request map."
   [request]
-  (or (some-> (::request request) (aget "url"))
-      (str (name (:scheme request))
-           "://"
-           (:server-name request)
-           (when-let [port (:server-port request)]
-             (str ":" port))
-           (:uri request)
-           (when-let [query-string (:query-string request)]
-             (str "?" query-string)))))
+  (if-let [uri (:uri request)]
+    (str (name (:scheme request))
+         "://"
+         (:server-name request)
+         (when-let [port (:server-port request)]
+           (str ":" port))
+         uri
+         (when-let [query-string (:query-string request)]
+           (str "?" query-string)))
+    (some-> (::request request) (aget "url"))))
 
 (defn- route-match
   "Returns route data with extracted path params when a route matches."
@@ -263,9 +266,11 @@
 (defn- respond-to
   "Delivers a response through async callbacks with promise-aware error handling."
   [response respond raise]
-  (-> (Promise.resolve response)
-      (.then respond)
-      (.catch raise)))
+  ((^:async fn []
+     (try
+       (await (respond (await (Promise.resolve response))))
+       (catch :default error
+         (raise error))))))
 
 (defn routes
   "Builds a dispatching handler from route definitions and a fallback handler."
@@ -296,8 +301,8 @@
 
 (defn stop-server! [& {:keys [force callback]}]
   (when-let [server @server*]
-    (-> (shutdown server :force force)
-        (.then (fn []
-                 (reset! server* nil)
-                 (when callback
-                   (callback)))))))
+    ((^:async fn []
+       (await (shutdown server :force force))
+       (reset! server* nil)
+       (when callback
+         (callback))))))

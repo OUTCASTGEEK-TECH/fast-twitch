@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.request-size-limit
   "Rejects requests whose declared body size exceeds a configured limit."
-  [:require [fast-twitch.middlewares.common :as common]])
+  [:require [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only [isNaN Number]])
 
 (def default-error-response
   "The default response returned when a request body is too large."
@@ -12,8 +13,8 @@
   "Returns the request Content-Length header as a number when it can be parsed."
   [request]
   (when-let [value (common/header-value (:headers request) :content-length)]
-    (let [n (js/Number value)]
-      (when-not (js/isNaN n)
+    (let [n (Number value)]
+      (when-not (isNaN n)
         n))))
 
 (defn request-too-large?

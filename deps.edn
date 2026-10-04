@@ -1,9 +1,9 @@
 {:paths ["src"]
- :deps {org.clojure/clojure {:mvn/version "1.12.4"}
-        org.clojure/clojurescript {:mvn/version "1.12.134"}}
+ :deps {org.clojure/clojure {:mvn/version "1.12.6"}
+        org.clojure/clojurescript {:mvn/version "1.12.145"}}
  :aliases {:nREPL {:extra-deps {nrepl/nrepl {:mvn/version "1.7.0"}
-                              cider/cider-nrepl {:mvn/version "0.59.0"}
-                              cider/piggieback {:mvn/version "0.6.1"}}
+                              cider/cider-nrepl {:mvn/version "0.62.2"}
+                              cider/piggieback {:mvn/version "0.7.0"}}
                  :main-opts ["-m" "nrepl.cmdline" "--middleware"
                              "[cider.nrepl/cider-middleware, cider.piggieback/wrap-cljs-repl]"]}
          :test {:extra-paths ["test"]}}}

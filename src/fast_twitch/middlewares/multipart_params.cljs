@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.multipart-params
   "Parses multipart form bodies and exposes uploads in a request-friendly map shape."
   [:require
+   [cljs.core :refer [await]]
    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]]
   [:refer-global :only [Promise]])
@@ -63,9 +64,8 @@
    (parse-multipart-params request {}))
   ([request _options]
    (if (and (:body request) (multipart? request))
-     (-> (common/ft->fetch-request request)
-         (.formData)
-         (.then form-data-map))
+      ((^:async fn []
+         (form-data-map (await (.formData (common/ft->fetch-request request))))))
      (Promise.resolve {}))))
 
 (defn multipart-params-request
@@ -73,11 +73,11 @@
   ([request]
    (multipart-params-request request {}))
   ([request options]
-   (-> (parse-multipart-params request options)
-       (.then (fn [multipart-params]
-                (assoc request
-                       :multipart-params multipart-params
-                       :params (merge (:params request) multipart-params)))))))
+    ((^:async fn []
+       (let [multipart-params (await (parse-multipart-params request options))]
+         (assoc request
+                :multipart-params multipart-params
+                :params (merge (:params request) multipart-params)))))))
 
 (defn wrap-multipart-params
   "Wraps a handler so multipart form data is available on the request."

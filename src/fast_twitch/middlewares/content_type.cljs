@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.content-type
   "Infers content types from filenames, bytes, and file metadata for responses and uploads."
   [:require
+   [cljs.core :refer [await]]
    [cljs.nodejs :as nodejs]
    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]]
@@ -217,8 +218,8 @@
   "Reads the leading bytes used for file content sniffing."
   [file]
   (if (and file (aget file "slice") (aget file "arrayBuffer"))
-    (-> (.arrayBuffer (.slice file 0 resource-header-size))
-        (.then #(Uint8Array. %)))
+    ((^:async fn []
+       (Uint8Array. (await (.arrayBuffer (.slice file 0 resource-header-size))))))
     (Promise.resolve nil)))
 
 (defn bytes-at?
@@ -443,16 +444,16 @@
           declared (base-content-type (:content-type file))
           expected (or (expected-content-type filename)
                        "application/octet-stream")]
-      (-> (file-bytes (:file file))
-          (.then (fn [bytes]
-                   (let [sniffed (sniff-content-type bytes)]
-                     {:filename filename
-                      :declared-content-type declared
-                      :expected-content-type expected
-                      :sniffed-content-type sniffed
-                      :content-type-warning
-                      (content-type-warning declared expected sniffed)
-                      :size (:size file)})))))
+      ((^:async fn []
+         (let [bytes (await (file-bytes (:file file)))
+               sniffed (sniff-content-type bytes)]
+           {:filename filename
+            :declared-content-type declared
+            :expected-content-type expected
+            :sniffed-content-type sniffed
+             :content-type-warning
+             (content-type-warning declared expected sniffed)
+             :size (:size file)}))))
     (Promise.resolve
      {:filename "No file selected"
       :declared-content-type "application/octet-stream"

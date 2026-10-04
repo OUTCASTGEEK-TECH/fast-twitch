@@ -1,7 +1,8 @@
 (ns fast-twitch.middlewares.logging
   "Emits request logs through a configurable logger hook."
-  [:require [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [console]])
+  [:require [cljs.core :refer [await]]
+            [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only [console Date]])
 
 (defn default-logger
   "Logs request events to console.log."
@@ -15,7 +16,7 @@
    :uri (:uri request)
    :query-string (:query-string request)
    :status (:status response)
-   :duration-ms (- (.now js/Date) started-at)
+   :duration-ms (- (.now Date) started-at)
    :request-id (:request-id request)
    :remote-addr (:remote-addr request)
    :real-ip (:real-ip request)
@@ -36,13 +37,13 @@
   ([handler options]
    (fn
      ([request]
-      (let [started-at (.now js/Date)
+      (let [started-at (.now Date)
             response (handler request)]
-        (if (common/promise? response)
-          (.then response #(log-response % request started-at options))
-          (log-response response request started-at options))))
+         (if (common/promise? response)
+           ((^:async fn [] (log-response (await response) request started-at options)))
+           (log-response response request started-at options))))
      ([request respond raise]
-      (let [started-at (.now js/Date)]
+      (let [started-at (.now Date)]
         (handler request
                  #(respond (log-response % request started-at options))
                  raise))))))

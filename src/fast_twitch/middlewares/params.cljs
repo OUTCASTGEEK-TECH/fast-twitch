@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.params
   "Parses query strings and URL-encoded form bodies into request parameter maps."
   [:require
+   [cljs.core :refer [await]]
    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]]
   [:refer-global :only [Promise Response URLSearchParams]])
@@ -51,13 +52,12 @@
    (assoc-form-params request nil))
   ([request _encoding]
    (if (and (:body request) (form-urlencoded? request))
-     (-> (Response. (:body request))
-         (.text)
-         (.then (fn [body]
-                  (let [form-params (parse-params body)]
-                    (assoc request
-                           :form-params form-params
-                           :params (merge (:params request) form-params))))))
+      ((^:async fn []
+         (let [body (await (.text (Response. (:body request))))
+               form-params (parse-params body)]
+           (assoc request
+                  :form-params form-params
+                  :params (merge (:params request) form-params)))))
      (assoc request
             :form-params {}
             :params (or (:params request) {})))))
@@ -69,11 +69,12 @@
   ([request options]
    (let [request (assoc-query-params request (:encoding options))
          request* (assoc-form-params request (:encoding options))]
-     (if (common/promise? request*)
-       (.then request*
-              #(assoc % :params (merge (:query-params %) (:form-params %))))
-       (assoc request*
-              :params (merge (:query-params request*) (:form-params request*)))))))
+      (if (common/promise? request*)
+        ((^:async fn []
+           (let [request* (await request*)]
+             (assoc request* :params (merge (:query-params request*) (:form-params request*))))))
+        (assoc request*
+               :params (merge (:query-params request*) (:form-params request*)))))))
 
 (defn wrap-params
   "Wraps a handler so query and form parameters are available on the request."

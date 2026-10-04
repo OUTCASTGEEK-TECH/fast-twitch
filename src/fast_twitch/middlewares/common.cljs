@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.common
   "Shared helpers for header handling, request conversion, and middleware composition."
-  [:require [clojure.string :as str]]
+  [:require [cljs.core :refer [await]]
+            [clojure.string :as str]]
   [:refer-global :only [Headers Promise Request URL]])
 
 (defn promise?
@@ -109,13 +110,14 @@
     ([request]
      (let [request* (request-fn request)]
        (if (promise? request*)
-         (.then request* handler)
+         ((^:async fn [] (handler (await request*))))
          (handler request*))))
     ([request respond raise]
-     (-> (promise (request-fn request))
-         (.then (fn [request*]
-                  (handler request* respond raise)))
-         (.catch raise)))))
+     ((^:async fn []
+        (try
+          (await (handler (await (promise (request-fn request))) respond raise))
+          (catch :default error
+            (raise error))))))))
 
 (defn wrap-response
   "Wraps a handler with a response transformation that sees the original request."
@@ -124,7 +126,7 @@
     ([request]
      (let [response (handler request)]
        (if (promise? response)
-         (.then response #(response-fn % request))
+         ((^:async fn [] (response-fn (await response) request)))
          (response-fn response request))))
     ([request respond raise]
      (handler request
@@ -140,15 +142,17 @@
            invoke (fn [request*]
                     (let [response (handler request*)]
                       (if (promise? response)
-                        (.then response #(response-fn % request*))
+                        ((^:async fn [] (response-fn (await response) request*)))
                         (response-fn response request*))))]
        (if (promise? request*)
-         (.then request* invoke)
+         ((^:async fn [] (invoke (await request*))))
          (invoke request*))))
     ([request respond raise]
-     (-> (promise (request-fn request))
-         (.then (fn [request*]
-                  (handler request*
-                           #(respond (response-fn % request*))
-                           raise)))
-         (.catch raise)))))
+     ((^:async fn []
+        (try
+          (let [request* (await (promise (request-fn request)))]
+            (await (handler request*
+                            #(respond (response-fn % request*))
+                            raise)))
+          (catch :default error
+            (raise error))))))))

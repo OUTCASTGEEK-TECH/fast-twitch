@@ -2,6 +2,7 @@
   [:require-macros [fast-twitch.macros :refer [env-var]]]
   [:require
    ;; [cljs.proxy :refer [builder]]
+   [cljs.core :refer [await]]
    [clojure.string :as str]
    [fast-twitch.macros]
    [fast-twitch.middlewares.content-type :as content-type]
@@ -628,21 +629,24 @@
                       :text "Preferences saved"})))))
 
 (defn upload-file-summary [file note]
-  (-> (content-type/file-content-type-summary file)
-      (.then #(assoc % :note note))))
+  ((^:async fn []
+     (assoc (await (content-type/file-content-type-summary file)) :note note))))
 
 (defn imports-handler [{:keys [params session] :as request} respond raise]
   (if (current-user request)
     (let [upload (:upload params)]
-      (-> (upload-file-summary (:file upload) (:note upload))
-          (.then (fn [summary]
-                   (respond
-                    (assoc (redirect "/imports")
-                           :session (assoc session :last-upload summary)
-                           :flash {:type :info
-                                   :text (str "Import received: "
-                                              (:filename summary))}))))
-          (.catch raise)))
+      ((^:async fn []
+         (try
+           (let [summary (await (upload-file-summary (:file upload) (:note upload)))]
+             (await
+              (respond
+               (assoc (redirect "/imports")
+                      :session (assoc session :last-upload summary)
+                      :flash {:type :info
+                              :text (str "Import received: "
+                                         (:filename summary))}))))
+           (catch :default error
+             (raise error))))))
     (respond (redirect "/login"))))
 
 (defn todo-id [request]

@@ -1,6 +1,7 @@
 (ns fast-twitch.middlewares.anti-forgery
   "Adds request token validation and token persistence for unsafe form submissions."
   [:require
+   [cljs.core :refer [await]]
    [clojure.string :as str]
    [fast-twitch.middlewares.common :as common]])
 
@@ -88,6 +89,16 @@
       (first (:param-names options))
       default-token-param-name))
 
+(defn bound-anti-forgery-fn
+  "Captures the current anti-forgery binding and restores it while f runs."
+  [f]
+  (let [token *anti-forgery-token*
+        param-name *anti-forgery-param-name*]
+    (fn [& args]
+      (binding [*anti-forgery-token* token
+                *anti-forgery-param-name* param-name]
+        (apply f args)))))
+
 (defn- add-session-token
   "Stores the active token in the outgoing session when a session is available."
   [response request token]
@@ -157,7 +168,7 @@
             (if (valid-request? request token read-token safe-headers options)
               (let [response (handler request)]
                 (if (common/promise? response)
-                  (.then response #(add-session-token % request token))
+                  ((^:async fn [] (add-session-token (await response) request token)))
                   (add-session-token response request token)))
               (invalid-response request {:reason :invalid-token} options)))))
        ([request respond raise]

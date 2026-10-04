@@ -1,6 +1,7 @@
 (ns destructure.server
   [:require-macros [fast-twitch.macros :refer [env-var]]]
   [:require
+   [cljs.core :refer [await]]
    [cljs.pprint :as pprint]
    [fast-twitch.middlewares.keyword-params :as keyword-params]
    [fast-twitch.middlewares.nested-params :as nested-params]
@@ -80,16 +81,18 @@
   "Raw bodies are streams. This async handler reads the stream into text."
   [{:keys [headers body]} respond raise]
   (if body
-    (-> (Response. body)
-        (.text)
-        (.then (fn [text]
-                 (respond
-                  (log-and-respond
-                   "POST /body-text destructured data"
-                   {:content-type (:content-type headers)
-                    :character-count (count text)
-                    :body text}))))
-        (.catch raise))
+    ((^:async fn []
+       (try
+         (let [text (await (.text (Response. body)))]
+           (await
+            (respond
+             (log-and-respond
+              "POST /body-text destructured data"
+              {:content-type (:content-type headers)
+               :character-count (count text)
+               :body text}))))
+         (catch :default error
+           (raise error)))))
     (respond
      (text-response
       400
