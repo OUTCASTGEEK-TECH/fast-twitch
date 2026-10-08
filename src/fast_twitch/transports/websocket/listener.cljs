@@ -33,6 +33,9 @@
            (await (invoke! listener :on-error connection [error]))))))
 
 (defn attach!
+  "Attaches one native event delivery path. The returned :open! marks an already
+  accepted socket open and delivers on-open once when its host emits no open event.
+  :dispose! removes owned listeners. Native open events share the same gate."
   [socket listener {:keys [on-event on-dispose]}]
   (let [connection (c/native socket)
         opened? (atom false)
@@ -43,11 +46,12 @@
                   (when on-dispose (on-dispose connection)))
         emit (fn [type e data]
                (when on-event (on-event (event/event->map type connection e data))))
+        opened (fn [e]
+                 (when (compare-and-set! opened? false true)
+                   (invoke! listener :on-open connection [])
+                   (emit :open e nil)))
         handlers
-          {"open" (fn [e]
-                    (reset! opened? true)
-                    (invoke! listener :on-open connection [])
-                    (emit :open e nil))
+          {"open" opened
            "message" (fn [e]
                        (invoke! listener :on-message connection [(.-data e)])
                        (emit :message e (.-data e)))
@@ -64,4 +68,4 @@
     (doseq [[type f] handlers]
       (.addEventListener socket type f)
       (swap! subscriptions conj [type f]))
-    {:connection connection :dispose! cleanup}))
+    {:connection connection :dispose! cleanup :open! #(opened nil)}))
