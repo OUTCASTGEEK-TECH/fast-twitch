@@ -1,3 +1,4 @@
 {:paths ["src" "dev"]
  :deps {fast-twitch/fast-twitch {:local/root "../.."}
-        org.clojure/clojurescript {:mvn/version "1.12.145"}}}
+        org.clojure/clojurescript {:git/url "https://github.com/clojure/clojurescript"
+                                   :git/sha "56a94ac13bfac22108e4d868dfd4763edaceb864"}}}

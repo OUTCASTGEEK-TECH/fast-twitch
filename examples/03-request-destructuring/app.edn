@@ -1,20 +1,19 @@
-{:main destructure.server
- :target :nodejs
- :output-to "server.cjs"
- :output-dir "build"
- :optimizations :simple
- :output-wrapper "%s\nexports.fetch = destructure.server.fetch;\n"
- :pretty-print true
- :source-map "server.cjs.map"
+{:aot-cache true
+ :cache-analysis true
+ :dump-core true
+ :fn-invoke-direct true
  :infer-externs :all
  :language-in :es-next
  :language-out :es-next
- :dump-core true
- :stable-names true
+ :main destructure.server
+ :optimizations :simple
  :optimize-constants true
+ :output-dir "build"
+ :output-to "server.cjs"
+ :output-wrapper "%s\nexports.fetch = destructure.server.fetch;\n"
  :parallel-build true
+ :pretty-print true
+ :source-map "server.cjs.map"
+ :stable-names true
  :static-fns true
- :fn-invoke-direct true
- :aot-cache true
- :cache-analysis true}
-
+ :target :nodejs}

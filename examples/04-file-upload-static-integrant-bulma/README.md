@@ -12,6 +12,8 @@ The upload is intentionally simple. It reports the uploaded file name, browser-p
 
 ## Run it
 
+Requires Java 21+, Clojure CLI, Babashka, and Node, Bun or Deno.
+
 ```sh
 bb run-node
 ```
@@ -22,6 +24,15 @@ Or run the same compiled app with Deno or Bun:
 bb run-deno
 bb run-bun
 ```
+
+To build and serve the exported Fetch handler with Deno:
+
+```sh
+bb deno-serve
+```
+
+This task builds `build/server-serve.cjs` without CLI startup. The normal
+`run-node`, `run-bun` and `run-deno` tasks build and run `server.cjs`.
 
 Open:
 

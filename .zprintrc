@@ -1,0 +1,21 @@
+{:width 90
+ :style :require-pair
+ :parse {:interpose "\n\n"}
+ :map {:comma? false :sort? false :sort-in-code? false}
+ :set {:sort? false :sort-in-code? false}
+ :list {:respect-bl? true :respect-nl? true}
+ :fn-force-nl #{:arg1-force-nl-body :fn}
+ :fn-map
+   {"ns"
+      [:arg1-force-nl
+       {:next-inner {:vector {:fn-format :force-nl :wrap? false}
+                     :next-inner-restore [[:vector :fn-format] [:vector :wrap?]]}}]
+    "def" :arg1-force-nl
+    "defonce" :arg1-force-nl
+    "defn" :arg1-force-nl-body
+    "mx/defn" :arg1-force-nl-body
+    "defn-" :arg1-force-nl-body
+    "defmacro" :arg1-force-nl-body
+    "defmethod" [:arg2 {:fn-force-nl #{:arg2}}]
+    "deftest" :arg1-force-nl-body
+    :vector :flow-body}}

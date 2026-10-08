@@ -1,9 +1,8 @@
 (ns fast-twitch.middlewares.cache-policy
   "Applies configurable HTTP cache policy headers with @std/cache-backed memoization."
-  [:require
-   [cljs.nodejs :as nodejs]
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [cljs.nodejs :as nodejs]
+            [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]])
 
 (def LruCache
   "The @std/cache LruCache constructor used by the default policy backend."
@@ -47,19 +46,16 @@
   ([request options]
    (and (#{:get :head} (:request-method request))
         (path-matches-prefix? (:uri request)
-                              (or (:static-prefixes options)
-                                  default-static-prefixes)))))
+                              (or (:static-prefixes options) default-static-prefixes)))))
 
 (defn cache-policy-key
   "Builds the backend key used for memoizing cache policy headers."
   [request options]
   (str (:request-method request)
-       " "
-       (:uri request)
-       " "
-       (if ((or (:cacheable? options) cacheable-request?) request options)
-         "static"
-         "dynamic")))
+       " " (:uri request)
+       " " (if ((or (:cacheable? options) cacheable-request?) request options)
+             "static"
+             "dynamic")))
 
 (defn static-cache-policy
   "Builds the cache policy used for static cacheable assets."
@@ -67,11 +63,9 @@
   (let [max-age (or (:max-age options) 31536000)
         immutable? (not (false? (:immutable? options)))
         etag-fn (:etag-fn options)]
-    (cond-> {"Cache-Control" (str "public, max-age=" max-age
-                                  (when immutable?
-                                    ", immutable"))}
-      etag-fn
-      (assoc "ETag" (etag-fn request)))))
+    (cond-> {"Cache-Control"
+               (str "public, max-age=" max-age (when immutable? ", immutable"))}
+      etag-fn (assoc "ETag" (etag-fn request)))))
 
 (defn dynamic-cache-policy
   "Builds the cache policy used for non-static responses."
@@ -81,10 +75,9 @@
 (defn- policy-value
   "Returns a policy map from either a policy map or a policy function."
   [policy request options fallback]
-  (cond
-    (fn? policy) (policy request options)
-    (map? policy) policy
-    :else fallback))
+  (cond (fn? policy) (policy request options)
+        (map? policy) policy
+        :else fallback))
 
 (defn cache-policy
   "Returns cache policy headers for the request, using the configured backend."
@@ -113,8 +106,8 @@
             (if (common/has-header? (:headers response) k)
               response
               (common/assoc-header response k v)))
-          response
-          (cache-policy request options)))
+    response
+    (cache-policy request options)))
 
 (defn wrap-cache-policy
   "Wraps a handler so responses receive configurable cache policy headers."

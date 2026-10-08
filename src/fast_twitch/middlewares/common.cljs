@@ -1,8 +1,14 @@
 (ns fast-twitch.middlewares.common
   "Shared helpers for header handling, request conversion, and middleware composition."
   [:require [cljs.core :refer [await]]
-            [clojure.string :as str]]
-  [:refer-global :only [Headers Promise Request URL]])
+            [clojure.string :as str]
+            [fast-twitch.util.http.request :as request]
+            [fast-twitch.util.http.response :as response]
+            [fast-twitch.util.async.settlement :as settlement]
+            [fast-twitch.server.websocket :as upgrade]
+            [fast-twitch.util.http.headers :as http-headers]]
+  [:refer-global :only
+                 [Headers Promise Request URL]])
 
 (defn promise?
   "Returns true when x behaves like a JavaScript promise."
@@ -17,7 +23,10 @@
 (defn header-key
   "Normalizes a header name to a lowercase keyword."
   [k]
-  (-> k name str/lower-case keyword))
+  (-> k
+      name
+      str/lower-case
+      keyword))
 
 (defn header-value
   "Looks up a header value without caring about header name casing."
@@ -25,7 +34,10 @@
   (let [lk (header-key k)
         ln (name lk)]
     (some (fn [[hk hv]]
-            (when (= ln (-> hk name str/lower-case))
+            (when (= ln
+                     (-> hk
+                         name
+                         str/lower-case))
               hv))
           headers)))
 
@@ -43,8 +55,7 @@
   "Appends a header value while preserving any existing header entries."
   [headers k v]
   (let [current (some (fn [[hk hv]]
-                        (when (= (name (header-key hk)) (name (header-key k)))
-                          [hk hv]))
+                        (when (= (name (header-key hk)) (name (header-key k))) [hk hv]))
                       headers)]
     (if-let [[hk hv] current]
       (assoc headers hk (if (vector? hv) (conj hv v) [hv v]))
@@ -62,46 +73,40 @@
 (defn headers->entries
   "Converts a header map into name/value entry pairs for Fetch APIs."
   [headers]
-  (map (fn [[k v]] [(name k) v]) headers))
+  (http-headers/ring-entries headers))
 
 (defn headers->map
   "Converts a Fetch Headers instance into a plain Clojure map."
   [headers]
-  (into {}
-        (map (fn [entry]
-               [(aget entry 0) (aget entry 1)]))
-        (.entries headers)))
+  (http-headers/headers->map headers))
 
 (defn request-url
-  "Builds a full request URL string from a request map."
-  [request]
-  (str (name (:scheme request))
-       "://"
-       (:server-name request)
-       (when (:server-port request)
-         (str ":" (:server-port request)))
-       (:uri request)
-       (when-let [query-string (:query-string request)]
-         (str "?" query-string))))
+  "Builds a full request URL string from a Ring request map."
+  [m]
+  (request/request-url m :ring-map))
 
 (defn ft->fetch-request
-  "Converts a request map into a Fetch Request instance."
-  [request]
-  (Request.
-   (request-url request)
-   (clj->js
-    (cond-> {:method (-> request :request-method name str/upper-case)
-             :headers (headers->entries (:headers request))}
-      (:body request)
-      (assoc :body (:body request)
-             :duplex "half")))))
+  [m]
+  (request/map->request m {} :ring-map))
 
 (defn fetch-response->ft
-  "Converts a Fetch Response instance into a response map."
-  [response]
-  {:status (aget response "status")
-   :headers (headers->map (aget response "headers"))
-   :body (aget response "body")})
+  [native]
+  (response/response->map native :ring-map))
+
+(defn- transformed-callbacks
+  [respond raise transform]
+  (let [settled? (atom false)]
+    {:raise (fn [error]
+              (if (compare-and-set! settled? false true)
+                (raise error)
+                (settlement/discard! error)))
+     :respond (fn [value]
+                (if (compare-and-set! settled? false true)
+                  ((^:async fn
+                    []
+                    (try (await (respond (await (transform (await value)))))
+                         (catch :default error (raise error)))))
+                  (settlement/discard! value)))}))
 
 (defn wrap-request
   "Wraps a handler with a request transformation that may be asynchronous."
@@ -110,14 +115,23 @@
     ([request]
      (let [request* (request-fn request)]
        (if (promise? request*)
-         ((^:async fn [] (handler (await request*))))
-         (handler request*))))
+         ((^:async fn
+           []
+           (let [request* (await request*)]
+             (upgrade/bind! request*)
+             (handler request*))))
+         (do (upgrade/bind! request*) (handler request*)))))
     ([request respond raise]
-     ((^:async fn []
-        (try
-          (await (handler (await (promise (request-fn request))) respond raise))
-          (catch :default error
-            (raise error))))))))
+     ((^:async fn
+       []
+       (try
+         (let [request* (await (request-fn request))
+               {respond* :respond raise* :raise}
+                 (transformed-callbacks respond raise identity)]
+           (upgrade/bind! request*)
+           (try (settlement/discard! (handler request* respond* raise*))
+                (catch :default error (raise* error))))
+         (catch :default error (raise error))))))))
 
 (defn wrap-response
   "Wraps a handler with a response transformation that sees the original request."
@@ -126,33 +140,19 @@
     ([request]
      (let [response (handler request)]
        (if (promise? response)
-         ((^:async fn [] (response-fn (await response) request)))
-         (response-fn response request))))
+         ((^:async fn
+           []
+           (response-fn (response/normalize (await response)) request)))
+         (response-fn (response/normalize response) request))))
     ([request respond raise]
-     (handler request
-              #(respond (response-fn % request))
-              raise))))
+     (let [{respond* :respond raise* :raise}
+             (transformed-callbacks respond
+                                    raise
+                                    #(response-fn (response/normalize %) request))]
+       (try (settlement/discard! (handler request respond* raise*))
+            (catch :default error (raise* error)))))))
 
 (defn wrap-request-response
   "Wraps a handler with coordinated request and response transformations."
   [handler request-fn response-fn]
-  (fn
-    ([request]
-     (let [request* (request-fn request)
-           invoke (fn [request*]
-                    (let [response (handler request*)]
-                      (if (promise? response)
-                        ((^:async fn [] (response-fn (await response) request*)))
-                        (response-fn response request*))))]
-       (if (promise? request*)
-         ((^:async fn [] (invoke (await request*))))
-         (invoke request*))))
-    ([request respond raise]
-     ((^:async fn []
-        (try
-          (let [request* (await (promise (request-fn request)))]
-            (await (handler request*
-                            #(respond (response-fn % request*))
-                            raise)))
-          (catch :default error
-            (raise error))))))))
+  (wrap-request (wrap-response handler response-fn) request-fn))

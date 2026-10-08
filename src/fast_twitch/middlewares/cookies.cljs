@@ -1,17 +1,14 @@
 (ns fast-twitch.middlewares.cookies
   "Parses incoming cookies and serializes outgoing cookie instructions."
-  [:require
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [Date decodeURIComponent encodeURIComponent]])
+  [:require [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only
+                 [Date decodeURIComponent encodeURIComponent]])
 
 (defn- safe-decode
   "Decodes a cookie value and falls back to the original string on failure."
   [s]
-  (try
-    (decodeURIComponent s)
-    (catch :default _
-      s)))
+  (try (decodeURIComponent s) (catch :default _ s)))
 
 (defn- safe-encode
   "Encodes a cookie name or value for transport."
@@ -29,9 +26,7 @@
 (defn- parse-cookies
   "Parses a Cookie header string into the request cookie map format."
   [cookie-header]
-  (into {}
-        (keep cookie-pair)
-        (str/split (or cookie-header "") ";")))
+  (into {} (keep cookie-pair) (str/split (or cookie-header "") ";")))
 
 (defn cookies-request
   "Associates parsed cookies on the request map."
@@ -52,11 +47,10 @@
 (defn- expires
   "Formats cookie expiration values as UTC strings when needed."
   [value]
-  (cond
-    (nil? value) nil
-    (string? value) value
-    (number? value) (.toUTCString (Date. value))
-    :else (.toUTCString value)))
+  (cond (nil? value) nil
+        (string? value) value
+        (number? value) (.toUTCString (Date. value))
+        :else (.toUTCString value)))
 
 (defn- cookie-string
   "Builds a Set-Cookie header value from the cookie map format."
@@ -67,9 +61,9 @@
                (when-let [domain (:domain cookie)] (str "Domain=" domain))
                (when-let [max-age (:max-age cookie)] (str "Max-Age=" max-age))
                (when-let [expires (expires (:expires cookie))] (str "Expires=" expires))
-               (when (:secure cookie) "Secure")
-               (when (:http-only cookie) "HttpOnly")
-               (when-let [same-site (:same-site cookie)] (str "SameSite=" (same-site-value same-site)))]]
+               (when (:secure cookie) "Secure") (when (:http-only cookie) "HttpOnly")
+               (when-let [same-site (:same-site cookie)]
+                 (str "SameSite=" (same-site-value same-site)))]]
     (str/join "; " (remove nil? attrs))))
 
 (defn cookies-response
@@ -79,9 +73,11 @@
   ([response _options]
    (if-let [cookies (:cookies response)]
      (let [headers (reduce (fn [headers [name cookie]]
-                             (common/append-header headers "Set-Cookie" (cookie-string name cookie)))
-                           (:headers response)
-                           cookies)]
+                             (common/append-header headers
+                                                   "Set-Cookie"
+                                                   (cookie-string name cookie)))
+                     (:headers response)
+                     cookies)]
        (-> response
            (assoc :headers headers)
            (dissoc :cookies)))
@@ -92,8 +88,7 @@
   ([handler]
    (wrap-cookies handler {}))
   ([handler options]
-   (common/wrap-request-response
-    handler
-    #(cookies-request % options)
-    (fn [response _request]
-      (cookies-response response options)))))
+   (common/wrap-request-response handler
+                                 #(cookies-request % options)
+                                 (fn [response _request]
+                                   (cookies-response response options)))))

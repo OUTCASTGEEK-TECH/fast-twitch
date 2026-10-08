@@ -1,12 +1,38 @@
 {:tasks
- {docs
-  {:doc "Generate API.md from src/ using quickdoc"
-   :extra-deps {io.github.borkdude/quickdoc {:git/tag "v0.2.6"
-                                             :git/sha "ce86780"}}
-   :task (exec 'quickdoc.api/quickdoc)
-   :exec-args {:github/repo "https://github.com/OUTCASTGEEK-TECH/fast-twitch"
-               :git/branch "main"
-               :source-paths ["src"]
-               :outfile "docs/API.md"
-               :toc true
-               :var-links true}}}}
+   {docs {:doc "Generate API.md from src/ using quickdoc"
+          :exec-args {:git/branch "main"
+                      :github/repo "https://github.com/OUTCASTGEEK-TECH/fast-twitch"
+                      :outfile "docs/API.md"
+                      :source-paths
+                        ["src/fast_twitch/macros.cljc" "src/fast_twitch/routing.cljs"
+                         "src/fast_twitch/middlewares" "src/fast_twitch/client/core.cljs"
+                         "src/fast_twitch/server/core.cljs"
+                         "src/fast_twitch/server/sse.cljs"
+                         "src/fast_twitch/util/anti_forgery.cljs"]
+                      :toc true
+                      :var-links true}
+          :extra-deps {io.github.borkdude/quickdoc {:git/sha "ce86780" :git/tag "v0.2.6"}}
+          :task (exec 'quickdoc.api/quickdoc)}
+    format
+      {:doc "Format maintained Clojure sources with zprint; --check verifies formatting"
+       :requires ([babashka.fs :as fs])
+       :task
+         (let [directories
+                 ["src" "test" "dev" "resources" "examples/01-hello-world"
+                  "examples/02-hiccup-integrant-bulma" "examples/03-request-destructuring"
+                  "examples/04-file-upload-static-integrant-bulma"
+                  "examples/06-cloudflare-workerd" "examples/07-native-transports"
+                  "examples/data-driven-clarity"]
+               files (concat ["deps.edn" "bb.edn" ".zprintrc" ".lsp/config.edn"]
+                             (for [directory directories
+                                   file (fs/glob directory "**.{clj,cljs,cljc,edn}")
+                                   :when (not (re-find
+                                                (re-pattern
+                                                  "/(target|build|node_modules|vendor)/")
+                                                (str file)))]
+                               (str file)))]
+           (apply shell
+             "clojure"
+             "-M:zprint"
+             (if (= ["--check"] *command-line-args*) "-sc" "-sw")
+             (sort files)))}}}

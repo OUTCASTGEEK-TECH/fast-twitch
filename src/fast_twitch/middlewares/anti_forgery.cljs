@@ -1,9 +1,8 @@
 (ns fast-twitch.middlewares.anti-forgery
   "Adds request token validation and token persistence for unsafe form submissions."
-  [:require
-   [cljs.core :refer [await]]
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [cljs.core :refer [await]]
+            [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]])
 
 (def ^:dynamic *anti-forgery-token*
   "The anti-forgery token bound while rendering a protected request."
@@ -41,18 +40,15 @@
   (let [a (str a)
         b (str b)]
     (and (= (count a) (count b))
-         (zero?
-          (reduce bit-or
+         (zero? (reduce bit-or
                   (map (fn [idx]
-                         (bit-xor (.charCodeAt a idx)
-                                  (.charCodeAt b idx)))
-                       (range (count a))))))))
+                         (bit-xor (.charCodeAt a idx) (.charCodeAt b idx)))
+                    (range (count a))))))))
 
 (defn- session-token
   "Returns the stored anti-forgery token or creates a new one for the request."
   [request token-generator]
-  (or (get-in request [:session :anti-forgery-token])
-      (token-generator)))
+  (or (get-in request [:session :anti-forgery-token]) (token-generator)))
 
 (defn- first-param-token
   "Returns the first submitted token found in the configured parameter names."
@@ -85,9 +81,7 @@
 (defn token-param-name
   "Returns the configured token parameter name, falling back to the default."
   [options]
-  (or (:param-name options)
-      (first (:param-names options))
-      default-token-param-name))
+  (or (:param-name options) (first (:param-names options)) default-token-param-name))
 
 (defn bound-anti-forgery-fn
   "Captures the current anti-forgery binding and restores it while f runs."
@@ -102,25 +96,22 @@
 (defn- add-session-token
   "Stores the active token in the outgoing session when a session is available."
   [response request token]
-  (if (and (contains? response :session)
-           (nil? (:session response)))
+  (if (and (contains? response :session) (nil? (:session response)))
     response
     (assoc response
-           :session
-           (assoc (or (:session response) (:session request) {})
-                  :anti-forgery-token token))))
+      :session (assoc (or (:session response) (:session request) {})
+                 :anti-forgery-token token))))
 
 (defn- invalid-response
   "Builds the response returned when token validation fails."
   [request failure options]
   (when-let [logger (:logger options)]
     (logger (assoc failure
-                   :event :anti-forgery/invalid
-                   :uri (:uri request)
-                   :request-method (:request-method request)
-                   :request-id (:request-id request))))
-  (when-let [on-invalid (:on-invalid options)]
-    (on-invalid request failure))
+              :event :anti-forgery/invalid
+              :uri (:uri request)
+              :request-method (:request-method request)
+              :request-id (:request-id request))))
+  (when-let [on-invalid (:on-invalid options)] (on-invalid request failure))
   (if-let [handler (:error-handler options)]
     (handler request failure)
     (or (:error-response options) default-error-response)))
@@ -136,8 +127,7 @@
   (let [uri (:uri request)
         exempt? (:exempt? options)
         prefixes (or (:exempt-prefixes options) default-exempt-prefixes)]
-    (or (and exempt? (exempt? request))
-        (some #(str/starts-with? uri %) prefixes))))
+    (or (and exempt? (exempt? request)) (some #(str/starts-with? uri %) prefixes))))
 
 (defn- valid-request?
   "Returns true when the request method is safe, exempt, trusted, or token-valid."
@@ -153,10 +143,9 @@
    (wrap-anti-forgery handler {}))
   ([handler options]
    (let [read-token (or (:read-token options) request-token)
-         safe-headers (cond
-                        (:safe-headers options) (:safe-headers options)
-                        (:safe-header options) [(:safe-header options)]
-                        :else [])
+         safe-headers (cond (:safe-headers options) (:safe-headers options)
+                            (:safe-header options) [(:safe-header options)]
+                            :else [])
          param-name (token-param-name options)
          token-generator (or (:token-generator options) #(str (random-uuid)))]
      (fn
@@ -168,7 +157,9 @@
             (if (valid-request? request token read-token safe-headers options)
               (let [response (handler request)]
                 (if (common/promise? response)
-                  ((^:async fn [] (add-session-token (await response) request token)))
+                  ((^:async fn
+                    []
+                    (add-session-token (await response) request token)))
                   (add-session-token response request token)))
               (invalid-response request {:reason :invalid-token} options)))))
        ([request respond raise]
@@ -177,9 +168,6 @@
           (binding [*anti-forgery-token* token
                     *anti-forgery-param-name* param-name]
             (if (valid-request? request token read-token safe-headers options)
-              (handler request
-                       #(respond (add-session-token % request token))
-                       raise)
-              (respond (invalid-response request
-                                         {:reason :invalid-token}
-                                         options))))))))))
+              (handler request #(respond (add-session-token % request token)) raise)
+              (respond
+                (invalid-response request {:reason :invalid-token} options))))))))))

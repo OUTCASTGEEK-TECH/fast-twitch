@@ -1,6 +1,7 @@
 {
   "imports": {
     "@std/bytes": "jsr:@std/bytes@^1.0.6",
+    "@std/cache": "jsr:@std/cache@0.2.4",
     "@std/crypto": "jsr:@std/crypto@^1.0.5",
     "@std/encoding": "jsr:@std/encoding@^1.0.10",
     "@std/html": "jsr:@std/html@^1.0.5",

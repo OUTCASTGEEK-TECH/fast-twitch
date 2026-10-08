@@ -5,6 +5,7 @@
     "": {
       "dependencies": {
         "@std/bytes": "npm:@jsr/std__bytes",
+        "@std/cache": "npm:@jsr/std__cache@0.2.4",
         "@std/crypto": "npm:@jsr/std__crypto",
         "@std/encoding": "npm:@jsr/std__encoding",
         "@std/html": "npm:@jsr/std__html",
@@ -55,6 +56,8 @@
     "@jsr/std__streams": ["@jsr/std__streams@1.0.17", "https://npm.jsr.io/~/11/@jsr/std__streams/1.0.17.tgz", { "dependencies": { "@jsr/std__bytes": "^1.0.6" } }, "sha512-LnPlWk20mDIV5/nqoUomAB8umOimfGEyWRApxLgekXFuqKGDsGpUAi58amieVU2XAGNclmUOtQOcQ/qOl3PNFg=="],
 
     "@std/bytes": ["@jsr/std__bytes@1.0.6", "https://npm.jsr.io/~/11/@jsr/std__bytes/1.0.6.tgz", {}, "sha512-St6yKggjFGhxS52IFLJWvkchRFbAKg2Xh8UxA4S1EGz7GJ2Ui+ssDDldj/w2c8vCxvl6qgR0HaYbKeFJNqujmA=="],
+
+    "@std/cache": ["@jsr/std__cache@0.2.4", "https://npm.jsr.io/~/11/@jsr/std__cache/0.2.4.tgz", {}, "sha512-sn2DvH7Nog+7A0wTwUkBS6DP+TlqnlT8e6GiaJLEmMQ9hXUe1Sf9U1PWSjEzq0Q/Z2H2lDbzvmzlmszYFsOXSw=="],
 
     "@std/crypto": ["@jsr/std__crypto@1.0.5", "https://npm.jsr.io/~/11/@jsr/std__crypto/1.0.5.tgz", {}, "sha512-iqFCkjeGeQccLgmxH9m1d7abjZcFMW0XrYZu1itNz8vVHzH9crObalonjVQaVDdKHCrNNOklMN1t0u3k46dirA=="],
 

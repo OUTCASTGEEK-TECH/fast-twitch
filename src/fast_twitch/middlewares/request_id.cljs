@@ -1,8 +1,7 @@
 (ns fast-twitch.middlewares.request-id
   "Generates and propagates request IDs for request correlation."
-  [:require
-   [cljs.nodejs :as nodejs]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [cljs.nodejs :as nodejs]
+            [fast-twitch.middlewares.common :as common]])
 
 (def monotonic-ulid
   "The @std/ulid monotonic ULID generator used for default request IDs."
@@ -44,7 +43,6 @@
   ([handler]
    (wrap-request-id handler {}))
   ([handler options]
-   (common/wrap-request-response
-    handler
-    #(request-id-request % options)
-    #(request-id-response %1 %2 options))))
+   (common/wrap-request-response handler
+                                 #(request-id-request % options)
+                                 #(request-id-response %1 %2 options))))

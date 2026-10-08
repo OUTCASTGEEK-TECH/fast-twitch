@@ -1,9 +1,9 @@
 (ns fast-twitch.middlewares.proxy-headers
   "Adapts request connection details from forwarding and real-IP headers."
-  [:require
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [isNaN Number]])
+  [:require [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only
+                 [isNaN Number]])
 
 (def default-real-ip-headers
   "The default ordered headers used to derive the real client IP."
@@ -22,8 +22,7 @@
   "Removes one pair of surrounding quotes from a forwarded header value."
   [value]
   (let [value (str/trim (str value))]
-    (if (and (str/starts-with? value "\"")
-             (str/ends-with? value "\""))
+    (if (and (str/starts-with? value "\"") (str/ends-with? value "\""))
       (subs value 1 (dec (count value)))
       value)))
 
@@ -58,30 +57,20 @@
 (defn- parse-port
   "Parses a numeric port string."
   [port]
-  (when (seq port)
-    (let [n (Number port)]
-      (when-not (isNaN n)
-        n))))
+  (when (seq port) (let [n (Number port)] (when-not (isNaN n) n))))
 
 (defn split-host-port
   "Splits a forwarded host value into :server-name and optional :server-port."
   [host]
   (let [host (str/trim (str host))]
-    (cond
-      (str/blank? host)
-      {}
-
-      (str/starts-with? host "[")
-      (let [[_ address port] (re-find #"^\[([^\]]+)\](?::(\d+))?$" host)]
-        (cond-> {:server-name address}
-          (parse-port port)
-          (assoc :server-port (parse-port port))))
-
-      :else
-      (let [[name port] (str/split host #":" 2)]
-        (cond-> {:server-name name}
-          (parse-port port)
-          (assoc :server-port (parse-port port)))))))
+    (cond (str/blank? host) {}
+          (str/starts-with? host "[")
+            (let [[_ address port] (re-find #"^\[([^\]]+)\](?::(\d+))?$" host)]
+              (cond-> {:server-name address}
+                (parse-port port) (assoc :server-port (parse-port port))))
+          :else (let [[name port] (str/split host #":" 2)]
+                  (cond-> {:server-name name}
+                    (parse-port port) (assoc :server-port (parse-port port)))))))
 
 (defn real-ip
   "Returns the best client IP candidate from configured forwarding headers."
@@ -89,8 +78,7 @@
    (real-ip request {}))
   ([request options]
    (let [headers (or (:real-ip-headers options) default-real-ip-headers)]
-     (or (some #(first-header-part request %) headers)
-         (:remote-addr request)))))
+     (or (some #(first-header-part request %) headers) (:remote-addr request)))))
 
 (defn proxy-headers-request
   "Associates forwarded scheme, host, port, and real IP fields onto the request map."
@@ -101,15 +89,9 @@
          host (forwarded-host request)
          ip (real-ip request options)]
      (cond-> request
-       proto
-       (assoc :scheme (keyword (str/lower-case proto)))
-
-       host
-       (merge (split-host-port host))
-
-       ip
-       (assoc :real-ip ip
-              :remote-addr ip)))))
+       proto (assoc :scheme (keyword (str/lower-case proto)))
+       host (merge (split-host-port host))
+       ip (merge {:real-ip ip :remote-addr ip})))))
 
 (defn real-ip-request
   "Associates only the derived real client IP without changing scheme or host."
@@ -118,9 +100,7 @@
   ([request options]
    (let [ip (real-ip request options)]
      (cond-> request
-       ip
-       (assoc :real-ip ip
-              :remote-addr ip)))))
+       ip (merge {:real-ip ip :remote-addr ip})))))
 
 (defn wrap-forwarded-headers
   "Wraps a handler so forwarding headers update request connection fields."

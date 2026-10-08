@@ -1,10 +1,10 @@
 (ns fast-twitch.middlewares.session
   "Stores per-client session data in an atom-backed store and persists the key in a cookie."
-  [:require
-   [fast-twitch.middlewares.cookies :as cookies]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [fast-twitch.middlewares.cookies :as cookies]
+            [fast-twitch.middlewares.common :as common]])
 
-(defonce default-store (atom {}))
+(defonce default-store
+  (atom {}))
 
 (defn memory-store
   "Creates a fresh in-memory session store."
@@ -26,8 +26,7 @@
 (defn delete-session
   "Removes session data for the given key and returns nil for convenience."
   [store key]
-  (when key
-    (swap! store dissoc key))
+  (when key (swap! store dissoc key))
   nil)
 
 (defn session-request
@@ -35,15 +34,13 @@
   ([request]
    (session-request request {}))
   ([request options]
-   (let [request (if (:cookies request)
-                   request
-                   (cookies/cookies-request request))
+   (let [request (if (:cookies request) request (cookies/cookies-request request))
          cookie-name (or (:cookie-name options) "ft-session")
          session-key (get-in request [:cookies (keyword cookie-name) :value])
          store (or (:store options) default-store)]
      (assoc request
-            :session/key session-key
-            :session (or (read-session store session-key) {})))))
+       :session/key session-key
+       :session (or (read-session store session-key) {})))))
 
 (defn session-response
   "Persists response session data and emits the corresponding session cookie."
@@ -52,8 +49,7 @@
   ([response request options]
    (if (contains? response :session)
      (let [cookie-name (or (:cookie-name options) "ft-session")
-           cookie-attrs (merge {:path (or (:root options) "/")
-                                :http-only true}
+           cookie-attrs (merge {:path (or (:root options) "/") :http-only true}
                                (:cookie-attrs options)
                                (:session-cookie-attrs response))
            store (or (:store options) default-store)
@@ -64,7 +60,9 @@
                      (write-session store old-key session))
            cookie (if new-key
                     (assoc cookie-attrs :value new-key)
-                    (assoc cookie-attrs :value "" :max-age 0))]
+                    (assoc cookie-attrs
+                      :value ""
+                      :max-age 0))]
        (-> response
            (dissoc :session :session-cookie-attrs)
            (assoc-in [:cookies (keyword cookie-name)] cookie)))
@@ -75,9 +73,8 @@
   ([handler]
    (wrap-session handler {}))
   ([handler options]
-   (common/wrap-request-response
-    handler
-    #(session-request % options)
-    (fn [response request]
-      (cookies/cookies-response
-       (session-response response request options))))))
+   (common/wrap-request-response handler
+                                 #(session-request % options)
+                                 (fn [response request]
+                                   (cookies/cookies-response
+                                     (session-response response request options))))))

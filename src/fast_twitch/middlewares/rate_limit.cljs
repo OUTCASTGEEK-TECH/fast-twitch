@@ -1,12 +1,12 @@
 (ns fast-twitch.middlewares.rate-limit
   "Applies token-bucket rate limiting to requests."
-  [:refer-global :only [Date Math]])
+  [:refer-global :only
+                 [Date Math]])
 
 (def default-error-response
   "The default response returned when a client exceeds its rate limit."
   {:status 429
-   :headers {"Content-Type" "text/plain"
-             "Retry-After" "1"}
+   :headers {"Content-Type" "text/plain" "Retry-After" "1"}
    :body "Too Many Requests\n"})
 
 (defn memory-store
@@ -17,9 +17,7 @@
 (defn client-key
   "Returns the default rate limit key for a request."
   [request]
-  (or (:real-ip request)
-      (:remote-addr request)
-      "unknown"))
+  (or (:real-ip request) (:remote-addr request) "unknown"))
 
 (defn- now-ms
   "Returns the current JavaScript timestamp in milliseconds."
@@ -33,34 +31,27 @@
         updated-at (or (:updated-at bucket) now)
         elapsed-seconds (/ (- now updated-at) 1000)
         tokens (min burst (+ tokens (* elapsed-seconds rate)))]
-    {:tokens tokens
-     :updated-at now}))
+    {:tokens tokens :updated-at now}))
 
 (defn- consume-token
   "Consumes one token from a bucket when available."
   [bucket]
-  (when (>= (:tokens bucket) 1)
-    (update bucket :tokens dec)))
+  (when (>= (:tokens bucket) 1) (update bucket :tokens dec)))
 
 (defn rate-limit-result
   "Returns a map describing whether the request is allowed by the rate limit."
   [store key rate burst]
   (let [now (now-ms)
         result (atom nil)]
-    (swap! store
-           (fn [buckets]
-             (let [bucket (refill-tokens (get buckets key) now rate burst)]
-               (if-let [bucket (consume-token bucket)]
-                 (do
-                   (reset! result {:allowed? true
-                                   :key key
-                                   :remaining (Math.floor (:tokens bucket))})
-                   (assoc buckets key bucket))
-                 (do
-                   (reset! result {:allowed? false
-                                   :key key
-                                   :remaining 0})
-                   (assoc buckets key bucket))))))
+    (swap! store (fn [buckets]
+                   (let [bucket (refill-tokens (get buckets key) now rate burst)]
+                     (if-let [bucket (consume-token bucket)]
+                       (do (reset! result {:allowed? true
+                                           :key key
+                                           :remaining (Math.floor (:tokens bucket))})
+                           (assoc buckets key bucket))
+                       (do (reset! result {:allowed? false :key key :remaining 0})
+                           (assoc buckets key bucket))))))
     @result))
 
 (defn rate-limit-response

@@ -38,7 +38,7 @@
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
 
 # CMake
@@ -234,3 +234,20 @@ build
 .idea
 .envrc
 .DS_Store
+
+# Local scratch workspace
+/scratch/
+
+.playwright-cli
+
+# Project LSP settings are maintained; its analysis cache stays local.
+/.lsp/*
+!/.lsp/config.edn
+
+# REPL/editor local files
+.rebel_readline_history
+.cider-repl-history
+.lsp/
+.clj-kondo/.cache/
+.clojure-mcp/scratch_pad.edn
+.clojure-mcp/code_index.txt

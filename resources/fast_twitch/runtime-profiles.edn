@@ -1,0 +1,70 @@
+{:browser {:event-source :verified-named-event
+           :fetch :verified
+           :ports :verified
+           :sse-fetch :verified
+           :version "Chrome/155.0.0.0"
+           :websocket :verified-text}
+ :bun {:event-source :unavailable
+       :fetch :verified
+       :ports :verified
+       :sse-fetch :verified
+       :tcp :verified-loopback
+       :version "1.4.2"
+       :websocket-client :verified-text-and-sliced-binary
+       :websocket-server :verified-text-and-sliced-binary}
+ :compiler {:git-sha "56a94ac13bfac22108e4d868dfd4763edaceb864"
+            :optimizations [:simple :advanced]}
+ :deno {:event-source :verified-named-event
+        :fetch :verified
+        :ports :verified
+        :sse-fetch :verified
+        :tcp :verified-loopback
+        :version "2.9.5"
+        :websocket-client :verified-text-and-sliced-binary
+        :websocket-server :verified-text-and-sliced-binary}
+ :node {:event-source :unavailable
+        :fetch :verified
+        :ports :verified
+        :sse-fetch :verified
+        :tcp :verified-loopback
+        :version "25.8.1"
+        :websocket-client :verified-text-and-sliced-binary
+        :websocket-server :unavailable}
+ :qualification {:advanced-optimization :verified-fixture-suite
+                 :all-runtime-options-verified? false
+                 :assertion-elision :verified-fixture-suite
+                 :browser-refresh-utc "2026-10-08 00:06"
+                 :byob :verified-byte-stream-reader
+                 :client-server-configuration
+                   {:assertions {:bun 524 :deno 520 :node 518}
+                    :examples 12
+                    :http-limit-probe {:expected-native-exit {:bun 1 :deno 0 :node 0}
+                                       :handler-invocations 0
+                                       :response-status 500
+                                       :status :verified}
+                    :native-effects-after-validation :verified
+                    :optimizations [:simple :advanced]
+                    :public-only-consumer :verified
+                    :refresh-utc "2026-10-08 00:06"
+                    :status :verified
+                    :tests 37
+                    :websocket-client-profiles [:node :bun :deno]}
+                 :cross-library :unrun
+                 :default-middleware-consumer :verified-selected-paths
+                 :macro-companion-consumer :verified
+                 :macro-runtime-dependencies :ordinary-compilation-graph
+                 :native-final-refresh-utc "2026-10-05 09:46"
+                 :native-fixture-assertions {:bun 237 :deno 233 :node 232}
+                 :native-fixture-tests 22
+                 :release-ready? false
+                 :scoped-corrections {:assertions {:bun 219 :deno 219 :node 207}
+                                      :optimizations [:simple :advanced]
+                                      :refresh-utc "2026-10-08 01:35"
+                                      :scope :websocket-native-async-send
+                                      :status :verified
+                                      :tests 6}
+                 :sse-producer-disconnect-and-shutdown :verified
+                 :tcp-half-close :verified-peer-eof-reply
+                 :tcp-large-exchange-bytes 262144
+                 :tcp-pending-abort :verified-loopback
+                 :tls :unverified}}

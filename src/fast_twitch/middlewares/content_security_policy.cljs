@@ -1,9 +1,9 @@
 (ns fast-twitch.middlewares.content-security-policy
   "Applies Content Security Policy headers from structured directive data."
-  [:require
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [URL]])
+  [:require [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]]
+  [:refer-global :only
+                 [URL]])
 
 (def csp-directive-default-src
   "The default-src CSP directive name."
@@ -91,60 +91,49 @@
 
 (def default-directive-order
   "The stable directive order used when rendering CSP policy strings."
-  [csp-directive-default-src
-   csp-directive-font-src
-   csp-directive-frame-src
-   csp-directive-img-src
-   csp-directive-script-src
-   csp-directive-style-src
-   csp-directive-media-src
-   csp-directive-worker-src
-   csp-directive-connect-src
-   csp-directive-base-uri
-   csp-directive-object-src])
+  [csp-directive-default-src csp-directive-font-src csp-directive-frame-src
+   csp-directive-img-src csp-directive-script-src csp-directive-style-src
+   csp-directive-media-src csp-directive-worker-src csp-directive-connect-src
+   csp-directive-base-uri csp-directive-object-src])
 
 (defn default-csp-config
   "Returns the shared baseline CSP configuration."
   []
   {:directives {csp-directive-default-src [csp-source-self]
-                csp-directive-font-src [csp-source-self csp-source-data csp-source-fonts-gstatic]
+                csp-directive-font-src [csp-source-self csp-source-data
+                                        csp-source-fonts-gstatic]
                 csp-directive-frame-src [csp-source-none]
                 csp-directive-img-src [csp-source-self csp-source-data]
                 csp-directive-script-src [csp-source-self csp-source-jsdelivr]
-                csp-directive-style-src [csp-source-self csp-source-unsafe-inline csp-source-fonts-googleapis]}
+                csp-directive-style-src [csp-source-self csp-source-unsafe-inline
+                                         csp-source-fonts-googleapis]}
    :allow-origin-sources []})
 
 (defn csp-sources
   "Builds an append-mode source input for a directive."
   [& sources]
-  {:mode :append
-   :sources sources})
+  {:mode :append :sources sources})
 
 (defn replace-csp-sources
   "Builds a replace-mode source input for a directive."
   [& sources]
-  {:mode :replace
-   :sources sources})
+  {:mode :replace :sources sources})
 
 (defn- source-input?
   "Returns true when x looks like a source input map."
   [x]
-  (and (map? x)
-       (or (contains? x :sources)
-           (contains? x :mode))))
+  (and (map? x) (or (contains? x :sources) (contains? x :mode))))
 
 (defn- normalize-source
   "Normalizes one CSP source string."
   [source]
   (let [source (str/trim (str source))]
-    (cond
-      (str/blank? source) nil
-      (or (str/includes? source "://")
-          (str/starts-with? source "'")
-          (str/ends-with? source ":"))
-      source
-      :else
-      (str "https://" source))))
+    (cond (str/blank? source) nil
+          (or (str/includes? source "://")
+              (str/starts-with? source "'")
+              (str/ends-with? source ":"))
+            source
+          :else (str "https://" source))))
 
 (defn normalize-csp-sources
   "Normalizes CSP source expressions while dropping blanks."
@@ -172,23 +161,20 @@
   (if (<= (count sources) 1)
     sources
     (let [sources (remove #{csp-source-none} sources)]
-      (if (seq sources)
-        (vec sources)
-        [csp-source-none]))))
+      (if (seq sources) (vec sources) [csp-source-none]))))
 
 (defn merge-csp-sources
   "Merges source expressions with normalization and duplicate removal."
   [base & extras]
-  (sanitize-exclusive-none-source
-   (append-unique-sources base (normalize-csp-sources extras))))
+  (sanitize-exclusive-none-source (append-unique-sources base
+                                                         (normalize-csp-sources extras))))
 
 (defn- update-source-list
   "Applies a source input to an existing source list."
   [base input]
-  (let [input (cond
-                (source-input? input) input
-                (sequential? input) {:mode :append :sources input}
-                :else {:mode :append :sources [input]})]
+  (let [input (cond (source-input? input) input
+                    (sequential? input) {:mode :append :sources input}
+                    :else {:mode :append :sources [input]})]
     (if (= :replace (:mode input))
       (apply merge-csp-sources nil (:sources input))
       (apply merge-csp-sources base (:sources input)))))
@@ -213,29 +199,29 @@
     (-> config
         (apply-directive-sources csp-directive-img-src
                                  (apply csp-sources csp-source-https asset-base-urls))
-        (apply-directive-sources csp-directive-media-src
-                                 (apply csp-sources csp-source-self csp-source-https asset-base-urls))
+        (apply-directive-sources
+          csp-directive-media-src
+          (apply csp-sources csp-source-self csp-source-https asset-base-urls))
         (apply-allow-origin-sources (apply csp-sources asset-base-urls)))
     config))
 
 (defn update-csp-config
   "Applies structured CSP inputs to a base config without mutating it."
   [base & inputs]
-  (reduce
-   (fn [config input]
-     (let [config (reduce (fn [config [directive source-input]]
-                            (apply-directive-sources config directive source-input))
-                          config
-                          (:directives input))]
-       (cond-> config
-         (:allow-origin-sources input)
-         (apply-allow-origin-sources (:allow-origin-sources input))
-
-         (:asset-base-urls input)
-         (apply-asset-base-urls (:asset-base-urls input)))))
-   {:directives (into {} (:directives base))
-    :allow-origin-sources (vec (:allow-origin-sources base))}
-   inputs))
+  (reduce (fn [config input]
+            (let [config
+                    (reduce (fn [config [directive source-input]]
+                              (apply-directive-sources config directive source-input))
+                      config
+                      (:directives input))]
+              (cond-> config
+                (:allow-origin-sources input) (apply-allow-origin-sources
+                                                (:allow-origin-sources input))
+                (:asset-base-urls input) (apply-asset-base-urls (:asset-base-urls
+                                                                  input)))))
+    {:directives (into {} (:directives base))
+     :allow-origin-sources (vec (:allow-origin-sources base))}
+    inputs))
 
 (defn build-csp-config
   "Applies structured CSP inputs to the default CSP configuration."
@@ -254,8 +240,7 @@
   "Renders a CSP config into a Content-Security-Policy header value."
   [config]
   (let [directives (:directives config)
-        ordered (keep #(csp-directive % (get directives %))
-                      default-directive-order)
+        ordered (keep #(csp-directive % (get directives %)) default-directive-order)
         known (set default-directive-order)
         extras (->> (keys directives)
                     (remove known)
@@ -266,17 +251,13 @@
 (defn origin-from-source
   "Returns the URL origin for a CSP source expression when it has one."
   [source]
-  (try
-    (when (str/includes? (str source) "://")
-      (aget (URL. source) "origin"))
-    (catch :default _
-      nil)))
+  (try (when (str/includes? (str source) "://") (aget (URL. source) "origin"))
+       (catch :default _ nil)))
 
 (defn origin-allowed?
   "Returns true when an origin matches one of the configured allowed sources."
   [origin allowed-sources]
-  (some #(= origin (origin-from-source %))
-        (normalize-csp-sources allowed-sources)))
+  (some #(= origin (origin-from-source %)) (normalize-csp-sources allowed-sources)))
 
 (defn content-security-policy-response
   "Adds CSP and optional reflected Access-Control-Allow-Origin headers."
@@ -285,14 +266,14 @@
   ([response request config options]
    (let [policy (build-csp-policy config)
          response (if (seq policy)
-                    (common/assoc-header
-                     response
-                     (or (:header-name options) "Content-Security-Policy")
-                     policy)
+                    (common/assoc-header response
+                                         (or (:header-name options)
+                                             "Content-Security-Policy")
+                                         policy)
                     response)
-         origin (some-> (common/header-value (:headers request) :origin) str/trim)]
-     (if (and (seq origin)
-              (origin-allowed? origin (:allow-origin-sources config)))
+         origin (some-> (common/header-value (:headers request) :origin)
+                        str/trim)]
+     (if (and (seq origin) (origin-allowed? origin (:allow-origin-sources config)))
        (common/assoc-header response "Access-Control-Allow-Origin" origin)
        response))))
 
@@ -303,6 +284,5 @@
   ([handler config]
    (wrap-content-security-policy handler config {}))
   ([handler config options]
-   (common/wrap-response
-    handler
-    #(content-security-policy-response %1 %2 config options))))
+   (common/wrap-response handler
+                         #(content-security-policy-response %1 %2 config options))))

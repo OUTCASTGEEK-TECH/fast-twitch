@@ -1,0 +1,41 @@
+#+title: Data driven clarity example
+
+A todo application exercising Fast-Twitch routing, static files, sessions,
+CSRF protection, forms and uploads with Replicant HTML rendering.
+
+* Run
+
+Requires Java 21+, Clojure CLI, Babashka, and Node, Bun or Deno. The repository's
+~.envrc~ selects Java 25 through SDKMAN when direnv is enabled.
+
+From this directory, install the declared JavaScript dependencies before
+starting the application. For Bun:
+
+#+begin_src sh
+bun install
+bb run-bun
+#+end_src
+
+For Deno:
+
+#+begin_src sh
+deno install
+bb run-deno
+#+end_src
+
+After installing dependencies, Node can run the application with ~bb run-node~.
+~bb deno-serve~ builds ~build/server-serve.cjs~ without CLI startup and lets
+Deno serve its exported Fetch handler.
+
+The ~run-*~ tasks compile ~src/ddc/server.cljs~ using ~deps.edn~ and ~app.edn~,
+then run ~server.cjs~. The local ~.npmrc~ selects JSR's npm registry for the
+~@jsr~ package aliases used by the middleware.
+
+Open [[http://127.0.0.1:6464/login]] and sign in with ~admin~ / ~password~.
+~TODO_USER~ and ~TODO_PASSWORD~ override these example credentials. ~PORT~
+and ~HOSTNAME~ override the default ~6464~ and ~127.0.0.1~ binding.
+~GET /health.txt~ returns ~ok~; ~GET /static/css/app.css~ serves the stylesheet.
+
+Deno defaults to one worker because sessions and todos live in process memory.
+~DENO_JOBS~ overrides the worker count; additional workers have independent
+session and todo state.

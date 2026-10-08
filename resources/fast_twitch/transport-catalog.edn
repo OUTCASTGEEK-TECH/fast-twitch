@@ -1,0 +1,127 @@
+{:codec/json {:configuration {:codec :json}
+              :decode-character-limit 1048576
+              :depth-limit 64
+              :domain :string-key-maps-vectors-null-boolean-safe-numbers-strings
+              :native-handles :excluded
+              :transports [:http :message-channel]}
+ :http/fetch {:api fast-twitch.client.core/request!
+              :codecs [:native :bytes :text :json]
+              :native "globalThis.fetch"
+              :options [:transport :codec :request-init :streaming :request-middleware
+                        :response-middleware]
+              :result :response-map
+              :retry :none
+              :streaming :decoded-codecs-only}
+ :http/request {:carrier :fast-twitch.routing/request
+                :fields [:url :request-method :headers :body]
+                :representation :outbound-request-map}
+ :http/response {:api fast-twitch.server.core/response
+                 :carrier :fast-twitch.routing/response
+                 :codecs [:native :json]
+                 :edits :status-header-body
+                 :options [:status :headers :codec]
+                 :result :http-response-map
+                 :special-edits :rejected}
+ :http/server {:api fast-twitch.server.core/listen!
+               :bootstrap :existing-serve-and-routing
+               :handler :ring-function
+               :options [:transport :codec :streaming :hostname :port :reuse-port
+                         :on-listen :async? :protocol :remote-addr]
+               :shutdown fast-twitch.server.core/close!}
+ :messaging/channel {:api fast-twitch.client.core/message-channel!
+                     :close fast-twitch.client.core/close!
+                     :codecs [:native :json]
+                     :decoder-failure :unverified
+                     :messageerror :verified-native-event-dispatch
+                     :native "MessageChannel"
+                     :options [:codec :on-event]
+                     :retry :none
+                     :send fast-twitch.client.core/send!
+                     :transfer [:array-buffer :message-port]}
+ :sse/fetch {:api fast-twitch.client.core/request!
+             :cleanup :owned-reader-cancel-and-release
+             :limits {:event-bytes 1048576 :line-bytes 65536}
+             :options [:transport :codec :on-event :signal :streaming]
+             :reconnect :none
+             :streaming-options [:max-line-bytes :max-event-bytes]}
+ :sse/native {:api fast-twitch.client.core/connect!
+              :configuration {:transport :event-source}
+              :arbitrary-headers false
+              :close fast-twitch.client.core/close!
+              :native "EventSource"
+              :options [:url :with-credentials? :event-types :on-event]
+              :reconnect :native}
+ :sse/server {:api fast-twitch.server.sse/response
+              :high-water-mark 0
+              :options [:on-cancel :headers]
+              :producer :pull-function
+              :producer-disconnect-and-forced-shutdown :verified-node-bun-deno
+              :queue :native-stream}
+ :streams/collect {:api [fast-twitch.client.core/read-body!
+                         fast-twitch.client.core/read-stream!]
+                   :buffering :explicit-bounded
+                   :codecs [:bytes :text :json]
+                   :max-bytes 1048576}
+ :streams/read {:abort :reject-original-reason
+                :api fast-twitch.client.core/reduce-stream!
+                :backpressure :await-read-and-reducer
+                :buffer :one-pending-read
+                :byob {:default-chunk-bytes 65536
+                       :maximum-chunk-bytes 1048576
+                       :requires :native-byte-stream}
+                :cleanup :release-lock
+                :modes [:default :byob]
+                :options [:codec :owned? :signal :mode :chunk-bytes]
+                :codecs [:bytes :text]
+                :text :incremental-strict-utf8
+                :ownership [:owned :borrowed]}
+ :tcp/close {:api [fast-twitch.client.core/close! fast-twitch.server.core/close!]
+             :half-close fast-twitch.client.core/half-close!}
+ :tcp/connect {:api fast-twitch.client.core/connect!
+               :cancellation {:dns-and-tls :unverified
+                              :late-owned-result :disposed
+                              :native-pending-connect :verified-loopback-abort
+                              :pre-abort :verified}
+               :codecs [:native :bytes :text]
+               :endpoint [:hostname :port]
+               :framing :none
+               :half-close :verified-peer-eof-reply
+               :large-exchange-bytes 262144
+               :options [:transport :codec :streaming :runtime :tls? :signal]
+               :partial-write {:bun
+                                 :deterministic-offset-zero-progress-and-failure-verified}
+               :profiles [:auto :node :deno :bun]
+               :receive fast-twitch.client.core/receive!
+               :receive-boundary :eof
+               :result :native-stream-connection
+               :selection :configured-runtime
+               :tls :unverified}
+ :tcp/listen {:api fast-twitch.server.core/listen!
+              :codecs [:native :bytes :text]
+              :options [:transport :codec :streaming :hostname :port :runtime]
+              :receive fast-twitch.client.core/receive!
+              :receive-boundary :eof
+              :result :native-listener-and-close
+              :selection :configured-runtime}
+ :websocket/connect {:api fast-twitch.client.core/connect!
+                     :binary :array-buffer
+                     :cleanup :close-removes-listeners
+                     :completion :open
+                     :endpoint [:url]
+                     :native "WebSocket"
+                     :options [:transport :codec :protocols :listener :on-event :signal]
+                     :result :native-socket}
+ :websocket/send {:api fast-twitch.client.core/send!
+                  :close [fast-twitch.client.core/close! fast-twitch.server.core/close!]
+                  :completion :local-admission
+                  :data [:text :native-bytes :explicit-message-map]
+                  :peer-receipt-guarantee false
+                  :retry :none}
+ :websocket/server {:api :ring.websocket/listener
+                    :bootstrap :existing-serve-and-routing
+                    :bun :native-completed
+                    :deno :native-response
+                    :deno-application-ping-pong :unavailable
+                    :interface [:ring.websocket/listener :ring.websocket/protocol]
+                    :node :native-upgrade-unavailable
+                    :scope :per-server}}

@@ -1,21 +1,20 @@
 (ns fast-twitch.middlewares.file
   "Serves files from a local path with runtime-specific filesystem access and path safety checks."
   [:require-macros [fast-twitch.macros :refer [current-runtime]]]
-  [:require
-    [cljs.core :refer [await]]
-    [cljs.nodejs :as nodejs]
-    [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [Date Error Promise decodeURIComponent globalThis
-                        Bun Deno]])
+  [:require [cljs.core :refer [await]]
+            [cljs.nodejs :as nodejs]
+            [clojure.string :as str]]
+  [:refer-global :only
+                 [Date Error decodeURIComponent globalThis Bun Deno]])
 
 (defn- url-root-path
   "Normalizes a configured URL root into a single leading-slash path segment."
   [url-root]
   (when url-root
-    (str "/" (-> url-root
-                 (str/replace #"^/+" "")
-                 (str/replace #"/+$" "")))))
+    (str "/"
+         (-> url-root
+             (str/replace #"^/+" "")
+             (str/replace #"/+$" "")))))
 
 (defn- file-request?
   "Returns true when the request is eligible for static file handling."
@@ -23,8 +22,7 @@
   (and (#{:get :head} (:request-method request))
        (if-let [root (url-root-path (:url-root options))]
          (let [uri (:uri request)]
-           (or (= uri root)
-               (str/starts-with? uri (str root "/"))))
+           (or (= uri root) (str/starts-with? uri (str root "/"))))
          true)))
 
 (defn- request-path
@@ -32,18 +30,14 @@
   [request options]
   (let [uri (:uri request)]
     (if-let [root (url-root-path (:url-root options))]
-      (when (or (= uri root)
-                (str/starts-with? uri (str root "/")))
+      (when (or (= uri root) (str/starts-with? uri (str root "/")))
         (subs uri (count root)))
       uri)))
 
 (defn- decode-path
   "Decodes a percent-encoded request path, returning nil on decode failure."
   [path]
-  (try
-    (decodeURIComponent (or path ""))
-    (catch :default _
-      nil)))
+  (try (decodeURIComponent (or path "")) (catch :default _ nil)))
 
 (defn- path-segments
   "Splits a path into non-empty, non-dot segments."
@@ -54,9 +48,7 @@
 (defn- safe-path?
   "Returns true when no path segment escapes upward or contains a null byte."
   [segments]
-  (not-any? #(or (= ".." %)
-                 (str/includes? % "\u0000"))
-            segments))
+  (not-any? #(or (= ".." %) (str/includes? % "\u0000")) segments))
 
 (defn- dotfile-path?
   "Returns true when any segment points at a dotfile or dot-directory."
@@ -72,18 +64,16 @@
   "Builds an absolute file path from the root path and safe path segments."
   [root-path segments]
   (let [root-path (normalized-root-path root-path)]
-    (if (seq segments)
-      (str root-path "/" (str/join "/" segments))
-      root-path)))
+    (if (seq segments) (str root-path "/" (str/join "/" segments)) root-path)))
 
 (defn- file-path
   "Resolves the filesystem path for a request when it passes safety checks."
   [request root-path options]
-  (when-let [path (some-> (request-path request options) decode-path)]
+  (when-let [path (some-> (request-path request options)
+                          decode-path)]
     (let [segments (path-segments path)]
       (when (and (safe-path? segments)
-                 (or (:show-dotfiles? options)
-                     (not (dotfile-path? segments))))
+                 (or (:show-dotfiles? options) (not (dotfile-path? segments))))
         (join-path root-path segments)))))
 
 (defn- not-found-error?
@@ -101,140 +91,103 @@
   []
   (nodejs/require "node:fs/promises"))
 
-(defn- stat-file
+(defn- ^:async stat-file
   "Stats a file path and returns normalized metadata for the active runtime."
   [file-path]
   (case (current-runtime)
-    :deno
-    ((^:async fn []
-       (let [stat (await (.stat Deno file-path))]
-         {:path file-path
-          :file? (aget stat "isFile")
-          :directory? (aget stat "isDirectory")
-          :size (aget stat "size")
-          :last-modified (aget stat "mtime")})))
+    :deno (let [stat (await (.stat Deno file-path))]
+            {:path file-path
+             :file? (aget stat "isFile")
+             :directory? (aget stat "isDirectory")
+             :size (aget stat "size")
+             :last-modified (aget stat "mtime")})
+    :bun (let [file (.file Bun file-path)]
+           (when (await (.exists file))
+             {:path file-path
+              :file? true
+              :directory? false
+              :size (aget file "size")
+              :last-modified (when-let [ms (aget file "lastModified")] (Date. ms))
+              :bun-file file}))
+    :node (let [stat (await (.stat (node-fs) file-path))]
+            {:path file-path
+             :file? (.isFile stat)
+             :directory? (.isDirectory stat)
+             :size (aget stat "size")
+             :last-modified (aget stat "mtime")})
+    (throw (Error. "No supported file server runtime found"))))
 
-    :bun
-    (let [file (.file Bun file-path)]
-      ((^:async fn []
-         (when (await (.exists file))
-           {:path file-path
-            :file? true
-            :directory? false
-            :size (aget file "size")
-            :last-modified (when-let [ms (aget file "lastModified")]
-                             (Date. ms))
-            :bun-file file}))))
-
-    :node
-    (let [fs (node-fs)]
-      ((^:async fn []
-         (let [stat (await (.stat fs file-path))]
-           {:path file-path
-            :file? (.isFile stat)
-            :directory? (.isDirectory stat)
-            :size (aget stat "size")
-            :last-modified (aget stat "mtime")}))))
-
-    (Promise.reject (Error. "No supported file server runtime found"))))
-
-(defn- maybe-stat-file
+(defn- ^:async maybe-stat-file
   "Returns file metadata or nil when the path does not exist."
   [file-path]
-  (-> (stat-file file-path)
-      (.catch (fn [error]
-                (if (not-found-error? error)
-                  nil
-                  (throw error))))))
+  (try (await (stat-file file-path))
+       (catch :default error (if (not-found-error? error) nil (throw error)))))
 
 (defn- index-path
   "Builds the default index.html path for a directory."
   [file-path]
   (str (str/replace file-path #"/+$" "") "/index.html"))
 
-(defn- resolve-file
+(defn- ^:async resolve-file
   "Resolves a file path to either a direct file or an index file in a directory."
   [file-path options]
-  ((^:async fn []
-     (let [entry (await (maybe-stat-file file-path))]
-       (cond
-         (:file? entry)
-         entry
+  (let [entry (await (maybe-stat-file file-path))]
+    (cond (:file? entry) entry
+          (and (:directory? entry) (get options :index-files? true))
+            (await (maybe-stat-file (index-path file-path)))
+          :else nil)))
 
-         (and (:directory? entry)
-              (get options :index-files? true))
-         (await (maybe-stat-file (index-path file-path)))
-
-         :else
-         nil)))))
-
-(defn- read-file-async
+(defn- ^:async read-file-async
   "Reads the contents of a resolved file entry for the active runtime."
   [entry]
   (case (current-runtime)
-    :deno
-    (.readFile Deno (:path entry))
-
-    :bun
-    (Promise.resolve (:bun-file entry))
-
-    :node
-    (.readFile (node-fs) (:path entry))
-
-    (Promise.reject (Error. "No supported file server runtime found"))))
+    :deno (await (.readFile Deno (:path entry)))
+    :bun (:bun-file entry)
+    :node (await (.readFile (node-fs) (:path entry)))
+    (throw (Error. "No supported file server runtime found"))))
 
 (defn- date-string
   "Formats a file date value as a UTC string."
   [date]
-  (cond
-    (nil? date) nil
-    (number? date) (.toUTCString (Date. date))
-    :else (.toUTCString date)))
+  (cond (nil? date) nil
+        (number? date) (.toUTCString (Date. date))
+        :else (.toUTCString date)))
 
 (defn- option-headers
   "Normalizes configured headers into a plain map."
   [headers]
-  (cond
-    (map? headers)
-    headers
-
-    (sequential? headers)
-    (into {}
-          (keep (fn [header]
-                  (when-let [idx (str/index-of header ":")]
-                    [(subs header 0 idx)
-                     (str/trim (subs header (inc idx)))])))
-          headers)
-
-    :else
-    {}))
+  (cond (map? headers) headers
+        (sequential? headers) (into {}
+                                    (keep (fn [header]
+                                            (when-let [idx (str/index-of header ":")]
+                                              [(subs header 0 idx)
+                                               (str/trim (subs header (inc idx)))])))
+                                    headers)
+        :else {}))
 
 (defn- file-response
   "Builds a file response map from a resolved file entry and file contents."
   [request entry body options]
   (let [headers (cond-> (option-headers (:headers options))
-                  (:size entry)
-                  (assoc "Content-Length" (str (:size entry)))
-
-                  (:last-modified entry)
-                  (assoc "Last-Modified" (date-string (:last-modified entry))))]
+                  (:size entry) (assoc "Content-Length" (str (:size entry)))
+                  (:last-modified entry) (assoc "Last-Modified"
+                                           (date-string (:last-modified entry))))]
     {:status 200
      :headers headers
-     :body (when-not (= :head (:request-method request))
-             body)}))
+     :body (when-not (= :head (:request-method request)) body)}))
 
 (defn file-request
   "Attempts to serve a file for the request and returns nil when nothing matches."
   ([request root-path]
    (file-request request root-path {}))
   ([request root-path options]
-   (if (file-request? request options)
-     (if-let [file-path (file-path request root-path options)]
-        ((^:async fn []
-           (when-let [entry (await (resolve-file file-path options))]
-             (file-response request entry (await (read-file-async entry)) options))))
-       (common/promise nil))
-     (common/promise nil))))
+   (let [path (when (file-request? request options)
+                (file-path request root-path options))]
+     ((^:async fn
+       []
+       (when path
+         (when-let [entry (await (resolve-file path options))]
+           (file-response request entry (await (read-file-async entry)) options))))))))
 
 (defn wrap-file
   "Wraps a handler with filesystem-backed static file serving."
@@ -246,19 +199,19 @@
       (if (:prefer-handler? options)
         (handler request)
         (if (file-request? request options)
-           ((^:async fn []
-              (or (await (file-request request root-path options)) (handler request))))
+          ((^:async fn
+            []
+            (or (await (file-request request root-path options)) (handler request))))
           (handler request))))
      ([request respond raise]
       (if (:prefer-handler? options)
         (handler request respond raise)
         (if (file-request? request options)
-           ((^:async fn []
-              (try
-                (await
-                 (if-let [response (await (file-request request root-path options))]
-                   (respond response)
-                   (handler request respond raise)))
-                (catch :default error
-                  (raise error)))))
+          ((^:async fn
+            []
+            (try (await (if-let [response (await
+                                            (file-request request root-path options))]
+                          (respond response)
+                          (handler request respond raise)))
+                 (catch :default error (raise error)))))
           (handler request respond raise)))))))

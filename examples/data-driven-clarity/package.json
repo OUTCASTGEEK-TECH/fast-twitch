@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@std/bytes": "npm:@jsr/std__bytes",
+    "@std/cache": "npm:@jsr/std__cache@0.2.4",
     "@std/crypto": "npm:@jsr/std__crypto",
     "@std/encoding": "npm:@jsr/std__encoding",
     "@std/html": "npm:@jsr/std__html",

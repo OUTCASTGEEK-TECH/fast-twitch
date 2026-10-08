@@ -1,169 +1,222 @@
 #+title: fast-twitch
 #+startup: overview
 
-* fast-twitch
+* Fast-Twitch
 
-~fast-twitch~ is a ClojureScript HTTP framework for server-side JavaScript
-runtimes.
+Fast-Twitch lets ClojureScript applications use Ring handlers and middleware on
+Node, Bun and Deno. It adapts native Fetch requests and responses to ordinary
+maps, provides routing and middleware, and manages native server startup and
+shutdown. Its client and server helpers also support TCP, WebSocket, SSE and
+MessageChannel through configuration maps.
 
-It provides a small request/response, middleware, routing, and adapter layer
-that runs on top of the built-in server features of the three major JavaScript
-runtimes:
+Start with [[file:examples/01-hello-world/][the hello-world example]], browse [[file:docs/API.md][the API docs]], or use
+[[file:examples/07-native-transports/][the native transport examples]] for client/server exchanges.
+This README introduces application usage, then explains the repository and
+contributor commands. The API docs provide the function reference.
 
-- Node.js, through ~node:http~
-- Deno, through ~Deno.serve~
-- Bun, through ~Bun.serve~
+* Ring handlers, middleware and serving
 
-The framework defines its own API for handlers, middleware, adapters, request
-maps, response maps, and async callback handlers.
-
-The implementation intentionally keeps its dependency surface narrow. Runtime
-features come from Node, Deno, and Bun themselves, with a small set of Deno
-~@std/...~ packages used where they make sense for portable server-side
-JavaScript work.
-
-* Documentation
-
-Generated API documentation is available in [[file:docs/API.md][docs/API.md]].
-
-The API docs cover:
-
-- ~fast-twitch.routing~
-- ~fast-twitch.macros~
-- ~fast-twitch.middlewares.*~
-- ~fast-twitch.util.anti-forgery~
-
-* Project layout
-
-#+begin_src text
-.
-├── src/fast_twitch
-│   ├── macros.cljc
-│   ├── routing.cljs
-│   ├── middlewares
-│   └── util
-├── examples
-└── docs/API.md
-#+end_src
-
-The root project contains the framework. Example projects consume the framework
-through local dependencies and demonstrate different parts of the API.
-
-* Core ideas
-
-** Handlers
-
-A synchronous handler accepts one request map and returns one response map:
+A handler takes a request map and returns a response map. Middleware wraps the
+handler. Serve the resulting application through ~ft-handler~:
 
 #+begin_src clojure
-(fn [request]
+(ns example
+  (:require [fast-twitch.routing :as ft]
+            [fast-twitch.middlewares.common :as middleware]
+            [fast-twitch.macros :refer-macros [serve shutdown]]))
+
+(defn handler [request]
   {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "ok\n"})
+   :headers {"content-type" "text/plain"}
+   :body (str "Hello from " (:uri request))})
+
+(def app
+  (middleware/wrap-response handler
+    (fn [response _request]
+      (assoc-in response [:headers "x-app"] "example"))))
+
+(def http-server
+  (serve :handler (ft/ft-handler app {:protocol "HTTP/1.1" :remote-addr "unknown"})
+         :hostname "127.0.0.1"
+         :port 6464))
+
+;; When finished, (shutdown http-server) returns its native shutdown completion.
 #+end_src
 
-An asynchronous handler accepts a request map, a response callback, and an error
-callback:
+The existing ~routes~, ~ft-handler~, middleware and ~serve~ APIs remain
+available. Request headers retain Fast-Twitch's lowercase keyword keys;
+response headers use strings. Three-argument Ring handlers receive
+~[request respond raise]~ when ~ft-handler~ or ~server/listen!~ has ~:async? true~.
+Their return value is ignored; ~respond~ and ~raise~ deliver the result.
+
+* Configured clients and servers
+
+Use ~fast-twitch.client.core/request!~ for HTTP/SSE and ~connect!~ for TCP or
+WebSocket/EventSource. Use ~fast-twitch.server.core/listen!~ to start HTTP/TCP
+servers. Client ~send!~, ~receive!~, ~half-close!~ and reader functions work with
+connections from either endpoint. Client ~close!~ closes connections; server
+~close!~ also stops native listeners. Handlers and messages remain ordinary functions and data.
 
 #+begin_src clojure
-(fn [request respond raise]
-  (respond {:status 200
-            :headers {"Content-Type" "text/plain"}
-            :body "ok\n"}))
+(ns example.json
+  (:require [cljs.core :refer [await]]
+            [fast-twitch.client.core :as client]
+            [fast-twitch.server.core :as server]))
+
+(def http-server
+  (server/listen! (fn [request] (server/response (:body request)))
+                  {:transport :http
+                   :hostname "127.0.0.1"
+                   :port 6464
+                   :codec :json
+                   :streaming {:max-bytes 65536}}))
+
+(defn ^:async exchange! []
+  (let [response (await (client/request!
+                         {:url "http://127.0.0.1:6464/"
+                          :request-method :post
+                          :headers {}
+                          :body {"message" "hello"}}
+                         {:codec :json :streaming {:max-bytes 65536}}))]
+    (:body response)))
+
+(defn ^:async run-example! []
+  (try
+    (prn (await (exchange!)))
+    (finally (await (server/close! http-server)))))
+
+(run-example!)
 #+end_src
 
-** Request maps
+HTTP defaults to ~:codec :native~, preserving native body streams. ~:bytes~,
+~:text~ and ~:json~ collect bodies within the configured byte limit. JSON encodes
+supplied request/response data; its map keys are strings. ~:request-init~ accepts
+native Fetch options, and client middleware transforms request/response maps.
 
-~fast-twitch~ adapters convert runtime requests into maps with keys such as:
+~reduce-stream!~ processes byte chunks, or incrementally decoded UTF-8 text with
+~{:codec :text}~. It awaits each reducer call before reading again. Invalid or
+incomplete UTF-8 rejects; owned readers cancel on failure or early termination,
+and borrowed readers release their locks without cancellation.
 
-- ~:request-method~
-- ~:scheme~
-- ~:server-name~
-- ~:server-port~
-- ~:uri~
-- ~:query-string~
-- ~:headers~
-- ~:body~
-- ~:remote-addr~
-- ~:protocol~
-- ~:path-params~
-
-Middleware may add additional keys such as ~:params~, ~:query-params~,
-~:form-params~, ~:multipart-params~, ~:cookies~, ~:session~, and ~:flash~.
-
-** Response maps
-
-Handlers return maps with:
-
-- ~:status~
-- ~:headers~
-- ~:body~
-
-Middleware may also use framework-level keys such as ~:cookies~, ~:session~,
-~:session-cookie-attrs~, and ~:flash~ before the final adapter turns the
-response into a runtime HTTP response.
-
-** Middleware
-
-Middleware is ordinary higher-order handler composition. The framework includes
-middleware for common server concerns:
-
-- request params
-- nested params
-- multipart params
-- keyword params
-- cookies
-- sessions
-- flash
-- anti-forgery tokens
-- static files
-- content type inference and upload sniffing
-- content length
-- default charsets
-- conditional ~304 Not Modified~ responses
-- absolute redirects
-- proxy headers
-- SSL redirects and HSTS
-- common security headers
-
-The ~fast-twitch.middlewares.defaults~ namespace provides preconfigured API and
-site middleware bundles.
+TCP uses ~connect!~ and ~listen!~ with ~:transport :tcp~, ~:codec~ and ~:streaming~.
+~send!~ writes data, ~half-close!~ ends writes, and ~receive!~ collects through EOF.
+WebSocket uses ~:transport :websocket~ and event listeners. SSE uses
+~client/request!~ with ~:transport :sse~ and ~:on-event~, or ~client/connect!~ with ~:transport :event-source~ for native EventSource.
+Use ~send!~ and ~close!~ with the WebSocket handle returned by ~client/connect!~;
+server WebSocket listeners receive their connection handle in callbacks.
+~fast-twitch.server.sse/response~ constructs the pull-based SSE response.
+See the executable transport examples for complete lifecycles.
 
 * Runtime support
 
-~fast-twitch.macros/serve~ expands to runtime-specific startup code. At runtime,
-it detects the available JavaScript server runtime and starts the server with
-the native primitive for that runtime:
+| Runtime | Native support |
+|---------+----------------|
+| Node    | HTTP server/Fetch, TCP, WebSocket client, SSE Fetch, MessageChannel |
+| Bun     | HTTP server/Fetch, TCP, WebSocket client/server, SSE Fetch, MessageChannel |
+| Deno    | HTTP server/Fetch, TCP, WebSocket client/server, SSE Fetch, EventSource, MessageChannel |
 
-- Deno: ~Deno.serve~
-- Bun: ~Bun.serve~
-- Node.js: ~node:http~
+Clients also use the corresponding browser APIs where available. Node has no
+native WebSocket server upgrade here: incoming Node upgrades return HTTP 501.
+The shared WebSocket client uses the runtime's global ~WebSocket~ constructor.
+[[https://nodejs.org/learn/getting-started/websocket][Node documents its native client]]; [[https://bun.sh/docs/runtime/http/websockets][Bun]] and
+[[https://docs.deno.com/api/deno/websockets/][Deno]] provide the server upgrade APIs used by ~server/runtime/websocket.cljs~.
+The Cloudflare example serves HTTP through the worker's Fetch entry point. ~resources/fast_twitch/runtime-profiles.edn~ records the tested versions
+and capability checks. Use the pinned compiler in ~:native-test~ for modern
+~:refer-global~, ~async~/~await~, ~#js~, ~cljs.proxy~ and checked keys.
 
-Applications can also export a Fetch-compatible handler for environments that
-expect a ~fetch~ function.
+* CSRF forms
 
-* Examples
+~fast-twitch.middlewares.anti-forgery/wrap-anti-forgery~ validates submitted
+tokens and persists the token in ~:session~. Render the Hiccup field through the
+existing ~fast-twitch.util.anti-forgery/anti-forgery-field~ helper within the
+protected handler. Custom ~:read-token~ receives ~[request options]~;
+~:error-handler~ receives ~[request failure]~. These are the original hook
+contracts, including when the wrapped handler uses Ring callbacks.
 
-Example applications live in [[file:examples][examples]].
+* Contributing
 
-- [[file:examples/05-celld/README.md][05 - Celld]]: run a ClojureScript Fetch handler with Celld.
-- [[file:examples/06-cloudflare-workerd/README.md][06 - Cloudflare workerd]]: run the same handler shape directly with workerd.
+~src/~ contains the library. The remaining directories have these specific roles:
 
-Both examples use this checkout through ~:local/root~ and exercise the native
-response/header adapter, including separate ~Set-Cookie~ values.
+- ~resources/deps.cljs~ tells the ClojureScript compiler to load
+  ~resources/fast_twitch/native_externs.js~. Those extern declarations preserve
+  native API property names during advanced compilation; they are not executed.
+- ~resources/fast_twitch/transport-catalog.edn~ describes supported operations,
+  codecs and options. ~runtime-profiles.edn~ records tested runtime versions,
+  capabilities and results. Both are descriptive metadata, not runtime
+  configuration; application configuration is passed to functions as maps.
+- ~dev/fast_twitch/test_runner.clj~ builds the native suite, or the browser
+  bundle and companion server when passed ~browser~. ~compiler_fixtures.clj~
+  compiles and runs macro-consumer checks. ~qualification.clj~ runs portable
+  Clojure option-guard and macro-form checks. ~lint.clj~ configures clj-kondo
+  from the pinned compiler classpath and runs it against maintained code.
+- ~dev/fast_twitch/defaults_consumer.cljs~ checks existing middleware usage,
+  including sessions, CSRF, multipart and Ring callbacks.
+  ~websocket_client_consumer.cljs~ checks text/binary exchange, native identity
+  and cleanup against a WebSocket endpoint supplied through ~FT_WS_URL~.
+  These are development fixtures, not application startup dependencies.
+- ~test/fast_twitch/integration/runner.cljs~ runs native transport and lifecycle
+  regressions together with ~ring_contracts.cljs~ (Ring and CSRF behavior) and
+  ~public_client_server.cljs~ (configured public API exchanges and guards).
+  ~browser_runner.cljs~ exercises browser APIs; ~browser_server.cljs~ supplies
+  its HTTP/SSE/WebSocket endpoints. ~test/fast_twitch/fixtures/static/fixture.txt~
+  supplies file/resource middleware test data.
+- ~test/fast_twitch/main_test.clj~ is retained starter scaffolding referring to
+  ~fast-twitch.main~, which is absent. It is not part of the native suite or
+  portable qualification runner.
 
-* Generate API docs
-
-From the repository root:
+Development runners and tests are loaded through aliases. Generated ~target/~
+outputs and dependency caches are not source prerequisites.
 
 #+begin_src sh
+bb format
+bb format --check
+clojure -M:native-test
+node target/native-tests.cjs
+clojure -M:native-test advanced
+node target/native-advanced.cjs
+clojure -M:native-test:lint
+clojure -M:native-test:compiler-check
+clojure -M:native-test:portable-test
 bb docs
 #+end_src
 
-This regenerates [[file:docs/API.md][docs/API.md]] from the source docstrings.
+~bb format~ uses repo-local zprint 1.3.0 and ~.zprintrc~; ~--check~ verifies
+idempotent formatting. It formats maintained source, tooling and relevant
+examples, excluding generated/vendor files and the separate Celld example.
+The lint bootstrap reads the actual compiler dependencies. ~.lsp/config.edn~
+selects the same classpath; reload the editor's language server after changing it.
 
-* Current status
+Fast-Twitch uses Malli 0.20.2 for dynamic option validation. Shared schemas in
+~fast-twitch.util.contracts~ describe reader settings and common native options;
+transport-specific schemas stay beside their boundaries. Malli caches validators
+for these schema objects. Native boundaries declare enforced function contracts
+with ~mx/defn~. Boundaries retain ordinary ~^:dynamic~ declarations and native
+~^:async~ bodies where needed; ~contracts/instrument~ applies their registered
+Malli schemas once when the namespace loads. Port payload and transfer contracts are instrumented once at the native posting
+operation. This preserves direct call emission with inline
+arguments in the pinned compiler's advanced mode. There is no instrumentation
+bootstrap for consumers. Malli errors retain schema paths and the operation,
+without retaining argument payloads. Invalid arguments throw before I/O;
+valid calls retain native results, Promise completion, settlement and cleanup.
+Fetch validates transformed options at its actual native operation after request
+middleware. Send options use Malli's function and sequence schemas. Close validates options
+at the selected operation.
 
-~fast-twitch~ is a new implementation. The repository focuses on the core
-adapter, routing, middleware, runtime bootstrap, generated API docs, and example
-applications.
+The existing ~serve~ macro rejects unknown literal option names and invalid
+numeric literal ports during expansion. It leaves dynamic expressions and
+app-derived values to execution. Native capability, connection state, incoming
+data and streaming limits are checked where those results become available.
+Checked keys verify required data access; they do not guarantee dynamic values
+at compile time. Malli's argument parser does not support ~:keys!~, so required
+checked destructuring belongs in function bodies when using ~mx/defn~.
+
+The intentional oversized HTTP request runs separately:
+
+#+begin_src sh
+node target/native-tests.cjs http-limit-probe
+#+end_src
+
+It must print ~HTTP limit probe verified: {:status 500, :handled 0}~. Node and
+Deno exit 0; Bun 1.4.2 exits 1 after its native server reports the expected request
+error. The ordinary suite must exit 0 on every runtime. The same probe argument
+works with ~target/native-advanced.cjs~.

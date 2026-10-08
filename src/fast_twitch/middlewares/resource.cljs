@@ -1,7 +1,6 @@
 (ns fast-twitch.middlewares.resource
   "Provides resource-style static asset serving through the file middleware."
-  [:require
-   [fast-twitch.middlewares.file :as file]])
+  [:require [fast-twitch.middlewares.file :as file]])
 
 (defn resource-request
   "Attempts to build a static resource response for the current request."

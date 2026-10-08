@@ -1,15 +1,11 @@
 (ns fast-twitch.middlewares.multipart-params
   "Parses multipart form bodies and exposes uploads in a request-friendly map shape."
-  [:require
-   [cljs.core :refer [await]]
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]]
-  [:refer-global :only [Promise]])
+  [:require [cljs.core :refer [await]]
+            [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]])
 
 (def content-too-large-response
-  {:status 413
-   :headers {"Content-Type" "text/plain"}
-   :body "Content Too Large\n"})
+  {:status 413 :headers {"Content-Type" "text/plain"} :body "Content Too Large\n"})
 
 (defn content-too-large-handler
   "Returns a standard 413 response in both sync and async handler forms."
@@ -36,48 +32,49 @@
 (defn- form-value
   "Normalizes a multipart field into either a string or upload map."
   [value]
-  (if (string? value)
-    value
-    (file-value value)))
+  (if (string? value) value (file-value value)))
 
 (defn- assoc-param
   "Associates a multipart value, grouping repeated keys into vectors."
   [params k v]
-  (update params k
+  (update params
+          k
           (fn [old]
-            (cond
-              (nil? old) v
-              (vector? old) (conj old v)
-              :else [old v]))))
+            (cond (nil? old) v
+                  (vector? old) (conj old v)
+                  :else [old v]))))
 
 (defn- form-data-map
   "Converts FormData entries into the multipart parameter map shape."
   [form-data]
   (reduce (fn [params entry]
             (assoc-param params (aget entry 0) (form-value (aget entry 1))))
-          {}
-          (.entries form-data)))
+    {}
+    (.entries form-data)))
 
 (defn parse-multipart-params
   "Parses multipart parameters from the request body."
   ([request]
    (parse-multipart-params request {}))
   ([request _options]
-   (if (and (:body request) (multipart? request))
-      ((^:async fn []
-         (form-data-map (await (.formData (common/ft->fetch-request request))))))
-     (Promise.resolve {}))))
+   (let [multipart? (and (:body request) (multipart? request))]
+     ((^:async fn
+       []
+       (if multipart?
+         (form-data-map (await (.formData (common/ft->fetch-request request))))
+         {}))))))
 
 (defn multipart-params-request
   "Associates parsed multipart parameters onto the request."
   ([request]
    (multipart-params-request request {}))
   ([request options]
-    ((^:async fn []
-       (let [multipart-params (await (parse-multipart-params request options))]
-         (assoc request
-                :multipart-params multipart-params
-                :params (merge (:params request) multipart-params)))))))
+   ((^:async fn
+     []
+     (let [multipart-params (await (parse-multipart-params request options))]
+       (assoc request
+         :multipart-params multipart-params
+         :params (merge (:params request) multipart-params)))))))
 
 (defn wrap-multipart-params
   "Wraps a handler so multipart form data is available on the request."

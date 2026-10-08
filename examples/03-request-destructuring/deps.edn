@@ -1,14 +1,16 @@
-{:paths ["src"]
+{:aliases {:nREPL {:extra-deps {cider/cider-nrepl {:mvn/version "0.62.2"}
+                                cider/piggieback {:mvn/version "0.7.0"}
+                                nrepl/nrepl {:mvn/version "1.7.0"}}
+                   :main-opts
+                     ["-m" "nrepl.cmdline" "--middleware"
+                      "[cider.nrepl/cider-middleware, cider.piggieback/wrap-cljs-repl]"]}
+           :test {:extra-paths ["test"]}}
  :deps {fast-twitch/fast-twitch {:local/root "../.."}
         integrant/integrant {:mvn/version "1.0.1"}
         no.cjohansen/replicant {:mvn/version "2026.07.1"}
-        org.clojure/clojurescript {:mvn/version "1.12.145"}}
- :aliases {:nREPL {:extra-deps {nrepl/nrepl {:mvn/version "1.7.0"}
-                                cider/cider-nrepl {:mvn/version "0.62.2"}
-                                cider/piggieback {:mvn/version "0.7.0"}}
-                   :main-opts ["-m" "nrepl.cmdline" "--middleware"
-                               "[cider.nrepl/cider-middleware, cider.piggieback/wrap-cljs-repl]"]}
-           :test {:extra-paths ["test"]}}}
+        org.clojure/clojurescript {:git/sha "56a94ac13bfac22108e4d868dfd4763edaceb864"
+                                   :git/url "https://github.com/clojure/clojurescript"}}
+ :paths ["src"]}
 
 ;; Start the example nREPL server
 ;; clj -M:nREPL

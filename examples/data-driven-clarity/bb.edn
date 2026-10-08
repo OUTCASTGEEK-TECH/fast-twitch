@@ -1,33 +1,38 @@
-{:tasks
- {build
-  {:doc "Compile app.edn to server.cjs"
-   :task (shell "clj -M -m cljs.main -co app.edn -c")}
-
-  run-node
-  {:doc "Build and run server.cjs with Node"
-   :depends [build]
-   :task (shell "node server.cjs")}
-
-  deno-serve
-  {:doc "Build and serve server.cjs with Deno"
-   ;;:depends [build]
-   :task (let [port (or (System/getenv "PORT") "6464")
-               jobs (or (System/getenv "DENO_JOBS") "16")]
-           (shell {:extra-env {"DENO_JOBS" jobs
-                               "PORT" port}}
-                  "deno" "serve" "--parallel" "-A" "--port" port "server.cjs"))}
-
-  run-deno
-  {:doc "Build and run server.cjs with Deno"
-   :depends [build]
-   :task (shell "deno run -A server.cjs")}
-
-  ;; run-deno
-  ;; {:doc "Build and run server.cjs with Deno"
-  ;;  :depends [build]
-  ;;  :task (shell "deno run --unstable-detect-cjs -A server.cjs")}
-
-  run-bun
-  {:doc "Build and run server.cjs with Bun"
-   :depends [build]
-   :task (shell "bun server.cjs")}}}
+{:tasks {build {:doc "Compile app.edn to server.cjs"
+                :task (shell "clj -M -m cljs.main -co app.edn -c")}
+         run-node {:depends [build]
+                   :doc "Build and run server.cjs with Node"
+                   :task (shell "node server.cjs")}
+         deno-serve {:doc "Build and serve the exported Fetch handler with Deno"
+                     :task (let [port (or (System/getenv "PORT") "6464")
+                                 jobs (or (System/getenv "DENO_JOBS") "1")]
+                             (shell "clj"
+                                    "-M"
+                                    "-m"
+                                    "cljs.main"
+                                    "-co"
+                                    "app.edn"
+                                    "-co"
+                                    (pr-str {:nodejs-rt false
+                                             :output-dir "build/serve"
+                                             :output-to "build/server-serve.cjs"
+                                             :source-map "build/server-serve.cjs.map"})
+                                    "-c")
+                             (shell {:extra-env {"DENO_JOBS" jobs "PORT" port}}
+                                    "deno"
+                                    "serve"
+                                    "--parallel"
+                                    "-A"
+                                    "--port"
+                                    port
+                                    "build/server-serve.cjs"))}
+         run-deno {:depends [build]
+                   :doc "Build and run server.cjs with Deno"
+                   :task (shell "deno run -A server.cjs")}
+         ;; run-deno
+         ;; {:doc "Build and run server.cjs with Deno"
+         ;;  :depends [build]
+         ;;  :task (shell "deno run --unstable-detect-cjs -A server.cjs")}
+         run-bun {:depends [build]
+                  :doc "Build and run server.cjs with Bun"
+                  :task (shell "bun server.cjs")}}}

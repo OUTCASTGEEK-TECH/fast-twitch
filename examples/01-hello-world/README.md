@@ -10,6 +10,9 @@ It shows the same shape used by Ring in Clojure:
 
 ## Run it
 
+Requires Java 21+, Clojure CLI, Babashka, and Node, Bun or Deno. The repository's
+`.envrc` selects Java 25 through SDKMAN when direnv is enabled.
+
 ```sh
 bb run-node
 ```
@@ -21,13 +24,22 @@ bb run-deno
 bb run-bun
 ```
 
+To let Deno serve the exported Fetch handler:
+
+```sh
+bb deno-serve
+```
+
+This task builds `build/server-serve.cjs` without CLI startup. The normal
+`run-node`, `run-bun` and `run-deno` tasks build and run `server.cjs`.
+
 You can pick a port with `PORT`:
 
 ```sh
 PORT=7777 bb run-node
 ```
 
-Then request it:
+For the default port, request it:
 
 ```sh
 curl -i 'http://127.0.0.1:6464/?name=newbie'
@@ -35,3 +47,4 @@ curl -i 'http://127.0.0.1:6464/?name=newbie'
 
 Watch the terminal too. The handler prints the request map there before it sends the response.
 
+If you selected `PORT=7777`, use `http://127.0.0.1:7777/?name=newbie` instead.

@@ -1,8 +1,7 @@
 (ns fast-twitch.middlewares.default-charset
   "Appends a charset parameter to text-based responses that do not already declare one."
-  [:require
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]])
 
 (defn- needs-charset?
   "Returns true when a text content type is missing a charset parameter."
@@ -18,7 +17,9 @@
   ([response _request charset]
    (let [content-type (common/header-value (:headers response) :content-type)]
      (if (needs-charset? content-type)
-       (common/assoc-header response "Content-Type" (str content-type "; charset=" charset))
+       (common/assoc-header response
+                            "Content-Type"
+                            (str content-type "; charset=" charset))
        response))))
 
 (defn wrap-default-charset

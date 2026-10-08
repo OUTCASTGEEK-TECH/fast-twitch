@@ -16,17 +16,13 @@
    (x-headers-response response request {}))
   ([response _request options]
    (cond-> response
-     (:content-type-options options)
-     (common/assoc-header "X-Content-Type-Options"
-                          (:content-type-options options))
-
-     (:frame-options options)
-     (common/assoc-header "X-Frame-Options"
-                          (frame-options-value (:frame-options options)))
-
-     (:xss-protection options)
-     (common/assoc-header "X-XSS-Protection"
-                          (:xss-protection options)))))
+     (:content-type-options options) (common/assoc-header "X-Content-Type-Options"
+                                                          (:content-type-options options))
+     (:frame-options options) (common/assoc-header "X-Frame-Options"
+                                                   (frame-options-value (:frame-options
+                                                                          options)))
+     (:xss-protection options) (common/assoc-header "X-XSS-Protection"
+                                                    (:xss-protection options)))))
 
 (defn wrap-x-headers
   "Wraps a handler so configured X-* headers are applied to responses."

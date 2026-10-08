@@ -1,8 +1,7 @@
 (ns fast-twitch.middlewares.method-override
   "Overrides request methods for clients that can only submit POST requests."
-  [:require
-   [clojure.string :as str]
-   [fast-twitch.middlewares.common :as common]])
+  [:require [clojure.string :as str]
+            [fast-twitch.middlewares.common :as common]])
 
 (def default-header-name
   "The default header used to tunnel an HTTP method."
@@ -20,7 +19,11 @@
   "Normalizes a method value into a lowercase keyword."
   [method]
   (when (seq (str/trim (str method)))
-    (-> method str str/trim str/lower-case keyword)))
+    (-> method
+        str
+        str/trim
+        str/lower-case
+        keyword)))
 
 (defn- submitted-method
   "Reads the submitted override method from headers or parsed params."
@@ -42,11 +45,10 @@
          param-name (or (:param-name options) default-param-name)
          allowed-methods (or (:allowed-methods options) default-allowed-methods)
          method (normalized-method (submitted-method request header-name param-name))]
-     (if (and (= :post (:request-method request))
-              (contains? allowed-methods method))
+     (if (and (= :post (:request-method request)) (contains? allowed-methods method))
        (assoc request
-              :original-request-method (:request-method request)
-              :request-method method)
+         :original-request-method (:request-method request)
+         :request-method method)
        request))))
 
 (defn wrap-method-override
