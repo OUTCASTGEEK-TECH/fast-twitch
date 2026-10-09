@@ -127,7 +127,9 @@
              inherited ["signal" "credentials" "cache" "mode" "redirect" "referrer"
                         "referrerPolicy" "integrity" "keepalive"]]
          (when origin (doseq [k inherited] (aset init k (aget origin k))))
-         (when-not ring-map? (doseq [[k v] options] (aset init (name k) v)))
+         (when-not ring-map?
+           (doseq [[k v] options]
+             (aset init (subs (str k) 1) (if (keyword? v) (subs (str v) 1) v))))
          (when (if ring-map? (boolean (:body m)) (some? (:body m)))
            (aset init "body" (if ring-map? (clj->js (:body m)) (:body m)))
            (aset init "duplex" "half"))

@@ -142,7 +142,7 @@
                               {:port 0 :on-listen resolve}))))
                 port (.-port (await (deadline ready)))
                 base (str "http://127.0.0.1:" port)
-                data {"values" [false nil 42]}
+                data {:values [false nil 42]}
                 response (await (client/request! {:url (str base "/json")
                                                   :request-method :post
                                                   :headers {}
@@ -231,7 +231,7 @@
                                                        {:codec :json
                                                         :on-event #(resolve (:data
                                                                               %))}))))
-                data {"values" [false nil 42]}]
+                data {:values [false nil 42]}]
             (client/send! (:port1 @channel) data)
             (is (= data (await (deadline received)))))
           (let [cancelled (atom 0)
@@ -294,7 +294,7 @@
                                                      :port 0
                                                      :on-listen resolve}))))
                 base (str "http://127.0.0.1:" (.-port (await (deadline ready))))
-                data {"value" "hello"}
+                data {:value "hello"}
                 response (await
                            (client/request!
                              {:url base :request-method :post :headers {} :body data}

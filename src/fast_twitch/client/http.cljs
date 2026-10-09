@@ -16,6 +16,7 @@
     contracts/HTTPBodyOptions
     [:map [:transport {:optional true} [:or [:= :http] contracts/Function]]
      [:request-init {:optional true} http-options/RequestInit]
+     [:request-check {:optional true} contracts/Function]
      [:request-middleware {:optional true} [:maybe [:sequential contracts/Function]]]
      [:response-middleware {:optional true} [:maybe [:sequential contracts/Function]]]]))
 
@@ -28,7 +29,10 @@
       value)))
 
 (mx/defn ^{:dynamic true :private true} fetch-native!
-  [m options :- http-options/Options transport]
+  [m options :- http-options/Options transport request-check]
+  ;; Target checks see effective options after middleware, before
+  ;; allocating/consuming a Request.
+  (when request-check (request-check m options))
   (let [request (request/map->request m (:request-init options))]
     (if (fn? transport)
       (transport request (get options :call {}))
@@ -45,7 +49,8 @@
   ([request]
    (fetch! request {}))
   ([request
-    {:keys [transport codec streaming request-init request-middleware response-middleware]
+    {:keys [transport codec streaming request-init request-middleware response-middleware
+            request-check]
      :or {codec :native streaming {} request-init {}}} :- Options]
    (let [request (if (and (= codec :json) (contains? request :body))
                    (json/encode-body request)
@@ -59,7 +64,8 @@
          request (await (apply-middleware! request request-middleware))
          result (await (fetch-native! request
                                       (get request :fast-twitch.client/options {})
-                                      transport))
+                                      transport
+                                      request-check))
          response (await (apply-middleware! (response/response->map result)
                                             response-middleware))]
      (if (= codec :native)

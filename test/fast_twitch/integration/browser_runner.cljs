@@ -63,8 +63,8 @@
                                              {:codec :json}
                                              {:codec :json
                                               :on-event #(resolve (:data %))}))))]
-    (try (client/send! (:port1 @channel) {"browser" false})
-         (check! (= {"browser" false} (await (bounded result))) "Native ports")
+    (try (client/send! (:port1 @channel) {:browser false})
+         (check! (= {:browser false} (await (bounded result))) "Native ports")
          (finally (client/close! (:port1 @channel))
                   (client/close! (:port2 @channel)))))
   #js {:passed #js ["fetch" "fetch-sse" "event-source" "websocket" "ports"]

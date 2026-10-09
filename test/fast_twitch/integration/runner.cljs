@@ -51,12 +51,12 @@
                   console]))
 
 (deftest production-shapes
-  (let [value {"__proto__" {"value" 1}
-               "constructor" "hello"
-               "prototype" [{"constructor" false "__proto__" nil}]}]
+  (let [value {:__proto__ {:value 1}
+               :constructor "hello"
+               :prototype [{:constructor false :__proto__ nil}]}]
     (is (= value (json/decode (json/encode value))))
-    (is (= {"constructor" "hello"} (json/decode "{\"constructor\":\"hello\"}")))
-    (is (thrown? cljs.core/ExceptionInfo (json/encode {"native" #js {}}))))
+    (is (= {:constructor "hello"} (json/decode "{\"constructor\":\"hello\"}")))
+    (is (thrown? cljs.core/ExceptionInfo (json/encode {:native #js {}}))))
   (doseq [value [9007199254740992 (/ 1 0) (/ 0 0)]]
     (is (thrown? cljs.core/ExceptionInfo (json/encode value))))
   (doseq [text ["9007199254740992" "1e400"]]
@@ -71,7 +71,7 @@
   (try (json/decode (str (apply str (repeat 1048576 " ")) "null"))
        (is false "JSON input size must remain bounded")
        (catch :default error
-         (is (= :malli.core/invalid-input (:type (ex-data error))))
+         (is (= :fast-twitch.codec/limit-exceeded (:code (ex-data error))))
          (is (< (count (pr-str (ex-data error))) 4096))))
   (let [created (atom 0)
         original (aget globalThis "MessageChannel")]
@@ -118,8 +118,10 @@
   (let [{:keys! [present]} {:present false}] (is (false? present)))
   (is (nil? (req! {:present nil} :present)))
   (is (thrown? Error (req! {} :missing)))
-  (is (= {"x" [false nil 1]} (json/decode (json/encode {"x" [false nil 1]}))))
-  (is (thrown? cljs.core/ExceptionInfo (json/encode {:keyword 1})))
+  (is (= {:x [false nil 1]} (json/decode (json/encode {:x [false nil 1]}))))
+  (is (= {:tenant/id 1 :other/id false}
+         (json/decode (json/encode {:tenant/id 1 :other/id false}))))
+  (is (thrown? cljs.core/ExceptionInfo (json/encode {1 :invalid})))
   (let [options {:owned? false :mode :default}]
     (is (instance? Promise (readers/read! nil options)))
     (is (identical? (m/validator contracts/CollectOptions)
@@ -940,8 +942,8 @@
                                                           {:codec :json
                                                            :on-event #(resolve (:data
                                                                                  %))}))))]
-               (client/send! (:port1 @channel) {"data" [false nil 42]})
-               (is (= {"data" [false nil 42]} (await (deadline received)))))
+               (client/send! (:port1 @channel) {:data [false nil 42]})
+               (is (= {:data [false nil 42]} (await (deadline received)))))
              (let [channel2 (messaging/create-channel! {} {})
                    buffer (.-buffer (Uint8Array. #js [1 2 3]))]
                (try (client/send! (:port1 channel2) buffer {:transfer [buffer]})
